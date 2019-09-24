@@ -76,7 +76,7 @@ async fn main() -> Result<(), surf::Exception> {
     let (cinfos_sender, cinfos_receiver) = mpsc::channel(100);
 
     let retrieve_handler = runtime::spawn(async {
-        crates_infos(infos_sender, "../crates.io-index/").await
+        crates_infos(infos_sender, "crates.io-index/").await
     });
 
     let publish_handler = runtime::spawn(async {
