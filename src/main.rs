@@ -27,6 +27,33 @@ struct CrateInfo {
     vers: String,
 }
 
+async fn process_file(entry: walkdir::DirEntry) -> Result<Option<CrateInfo>, surf::Exception> {
+    if entry.file_type().is_file() {
+        let file = fs::File::open(entry.path()).await?;
+        let file = BufReader::new(file);
+        let mut lines = file.lines();
+
+        let mut last = None;
+        while let Some(line) = lines.try_next().await? {
+            last = Some(line);
+        }
+
+        let last_line = match last {
+            Some(line) => line,
+            None => return Ok(None),
+        };
+
+        let info: CrateInfo = match serde_json::from_str(&last_line) {
+            Ok(info) => info,
+            Err(_) => return Ok(None),
+        };
+
+        return Ok(Some(info));
+    }
+
+    Ok(None)
+}
+
 async fn crates_infos<P: AsRef<Path>>(
     mut sender: mpsc::Sender<CrateInfo>,
     crates_io_index: P,
@@ -36,29 +63,20 @@ async fn crates_infos<P: AsRef<Path>>(
                         .max_open(1)
                         .contents_first(true);
 
-    for res in walkdir {
-        let entry = res?;
-        if entry.file_type().is_file() {
-            let file = fs::File::open(entry.path()).await?;
-            let file = BufReader::new(file);
-            let mut lines = file.lines();
+    for result in walkdir {
+        let entry = match result {
+            Ok(entry) => entry,
+            Err(e) => { eprintln!("{}", e); continue },
+        };
 
-            let mut last = None;
-            while let Some(line) = lines.try_next().await? {
-                last = Some(line);
-            }
-
-            let last_line = match last {
-                Some(line) => line,
-                None => continue,
-            };
-
-            let info: CrateInfo = match serde_json::from_str(&last_line) {
-                Ok(info) => info,
-                Err(_) => continue,
-            };
-
-            sender.send(info).await?;
+        match process_file(entry).await {
+            Ok(Some(info)) => {
+                if let Err(e) = sender.send(info).await {
+                    eprintln!("{}", e);
+                }
+            },
+            Ok(None) => (),
+            Err(e) => eprintln!("{}", e),
         }
     }
 
@@ -153,7 +171,7 @@ async fn chunk_crates_to_meili(
     let api_key = env::var("MEILI_API_KEY").expect("MEILI_API_KEY");
     let index_name = env::var("MEILI_INDEX_NAME").expect("MEILI_INDEX_NAME");
 
-    let mut receiver = receiver.chunks(50);
+    let mut receiver = receiver.chunks(150);
     while let Some(chunk) = StreamExt::next(&mut receiver).await {
         let url = format!("https://{name}.getmeili.com/indexes/{name}/documents", name = index_name);
         let res = surf::post(url)
@@ -186,12 +204,12 @@ async fn main() -> Result<(), surf::Exception> {
 
     StreamExt::zip(infos_receiver, stream::repeat(cinfos_sender))
         .for_each_concurrent(Some(8), |(info, mut sender)| async move {
-        match retrieve_crate_toml(&info).await {
-            Ok(cinfo) => sender.send(cinfo).await.unwrap(),
-            Err(e) => eprintln!("{:?} {}", info, e),
-        }
-    })
-    .await;
+            match retrieve_crate_toml(&info).await {
+                Ok(cinfo) => sender.send(cinfo).await.unwrap(),
+                Err(e) => eprintln!("{:?} {}", info, e),
+            }
+        })
+        .await;
 
     retrieve_handler.await?;
     publish_handler.await?;
