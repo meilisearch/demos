@@ -4,10 +4,9 @@ version = "0.1.0"
 authors = ["Clément Renault <renault.cle@gmail.com>"]
 edition = "2018"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
 async-std = "0.99.6"
+atom_syndication = "0.6.0"
 cargo_toml = "0.8.0"
 flate2 = "1.0.11"
 futures-preview = "0.3.0-alpha.14"
@@ -16,6 +15,7 @@ runtime = "0.3.0-alpha.7"
 serde = { version = "1.0.101", features = ["derive"] }
 serde_json = "1.0.40"
 tar = "0.4.26"
+url = { version = "2.0.1", features = ["serde"] }
 walkdir = "2.0"
 
 [dependencies.surf]
