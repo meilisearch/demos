@@ -1,3 +1,4 @@
 /target
 **/*.rs.bk
 *.out
+crates.io-index

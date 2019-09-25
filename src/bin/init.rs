@@ -72,8 +72,8 @@ async fn crates_infos<P: AsRef<Path>>(
 
 #[runtime::main]
 async fn main() -> Result<(), surf::Exception> {
-    let (infos_sender, infos_receiver) = mpsc::channel(100);
-    let (cinfos_sender, cinfos_receiver) = mpsc::channel(100);
+    let (infos_sender, infos_receiver) = mpsc::channel(1000);
+    let (cinfos_sender, cinfos_receiver) = mpsc::channel(1000);
 
     let retrieve_handler = runtime::spawn(async {
         crates_infos(infos_sender, "crates.io-index/").await
@@ -83,15 +83,17 @@ async fn main() -> Result<(), surf::Exception> {
         chunk_crates_to_meili(cinfos_receiver).await
     });
 
-    StreamExt::zip(infos_receiver, stream::repeat(cinfos_sender))
-        .for_each_concurrent(Some(8), |(info, mut sender)| async move {
-            match retrieve_crate_toml(&info).await {
-                Ok(cinfo) => sender.send(cinfo).await.unwrap(),
-                Err(e) => eprintln!("{:?} {}", info, e),
-            }
-        })
-        .await;
+    let retrieve_toml = StreamExt::zip(infos_receiver, stream::repeat(cinfos_sender))
+        .for_each_concurrent(Some(64), |(info, mut sender)| {
+            runtime::spawn(async move {
+                match retrieve_crate_toml(&info).await {
+                    Ok(cinfo) => sender.send(cinfo).await.unwrap(),
+                    Err(e) => eprintln!("{:?} {}", info, e),
+                }
+            })
+        });
 
+    retrieve_toml.await;
     retrieve_handler.await?;
     publish_handler.await?;
 
