@@ -12,6 +12,7 @@ use flate2::read::GzDecoder;
 use serde::{Serialize, Deserialize};
 use tar::Archive;
 
+pub const MEILI_PROJECT_NAME: &str = "MEILI_PROJECT_NAME";
 pub const MEILI_INDEX_NAME: &str = "MEILI_INDEX_NAME";
 pub const MEILI_API_KEY: &str = "MEILI_API_KEY";
 
@@ -110,10 +111,14 @@ pub async fn chunk_crates_to_meili(
 {
     let api_key = env::var(MEILI_API_KEY).expect(MEILI_API_KEY);
     let index_name = env::var(MEILI_INDEX_NAME).expect(MEILI_INDEX_NAME);
+    let project_name = env::var(MEILI_PROJECT_NAME).expect(MEILI_PROJECT_NAME);
 
     let mut receiver = receiver.chunks(150);
     while let Some(chunk) = StreamExt::next(&mut receiver).await {
-        let url = format!("https://{name}.getmeili.com/indexes/{name}/documents", name = index_name);
+        let url = format!("https://{project_name}.getmeili.com/indexes/{index_name}/documents",
+            project_name = project_name,
+            index_name = index_name,
+        );
         let res = surf_curl::post(url)
                     .set_header("X-Meili-API-Key", &api_key)
                     .body_json(&chunk)?
