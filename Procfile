@@ -1,1 +1,1 @@
-worker: ./target/release/live
+web: ./target/release/live
