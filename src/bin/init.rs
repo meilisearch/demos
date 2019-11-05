@@ -9,9 +9,9 @@ use futures::sink::SinkExt;
 use futures::stream::{self, TryStreamExt, StreamExt};
 use walkdir::WalkDir;
 
-use meili_crates::{chunk_crates_to_meili, retrieve_crate_toml, CrateInfo};
+use meili_crates::{chunk_crates_to_meili, retrieve_crate_toml, CrateInfo, Result};
 
-async fn process_file(entry: walkdir::DirEntry) -> Result<Option<CrateInfo>, surf::Exception> {
+async fn process_file(entry: walkdir::DirEntry) -> Result<Option<CrateInfo>> {
     if entry.file_type().is_file() {
         let file = fs::File::open(entry.path()).await?;
         let file = BufReader::new(file);
@@ -41,7 +41,7 @@ async fn process_file(entry: walkdir::DirEntry) -> Result<Option<CrateInfo>, sur
 async fn crates_infos<P: AsRef<Path>>(
     mut sender: mpsc::Sender<CrateInfo>,
     crates_io_index: P,
-) -> Result<(), surf::Exception>
+) -> Result<()>
 {
     let walkdir = WalkDir::new(crates_io_index)
                         .max_open(1)
@@ -71,7 +71,7 @@ async fn crates_infos<P: AsRef<Path>>(
 // https://static.crates.io/crates/{crate}/{crate}-{version}.crate
 
 #[runtime::main]
-async fn main() -> Result<(), surf::Exception> {
+async fn main() -> Result<()> {
     let (infos_sender, infos_receiver) = mpsc::channel(1000);
     let (cinfos_sender, cinfos_receiver) = mpsc::channel(1000);
 

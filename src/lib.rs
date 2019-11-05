@@ -1,4 +1,5 @@
 use std::env;
+use std::error::Error;
 use std::ffi::OsStr;
 use std::io::Read;
 use std::time::Duration;
@@ -9,6 +10,7 @@ use futures_timer::Delay;
 
 use cargo_toml::Manifest;
 use flate2::read::GzDecoder;
+use isahc::prelude::*;
 use serde::{Serialize, Deserialize};
 use tar::Archive;
 
@@ -17,6 +19,8 @@ pub const MEILI_INDEX_NAME: &str = "MEILI_INDEX_NAME";
 pub const MEILI_API_KEY: &str = "MEILI_API_KEY";
 
 pub mod backoff;
+
+pub type Result<T> = std::result::Result<T, Box<dyn Error + Send + Sync>>;
 
 #[derive(Debug, Deserialize)]
 pub struct CrateInfo {
@@ -35,10 +39,7 @@ pub struct CompleteCrateInfos {
     pub id: String,
 }
 
-pub async fn retrieve_crate_toml(
-    info: &CrateInfo,
-) -> Result<CompleteCrateInfos, surf::Exception>
-{
+pub async fn retrieve_crate_toml(info: &CrateInfo) -> Result<CompleteCrateInfos> {
     let url = format!(
         "https://static.crates.io/crates/{name}/{name}-{version}.crate",
         name = info.name,
@@ -47,7 +48,7 @@ pub async fn retrieve_crate_toml(
 
     let mut result = None;
     for multiplier in backoff::new().take(10) {
-        match surf::get(&url).await {
+        match isahc::get_async(&url).await {
             Ok(res) => { result = Some(res); break },
             Err(e) => {
                 let dur = Duration::from_secs(1) * (multiplier + 1);
@@ -63,13 +64,11 @@ pub async fn retrieve_crate_toml(
     };
 
     if !res.status().is_success() {
-        let body = res.body_string().await?;
+        let body = res.text()?;
         return Err(format!("{}", body).into());
     }
 
-    let body = res.body_bytes().await?;
-
-    let gz = GzDecoder::new(body.as_slice());
+    let gz = GzDecoder::new(res.into_body());
     let mut tar = Archive::new(gz);
 
     for res in tar.entries()? {
@@ -105,13 +104,12 @@ pub async fn retrieve_crate_toml(
     Err(String::from("No Cargo.toml found in this crate").into())
 }
 
-pub async fn chunk_crates_to_meili(
-    receiver: mpsc::Receiver<CompleteCrateInfos>,
-) -> Result<(), surf::Exception>
-{
+pub async fn chunk_crates_to_meili(receiver: mpsc::Receiver<CompleteCrateInfos>) -> Result<()> {
     let api_key = env::var(MEILI_API_KEY).expect(MEILI_API_KEY);
     let index_name = env::var(MEILI_INDEX_NAME).expect(MEILI_INDEX_NAME);
     let project_name = env::var(MEILI_PROJECT_NAME).expect(MEILI_PROJECT_NAME);
+
+    let client = HttpClient::new()?;
 
     let mut receiver = receiver.chunks(150);
     while let Some(chunk) = StreamExt::next(&mut receiver).await {
@@ -119,12 +117,16 @@ pub async fn chunk_crates_to_meili(
             project_name = project_name,
             index_name = index_name,
         );
-        let res = surf_curl::post(url)
-                    .set_header("X-Meili-API-Key", &api_key)
-                    .body_json(&chunk)?
-                    .recv_string()
-                    .await?;
 
+        let chunk_json = serde_json::to_string(&chunk)?;
+
+        let request = Request::post(url)
+            .header("X-Meili-API-Key", &api_key)
+            .header("Content-Type", "application/json")
+            .body(chunk_json)?;
+
+        let mut res = client.send_async(request).await?;
+        let res = res.text()?;
         eprintln!("{}", res);
     }
 
