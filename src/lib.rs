@@ -34,9 +34,13 @@ pub struct CompleteCrateInfos {
     pub description: String,
     pub keywords: Vec<String>,
     pub categories: Vec<String>,
-
     pub version: String,
-    pub id: String,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+pub struct DownloadsCrateInfos {
+    pub name: String,
+    downloads: u64,
 }
 
 pub async fn retrieve_crate_toml(info: &CrateInfo) -> Result<CompleteCrateInfos> {
@@ -94,7 +98,6 @@ pub async fn retrieve_crate_toml(info: &CrateInfo) -> Result<CompleteCrateInfos>
                 keywords,
                 categories,
                 version: info.vers.clone(),
-                id: info.name.clone(),
             };
 
             return Ok(complete_infos)
@@ -104,7 +107,10 @@ pub async fn retrieve_crate_toml(info: &CrateInfo) -> Result<CompleteCrateInfos>
     Err(String::from("No Cargo.toml found in this crate").into())
 }
 
-pub async fn chunk_crates_to_meili(receiver: mpsc::Receiver<CompleteCrateInfos>) -> Result<()> {
+pub async fn chunk_complete_crates_info_to_meili(
+    receiver: mpsc::Receiver<CompleteCrateInfos>,
+) -> Result<()>
+{
     let api_key = env::var(MEILI_API_KEY).expect(MEILI_API_KEY);
     let index_name = env::var(MEILI_INDEX_NAME).expect(MEILI_INDEX_NAME);
     let project_name = env::var(MEILI_PROJECT_NAME).expect(MEILI_PROJECT_NAME);
@@ -121,6 +127,38 @@ pub async fn chunk_crates_to_meili(receiver: mpsc::Receiver<CompleteCrateInfos>)
         let chunk_json = serde_json::to_string(&chunk)?;
 
         let request = Request::post(url)
+            .header("X-Meili-API-Key", &api_key)
+            .header("Content-Type", "application/json")
+            .body(chunk_json)?;
+
+        let mut res = client.send_async(request).await?;
+        let res = res.text()?;
+        eprintln!("{}", res);
+    }
+
+    Ok(())
+}
+
+pub async fn chunk_downloads_crates_info_to_meili(
+    receiver: mpsc::Receiver<DownloadsCrateInfos>,
+) -> Result<()>
+{
+    let api_key = env::var(MEILI_API_KEY).expect(MEILI_API_KEY);
+    let index_name = env::var(MEILI_INDEX_NAME).expect(MEILI_INDEX_NAME);
+    let project_name = env::var(MEILI_PROJECT_NAME).expect(MEILI_PROJECT_NAME);
+
+    let client = HttpClient::new()?;
+
+    let mut receiver = receiver.chunks(150);
+    while let Some(chunk) = StreamExt::next(&mut receiver).await {
+        let url = format!("https://{project_name}.getmeili.com/indexes/{index_name}/documents",
+            project_name = project_name,
+            index_name = index_name,
+        );
+
+        let chunk_json = serde_json::to_string(&chunk)?;
+
+        let request = Request::put(url)
             .header("X-Meili-API-Key", &api_key)
             .header("Content-Type", "application/json")
             .body(chunk_json)?;
