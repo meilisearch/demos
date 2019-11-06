@@ -126,7 +126,7 @@ pub async fn chunk_complete_crates_info_to_meili(
 
         let chunk_json = serde_json::to_string(&chunk)?;
 
-        let request = Request::post(url)
+        let request = Request::put(url)
             .header("X-Meili-API-Key", &api_key)
             .header("Content-Type", "application/json")
             .body(chunk_json)?;
