@@ -25,6 +25,18 @@ p.desc em {
 #request-time {
   margin-left: 20px;
 }
+
+header h3 {
+  font-size: 2.5em;
+  line-height: 1.08;
+  margin: .44em 0 0;
+}
+
+header h4 {
+  font-size: 1.8em;
+  line-height: 1.08;
+  margin: .44em 0 0;
+}
 </style>
 
 <link rel=stylesheet href="/index.css?ia">
@@ -105,7 +117,7 @@ $(document).ready(function () {
       },
       dataType: 'json',
       success: function (data, status) {
-        $("#request-time").text(`N/A ms`);
+        $("#request-time").text(`-- ms`);
         $("#handlebars-list").empty();
         let out_html = "";
         $.each(data, function (_, value) {
@@ -156,33 +168,52 @@ $(document).ready(function () {
 </script>
 
 <body vocab="http://schema.org/">
-    <header id="serp">
-        <div class="inner-col">
-            <form role="search" id=search method="get" action="/search">
-                <input placeholder="name, keywords, description" autofocus autocapitalize="off" autocorrect="off" autocomplete="off" tabindex="1" type=search id="textSearch" name=q>
-                <span id="request-time">N/A ms</span>
-            </form>
-            <nav>
-                <ul>
-                    <li class=active>Sorted by relevance</li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <main id="results">
-        <div class="inner-col">
-            <ol id="handlebars-list">
-                <!--crates in here -->
-            </ol>
-        </div>
-    </main>
+  <header id="serp">
+      <div class="inner-col">
+          <h3>Meili crates browser 2000</h3>
 
-    <footer>
-        <div class="inner-col">
-            <p>Search powered by <a href="https://github.com/meilisearch/MeiliDB">MeiliDB</a>.</p>
-            <p>Browse <a href="/">all categories</a>.
-        </div>
-    </footer>
+          <p>
+            This search bar is provided by <a href="https://meilisearch.com">Meili</a>,
+            it is a demonstration of our instant search engine.
+            <br/>
+            If you want to take a look at the project source code, its your lucky day as it is <a href="https://github.com/meilisearch/MeiliDB">available on github</a>.
+            <br/>
+            The whole design was taken from <a href="https://lib.rs">lib.rs</a> because we love it.
+            <br/>
+            <br/>
+            We pull new crates and crates updates every <em>10 minutes</em> from <a href="https://docs.rs/releases/queue">docs.rs</a> and
+            all the downloads counts <em>every day at 3:30 PM UTC</em> from <a href="https://crates.io/data-access">crates.io</a>.
+            Currently we have something like <em> 31 729 crates</em>.
+            <br/>
+            <br/>
+            Have fun using it ⌨️ 💨
+            <br/>
+          </p>
+
+          <form role="search" id=search method="get" action="/search">
+              <input placeholder="name, keywords, description" autofocus autocapitalize="off" autocorrect="off" autocomplete="off" tabindex="1" type=search id="textSearch" name=q>
+              <span id="request-time">-- ms</span>
+          </form>
+          <nav>
+              <ul>
+                  <li class=active>Sorted by relevance</li>
+              </ul>
+          </nav>
+      </div>
+  </header>
+  <main id="results">
+      <div class="inner-col">
+          <ol id="handlebars-list">
+              <!--crates in here from handlebars -->
+          </ol>
+      </div>
+  </main>
+
+  <footer>
+      <div class="inner-col">
+          <p>Search powered by <a href="https://github.com/meilisearch/MeiliDB">MeiliDB</a>.</p>
+      </div>
+  </footer>
 
 </body>
 </html>
