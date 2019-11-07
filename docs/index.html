@@ -100,6 +100,14 @@ function innerText(s) {
   return div.innerText;
 }
 
+function handleForm() {
+  let elem = $("#handlebars-list li:first-child")[0];
+  if (elem) {
+    window.location.href = elem.firstElementChild.href;
+  }
+  return false;
+}
+
 $(document).ready(function () {
   var projectName = 'f062ac8c';
   var indexName = '20658faf';
@@ -189,7 +197,7 @@ $(document).ready(function () {
             <br/>
           </p>
 
-          <form role="search" id=search onSubmit="return false">
+          <form role="search" id=search onSubmit="handleForm(); return false">
               <input placeholder="name, keywords, description" autofocus autocapitalize="off" autocorrect="off" autocomplete="off" tabindex="1" type=search id="textSearch">
               <span id="request-time">-- ms</span>
           </form>
