@@ -189,8 +189,8 @@ $(document).ready(function () {
             <br/>
           </p>
 
-          <form role="search" id=search method="get" action="/search">
-              <input placeholder="name, keywords, description" autofocus autocapitalize="off" autocorrect="off" autocomplete="off" tabindex="1" type=search id="textSearch" name=q>
+          <form role="search" id=search onSubmit="return false">
+              <input placeholder="name, keywords, description" autofocus autocapitalize="off" autocorrect="off" autocomplete="off" tabindex="1" type=search id="textSearch">
               <span id="request-time">-- ms</span>
           </form>
           <nav>
