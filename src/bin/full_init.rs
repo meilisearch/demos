@@ -103,6 +103,36 @@ async fn init_index_schema() -> Result<()> {
     Ok(())
 }
 
+async fn init_index_browse_key() -> Result<()> {
+    let api_key = env::var(MEILI_API_KEY).expect(MEILI_API_KEY);
+    let index_name = env::var(MEILI_INDEX_NAME).expect(MEILI_INDEX_NAME);
+    let project_name = env::var(MEILI_PROJECT_NAME).expect(MEILI_PROJECT_NAME);
+
+    let url = format!("https://{project_name}.getmeili.com/indexes/{index_name}",
+        project_name = project_name,
+        index_name = index_name,
+    );
+
+    let key = r#"{
+        "description": "Browse documents",
+        "acl": ["documentsRead"],
+        "indexes": ["*"],
+        "expiresAt": 1636293235
+    }"#;
+
+    let client = HttpClient::new()?;
+    let request = Request::post(url)
+        .header("X-Meili-API-Key", &api_key)
+        .header("Content-Type", "application/json")
+        .body(key)?;
+
+    let mut res = client.send_async(request).await?;
+    let res = res.text()?;
+    eprintln!("{}", res);
+
+    Ok(())
+}
+
 // git clone --depth=1 https://github.com/rust-lang/crates.io-index.git
 // https://static.crates.io/crates/{crate}/{crate}-{version}.crate
 
@@ -112,6 +142,7 @@ fn main() -> Result<()> {
         let (cinfos_sender, cinfos_receiver) = mpsc::channel(1000);
 
         init_index_schema().await?;
+        init_index_browse_key().await?;
 
         let retrieve_handler = task::spawn(async {
             crates_infos(infos_sender, "crates.io-index/").await
