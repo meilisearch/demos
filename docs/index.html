@@ -111,10 +111,26 @@ function handleForm() {
 $(document).ready(function () {
   var projectName = 'f062ac8c';
   var indexName = '20658faf';
+  var browseResult;
   var request;
+
+  function fillBrowseDocuments() {
+    $("#request-time").text(`-- ms`);
+    $("#handlebars-list").empty();
+    let out_html = "";
+    $.each(browseResult, function (_, value) {
+      out_html += template(value);
+    });
+    $("#handlebars-list").html(out_html)
+  }
 
   function browseDocuments() {
     if (request) { request.abort() }
+
+    if (browseResult) {
+      fillBrowseDocuments(browseResult);
+      return;
+    }
 
     request = $.ajax({
       url: `https://${projectName}.getmeili.com/indexes/${indexName}/documents`,
@@ -123,14 +139,9 @@ $(document).ready(function () {
         'X-Meili-API-Key': '5e8ab480a0993837679d3b7f3ef95cec2cdd27ed'
       },
       dataType: 'json',
-      success: function (data, status) {
-        $("#request-time").text(`-- ms`);
-        $("#handlebars-list").empty();
-        let out_html = "";
-        $.each(data, function (_, value) {
-          out_html += template(value);
-        });
-        $("#handlebars-list").html(out_html)
+      success: function (data) {
+        browseResult = data;
+        fillBrowseDocuments();
       }
     });
   }
