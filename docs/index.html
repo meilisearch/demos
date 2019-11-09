@@ -108,6 +108,20 @@ function handleForm() {
   return false;
 }
 
+function setGetParam(key,value) {
+  if (history.pushState) {
+    var params = new URLSearchParams(window.location.search);
+    params.set(key, value);
+    var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + params.toString();
+    window.history.pushState({path:newUrl},'',newUrl);
+  }
+}
+
+function getParam(key) {
+  var params = new URLSearchParams(window.location.search);
+  return params.get(key);
+}
+
 $(document).ready(function () {
   var projectName = 'f062ac8c';
   var indexName = '20658faf';
@@ -150,10 +164,10 @@ $(document).ready(function () {
   Handlebars.registerHelper("stripScripts", stripScripts);
   Handlebars.registerHelper("innerText", innerText);
 
-  browseDocuments();
-
   $("#textSearch").on('input', function () {
     let value = $("#textSearch").val();
+
+    setGetParam('q', value);
 
     if (value.trim() == "") {
       browseDocuments();
@@ -180,8 +194,15 @@ $(document).ready(function () {
         $("#handlebars-list").html(out_html)
       },
     });
-
   });
+
+  let query = getParam('q');
+  if (query) {
+    $("#textSearch").val(query).trigger("input");
+  } else {
+    browseDocuments();
+  }
+
 });
 </script>
 
