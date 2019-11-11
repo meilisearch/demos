@@ -86,6 +86,7 @@ async fn init_index_schema() -> Result<()> {
         "description":  [              "displayed", "indexed"],
         "keywords":     [              "displayed", "indexed"],
         "categories":   [              "displayed", "indexed"],
+        "readme":       [              "displayed", "indexed"],
         "version":      [              "displayed"           ],
         "downloads":    [              "displayed",  "ranked"]
     }"#;

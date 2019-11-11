@@ -1,6 +1,5 @@
 use std::env;
 use std::error::Error;
-use std::ffi::OsStr;
 use std::io::Read;
 use std::time::Duration;
 
@@ -34,6 +33,7 @@ pub struct CompleteCrateInfos {
     pub description: String,
     pub keywords: Vec<String>,
     pub categories: Vec<String>,
+    pub readme: String,
     pub version: String,
 }
 
@@ -75,36 +75,73 @@ pub async fn retrieve_crate_toml(info: &CrateInfo) -> Result<CompleteCrateInfos>
     let gz = GzDecoder::new(res.into_body());
     let mut tar = Archive::new(gz);
 
+    let mut toml_infos = None;
+    let mut readme = None;
+
     for res in tar.entries()? {
+        // stop early if we found both files
+        if toml_infos.is_some() && readme.is_some() { break }
+
         let mut entry = res?;
         let path = entry.path()?;
-        if path.file_name() == Some(OsStr::new("Cargo.toml")) {
-            let mut content = Vec::new();
-            entry.read_to_end(&mut content)?;
+        let file_name = path.file_name().and_then(|s| s.to_str());
 
-            let manifest = Manifest::from_slice(&content)?;
-            let package = match manifest.package {
-                Some(package) => package,
-                None => break,
-            };
+        match file_name {
+            Some("Cargo.toml") if toml_infos.is_none() => {
+                let mut content = Vec::new();
+                entry.read_to_end(&mut content)?;
 
-            let description = package.description.unwrap_or_default();
-            let keywords = package.keywords;
-            let categories = package.categories;
+                let manifest = Manifest::from_slice(&content)?;
+                let package = match manifest.package {
+                    Some(package) => package,
+                    None => break,
+                };
 
-            let complete_infos = CompleteCrateInfos {
-                name: info.name.clone(),
-                description,
-                keywords,
-                categories,
-                version: info.vers.clone(),
-            };
+                let name = info.name.clone();
+                let description = package.description.unwrap_or_default();
+                let keywords = package.keywords;
+                let categories = package.categories;
+                let version = info.vers.clone();
 
-            return Ok(complete_infos)
+                toml_infos = Some((
+                    name,
+                    description,
+                    keywords,
+                    categories,
+                    version,
+                ));
+            },
+            Some("README.md") if readme.is_none() => {
+                let mut content = String::new();
+                entry.read_to_string(&mut content)?;
+
+                let options = comrak::ComrakOptions::default();
+                let html = comrak::markdown_to_html(&content, &options);
+
+                let document = scraper::Html::parse_document(&html);
+                let html = document.root_element();
+                let text = html.text().collect();
+
+                readme = Some(text);
+            },
+            _ => (),
         }
     }
 
-    Err(String::from("No Cargo.toml found in this crate").into())
+    match (toml_infos, readme) {
+        (Some((name, description, keywords, categories, version)), readme) => {
+            Ok(CompleteCrateInfos {
+                name,
+                description,
+                keywords,
+                categories,
+                readme: readme.unwrap_or_default(),
+                version,
+            })
+        },
+        (None, _) => Err(String::from("No Cargo.toml found in this crate").into()),
+    }
+
 }
 
 pub async fn chunk_complete_crates_info_to_meili(
