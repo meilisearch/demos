@@ -67,7 +67,9 @@ header h4 {
         </div>
         <div class=meta>
             <span class="version stable"><span>v</span>{{version}}</span>
-            <span class="downloads" title="{{downloads}} recent downloads">{{formatBigNumber downloads}}</span>
+            {{#if downloads}}
+              <span class="downloads" title="{{downloads}} recent downloads">{{formatBigNumber downloads}}</span>
+            {{/if}}
             {{#each keywords}}
             <span class=k><span>#</span>{{this}}</span>
             {{/each}}
