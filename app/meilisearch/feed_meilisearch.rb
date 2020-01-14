@@ -1,31 +1,42 @@
 require 'meilisearch'
 require 'byebug'
 
-URL = ENV['MEILISEARCH_URL']
-API_KEY = ENV['MEILISEARCH_API_KEY']
-INDEX_UID = ENV['MEILISEARCH_INDEX_UID']
+DOWNLOAD_SCRIPT = "#{Dir.pwd}/app/meilisearch/download_postgresql_dump.sh"
+DUMP_FILE_NAME = "#{Dir.pwd}/postgresql_dump_file.sql"
 MAIN_TABLE = 'versions'
 FIELDS = [
   'authors',
   'description',
+  'summary',
   'number',
   'rubygem_id',
-  'summary',
   'full_name',
   'position',
   'indexed'
 ]
 DOWNLOAD_TABLE = 'gem_downloads'
+URL = ENV['MEILISEARCH_URL']
+API_KEY = ENV['MEILISEARCH_API_KEY']
+INDEX_UID = ENV['MEILISEARCH_INDEX_UID']
+
+# DOWNLOADING POSTGRESQL DUMP FILE
+puts '-----------'
+puts 'Launching script to download the latest rubygems data...'
+ret = system("#{DOWNLOAD_SCRIPT} #{DUMP_FILE_NAME}")
+if ret == false
+  puts 'Error when downloading'
+  exit 1
+end
 
 # GETTING INFORMATION FORM FILES AND FILLING HASH TABLES
-puts 'Parsing PostgreSQL dump file...'
+puts "\nParsing PostgreSQL dump file..."
 main_parsing = false
 download_parsing = false
 main_result = {}
 download_result = {}
 titles = []
 titles_len = 0
-File.open("#{Dir.pwd}/PostgreSQL.sql", 'r') do |file|
+File.open(DUMP_FILE_NAME, 'r') do |file|
   file.each_line.with_index do |line, index|
 
     if main_parsing
@@ -80,11 +91,14 @@ documents = main_result.map do |_, elem|
   document['version'] = elem['number']
   document['name'] = elem['full_name'].split("-#{document['version']}").first
   document['authors'] = elem['authors']
-  elem['description'].delete!("\N")
+  elem['description'].gsub!('\N', '')
+  elem['description'].gsub!('\n', '')
   elem['description'].delete!("\n")
-  elem['summary'].delete!("\N")
+  elem['summary'].gsub!('\N', '')
+  elem['summary'].gsub!('\n', '')
   elem['summary'].delete!("\n")
-  document['summary'] = elem['summary'].empty? ? elem['description'] : elem['summary']
+  document['description'] = elem['description']
+  document['summary'] = elem['summary']
   if download_result.has_key?(elem['rubygem_id'])
     document['total_downloads'] = download_result[elem['rubygem_id']]['count'].delete_suffix("\n")
   else
@@ -98,9 +112,10 @@ puts "Documents number: #{documents.length}"
 schema = {
   id:              ['identifier'],
   name:            ['indexed', 'displayed'],
-  version:         ['indexed', 'displayed'],
-  authors:         ['indexed', 'displayed'],
+  description:     [           'displayed'],
   summary:         ['indexed', 'displayed'],
+  authors:         ['indexed', 'displayed'],
+  version:         ['indexed', 'displayed'],
   total_downloads: ['indexed', 'displayed', 'ranked'],
 }
 client = MeiliSearch::Client.new(URL, API_KEY)
@@ -113,7 +128,6 @@ rescue MeiliSearch::HTTPError => e
 end
 puts 'Creating a new index...'
 index = client.create_index(name: 'Gems', uid: INDEX_UID, schema: schema)
-# index = client.index(INDEX_UID)
 puts 'Done!'
 puts 'Adding documents...'
 documents.each_slice(1800).with_index do |slice, i|
