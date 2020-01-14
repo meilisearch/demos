@@ -17,8 +17,8 @@ FIELDS = [
 ]
 DOWNLOAD_TABLE = 'gem_downloads'
 
-
 # GETTING INFORMATION FORM FILES AND FILLING HASH TABLES
+puts 'Parsing PostgreSQL dump file...'
 main_parsing = false
 download_parsing = false
 main_result = {}
@@ -69,9 +69,9 @@ File.open("#{Dir.pwd}/PostgreSQL.sql", 'r') do |file|
 
   end
 end
-
-puts "main_result number: #{main_result.length}"
-puts "download_result number: #{download_result.length}"
+puts 'Results:'
+puts "main table length: #{main_result.length}"
+puts "download table length: #{download_result.length}"
 
 # CREATING DOCUMENTS FOR MEILISEARCH
 documents = main_result.map do |_, elem|
@@ -80,8 +80,11 @@ documents = main_result.map do |_, elem|
   document['version'] = elem['number']
   document['name'] = elem['full_name'].split("-#{document['version']}").first
   document['authors'] = elem['authors']
-  document['description'] = elem['description'] == '\N' ? '' : elem['description']
-  document['summary'] = elem['summary']
+  elem['description'].delete!("\N")
+  elem['description'].delete!("\n")
+  elem['summary'].delete!("\N")
+  elem['summary'].delete!("\n")
+  document['summary'] = elem['summary'].empty? ? elem['description'] : elem['summary']
   if download_result.has_key?(elem['rubygem_id'])
     document['total_downloads'] = download_result[elem['rubygem_id']]['count'].delete_suffix("\n")
   else
@@ -89,16 +92,14 @@ documents = main_result.map do |_, elem|
   end
   document
 end
-
 puts "Documents number: #{documents.length}"
 
 # FILLING MEILISEARCH
 schema = {
   id:              ['identifier'],
-  version:         ['indexed', 'displayed'],
   name:            ['indexed', 'displayed'],
+  version:         ['indexed', 'displayed'],
   authors:         ['indexed', 'displayed'],
-  description:     ['indexed', 'displayed'],
   summary:         ['indexed', 'displayed'],
   total_downloads: ['indexed', 'displayed', 'ranked'],
 }
@@ -111,17 +112,15 @@ rescue MeiliSearch::HTTPError => e
   puts 'No index to delete.'
 end
 puts 'Creating a new index...'
-index = client.create_index(name: 'finding-rubygems', uid: INDEX_UID, schema: schema)
+index = client.create_index(name: 'Gems', uid: INDEX_UID, schema: schema)
 # index = client.index(INDEX_UID)
 puts 'Done!'
-
 puts 'Adding documents...'
 documents.each_slice(1800).with_index do |slice, i|
   # puts "Adding slice #{i}"
   index.add_documents(slice)
 end
 puts 'Done!'
-
 puts 'Adding settings...'
 settings = {
   rankingOrder: [
