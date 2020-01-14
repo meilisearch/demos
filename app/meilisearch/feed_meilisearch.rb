@@ -1,5 +1,4 @@
 require 'meilisearch'
-require 'byebug'
 
 DOWNLOAD_SCRIPT = "#{Dir.pwd}/app/meilisearch/download_postgresql_dump.sh"
 DUMP_FILE_NAME = "#{Dir.pwd}/postgresql_dump_file.sql"
