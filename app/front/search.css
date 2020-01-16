@@ -1,0 +1,51 @@
+#handlebars-list {
+  background-color: white;
+  border-radius: 5px;
+}
+
+.gem {
+  padding: 20px;
+}
+
+.gem:hover {
+  background-color: #f7f7f7;;
+  border-radius: 5px;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.version {
+  color: #78909c;
+  margin-left: 30px;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 1.66;
+  color: #e9573f;
+}
+
+.description {
+  margin-top: 8px;
+  max-width: 90%;
+  font-size: 15px;
+  color: #141c22;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+em {
+  background-color: #ffab91;
+  font-style: inherit;
+}
+
+.downloads {
+  margin-top: 8px;
+  color: #78909c;
+}

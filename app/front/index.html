@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html class="gr__rubygems_org" lang="en-us">
+    <link href="css.css" rel="stylesheet" type="text/css">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>MeiliSearch finds RubyGems</title>
@@ -25,9 +26,29 @@
     <link rel="alternate" type="application/atom+xml" href="https://feeds.feedburner.com/gemcutter-latest" title="RubyGems.org | Latest Gems">
     <meta name="csrf-param" content="authenticity_token">
     <meta name="csrf-token" content="qIS3TSuRs7yGWUf+TJbeycQBNCto/v6eSzyX6Cup75hfn/sCqgksrNe3HnIaUcCTaNmCG58SJ0bDvfJuCE7jDg==">
-    <!-- <script src="application-297155c81133d687f555139108158d5ff4bab962bbc715ee2.js"></script>
-    <script type="text/javascript" async="" defer="defer" id="gauges-tracker" data-site-id="4eab0ac8613f5d1583000005" src="track.js"></script>
-    <script type="text/javascript" defer="defer" src="insights.js"></script> -->
+    <!-- <script type="text/javascript" defer="defer" src="insights.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script id="entry-template" type="text/x-handlebars-template">
+      <li class="gem">
+        <a href="https://rubygems.org/gems/{{innerText name}}">
+          <div>
+            <span class="title">
+              <span class="name" style="">{{{name}}}</span>
+              <span class="version">{{version}}</span>
+            </span>
+            {{#if description}}
+            <p class="description">{{{description}}}</p>
+            {{/if}}
+          </div>
+          {{#if total_downloads}}
+          <div class="downloads" title="{{total_downloads}} total downloads">{{formatBigNumber total_downloads}} ⬇︎</div>
+          {{/if}}
+        </a>
+      </li>
+    </script>
+    <script src="search.js"></script>
+    <link href="search.css" rel="stylesheet" type="text/css">
   </head>
 
   <body class="body--index" data-gr-c-s-loaded="true">
@@ -37,9 +58,6 @@
           <span class="header__logo" data-icon="⬡">⬢</span>
           <span class="t-hidden">RubyGems</span>
         </a>
-        <a class="header__club-sandwich" href="#">
-          <span class="t-hidden">Navigation menu</span>
-        </a>
         <div class="header__nav-links-wrap">
           <nav class="header__nav-links">
             <a class="header__nav-link " href="https://github.com/meilisearch/MeiliSearch">Github</a>
@@ -48,19 +66,25 @@
       </div>
     </header>
 
-    <main class="">
+    <main>
       <h1 class="home__heading">Finding Rubygems with MeiliSearch</h1>
       <div class="home__search-wrap">
-        <form action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
-          <input type="search" name="query" id="home_query" placeholder="Search Gems…" autofocus="autofocus" class="home__search">
-          <label for="home_query">
-            <span class="t-hidden">Search Gems…</span>
-          </label>
-          <input type="submit" value="⌕" class="home__search__icon" data-disable-with="⌕">
-        </form>
+        <div>
+          <form action="/search" accept-charset="UTF-8" method="get" >
+            <input type="search" name="query" placeholder="Search Gems…" autofocus="autofocus" class="home__search" id="textSearch">
+            <label for="home_query">
+              <span class="t-hidden">Search Gems…</span>
+            </label>
+            <input type="submit" value="⌕" class="home__search__icon" data-disable-with="⌕">
+          </form>
+        </div>
+        <div id="request-time" style="float: right; line-height: 40px; font-size: 1.5em; font-weight: 500; color: white;">-- ms</div>
       </div>
-      <div class="home__cta-wrap">
-        <!-- Search here -->
+      <!-- <div class="home__cta-wrap" style="background-color: blue"> -->
+      <div class="home__cta-wrap" style="max-width: 700px; margin-top: 80px;">
+        <ol id="handlebars-list">
+          <!-- Search results here -->
+        </ol>
       </div>
     </main>
 
