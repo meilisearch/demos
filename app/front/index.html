@@ -68,15 +68,12 @@
     <main>
       <h1 class="home__heading">MeiliSearch finds Rubygems</h1>
       <div class="home__search-wrap">
-        <div>
-          <form role="search">
+        <div class="search-with-time">
+          <div class="search-before"></div>
+          <form role="search" class="search">
             <input type="search" name="query" placeholder="Search Gems…" autocomplete="off" autofocus="autofocus" class="home__search" id="textSearch">
-            <label for="home_query">
-              <span class="t-hidden">Search Gems…</span>
-              <input type="submit" value="⌕" class="home__search__icon" data-disable-with="⌕">
-            </label>
-            <div id="request-time" style="">-- ms</div>
           </form>
+          <div id="request-time" class="search-time">-- ms</div>
         </div>
       <!-- <div id="request-time" style="float: right; line-height: 40px; font-size: 1.5em; font-weight: 500; color: white;">-- ms</div> -->
       </div>

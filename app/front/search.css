@@ -49,3 +49,24 @@ em {
   margin-top: 8px;
   color: #78909c;
 }
+
+.search-with-time {
+  display: inline-flex;
+  width: 100%;
+}
+
+.search-before {
+  width: 10%;
+}
+
+.search {
+  width: 80%;
+}
+
+.search-time {
+  width: 10%;
+  color: white;
+  display: flex;
+  margin-left: 10px;
+  align-items: center;
+}
