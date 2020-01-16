@@ -1,5 +1,11 @@
 require 'meilisearch'
 
+def strip_html_tag(document)
+  document.each do |_, value|
+    value.gsub!(/<\/?[^>]*>/, "") if value.is_a? String
+  end
+end
+
 DOWNLOAD_SCRIPT = "#{Dir.pwd}/app/meilisearch/download_postgresql_dump.sh"
 DUMP_FILE_NAME = "#{Dir.pwd}/postgresql_dump_file.sql"
 MAIN_TABLE = 'versions'
@@ -18,13 +24,12 @@ API_KEY = ENV['MEILISEARCH_API_KEY']
 INDEX_UID = ENV['MEILISEARCH_INDEX_UID']
 
 # DOWNLOADING POSTGRESQL DUMP FILE
-# puts '-----------'
-# puts 'Launching script to download the latest rubygems data...'
-# ret = system("#{DOWNLOAD_SCRIPT} #{DUMP_FILE_NAME}")
-# if ret == false
-#   puts 'Error when downloading'
-#   exit 1
-# end
+puts 'Launching script to download the latest rubygems data...'
+ret = system("#{DOWNLOAD_SCRIPT} #{DUMP_FILE_NAME}")
+if ret == false
+  puts 'Error when downloading'
+  exit 1
+end
 
 # GETTING INFORMATION FORM FILES AND FILLING HASH TABLES
 puts "\nParsing PostgreSQL dump file..."
@@ -101,7 +106,7 @@ documents = main_result.map do |_, elem|
   else
     document['total_downloads'] = 0
   end
-  document
+  strip_html_tag(document)
 end
 puts "Documents number: #{documents.length}"
 
