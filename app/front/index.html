@@ -69,18 +69,19 @@
       <h1 class="home__heading">MeiliSearch finds Rubygems</h1>
       <div class="home__search-wrap">
         <div>
-          <form action="/search" accept-charset="UTF-8" method="get" >
-            <input type="search" name="query" placeholder="Search Gems…" autofocus="autofocus" class="home__search" id="textSearch">
+          <form role="search">
+            <input type="search" name="query" placeholder="Search Gems…" autocomplete="off" autofocus="autofocus" class="home__search" id="textSearch">
             <label for="home_query">
               <span class="t-hidden">Search Gems…</span>
+              <input type="submit" value="⌕" class="home__search__icon" data-disable-with="⌕">
             </label>
-            <input type="submit" value="⌕" class="home__search__icon" data-disable-with="⌕">
+            <div id="request-time" style="">-- ms</div>
           </form>
         </div>
-        <div id="request-time" style="float: right; line-height: 40px; font-size: 1.5em; font-weight: 500; color: white;">-- ms</div>
+      <!-- <div id="request-time" style="float: right; line-height: 40px; font-size: 1.5em; font-weight: 500; color: white;">-- ms</div> -->
       </div>
       <!-- <div class="home__cta-wrap" style="background-color: blue"> -->
-      <div class="home__cta-wrap" style="max-width: 700px; margin-top: 80px;">
+      <div class="home__cta-wrap" style="max-width: 700px; margin-top: 15px;">
         <ol id="handlebars-list">
           <!-- Search results here -->
         </ol>
