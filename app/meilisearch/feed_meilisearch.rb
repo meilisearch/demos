@@ -4,9 +4,8 @@ DOWNLOAD_SCRIPT = "#{Dir.pwd}/app/meilisearch/download_postgresql_dump.sh"
 DUMP_FILE_NAME = "#{Dir.pwd}/postgresql_dump_file.sql"
 MAIN_TABLE = 'versions'
 FIELDS = [
-  'authors',
   'description',
-  'summary',
+  # 'summary',
   'number',
   'rubygem_id',
   'full_name',
@@ -19,13 +18,13 @@ API_KEY = ENV['MEILISEARCH_API_KEY']
 INDEX_UID = ENV['MEILISEARCH_INDEX_UID']
 
 # DOWNLOADING POSTGRESQL DUMP FILE
-puts '-----------'
-puts 'Launching script to download the latest rubygems data...'
-ret = system("#{DOWNLOAD_SCRIPT} #{DUMP_FILE_NAME}")
-if ret == false
-  puts 'Error when downloading'
-  exit 1
-end
+# puts '-----------'
+# puts 'Launching script to download the latest rubygems data...'
+# ret = system("#{DOWNLOAD_SCRIPT} #{DUMP_FILE_NAME}")
+# if ret == false
+#   puts 'Error when downloading'
+#   exit 1
+# end
 
 # GETTING INFORMATION FORM FILES AND FILLING HASH TABLES
 puts "\nParsing PostgreSQL dump file..."
@@ -89,15 +88,14 @@ documents = main_result.map do |_, elem|
   document['id'] = elem['rubygem_id']
   document['version'] = elem['number']
   document['name'] = elem['full_name'].split("-#{document['version']}").first
-  document['authors'] = elem['authors']
   elem['description'].gsub!('\N', '')
   elem['description'].gsub!('\n', '')
   elem['description'].delete!("\n")
-  elem['summary'].gsub!('\N', '')
-  elem['summary'].gsub!('\n', '')
-  elem['summary'].delete!("\n")
+  # elem['summary'].gsub!('\N', '')
+  # elem['summary'].gsub!('\n', '')
+  # elem['summary'].delete!("\n")
   document['description'] = elem['description']
-  document['summary'] = elem['summary']
+  # document['summary'] = elem['summary']
   if download_result.has_key?(elem['rubygem_id'])
     document['total_downloads'] = download_result[elem['rubygem_id']]['count'].delete_suffix("\n")
   else
@@ -111,9 +109,8 @@ puts "Documents number: #{documents.length}"
 schema = {
   id:              ['identifier'],
   name:            ['indexed', 'displayed'],
-  description:     [           'displayed'],
-  summary:         ['indexed', 'displayed'],
-  authors:         ['indexed', 'displayed'],
+  description:     ['indexed', 'displayed'],
+  # summary:         ['indexed', 'displayed'],
   version:         ['indexed', 'displayed'],
   total_downloads: ['indexed', 'displayed', 'ranked'],
 }
