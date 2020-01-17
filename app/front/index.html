@@ -65,7 +65,7 @@
       </div>
     </header>
 
-    <main>
+    <main style="min-height: 70vh; max-height: auto;">
       <h1 class="home__heading">MeiliSearch finds Rubygems</h1>
       <div class="home__search-wrap">
         <div class="search-with-time">
@@ -75,9 +75,7 @@
           </form>
           <div id="request-time" class="search-time">-- ms</div>
         </div>
-      <!-- <div id="request-time" style="float: right; line-height: 40px; font-size: 1.5em; font-weight: 500; color: white;">-- ms</div> -->
       </div>
-      <!-- <div class="home__cta-wrap" style="background-color: blue"> -->
       <div class="home__cta-wrap" style="max-width: 700px; margin-top: 15px;">
         <ol id="handlebars-list">
           <!-- Search results here -->
@@ -85,14 +83,12 @@
       </div>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" style="min-height: 70vh; max-height: auto">
       <div class="l-wrap--footer">
-        <div class="l-overflow">
-          <div class="footer__about">
-            <p>
-              Powered by <a href="https://github.com/meilisearch/MeiliSearch">MeiliSearch</a>
-            </p>
-          </div>
+        <div class="footer__about" style="min-height: auto; max-width: none;">
+          <p style="margin-bottom: 2px;">Powered by <a href="https://github.com/meilisearch/MeiliSearch">MeiliSearch</a>.</p>
+          <p>All data and main of HTML/CSS come from <a href="https://rubygems.org">Rubygems website</a>. Thanks to them! 🙏</p>
+          <p>Also, see: <a href="https://crates.meilisearch.com/">MeiliSearch finds Crates</a>.</p>
         </div>
       </div>
     </footer>
