@@ -158,28 +158,100 @@ settings = {
   rankingRules: { total_downloads: 'dsc' }
 }
 
-# index_uid_without_name = 'gems_without_name'
-# schema_without_name = {
-#   id:              ['identifier'],
-#   name:            ['displayed'],
-#   summary:         ['indexed', 'displayed'],
-#   description:     ['indexed', 'displayed'],
-#   version:         ['indexed', 'displayed'],
-#   total_downloads: ['indexed', 'displayed', 'ranked'],
-# }
-# settings_without_name = {
-#   rankingOrder: [
-#     '_sum_of_typos',
-#     '_number_of_words',
-#     '_word_proximity',
-#     '_sum_of_words_attribute',
-#     '_sum_of_words_position',
-#     '_exact',
-#     'total_downloads',
-#   ],
-#   distinctField: nil,
-#   rankingRules: { total_downloads: 'dsc' }
-# }
+index_uid_without_name = 'gems_without_name'
+schema_without_name = {
+  id:              ['identifier'],
+  name:            [           'displayed'],
+  summary:         ['indexed', 'displayed'],
+  description:     ['indexed', 'displayed'],
+  version:         ['indexed', 'displayed'],
+  total_downloads: ['indexed', 'displayed', 'ranked'],
+}
+settings_without_name = {
+  rankingOrder: [
+    '_sum_of_typos',
+    '_number_of_words',
+    '_word_proximity',
+    '_sum_of_words_attribute',
+    '_sum_of_words_position',
+    '_exact',
+    'total_downloads',
+  ],
+  distinctField: nil,
+  rankingRules: { total_downloads: 'dsc' }
+}
+
+index_uid_without_name_2 = 'gems_without_name_2'
+schema_without_name_2 = {
+  id:              ['identifier'],
+  name:            [           'displayed'],
+  summary:         ['indexed', 'displayed'],
+  description:     ['indexed', 'displayed'],
+  version:         ['indexed', 'displayed'],
+  total_downloads: ['indexed', 'displayed', 'ranked'],
+}
+settings_without_name_2 = {
+  rankingOrder: [
+    '_sum_of_typos',
+    '_number_of_words',
+    '_word_proximity',
+    '_sum_of_words_attribute',
+    'total_downloads',
+    '_sum_of_words_position',
+    '_exact'
+  ],
+  distinctField: nil,
+  rankingRules: { total_downloads: 'dsc' }
+}
+
+index_uid_without_name_description = 'gems_without_name_description'
+schema_without_name_description = {
+  id:              ['identifier'],
+  name:            [           'displayed'],
+  summary:         ['indexed', 'displayed'],
+  description:     [           'displayed'],
+  version:         ['indexed', 'displayed'],
+  total_downloads: ['indexed', 'displayed', 'ranked'],
+}
+settings_without_name_description = {
+  rankingOrder: [
+    '_sum_of_typos',
+    '_number_of_words',
+    '_word_proximity',
+    '_sum_of_words_attribute',
+    '_sum_of_words_position',
+    '_exact',
+    'total_downloads'
+  ],
+  distinctField: nil,
+  rankingRules: { total_downloads: 'dsc' }
+}
+
+index_uid_without_name_description_2 = 'gems_without_name_description_2'
+schema_without_name_description_2 = {
+  id:              ['identifier'],
+  name:            [           'displayed'],
+  summary:         ['indexed', 'displayed'],
+  description:     [           'displayed'],
+  version:         ['indexed', 'displayed'],
+  total_downloads: ['indexed', 'displayed', 'ranked'],
+}
+settings_without_name_description_2 = {
+  rankingOrder: [
+    '_sum_of_typos',
+    '_number_of_words',
+    '_word_proximity',
+    '_sum_of_words_attribute',
+    'total_downloads',
+    '_sum_of_words_position',
+    '_exact'
+  ],
+  distinctField: nil,
+  rankingRules: { total_downloads: 'dsc' }
+}
 
 feed_meilisearch(index_uid, schema, settings, documents)
 # feed_meilisearch(index_uid_without_name, schema_without_name, settings_without_name, documents)
+# feed_meilisearch(index_uid_without_name_2, schema_without_name_2, settings_without_name_2, documents)
+# feed_meilisearch(index_uid_without_name_description, schema_without_name_description, settings_without_name_description, documents)
+# feed_meilisearch(index_uid_without_name_description_2, schema_without_name_description_2, settings_without_name_description_2, documents)
