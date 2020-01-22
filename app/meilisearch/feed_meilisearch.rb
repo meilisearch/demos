@@ -36,60 +36,56 @@ def load_data_into_meilisearch(documents)
     id:              ['identifier'],
     name:            ['indexed', 'displayed'],
     summary:         ['indexed', 'displayed'],
-    description:     ['indexed', 'displayed'],
+    description:     [           'displayed'],
     version:         ['indexed', 'displayed'],
     total_downloads: ['indexed', 'displayed', 'ranked'],
-    fame:            ['indexed', 'displayed'],
+    fame:            ['indexed', 'displayed', 'ranked'],
   }
   settings = {
     rankingOrder: [
       '_sum_of_typos',
       '_number_of_words',
-      'total_downloads',
+      'fame',
       '_word_proximity',
       '_sum_of_words_attribute',
       '_exact',
+      'total_downloads',
     ],
     distinctField: nil,
-    rankingRules: { total_downloads: 'dsc' }
+    rankingRules: {
+      total_downloads: 'dsc',
+      fame: 'dsc',
+    }
   }
 
-  # index_uid_no_settings = 'gems_no_settings'
-  # schema_no_settings = {
-  #   id:              ['identifier'],
-  #   name:            ['indexed', 'displayed'],
-  #   summary:         ['indexed', 'displayed'],
-  #   description:     ['indexed', 'displayed'],
-  #   version:         ['indexed', 'displayed'],
-  #   total_downloads: ['indexed', 'displayed'],
-  #   fame:            ['indexed', 'displayed'],
-  # }
-  # settings_no_settings = {}
-  # index_uid_without_desc = 'gems_without_desc'
-  # schema_without_desc = {
-  #   id:              ['identifier'],
-  #   name:            ['indexed', 'displayed'],
-  #   summary:         ['indexed', 'displayed'],
-  #   description:     [           'displayed'],
-  #   version:         ['indexed', 'displayed'],
-  #   total_downloads: ['indexed', 'displayed', 'ranked'],
-  #   fame:            ['indexed', 'displayed'],
-  # }
-  # settings_without_desc = {
-  #   rankingOrder: [
-  #     '_sum_of_typos',
-  #     '_number_of_words',
-  #     'total_downloads',
-  #     '_word_proximity',
-  #     '_sum_of_words_attribute',
-  #     '_exact',
-  #   ],
-  #   distinctField: nil,
-  #   rankingRules: { total_downloads: 'dsc' }
-  # }
+  index_uid_with_desc = 'gems_with_desc'
+  schema_with_desc = {
+    id:              ['identifier'],
+    name:            ['indexed', 'displayed'],
+    summary:         ['indexed', 'displayed'],
+    description:     ['indexed', 'displayed'],
+    version:         ['indexed', 'displayed'],
+    total_downloads: ['indexed', 'displayed', 'ranked'],
+    fame:            ['indexed', 'displayed', 'ranked'],
+  }
+  settings_with_desc = {
+    rankingOrder: [
+      '_sum_of_typos',
+      '_number_of_words',
+      'fame',
+      '_word_proximity',
+      '_sum_of_words_attribute',
+      '_exact',
+      'total_downloads',
+    ],
+    distinctField: nil,
+    rankingRules: {
+      total_downloads: 'dsc',
+      fame: 'dsc',
+    }
+  }
 
   feed_meilisearch_with(index_uid, schema, settings, documents)
-  # feed_meilisearch_with(index_uid_no_settings, schema_no_settings, settings_no_settings, documents)
-  # feed_meilisearch_with(index_uid_without_desc, schema_without_desc, settings_without_desc, documents)
+  feed_meilisearch_with(index_uid_with_desc, schema_with_desc, settings_with_desc, documents)
 
 end
