@@ -17,6 +17,8 @@ $(document).ready(function () {
   Handlebars.registerHelper("formatBigNumber", beautify);
   Handlebars.registerHelper("innerText", innerText);
 
+  amplitude.getInstance().logEvent('page_loaded');
+
   $("#textSearch").on('input', function () {
     let value = $("#textSearch").val();
 
@@ -32,6 +34,10 @@ $(document).ready(function () {
       },
       dataType: 'json',
       success: function (data, status) {
+        amplitude.getInstance().logEvent('search', {
+          'query': data.query,
+          'time': data.processingTimeMs
+        });
         $("#request-time").text(`${data.processingTimeMs} ms`);
         $("#handlebars-list").empty();
         let out_html = "";
