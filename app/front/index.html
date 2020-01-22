@@ -30,14 +30,14 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script id="entry-template" type="text/x-handlebars-template">
       <li class="gem">
-        <a href="https://rubygems.org/gems/{{innerText name}}">
+        <a href="https://rubygems.org/gems/{{innerText name}}" target="_blank">
           <div>
             <span class="title">
               <span class="name" style="">{{{name}}}</span>
               <span class="version">{{version}}</span>
             </span>
-            {{#if description}}
-            <p class="description">{{{description}}}</p>
+            {{#if summary}}
+            <p class="description">{{{summary}}}</p>
             {{/if}}
           </div>
           {{#if total_downloads}}
@@ -53,13 +53,14 @@
   <body class="body--index" data-gr-c-s-loaded="true">
     <header class="header ">
       <div class="l-wrap--header">
-        <a title="RubyGems" class="header__logo-wrap" href="https://rubygems.org/">
+        <a title="RubyGems" class="header__logo-wrap" href="https://rubygems.org/" target="_blank">
           <span class="header__logo" data-icon="⬡">⬢</span>
           <span class="t-hidden">RubyGems</span>
         </a>
         <div class="header__nav-links-wrap">
           <nav class="header__nav-links">
-            <a class="header__nav-link " href="https://github.com/meilisearch/MeiliSearch">Github</a>
+            <a class="header__nav-link " href="https://github.com/meilisearch/MeiliSearch" target="_blank">Github</a>
+            <a class="header__nav-link " href="https://docs.meilisearch.com/" target="_blank">Docs</a>
           </nav>
         </div>
       </div>
@@ -86,9 +87,11 @@
     <footer class="footer" style="min-height: 70vh; max-height: auto">
       <div class="l-wrap--footer">
         <div class="footer__about" style="min-height: auto; max-width: none;">
-          <p style="margin-bottom: 2px;">Powered by <a href="https://github.com/meilisearch/MeiliSearch">MeiliSearch</a>.</p>
-          <p>All data and main of HTML/CSS come from <a href="https://rubygems.org">Rubygems website</a>. Thanks to them! 🙏</p>
-          <p>Also, see: <a href="https://crates.meilisearch.com/">MeiliSearch finds Crates</a>.</p>
+          <p style="margin-bottom: 2px;">Powered by <a href="https://github.com/meilisearch/MeiliSearch" target="_blank">MeiliSearch</a>.</p>
+          <p>We are open-source! Support us with a star ⭐️</p>
+          <p>All data and main of HTML/CSS come from <a href="https://rubygems.org" target="_blank">Rubygems website</a>. Thanks to them! 🙏</p>
+          <p>Here are the <a href="https://github.com/meilisearch/finding-rubygems" target="_blank">source files</a>.</p>
+          <p>Also, see: <a href="https://crates.meilisearch.com/" target="_blank">MeiliSearch finds Crates</a>.</p>
         </div>
       </div>
     </footer>

@@ -27,7 +27,8 @@ $(document).ready(function () {
       type: 'GET',
       data: {
         'attributesToHighlight': '*',
-        'q': value
+        'q': value,
+        'limit': 10
       },
       dataType: 'json',
       success: function (data, status) {
