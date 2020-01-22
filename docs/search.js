@@ -8,6 +8,15 @@ function innerText(s) {
   return div.innerText;
 }
 
+function setGetParam(key,value) {
+  if (history.pushState) {
+    var params = new URLSearchParams(window.location.search);
+    params.set(key, value);
+    var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + params.toString();
+    window.history.pushState({path:newUrl},'',newUrl);
+  }
+}
+
 $(document).ready(function () {
 
   var projectName = '51dcb49b';
@@ -21,6 +30,8 @@ $(document).ready(function () {
 
   $("#textSearch").on('input', function () {
     let value = $("#textSearch").val();
+
+    setGetParam('q', value);
 
     if (request) { request.abort() }
 
