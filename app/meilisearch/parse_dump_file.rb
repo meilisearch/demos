@@ -10,13 +10,13 @@ FIELDS = [
 ]
 DOWNLOAD_TABLE = 'gem_downloads'
 
-ULTRA_FAMOUS = 3
-FAMOUS = 2
-WELL_KNOWN = 1
-BASIC = 0
-ULTRA_FAMOUS_LIMIT = 30_000_000
-FAMOUS_LIMIT = 3_000_000
-WELL_KNOWN_LIMIT = 500_000
+LEVEL_7_LIMIT = 50_000_000
+LEVEL_6_LIMIT = 30_000_000
+LEVEL_5_LIMIT = 10_000_000
+LEVEL_4_LIMIT = 5_000_000
+LEVEL_3_LIMIT = 1_000_000
+LEVEL_2_LIMIT = 500_000
+LEVEL_1_LIMIT = 100_000
 
 def strip_html_tag(document)
   document.each do |_, value|
@@ -104,14 +104,22 @@ def create_documents_from(dump_file_name)
   documents_sorted = documents.sort_by { |elem| elem['total_downloads'].to_i }.reverse
   len = documents_sorted.length
   documents.map! do |doc|
-    if doc['total_downloads'].to_i >= ULTRA_FAMOUS_LIMIT
-      doc.merge('fame' => ULTRA_FAMOUS)
-    elsif doc['total_downloads'].to_i >= FAMOUS_LIMIT
-      doc.merge('fame' => FAMOUS_LIMIT)
-    elsif doc['total_downloads'].to_i >= WELL_KNOWN_LIMIT
-      doc.merge('fame' => WELL_KNOWN)
+    if doc['total_downloads'].to_i >= LEVEL_7_LIMIT
+      doc.merge('fame' => '7')
+    elsif doc['total_downloads'].to_i >= LEVEL_6_LIMIT
+      doc.merge('fame' => '6')
+    elsif doc['total_downloads'].to_i >= LEVEL_5_LIMIT
+      doc.merge('fame' => '5')
+    elsif doc['total_downloads'].to_i >= LEVEL_4_LIMIT
+      doc.merge('fame' => '4')
+    elsif doc['total_downloads'].to_i >= LEVEL_3_LIMIT
+      doc.merge('fame' => '3')
+    elsif doc['total_downloads'].to_i >= LEVEL_2_LIMIT
+      doc.merge('fame' => '2')
+    elsif doc['total_downloads'].to_i >= LEVEL_1_LIMIT
+      doc.merge('fame' => '1')
     else
-      doc.merge('fame' => BASIC)
+      doc.merge('fame' => '0')
     end
   end
 
