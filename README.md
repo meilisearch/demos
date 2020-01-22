@@ -1,1 +1,1 @@
-# finding-rubygems
+# MeiliSearch finds Rubygems
