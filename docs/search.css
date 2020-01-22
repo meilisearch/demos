@@ -70,3 +70,7 @@ em {
   margin-left: 10px;
   align-items: center;
 }
+
+.header__nav-links span {
+ vertical-align: -8px;
+}
