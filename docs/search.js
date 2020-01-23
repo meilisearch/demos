@@ -8,6 +8,11 @@ function innerText(s) {
   return div.innerText;
 }
 
+function getParam(key) {
+  var params = new URLSearchParams(window.location.search);
+  return params.get(key);
+}
+
 function setGetParam(key,value) {
   if (history.pushState) {
     var params = new URLSearchParams(window.location.search);
@@ -59,6 +64,15 @@ $(document).ready(function () {
         $("#handlebars-list").html(out_html)
       },
     });
+  });
+
+  let query = getParam('q');
+  if (query) {
+    $("#textSearch").val(query).trigger("input");
+  }
+
+  $('#search-form').on('submit', function(e){
+    e.preventDefault();
   });
 
 });
