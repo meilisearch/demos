@@ -3,30 +3,34 @@ require 'meilisearch'
 URL = ENV['MEILISEARCH_URL']
 API_KEY = ENV['MEILISEARCH_API_KEY']
 
-def feed_meilisearch_with(index_uid, schema, settings, documents)
+def get_or_create_index(index_uid, schema, settings)
   client = MeiliSearch::Client.new(URL, API_KEY)
-  puts "Deleting old index #{index_uid}..."
+  index = client.index(index_uid)
   begin
-    client.delete_index(index_uid)
+    index.name
+    puts "Index #{index_uid} already exists."
+  rescue
+    puts "Creating a new index #{index_uid}..."
+    index = client.create_index(
+      name: index_uid.gsub('_', ' ').capitalize,
+      uid: index_uid,
+      schema: schema
+    )
     puts 'Done!'
-  rescue MeiliSearch::HTTPError => e
-    puts "No index #{index_uid} to delete."
+    puts 'Adding settings...'
+    index.add_settings(settings)
+    puts 'Done!'
   end
-  puts "Creating a new index #{index_uid}..."
-  index = client.create_index(
-    name: index_uid.gsub('_', ' ').capitalize,
-    uid: index_uid,
-    schema: schema
-  )
-  puts 'Done!'
+  index
+end
+
+def feed_meilisearch_with(index_uid, schema, settings, documents)
+  index = get_or_create_index(index_uid, schema, settings)
   puts 'Adding documents...'
   documents.each_slice(1800).with_index do |slice, i|
     # puts "Adding slice #{i}"
     index.add_documents(slice)
   end
-  puts 'Done!'
-  puts 'Adding settings...'
-  index.add_settings(settings)
   puts 'Done!'
 end
 
@@ -86,6 +90,6 @@ def load_data_into_meilisearch(documents)
   }
 
   feed_meilisearch_with(index_uid, schema, settings, documents)
-  feed_meilisearch_with(index_uid_with_desc, schema_with_desc, settings_with_desc, documents)
+  # feed_meilisearch_with(index_uid_with_desc, schema_with_desc, settings_with_desc, documents)
 
 end
