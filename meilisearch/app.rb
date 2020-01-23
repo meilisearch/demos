@@ -2,7 +2,7 @@ require_relative 'feed_meilisearch'
 require_relative 'parse_dump_file'
 require_relative 'stats'
 
-DOWNLOAD_SCRIPT = "#{Dir.pwd}/app/meilisearch/download_postgresql_dump.sh"
+DOWNLOAD_SCRIPT = "#{Dir.pwd}/meilisearch/download_postgresql_dump.sh"
 DUMP_FILE_NAME = "#{Dir.pwd}/postgresql_dump_file.sql"
 
 # DOWNLOADING POSTGRESQL DUMP FILE
