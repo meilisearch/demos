@@ -68,11 +68,11 @@
       fathom('trackPageview');
     </script>
     <script id="entry-template" type="text/x-handlebars-template">
-      <li class="gem">
+      <li class="gem" id="gem-{{index}}">
         <a href="https://rubygems.org/gems/{{innerText name}}" target="_blank">
           <div>
             <span class="title">
-              <span class="name" style="">{{{name}}}</span>
+              <span class="name">{{{name}}}</span>
               <span class="version">{{version}}</span>
             </span>
             {{#if summary}}
@@ -111,8 +111,10 @@
       <div class="home__search-wrap">
         <div class="search-with-time">
           <div class="search-before"></div>
-          <form role="search" class="search" id="search-form">
-            <input type="search" name="query" placeholder="Search by name or keywords..." autocomplete="off" autofocus="autofocus" class="home__search" id="textSearch">
+          <form role="search" class="search" id="search-form" onSubmit="handleForm(); return false">
+            <input type=hidden id='rslt-len' value='0'>
+            <input type=hidden id='current-index' value='0'>
+            <input type="search" name="q" placeholder="Search by name or keywords..." autocomplete="off" autofocus="autofocus" class="home__search" id="textSearch">
           </form>
           <div id="request-time" class="search-time">-- ms</div>
         </div>

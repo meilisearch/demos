@@ -22,8 +22,16 @@ function setGetParam(key,value) {
   }
 }
 
-$(document).ready(function () {
+function handleForm() {
+  let currentIndex = $('#current-index').val();
+  let elem = $(`#gem-${currentIndex}`)[0];
+  if (elem) {
+    window.open(elem.firstElementChild.href);
+  }
+  return false;
+}
 
+$(document).ready(function () {
   var projectName = '51dcb49b';
   var indexName = 'gems';
   var request;
@@ -32,7 +40,6 @@ $(document).ready(function () {
   Handlebars.registerHelper("innerText", innerText);
 
   amplitude.getInstance().logEvent('page_loaded');
-
   $("#textSearch").on('input', function () {
     let value = $("#textSearch").val();
 
@@ -57,11 +64,17 @@ $(document).ready(function () {
         $("#request-time").text(`${data.processingTimeMs} ms`);
         $("#handlebars-list").empty();
         let out_html = "";
+        let len = 0;
         $.each(data.hits, function (_, value) {
           final_value = Object.assign(value, value['_formatted'])
-          out_html += template(final_value);
+          final_value = Object.assign(final_value, { 'index': len })
+          out_html += template(value);
+          len += 1;
         });
-        $("#handlebars-list").html(out_html)
+        $('#rslt-len').val(len);
+        $('#current-index').val(0);
+        $("#handlebars-list").html(out_html);
+        $('#gem-0').css('background-color', '#f7f7f7');
       },
     });
   });
@@ -70,11 +83,32 @@ $(document).ready(function () {
   if (query) {
     $("#textSearch").val(query).trigger("input");
   }
-
-  $('#search-form').on('submit', function(e){
-    e.preventDefault();
-  });
-
 });
 
+$(document).keydown(function(e) {
+  let indexMax = $('#rslt-len').val() > 0 ? $('#rslt-len').val() - 1 : 0;
+  let currentIndex = $('#current-index').val();
 
+  switch(e.which) {
+      case 38: // up
+      if (currentIndex > 0) {
+        $(`#gem-${currentIndex}`).css('background-color', 'white');
+        currentIndex = parseInt(currentIndex) - 1;
+        $(`#gem-${currentIndex}`).css('background-color', '#f7f7f7');
+        $('#current-index').val(currentIndex);
+      }
+      break;
+
+      case 40: // down
+      if (currentIndex < indexMax) {
+        $(`#gem-${currentIndex}`).css('background-color', 'white');
+        currentIndex = parseInt(currentIndex) + 1;
+        $(`#gem-${currentIndex}`).css('background-color', '#f7f7f7');
+        $('#current-index').val(currentIndex);
+      }
+      break;
+
+      default: return; // exit this handler for other keys
+  }
+  e.preventDefault(); // prevent the default action (scroll / move caret)
+});
