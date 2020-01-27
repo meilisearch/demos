@@ -17,9 +17,11 @@ def get_or_create_index(index_uid, schema, settings)
       schema: schema
     )
     puts 'Done!'
-    puts 'Adding settings...'
-    index.add_settings(settings)
-    puts 'Done!'
+    if settings
+      puts 'Adding settings...'
+      index.add_settings(settings)
+      puts 'Done!'
+    end
   end
   index
 end
@@ -89,7 +91,18 @@ def load_data_into_meilisearch(documents)
     }
   }
 
+  index_uid_basic = 'gems_basic'
+  schema_basic = {
+    id:              ['identifier'],
+    name:            ['indexed', 'displayed'],
+    summary:         ['indexed', 'displayed'],
+    description:     ['indexed', 'displayed'],
+    version:         ['indexed', 'displayed'],
+    total_downloads: ['indexed', 'displayed']
+  }
+
   feed_meilisearch_with(index_uid, schema, settings, documents)
   # feed_meilisearch_with(index_uid_with_desc, schema_with_desc, settings_with_desc, documents)
+  # feed_meilisearch_with(index_uid_basic, schema_basic, nil, documents)
 
 end
