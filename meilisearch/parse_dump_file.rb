@@ -29,7 +29,7 @@ def clean_sql_field(str)
 end
 
 def create_documents_from(dump_file_name)
-  puts 'Parsing PostgreSQL dump file...'
+  LOGGER.info 'Parsing PostgreSQL dump file...'
   main_parsing = false
   download_parsing = false
   main_result = {}
@@ -80,9 +80,9 @@ def create_documents_from(dump_file_name)
 
     end
   end
-  puts 'Results:'
-  puts "Main table length: #{main_result.length}"
-  puts "Download table length: #{download_result.length}"
+  LOGGER.info 'Results:'
+  LOGGER.info "Main table length: #{main_result.length}"
+  LOGGER.info "Download table length: #{download_result.length}"
 
   # Creating documents hash table
   documents = main_result.map do |_, elem|
@@ -99,7 +99,7 @@ def create_documents_from(dump_file_name)
     end
     strip_html_tag(document)
   end
-  puts "Documents number: #{documents.length}"
+  LOGGER.info "Documents number: #{documents.length}"
 
   documents_sorted = documents.sort_by { |elem| elem['total_downloads'].to_i }.reverse
   len = documents_sorted.length

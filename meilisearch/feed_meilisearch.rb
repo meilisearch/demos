@@ -3,37 +3,35 @@ require 'meilisearch'
 URL = ENV['MEILISEARCH_URL']
 API_KEY = ENV['MEILISEARCH_API_KEY']
 
-def get_or_create_index(index_uid, schema, settings)
+def get_or_create_index(index_uid, schema, settings = nil)
   client = MeiliSearch::Client.new(URL, API_KEY)
   index = client.index(index_uid)
   begin
     index.name
-    puts "Index #{index_uid} already exists."
-  rescue
-    puts "Creating a new index #{index_uid}..."
+    LOGGER.warn "Index #{index_uid} already exists."
+  rescue MeiliSearch::HTTPError
     index = client.create_index(
       name: index_uid.gsub('_', ' ').capitalize,
       uid: index_uid,
       schema: schema
     )
-    puts 'Done!'
+    LOGGER.info "New index #{index_uid} created."
     if settings
-      puts 'Adding settings...'
       index.add_settings(settings)
-      puts 'Done!'
+      LOGGER.info 'Settings added.'
     end
   end
   index
 end
 
-def feed_meilisearch_with(index_uid, schema, settings, documents)
+def feed_meilisearch_with(documents, index_uid, schema, settings = nil)
   index = get_or_create_index(index_uid, schema, settings)
-  puts 'Adding documents...'
+  LOGGER.info 'Adding documents...'
   documents.each_slice(1800).with_index do |slice, i|
     # puts "Adding slice #{i}"
     index.add_documents(slice)
   end
-  puts 'Done!'
+  LOGGER.info 'Done!'
 end
 
 def load_data_into_meilisearch(documents)
@@ -101,8 +99,8 @@ def load_data_into_meilisearch(documents)
     total_downloads: ['indexed', 'displayed']
   }
 
-  feed_meilisearch_with(index_uid, schema, settings, documents)
-  # feed_meilisearch_with(index_uid_with_desc, schema_with_desc, settings_with_desc, documents)
-  # feed_meilisearch_with(index_uid_basic, schema_basic, nil, documents)
+  feed_meilisearch_with(documents, index_uid, schema, settings)
+  # feed_meilisearch_with(documents, index_uid_with_desc, schema_with_desc, settings_with_desc)
+  # feed_meilisearch_with(documents, index_uid_basic, schema_basic)
 
 end
