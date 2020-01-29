@@ -106,12 +106,10 @@ async fn init_index_schema() -> Result<()> {
 
 async fn init_index_browse_key() -> Result<()> {
     let api_key = env::var(MEILI_API_KEY).expect(MEILI_API_KEY);
-    let index_name = env::var(MEILI_INDEX_NAME).expect(MEILI_INDEX_NAME);
     let project_name = env::var(MEILI_PROJECT_NAME).expect(MEILI_PROJECT_NAME);
 
-    let url = format!("https://{project_name}.getmeili.com/indexes/{index_name}",
+    let url = format!("https://{project_name}.getmeili.com/keys",
         project_name = project_name,
-        index_name = index_name,
     );
 
     let key = r#"{
