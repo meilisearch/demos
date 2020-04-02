@@ -3,9 +3,22 @@
     <head>
         <meta charset="utf-8">
         <link href="css/style.css" rel="stylesheet" type="text/css">
+        <script src="js/index.js"></script>
         <title>Finding PyPI</title>
     </head>
     <body>
-        Welcome to Finding PyPI
+        <div id="header">
+            <form action="">
+                <input class="search-bar" type="text" id="query" name="query" placeholder="Search projects" oninput="searchMeili(this.value)">
+            </form>
+        </div>
+        <div id="content">
+            <h1>Welcome to Finding PyPI</h1>
+            <h3>Search experience enhanced by <a href="https://www.meilisearch.com/">MeiliSearch</a></h3>
+            <div id="results-container">
+
+            </div>
+        </div>
+
     </body>
 </html>
