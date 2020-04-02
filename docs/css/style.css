@@ -1,12 +1,14 @@
 body {
     text-align: center;
+    background-color: #FDFDFD;
     margin: 0;
+    font-family:Source Sans Pro,Helvetica,Arial,sans-serif;
 }
 
 #header {
-    background-color: #0073b7;
+    background-color: #0073B7;
     font-size: 1rem;
-    padding: 50px;
+    padding: 25px;
     margin: 0;
 }
 
@@ -14,7 +16,46 @@ body {
     color: #464646;
 }
 
-.search-bar {
+#meili-message {
+    background-color: #CDE;
+    padding: 3px;
+}
+
+#results-container {
+    width: 500px;
+    margin: 15px auto;
+}
+
+#search-bar {
     padding: 10px;
     width: 30%;
+    font-size: 1.1rem;
+}
+
+.pkg-result {
+    background-color: #FFF;
+    border: #69C solid 1px;
+    border-radius: 2px;
+    margin-bottom: 5px;
+
+}
+
+.result-body {
+    background-color: #FFF;
+    padding: 5px;
+}
+
+.result-name {
+    background-color: #69C;
+    color: #FFF;
+    font-size: 1.1rem;
+    font-weight: 100;
+    text-align: left;
+    padding: 4px;
+    padding-left: 8px;
+}
+
+.result-description {
+    text-align: left;
+    padding-left: 15px;
 }
