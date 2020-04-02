@@ -8,10 +8,24 @@ function searchMeili (query) {
             resultsContainer.innerHTML ="";
             var html = ""
             results = JSON.parse(this.responseText)
+
             results.hits.forEach( function( item ) {
+                description = item.description;
+                if (description.length <=1) {
+                    description = "[No description]"
+                }
                 html = `
                 <div class="pkg-result">
-                    ${item.name}
+                    <div class="result-head">
+                        <div class="result-name">
+                            ${item.name.substring(0, 24) + " " + item.version}
+                        </div>
+                    </div>
+                    <div class="result-body">
+                        <div class="result-description">
+                            ${description}
+                        </div>
+                    </div>
                 </div>
                 `;
                 resultsContainer.innerHTML += html;
