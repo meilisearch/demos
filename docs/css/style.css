@@ -26,10 +26,24 @@ body {
     margin: 15px auto;
 }
 
+
+#results-container a {
+    text-decoration: none;
+}
+
 #search-bar {
     padding: 10px;
     width: 30%;
     font-size: 1.1rem;
+}
+
+#response-time {
+    width: 30%;
+    font-size: 0.8rem;
+    text-align: right;
+    padding-top: 2px;
+    margin: 0 auto;
+    color: #345
 }
 
 .pkg-result {
