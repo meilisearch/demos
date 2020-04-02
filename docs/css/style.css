@@ -21,6 +21,10 @@ body {
     padding: 3px;
 }
 
+#meili-message a {
+    color: #0073B7;
+}
+
 #results-container {
     width: 500px;
     margin: 15px auto;
@@ -70,6 +74,7 @@ body {
 }
 
 .result-description {
+    color: #333;
     text-align: left;
     padding-left: 15px;
 }
