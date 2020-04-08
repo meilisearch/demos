@@ -4,6 +4,7 @@ import conf
 from pypi import pypi
 from aiochannel import Channel
 from meili import meili_index as meili
+from bigquery_pypi import bigquery_pypi as bq
 
 
 async def handle_package_loop(channel, pkg_list_size, index):
@@ -51,10 +52,17 @@ async def main():
     scheduler._limit = conf.SCHEDULER_MAX_TASKS
     channel = Channel(loop=asyncio.get_event_loop())
 
+    # Get downloads data
+    downloads_dict = bq.downloads_dict_from_file()
+
     pkg_list = pypi.get_url_list()
     await scheduler.spawn(handle_package_loop(channel, len(pkg_list), index))
     for pkg_link in pkg_list:
         pkg = pypi.Package(pkg_link.get_text())
+        if pkg.name in downloads_dict:
+            pkg.downloads = downloads_dict[pkg.name]
+        else:
+            pkg.downloads = 0
         await scheduler.spawn(pkg.single_pkg_request(channel))
     await channel.join()
 
