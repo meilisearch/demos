@@ -1,5 +1,5 @@
-const MEILI_SEARCH_URL="https://a86ecd85.getmeili.com/indexes/PYPIPKG/search"
-const PYPI_MEILI_PUBLIC_KEY="af44fcf9beb71077c77e64c30ac7089ab4c8499c6f16c278583456e9be816a3e"
+const MEILI_SEARCH_URL="https://522ca981.getmeili.com/indexes/PYPIPKG/search"
+const PYPI_MEILI_PUBLIC_KEY="a16242a5745c22b8dde108c57af383c23c9c36426e98443d5012e4c4354a10de"
 
 var xhttp;
 
@@ -8,14 +8,13 @@ function searchMeili (query) {
     const resultsField = document.getElementById("results-container")
     const responseTimeField = document.getElementById("response-time")
 
-    setGetParam("q",query)
+    
 
-    console.log(xhttp);
 
     if (xhttp) {
-        console.log("YOOOOOOOOOOOOOOO");
         xhttp.abort()
     }
+    setGetParam("q",query)
     if (query.length == 0) {
         emptyResults(resultsField, responseTimeField)
         return
@@ -38,35 +37,46 @@ function searchMeili (query) {
             resultsField.innerHTML += "<hr>"
         }
     };
-    xhttp.open("GET", MEILI_SEARCH_URL + "?q=" + query, true);
+    xhttp.open("GET", MEILI_SEARCH_URL + "?q=" + query + "&attributesToHighlight=*", true);
     xhttp.setRequestHeader("X-Meili-API-Key", PYPI_MEILI_PUBLIC_KEY)
     xhttp.send();
 }
 
 function handleResults(results, resultsField) {
+    var isOdd=true;
+    var html = ""
     results.hits.forEach( function( item ) {
-        description = item.description;
+        console.log(item);
+        description = item._formatted.description;
         if (description != undefined && description.length <=1) {
             description = "[No description]"
         }
-        html = `
-        <a href="${item.project_url}">
+        html += isOdd ? `<div class="results-row">` : ``;
+        html += `
             <div class="pkg-result">
                 <div class="result-head">
                     <div class="result-name">
-                        ${item.name.substring(0, 24) + " " + item.version}
+                        ${item._formatted.name + " " + item.version}
                     </div>
                 </div>
                 <div class="result-body">
+                    <a href="${item.project_url}">
                     <div class="result-description">
+                        <div class="result-description-img">
+                            <img src="img/cube.png" alt="${item.name}" width="30" />
+                        </div>
+                        <div class="result-description-content">
                         ${description}
+                        </div>
                     </div>
+                    </a>
                 </div>
             </div>
-        </a>
         `;
-        resultsField.innerHTML += html;
+        html += isOdd ? `` : `</div>`;
+        isOdd = !isOdd;
     });
+    resultsField.innerHTML = html;
 }
 
 function emptyResults(resultsField, responseTimeField) {

@@ -9,10 +9,19 @@
     </head>
     <body>
         <div id="header">
-            <form action="">
-                <input id="search-bar" type="text" id="query" name="query" placeholder="Search projects" oninput="searchMeili(this.value)">
-                <div id="response-time"></div>
-            </form>
+            <div id="header-container">
+                <div id="header-logo">
+                    <a href="/" class="searchbar-logo">
+                        <img src="https://pypi.org/static/images/logo-small.6eef541e.svg" />
+                    </a>
+                </div>
+                <div id="header-bar">
+                    <form action="" class>
+                        <input id="search-bar" type="text" id="query" name="query" placeholder="Search projects" oninput="searchMeili(this.value)">
+                        <div id="response-time"></div>
+                    </form>
+                </div>
+            </div>
         </div>
         <div id="meili-message">
             Instant search by <a href="https://www.meilisearch.com/" target="_blank">MeiliSearch</a>
@@ -21,11 +30,16 @@
             <div id="results-container"></div>
             <h2>Welcome to Finding PyPI</h2>
             <h4>An alternative search bar for PyPI packages.</h4>
-
         </div>
 
     </body>
     <script type="text/javascript">
+        var params = new URLSearchParams(window.location.search);
+        query = params.get('q')
+        if (query !== undefined) {
+            document.getElementById("search-bar").value=query
+            searchMeili (query)
+        }
         document.getElementById("search-bar").focus();
     </script>
 </html>
