@@ -133,7 +133,7 @@
   <script type="text/javascript">
     var params = new URLSearchParams(window.location.search);
     query = params.get('q')
-    if (query !== undefined) {
+    if (query !== null) {
         document.getElementById("search").value=query
         searchMeili (query)
     }
