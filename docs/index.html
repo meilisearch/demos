@@ -1,45 +1,142 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="css/style.css" type="text/css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,600,600italic,700,700italic%7CSource+Code+Pro:500">
-        <script src="js/index.js"></script>
-        <title>Finding PyPI</title>
-    </head>
-    <body>
-        <div id="header">
-            <div id="header-container">
-                <div id="header-logo">
-                    <a href="/" class="searchbar-logo">
-                        <img src="https://pypi.org/static/images/logo-small.6eef541e.svg" />
-                    </a>
-                </div>
-                <div id="header-bar">
-                    <form action="" class>
-                        <input id="search-bar" type="text" id="query" name="query" placeholder="Search projects" oninput="searchMeili(this.value)">
-                        <div id="response-time"></div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div id="meili-message">
-            Instant search by <a href="https://www.meilisearch.com/" target="_blank">MeiliSearch</a>
-        </div>
-        <div id="content">
-            <div id="results-container"></div>
-            <h2>Welcome to Finding PyPI</h2>
-            <h4>An alternative search bar for PyPI packages.</h4>
-        </div>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="defaultLanguage" content="en">
+    <meta name="availableLanguages" content="en, es, fr, ja, pt_BR, uk, el, de,
+      zh_Hans, ru">
+    <title>MeiliSearch finds PyPI</title>
+    <meta name="description" content="An alternative search bar for Pyhthon
+      packages using MeiliSearch.">
 
-    </body>
-    <script type="text/javascript">
-        var params = new URLSearchParams(window.location.search);
-        query = params.get('q')
-        if (query !== undefined) {
-            document.getElementById("search-bar").value=query
-            searchMeili (query)
-        }
-        document.getElementById("search-bar").focus();
-    </script>
+    <link rel="stylesheet" href="src/warehouse.css">
+    <link rel="stylesheet" href="src/regular.css">
+    <link rel="stylesheet" href="src/solid.css">
+    <link rel="stylesheet" href="src/brands.css">
+    <link rel="stylesheet" href="src/css.css">
+    <link rel="stylesheet" href="src/index.css">
+
+    <link rel="icon" href="https://pypi.org/static/images/favicon.6a76275d.ico"
+      type="image/x-icon">
+
+      <script src="js/index.js"></script>
+    <meta property="og:url" content="https://pypi.meilisearch.com/">
+    <meta property="og:site_name" content="MeiliSearch finds PyPI">
+    <meta property="og:type" content="website">
+  </head>
+
+  <body data-controller="viewport-toggle" style="padding-top: 0px;">
+    <header class="site-header">
+      <div class="site-container">
+        <div class="split-layout">
+
+          <div>
+            <a class="site-header__logo" href="https://pypi.org/">
+              <img alt="PyPI" src="src/logo-small.svg">
+            </a>
+          </div>
+
+
+          <div data-html-include="/_includes/current-user-indicator/">
+
+            <div id="user-indicator" class="horizontal-menu
+              horizontal-menu--light horizontal-menu--tall">
+              <nav class="horizontal-menu horizontal-menu--light
+                horizontal-menu--tall hide-on-tablet" aria-label="Main
+                navigation">
+                <ul>
+                  <li class="horizontal-menu__item"><a
+                    href="https://meilisearch.com"
+                    class="horizontal-menu__link">MeiliSearch</a></li>
+                  <li class="horizontal-menu__item"><a
+                      href="https://github.com/meilisearch/finding-pypi"
+                      class="horizontal-menu__link">Github</a></li>
+                  <li class="horizontal-menu__item"><a
+                      href="https://pypi.org/"
+                      class="horizontal-menu__link">PyPI</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="content">
+      <div class="banner">
+        <div class="homepage-banner">
+          <h1 class="homepage-banner__title">Meilisearch finds PyPI Packages</h1>
+
+          <form class="search-form search-form--large search-form--fullwidth"
+            action="/search/" role="search">
+            <label for="search" class="sr-only">Search PyPI</label>
+            <input id="search" class="search-form__search large-input"
+              type="text" name="q" placeholder="Search projects"
+              autocomplete="off" autocapitalize="off" spellcheck="false" 
+              oninput="searchMeili(this.value)" onkeydown="return (event.keyCode!=13);">
+            <button type="submit" class="search-form__button">
+              <i class="fa fa-search" aria-hidden="true"></i>
+              <span class="sr-only">Search</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="horizontal-section horizontal-section--grey
+        horizontal-section--thin horizontal-section--statistics">
+        <div class="statistics-bar">
+          <p class="statistics-bar__statistic">
+            <em id="response-time"></em>
+          </p>
+        </div>
+      </div>
+
+      <div class="horizontal-section">
+        <div id="results-container">
+        </div>
+      </div>
+
+      
+
+
+    </main>
+
+    <footer class="footer">
+      <div class="footer__logo">
+        <img src="src/white-cube.svg" alt="" class="-js-white-cube">
+      </div>
+
+        <div class="footer-link">
+          <h2>See also</h2>
+            <ul>
+              <li><a href="https://rubygems.meilisearch.com/"
+                  title="External link" target="_blank" rel="noopener">MeiliSearch finds Gems [Ruby]</a></li>
+              <li><a
+                  href="https://crates.meilisearch.com/"
+                  title="External link" target="_blank" rel="noopener">MeiliSearch finds rates [Rust]</a></li>
+            </ul>
+        </div>
+    </footer>
+    <div class="horizontal-section horizontal-section--grey">
+      <div class="site-container">
+        <p style="margin-bottom: 2px;">Powered by <a href="https://github.com/meilisearch/MeiliSearch" target="_blank">MeiliSearch</a>.<br>
+        We are open-source! Support us with a star ⭐️<br>
+        All data and main of HTML/CSS come from <a href="https://pypi.org" target="_blank">PyPI website</a> Thanks to them! 🙏<br>
+        Here are the <a href="https://github.com/meilisearch/finding-pypi" target="_blank">source files</a></p>
+      </div>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    var params = new URLSearchParams(window.location.search);
+    query = params.get('q')
+    if (query !== undefined) {
+        document.getElementById("search").value=query
+        searchMeili (query)
+    }
+    document.getElementById("search").focus();
+  </script>
 </html>

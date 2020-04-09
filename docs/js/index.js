@@ -8,9 +8,6 @@ function searchMeili (query) {
     const resultsField = document.getElementById("results-container")
     const responseTimeField = document.getElementById("response-time")
 
-    
-
-
     if (xhttp) {
         xhttp.abort()
     }
@@ -43,7 +40,6 @@ function searchMeili (query) {
 }
 
 function handleResults(results, resultsField) {
-    var isOdd=true;
     var html = ""
     results.hits.forEach( function( item ) {
         console.log(item);
@@ -51,16 +47,18 @@ function handleResults(results, resultsField) {
         if (description != undefined && description.length <=1) {
             description = "[No description]"
         }
-        html += isOdd ? `<div class="results-row">` : ``;
         html += `
             <div class="pkg-result">
                 <div class="result-head">
                     <div class="result-name">
-                        ${item._formatted.name + " " + item.version}
+                        ${item._formatted.name}
+                    </div>
+                    <div class="result-version">
+                        ${item.version.toString().substring(0, 10)}
                     </div>
                 </div>
                 <div class="result-body">
-                    <a href="${item.project_url}">
+                    
                     <div class="result-description">
                         <div class="result-description-img">
                             <img src="img/cube.png" alt="${item.name}" width="30" />
@@ -69,12 +67,9 @@ function handleResults(results, resultsField) {
                         ${description}
                         </div>
                     </div>
-                    </a>
                 </div>
             </div>
         `;
-        html += isOdd ? `` : `</div>`;
-        isOdd = !isOdd;
     });
     resultsField.innerHTML = html;
 }

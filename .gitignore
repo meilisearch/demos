@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 
 env_finding_pypi
+.DS_Store
