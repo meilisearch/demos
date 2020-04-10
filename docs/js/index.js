@@ -2,6 +2,7 @@ const MEILI_SEARCH_URL="https://522ca981.getmeili.com/indexes/PYPIPKG/search"
 const PYPI_MEILI_PUBLIC_KEY="a16242a5745c22b8dde108c57af383c23c9c36426e98443d5012e4c4354a10de"
 
 var xhttp;
+let currentIndex = 0;
 
 function searchMeili (query) {
 
@@ -30,8 +31,8 @@ function searchMeili (query) {
             }
             else {
                 resultsField.innerHTML = "<h1>No results for query \"" + query +"\" :(</h1>"
+                resultsField.innerHTML += "<hr>"
             }
-            resultsField.innerHTML += "<hr>"
         }
     };
     xhttp.open("GET", MEILI_SEARCH_URL + "?q=" + query + "&attributesToHighlight=*", true);
@@ -41,14 +42,18 @@ function searchMeili (query) {
 
 function handleResults(results, resultsField) {
     var html = ""
+    index = 0;
     results.hits.forEach( function( item ) {
         console.log(item);
         description = item._formatted.description;
         if (description != undefined && description.length <=1) {
             description = "[No description]"
         }
+        id = "result-" + item.name
         html += `
-            <div class="pkg-result">
+            <a href="${item.project_url}" target="_blank">
+            <div class="pkg-result" id="result-${index}">
+                <input id="url-${index}" class="url" type="hidden" value="${item.project_url}" />
                 <div class="result-head">
                     <div class="result-name">
                         ${item._formatted.name}
@@ -69,9 +74,12 @@ function handleResults(results, resultsField) {
                     </div>
                 </div>
             </div>
+            </a>
         `;
+        index++;
+        resultsField.innerHTML = html;
     });
-    resultsField.innerHTML = html;
+    selectItem("UP");
 }
 
 function emptyResults(resultsField, responseTimeField) {
@@ -86,4 +94,37 @@ function setGetParam(key,value) {
     var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + params.toString();
     window.history.pushState({path:newUrl},'',newUrl);
   }
+}
+
+function handleArrow(event) {
+
+    switch(event.keyCode) {
+        case 13:
+            event.preventDefault()
+            url = document.getElementById('url-'+parseInt(currentIndex)).value
+            window.open(url,'_blank');
+            break
+
+        case 38:
+            event.preventDefault()
+            selectItem("UP")
+            break
+
+        case 40:
+            event.preventDefault()
+            selectItem("DOWN")
+            break
+    }
+}
+
+function selectItem(direction) {
+    prevSelected = document.getElementById('result-'+parseInt(currentIndex));
+    prevSelected.classList.remove('item-selected');
+    if (direction == "UP") {
+        currentIndex = currentIndex > 0 ? currentIndex -1 : 0;
+    } else {
+        currentIndex = currentIndex < index -1 ? currentIndex +1 : index -1;
+    }
+    currentSelected = document.getElementById('result-'+parseInt(currentIndex));
+    currentSelected.classList.add('item-selected');
 }

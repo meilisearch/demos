@@ -8,7 +8,6 @@
     background-color: #FFF;
     border: #69C solid 1px;
     border-radius: 2px;
-    margin-bottom: 15px;
 }
 
 .result-head {
@@ -96,4 +95,13 @@
 
 .invert{
     -webkit-filter: invert(100%);
+}
+
+.item-selected {
+    border: #69C solid 2px;
+}
+
+.item-selected .result-body {
+    background-color: #DEF;
+    padding: 5px;
 }
