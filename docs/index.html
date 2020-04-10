@@ -22,7 +22,7 @@
     <link rel="icon" href="https://pypi.org/static/images/favicon.6a76275d.ico"
       type="image/x-icon">
 
-    <script src="js/index.js"></script>
+    <script src="js/main.js"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <meta property="og:url" content="https://pypi.meilisearch.com/">
     <meta property="og:site_name" content="MeiliSearch finds PyPI">
@@ -49,19 +49,36 @@
                 horizontal-menu--tall hide-on-tablet" aria-label="Main
                 navigation">
                 <ul>
-                  <li class="horizontal-menu__item">
-                    <a class="github-button horizontal-menu__link" href="https://github.com/meilisearch/meilisearch" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star meilisearch/meilisearch on GitHub">Star
+                  <li class="horizontal-menu__item" id="github-stars">
+                    <a class="github-button horizontal-menu__link" 
+                      href="https://github.com/meilisearch/meilisearch"
+                      data-icon="octicon-star"
+                      data-size="large"
+                      data-show-count="true"
+                      aria-label="Star meilisearch/meilisearch on GitHub"
+                      target="_blank">
                     </a>
                   </li>
                   <li class="horizontal-menu__item"><a
                     href="https://meilisearch.com"
-                    class="horizontal-menu__link">MeiliSearch</a></li>
+                    class="horizontal-menu__link"
+                    target="_blank">MeiliSearch</a>
+                  </li>
+                  <li class="horizontal-menu__item"><a
+                    href="https://docs.meilisearch.com/"
+                    class="horizontal-menu__link"
+                    target="_blank">Docs</a>
+                  </li>
                   <li class="horizontal-menu__item"><a
                       href="https://github.com/meilisearch/finding-pypi"
-                      class="horizontal-menu__link">Github</a></li>
+                      class="horizontal-menu__link"
+                      target="_blank">GitHub</a>
+                  </li>
                   <li class="horizontal-menu__item"><a
                       href="https://pypi.org/"
-                      class="horizontal-menu__link">PyPI</a></li>
+                      class="horizontal-menu__link"
+                      target="_blank">PyPI</a>
+                  </li>
                   
                 </ul>
               </nav>
@@ -74,7 +91,7 @@
     <main id="content">
       <div class="banner">
         <div class="homepage-banner">
-          <h1 class="homepage-banner__title">Meilisearch finds PyPI Packages</h1>
+          <h1 class="homepage-banner__title">MeiliSearch finds PyPI packages</h1>
 
           <form class="search-form search-form--large search-form--fullwidth"
             action="/search/" role="search">
@@ -83,10 +100,7 @@
               type="text" name="q" placeholder="Search packages by name or keyword..."
               autocomplete="off" autocapitalize="off" spellcheck="false" 
               oninput="searchMeili(this.value)" onkeydown="handleArrow(event);">
-            <button type="submit" class="search-form__button">
-              <i class="fa fa-search" aria-hidden="true"></i>
-              <span class="sr-only">Search</span>
-            </button>
+            
           </form>
         </div>
       </div>

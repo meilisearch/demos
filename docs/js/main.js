@@ -8,6 +8,7 @@ function searchMeili (query) {
 
     const resultsField = document.getElementById("results-container")
     const responseTimeField = document.getElementById("response-time")
+    currentIndex = 0
 
     if (xhttp) {
         xhttp.abort()
@@ -15,6 +16,8 @@ function searchMeili (query) {
     setGetParam("q",query)
     if (query.length == 0) {
         emptyResults(resultsField, responseTimeField)
+        resultsField.innerHTML = "<br><h5>Start typing a package name or keyword in the search bar</h5>"
+        resultsField.innerHTML += "<img src='./img/python.png'/><hr>"
         return
     }
 
@@ -27,15 +30,16 @@ function searchMeili (query) {
             responseTimeField.innerHTML = ""
             if (results.hits.length > 0) {
                 responseTimeField.innerHTML = "Search request processed in " + results.processingTimeMs+ " ms";
+                responseTimeField.innerHTML += " <img src='./img/watch.png' width='15'>";
                 handleResults(results, resultsField)
             }
             else {
-                resultsField.innerHTML = "<h1>No results for query \"" + query +"\" :(</h1>"
-                resultsField.innerHTML += "<hr>"
+                resultsField.innerHTML = "<br><h5>No results for query \"" + query +"\""
+                resultsField.innerHTML += "<img src='./img/sad.png'/><hr>"
             }
         }
     };
-    xhttp.open("GET", MEILI_SEARCH_URL + "?q=" + query + "&attributesToHighlight=*", true);
+    xhttp.open("GET", MEILI_SEARCH_URL + "?q=" + query + "&attributesToHighlight=*&limit=8", true);
     xhttp.setRequestHeader("X-Meili-API-Key", PYPI_MEILI_PUBLIC_KEY)
     xhttp.send();
 }
@@ -46,6 +50,10 @@ function handleResults(results, resultsField) {
     results.hits.forEach( function( item ) {
         console.log(item);
         description = item._formatted.description;
+        version = ""
+        if (item.version !== undefined) {
+            version = item.version.toString().substring(0, 10)
+        }
         if (description != undefined && description.length <=1) {
             description = "[No description]"
         }
@@ -59,7 +67,7 @@ function handleResults(results, resultsField) {
                         ${item._formatted.name}
                     </div>
                     <div class="result-version">
-                        ${item.version.toString().substring(0, 10)}
+                        ${version}
                     </div>
                 </div>
                 <div class="result-body">

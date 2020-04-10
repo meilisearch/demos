@@ -1,13 +1,16 @@
 #results-container {
     width: 700px;
+    min-height: 300px;
     margin: 0 auto;
-    margin-top: -50px;
+    margin-top: -60px;
+    text-align: center;
 }
 
 .pkg-result {
     background-color: #FFF;
     border: #69C solid 1px;
     border-radius: 2px;
+    margin-bottom: 5px;
 }
 
 .result-head {
@@ -36,7 +39,7 @@
 }
 
 .result-name em {
-    background-color: rgba(100, 202, 250, 0.24);
+    background-color: rgba(255, 187, 61, 0.541);
     padding: 0;
     margin: 0;
     border-radius: 2px;
@@ -55,16 +58,15 @@
 }
 
 .result-description em {
-    background-color: rgba(61, 194, 255, 0.15);
+    background-color:rgba(255, 187, 61, 0.25);
     padding: 0;
     margin: 0;
     border-radius: 2px;
 }
 
 .result-description-img {
-    padding: 10px;
-    padding-bottom: 5px;
-    background-color: rgba(255, 187, 61, 0.25);
+    padding: 5px;
+    background-color: rgba(48, 48, 48, 0.25);
     border-radius: 5px;
     align-self: flex-start;
 }
@@ -104,4 +106,19 @@
 .item-selected .result-body {
     background-color: #DEF;
     padding: 5px;
+}
+
+#github-stars {
+    position: relative;
+    top:10px;
+}
+
+.homepage-banner__title {
+    font-size: 2rem;
+    padding: 0;
+    padding-bottom: 20px;
+}
+
+.banner {
+    padding:25px;
 }
