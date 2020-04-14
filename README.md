@@ -1,12 +1,19 @@
-# MeiliSearch finds Rubygems
+# MeiliSearch finds RubyGems
 
-A [new experience of search](https://rubygems.meilisearch.com) to find your favorite rubygems 🎉
+A [new experience of search](https://rubygems.meilisearch.com) to find your favorite RubyGems 🎉
 
 Search by gem name or by keywords.
 
 [![rubygems demo gif](misc/rubygems.gif)](https://rubygems.meilisearch.com)
 
 The search is powered by [MeiliSearch](https://github.com/meilisearch/MeiliSearch), the open-source and instant search engine.
+
+## See also
+
+- MeiliSearch finds [PyPI packages](https://pypi.meilisearch.com/) (Python)
+- MeiliSearch finds [Crates](https://crates.meilisearch.com/) (Rust)
+
+This project used the [Ruby SDK for MeiliSearch](https://github.com/meilisearch/meilisearch-ruby).
 
 ## MeiliSearch settings
 
@@ -39,7 +46,7 @@ index.add_settings(settings)
 
 The front is deployed to GitHub Pages.
 
-All gems data and main of HTML/CSS come from [Rubygems website](https://rubygems.org/).
+All gems data and main of HTML/CSS come from [RubyGems website](https://rubygems.org/).
 
 The script to fetch data and push them to MeiliSearch runs every day on Heroku with to Heroku Scheduler.
 
