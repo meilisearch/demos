@@ -59,10 +59,7 @@ async def main():
     await scheduler.spawn(handle_package_loop(channel, len(pkg_list), index))
     for pkg_link in pkg_list:
         pkg = pypi.Package(pkg_link.get_text())
-        if pkg.name in downloads_dict:
-            pkg.downloads = downloads_dict[pkg.name]
-        else:
-            pkg.downloads = 0
+        pkg.update_package_downloads(downloads_dict)
         await scheduler.spawn(pkg.single_pkg_request(channel))
     await channel.join()
 

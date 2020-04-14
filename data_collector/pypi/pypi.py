@@ -12,7 +12,7 @@ def get_url_list():
     soup = BeautifulSoup(pkg_list_response.text, "html.parser")
     all_pkg_list = soup.find_all('a')[conf.PKG_LIST_OFFSET:]
     if conf.PKG_CNT_LIMIT:
-        all_pkg_list = soup.find_all('a')[:conf.PKG_CNT_LIMIT]
+        all_pkg_list = all_pkg_list[:conf.PKG_CNT_LIMIT]
     print("PyPI package list retrieved. {} items found.".format(
         len(all_pkg_list)
     ))
@@ -28,6 +28,7 @@ class Package():
     project_url = ""
     json_data_url = ""
     downloads = 0
+    fame = 0
 
     def __init__(self, name):
         self.name = name
@@ -46,6 +47,48 @@ class Package():
         self.version = json_data["version"]
         self.description = json_data["summary"]
         self.project_url = json_data["project_url"]
+    
+    def update_package_downloads(self, downloads_dict):
+        lowercase_name = self.name.lower()
+        if lowercase_name in downloads_dict:
+            self.downloads = downloads_dict[lowercase_name]
+            if self.downloads > 10000000:
+                self.fame = 15
+            elif self.downloads > 5000000:
+                self.fame = 14
+            elif self.downloads > 2000000:
+                self.fame = 13
+            elif self.downloads > 1000000:
+                self.fame = 12
+            elif self.downloads > 500000:
+                self.fame = 11
+            elif self.downloads > 200000:
+                self.fame = 10
+            elif self.downloads > 100000:
+                self.fame = 9
+            elif self.downloads > 50000:
+                self.fame = 8
+            elif self.downloads > 20000:
+                self.fame = 7
+            elif self.downloads > 10000:
+                self.fame = 6
+            elif self.downloads > 5000:
+                self.fame = 5
+            elif self.downloads > 2000:
+                self.fame = 4
+            elif self.downloads > 1000:
+                self.fame = 3
+            elif self.downloads > 500:
+                self.fame = 2
+            elif self.downloads > 200:
+                self.fame = 1
+            else:
+                self.fame = 0
+        else:
+            self.downloads = 0
+            self.fame = 0
+                
+
 
     async def update_pypi_data(self):
 

@@ -40,7 +40,7 @@ def get_most_downloaded_pkgs(limit=200000, offset=None):
     rows = query_job.result()
 
     for row in rows:
-        downloads_dict[row.name] = row.download_count
+        downloads_dict[row.name.lower()] = row.download_count
     return downloads_dict
 
 
@@ -75,3 +75,6 @@ if __name__ == "__main__":
 
     dict = downloads_dict_from_file()
     print("Downloads data stored for {} packages".format(len(dict)))
+    sorted_dict = sorted(dict.items(), key=lambda t: t[1], reverse=True)
+    most_popular = sorted_dict[:50]
+    print("Most popular:", most_popular)
