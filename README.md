@@ -8,12 +8,16 @@ Search by gem name or by keywords.
 
 The search is powered by [MeiliSearch](https://github.com/meilisearch/MeiliSearch), the open-source and instant search engine.
 
+#### WARNING
+
+This project runs with an old version of MeiliSearch (`v0.8.4`). The settings and the methods used might be obsolete.
+
 ## See also
 
 - MeiliSearch finds [PyPI packages](https://pypi.meilisearch.com/) (Python)
 - MeiliSearch finds [Crates](https://crates.meilisearch.com/) (Rust)
 
-This project used the [Ruby SDK for MeiliSearch](https://github.com/meilisearch/meilisearch-ruby).
+This project uses the [Ruby SDK for MeiliSearch](https://github.com/meilisearch/meilisearch-ruby).
 
 ## MeiliSearch settings
 
