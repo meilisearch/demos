@@ -9,7 +9,7 @@ DUMP_FILE_NAME = "#{Dir.pwd}/postgresql_dump_file.sql"
 LOGGER = Logger.new(STDOUT)
 
 # DOWNLOADING POSTGRESQL DUMP FILE
-LOGGER.info 'Launching script to download the latest rubygems data...'
+LOGGER.info 'Launching script to download the latest RubyGems data...'
 ret = system("#{DOWNLOAD_SCRIPT} #{DUMP_FILE_NAME}")
 if ret == false
   LOGGER.error 'Error when downloading'
