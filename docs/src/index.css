@@ -68,13 +68,42 @@
     padding: 5px;
     border-radius: 5px;
     align-self: flex-start;
+    flex-basis: 6%;
 }
 
 .result-description-content {
     padding: 2px;
     margin: 2px;
-    padding-left: 10px;
+    padding-left: 14px;
+    padding-right: 18px;
     border-radius: 2px;
+    flex-basis: 79%;
+    text-align: justify;
+}
+
+.result-description-downloads {
+    padding: 3px 6px;
+    margin: 2px;
+    margin-left: 7px;
+    border-radius: 2px;
+    background-color: rgba(161, 217, 255, 0.15);;
+    flex-basis: 12%;
+    height: 45px;
+}
+
+.result-description-downloads-number {
+    text-align: center;
+    background-color: None;
+    border-bottom: rgba(0, 0, 0, 0.15) solid 1px;
+    margin-bottom: 4px;
+}
+
+.result-description-downloads-title {
+    line-height: 0.6rem;
+    font-size: 0.6rem;
+    padding: 2px;
+    text-align: center;
+
 }
 
 .site-container {
@@ -120,4 +149,9 @@
 
 .banner {
     padding:25px;
+}
+
+.horizontal-menu__item img {
+    margin-right: 5px;
+    width: 15px;
 }

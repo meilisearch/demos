@@ -71,13 +71,20 @@ function handleResults(results, resultsField) {
                     </div>
                 </div>
                 <div class="result-body">
-                    
                     <div class="result-description">
                         <div class="result-description-img">
                             <img src="img/cube.png" alt="${item.name}" width="30" />
                         </div>
                         <div class="result-description-content">
-                        ${description}
+                            ${description}
+                        </div>
+                        <div class="result-description-downloads">
+                        <div class="result-description-downloads-number">
+                            ${item.downloads.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 
+                        </div>
+                        <div class="result-description-downloads-title">
+                            <img src="img/dl.png" width="10"> last month
+                        </div>
                         </div>
                     </div>
                 </div>
