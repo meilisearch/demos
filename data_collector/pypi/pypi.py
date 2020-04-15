@@ -47,7 +47,7 @@ class Package():
         self.version = json_data["version"]
         self.description = json_data["summary"]
         self.project_url = json_data["project_url"]
-    
+
     def update_package_downloads(self, downloads_dict):
         lowercase_name = self.name.lower()
         if lowercase_name in downloads_dict:
@@ -87,8 +87,6 @@ class Package():
         else:
             self.downloads = 0
             self.fame = 0
-                
-
 
     async def update_pypi_data(self):
 

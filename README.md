@@ -34,4 +34,6 @@ The search is powered by [MeiliSearch](https://github.com/meilisearch/MeiliSearc
 In order to collect Downloads data from GCP, you need to provide GCP credentials:  
 
 1. Set up your account following the instructions in https://github.com/ofek/pypinfo  
-2. run `GOOGLE_APPLICATION_CREDENTIALS=[path_to_creds_json_file...] python3 data_collector/collector.py`  
+2. run `export PYPI_MEILI_GCP_CREDS="{ HERE YOUR GCP CREDENTIALS JSON FILE CONTENT (escape double quotes, "  becomes  \" )}"`
+3. Run `python3 data_collector/collector.py`  
+4. Enjoy
