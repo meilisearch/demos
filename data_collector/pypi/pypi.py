@@ -48,40 +48,20 @@ class Package():
         self.description = json_data["summary"]
         self.project_url = json_data["project_url"]
 
-    def update_package_downloads(self, downloads_dict):
+    def update_package_downloads(self, downloads_dict, fame_levels):
         lowercase_name = self.name.lower()
         if lowercase_name in downloads_dict:
             self.downloads = downloads_dict[lowercase_name]
-            if self.downloads > 10000000:
-                self.fame = 15
-            elif self.downloads > 5000000:
-                self.fame = 14
-            elif self.downloads > 2000000:
-                self.fame = 13
-            elif self.downloads > 1000000:
-                self.fame = 12
-            elif self.downloads > 500000:
-                self.fame = 11
-            elif self.downloads > 200000:
-                self.fame = 10
-            elif self.downloads > 100000:
-                self.fame = 9
-            elif self.downloads > 50000:
-                self.fame = 8
-            elif self.downloads > 20000:
-                self.fame = 7
-            elif self.downloads > 10000:
-                self.fame = 6
-            elif self.downloads > 5000:
+            if self.downloads > fame_levels["top100"]:
                 self.fame = 5
-            elif self.downloads > 2000:
-                self.fame = 4
-            elif self.downloads > 1000:
-                self.fame = 3
-            elif self.downloads > 500:
-                self.fame = 2
-            elif self.downloads > 200:
-                self.fame = 1
+            elif self.downloads > fame_levels["top500"]:
+                self.fame = 4 # Top 500 last month
+            elif self.downloads > fame_levels["top1K"]:
+                self.fame = 3 # Top 1K last month
+            elif self.downloads > fame_levels["top5K"]:
+                self.fame = 2 # Top 5K last month
+            elif self.downloads > fame_levels[">10Kmonthly"]:
+                self.fame = 1 # More than 10K downloads/month
             else:
                 self.fame = 0
         else:

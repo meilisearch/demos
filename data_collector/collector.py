@@ -54,12 +54,20 @@ async def main():
 
     # Get downloads data
     downloads_dict = bq.downloads_dict_from_file()
+    sorted_dict = sorted(downloads_dict.items(), key=lambda t: t[1], reverse=True)
+    fame_levels = {
+        "top100": sorted_dict[100][1],
+        "top500": sorted_dict[500][1],
+        "top1K": sorted_dict[1000][1],    
+        "top5K": sorted_dict[5000][1], 
+        ">10Kmonthly": 10000
+    }
 
     pkg_list = pypi.get_url_list()
     await scheduler.spawn(handle_package_loop(channel, len(pkg_list), index))
     for pkg_link in pkg_list:
         pkg = pypi.Package(pkg_link.get_text())
-        pkg.update_package_downloads(downloads_dict)
+        pkg.update_package_downloads(downloads_dict, fame_levels)
         await scheduler.spawn(pkg.single_pkg_request(channel))
     await channel.join()
 

@@ -1,5 +1,6 @@
 import conf
 import meilisearch
+import json
 
 
 def get_or_create_index():
@@ -15,6 +16,35 @@ def get_or_create_index():
     client = meilisearch.Client(conf.PYPI_MEILI_URL, conf.PYPI_MEILI_KEY)
     try:
         index = client.create_index(conf.INDEX_UUID, primary_key="_id")
+        update_settings = index.update_settings(json.loads(
+            """
+            {
+                "rankingRules": [
+                    "typo",
+                    "desc(fame)",
+                    "proximity",
+                    "attribute",
+                    "exactness",
+                    "desc(downloads)"
+                ],
+                "searchableAttributes": [
+                    "name",
+                    "description",
+                    "version"
+                ],
+                "displayedAttributes": [
+                    "name",
+                    "json_data_url",
+                    "description",
+                    "project_url",
+                    "version",
+                    "_id",
+                    "downloads",
+                    "fame"
+                ]
+            }
+            """
+        ))
         return index
     except Exception as e:
         print("ERROR: Couldn't create index", e)
