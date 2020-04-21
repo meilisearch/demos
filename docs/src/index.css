@@ -1,9 +1,23 @@
-#results-container {
-    width: 700px;
-    min-height: 300px;
-    margin: 0 auto;
-    margin-top: -60px;
-    text-align: center;
+
+@media (min-width: 750px) {
+    #results-container {
+        width: 700px;
+        min-height: 300px;
+        margin: 0 auto;
+        margin-top: -60px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 749px) {
+    #results-container {
+        padding: 0px 10px;
+        width: 100%;
+        min-height: 300px;
+        margin: 0 auto;
+        margin-top: -60px;
+        text-align: center;
+    }
 }
 
 .pkg-result {
