@@ -51,6 +51,15 @@
     color: #FFF;
 }
 
+@media (max-width: 769px) {
+    .result-name {
+        flex-basis: 80%;
+    }
+    .result-version {
+        flex-basis: 20%;
+    }
+}
+
 .result-name em {
     background-color: rgba(255, 187, 61, 0.541);
     padding: 0;
@@ -99,9 +108,33 @@
     margin: 2px;
     margin-left: 7px;
     border-radius: 2px;
-    background-color: rgba(161, 217, 255, 0.15);;
+    background-color: rgba(161, 217, 255, 0.15);
     flex-basis: 12%;
     height: 45px;
+}
+
+@media (max-width: 769px) {
+    
+    .result-description {
+        padding-left: 0px;
+    }
+
+    .result-description-img {
+        padding: 0px;
+        display:none;
+    }
+    
+    .result-description-content {
+        flex-basis: 80%;
+        padding: 0 10px;
+    }
+    
+    .result-description-downloads {
+        flex-basis: 20%;
+    }
+    .result-description-downloads-title img {
+        display: none;
+    }
 }
 
 .result-description-downloads-number {
@@ -167,4 +200,10 @@
 .horizontal-menu__item img {
     margin-right: 5px;
     width: 15px;
+}
+
+@media (max-width: 769px) {
+    .result-body {
+        padding: 0px !important;
+    }
 }
