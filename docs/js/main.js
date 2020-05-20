@@ -1,5 +1,5 @@
-const MEILI_SEARCH_URL="https://522ca981.getmeili.com/indexes/PYPIPKG/search"
-const PYPI_MEILI_PUBLIC_KEY="a16242a5745c22b8dde108c57af383c23c9c36426e98443d5012e4c4354a10de"
+const MEILI_SEARCH_URL="https://finding-demos.meilisearch.com/indexes/pypi/search"
+const PYPI_MEILI_PUBLIC_KEY="2b902cce4f868214987a9f3c7af51a69fa660d74a785bed258178b96e3480bb3"
 
 var xhttp;
 let currentIndex = 0;
@@ -80,7 +80,7 @@ function handleResults(results, resultsField) {
                         </div>
                         <div class="result-description-downloads">
                         <div class="result-description-downloads-number">
-                            ${item.downloads.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 
+                            ${item.downloads.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                         </div>
                         <div class="result-description-downloads-title">
                             <img src="img/dl.png" width="10"> last month
