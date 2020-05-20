@@ -13,8 +13,8 @@ use isahc::prelude::*;
 use serde::{Serialize, Deserialize};
 use tar::Archive;
 
-pub const MEILI_PROJECT_NAME: &str = "MEILI_PROJECT_NAME";
-pub const MEILI_INDEX_NAME: &str = "MEILI_INDEX_NAME";
+pub const MEILI_HOST_URL: &str = "MEILI_HOST_URL";
+pub const MEILI_INDEX_UID: &str = "MEILI_INDEX_UID";
 pub const MEILI_API_KEY: &str = "MEILI_API_KEY";
 
 pub mod backoff;
@@ -149,16 +149,16 @@ pub async fn chunk_complete_crates_info_to_meili(
 ) -> Result<()>
 {
     let api_key = env::var(MEILI_API_KEY).expect(MEILI_API_KEY);
-    let index_name = env::var(MEILI_INDEX_NAME).expect(MEILI_INDEX_NAME);
-    let project_name = env::var(MEILI_PROJECT_NAME).expect(MEILI_PROJECT_NAME);
+    let index_uid = env::var(MEILI_INDEX_UID).expect(MEILI_INDEX_UID);
+    let host_url = env::var(MEILI_HOST_URL).expect(MEILI_HOST_URL);
 
     let client = HttpClient::new()?;
 
     let mut receiver = receiver.chunks(150);
     while let Some(chunk) = StreamExt::next(&mut receiver).await {
-        let url = format!("https://{project_name}.getmeili.com/indexes/{index_name}/documents",
-            project_name = project_name,
-            index_name = index_name,
+        let url = format!("{host_url}/indexes/{index_uid}/documents",
+            host_url = host_url,
+            index_uid = index_uid,
         );
 
         let chunk_json = serde_json::to_string(&chunk)?;
@@ -181,16 +181,16 @@ pub async fn chunk_downloads_crates_info_to_meili(
 ) -> Result<()>
 {
     let api_key = env::var(MEILI_API_KEY).expect(MEILI_API_KEY);
-    let index_name = env::var(MEILI_INDEX_NAME).expect(MEILI_INDEX_NAME);
-    let project_name = env::var(MEILI_PROJECT_NAME).expect(MEILI_PROJECT_NAME);
+    let index_uid = env::var(MEILI_INDEX_UID).expect(MEILI_INDEX_UID);
+    let host_url = env::var(MEILI_HOST_URL).expect(MEILI_HOST_URL);
 
     let client = HttpClient::new()?;
 
     let mut receiver = receiver.chunks(150);
     while let Some(chunk) = StreamExt::next(&mut receiver).await {
-        let url = format!("https://{project_name}.getmeili.com/indexes/{index_name}/documents",
-            project_name = project_name,
-            index_name = index_name,
+        let url = format!("{host_url}/indexes/{index_uid}/documents",
+            host_url = host_url,
+            index_uid = index_uid,
         );
 
         let chunk_json = serde_json::to_string(&chunk)?;

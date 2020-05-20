@@ -11,9 +11,10 @@ use futures::sink::SinkExt;
 use futures::stream::{self, TryStreamExt, StreamExt};
 use walkdir::WalkDir;
 use isahc::prelude::*;
+use serde_json::json;
 
 use meili_crates::{chunk_complete_crates_info_to_meili, retrieve_crate_toml, CrateInfo, Result};
-use meili_crates::{MEILI_API_KEY, MEILI_INDEX_NAME, MEILI_PROJECT_NAME};
+use meili_crates::{MEILI_API_KEY, MEILI_INDEX_UID, MEILI_HOST_URL};
 
 async fn process_file(entry: walkdir::DirEntry) -> Result<Option<CrateInfo>> {
     if entry.file_type().is_file() {
@@ -71,31 +72,25 @@ async fn crates_infos<P: AsRef<Path>>(
     Ok(())
 }
 
-async fn init_index_schema() -> Result<()> {
+async fn init_index() -> Result<()> {
+    let host_url = env::var(MEILI_HOST_URL).expect(MEILI_HOST_URL);
     let api_key = env::var(MEILI_API_KEY).expect(MEILI_API_KEY);
-    let index_name = env::var(MEILI_INDEX_NAME).expect(MEILI_INDEX_NAME);
-    let project_name = env::var(MEILI_PROJECT_NAME).expect(MEILI_PROJECT_NAME);
+    let index_uid = env::var(MEILI_INDEX_UID).expect(MEILI_INDEX_UID);
 
-    let url = format!("https://{project_name}.getmeili.com/indexes/{index_name}",
-        project_name = project_name,
-        index_name = index_name,
+    let url = format!("{host_url}/indexes",
+        host_url = host_url
     );
 
-    let schema = r#"{
-        "name":         ["identifier", "displayed", "indexed"],
-        "description":  [              "displayed", "indexed"],
-        "keywords":     [              "displayed", "indexed"],
-        "categories":   [              "displayed", "indexed"],
-        "readme":       [              "displayed", "indexed"],
-        "version":      [              "displayed"           ],
-        "downloads":    [              "displayed",  "ranked"]
-    }"#;
+    let body = json!({
+        "uid": index_uid,
+        "primaryKey": "name"
+    });
 
     let client = HttpClient::new()?;
     let request = Request::post(url)
         .header("X-Meili-API-Key", &api_key)
         .header("Content-Type", "application/json")
-        .body(schema)?;
+        .body(body.to_string())?;
 
     let mut res = client.send_async(request).await?;
     let res = res.text()?;
@@ -104,26 +99,49 @@ async fn init_index_schema() -> Result<()> {
     Ok(())
 }
 
-async fn init_index_browse_key() -> Result<()> {
+async fn init_settings() -> Result<()> {
+    let host_url = env::var(MEILI_HOST_URL).expect(MEILI_HOST_URL);
     let api_key = env::var(MEILI_API_KEY).expect(MEILI_API_KEY);
-    let project_name = env::var(MEILI_PROJECT_NAME).expect(MEILI_PROJECT_NAME);
+    let index_uid = env::var(MEILI_INDEX_UID).expect(MEILI_INDEX_UID);
 
-    let url = format!("https://{project_name}.getmeili.com/keys",
-        project_name = project_name,
+    let url = format!("{host_url}/indexes/{index_uid}/settings",
+        host_url = host_url,
+        index_uid = index_uid,
     );
 
-    let key = r#"{
-        "description": "Browse documents",
-        "acl": ["documentsRead"],
-        "indexes": ["*"],
-        "expiresAt": 1636293235
+    let body = r#"{
+        "rankingRules": [
+            "typo",
+            "words",
+            "proximity",
+            "attribute",
+            "wordsPosition",
+            "exactness",
+            "desc(downloads)"
+        ],
+        "searchableAttributes": [
+            "name",
+            "description",
+            "keywords",
+            "categories",
+            "readme"
+        ],
+        "displayedAttributes": [
+            "name",
+            "description",
+            "keywords",
+            "categories",
+            "readme",
+            "version",
+            "downloads"
+        ]
     }"#;
 
     let client = HttpClient::new()?;
     let request = Request::post(url)
         .header("X-Meili-API-Key", &api_key)
         .header("Content-Type", "application/json")
-        .body(key)?;
+        .body(body)?;
 
     let mut res = client.send_async(request).await?;
     let res = res.text()?;
@@ -140,8 +158,8 @@ fn main() -> Result<()> {
         let (infos_sender, infos_receiver) = mpsc::channel(1000);
         let (cinfos_sender, cinfos_receiver) = mpsc::channel(1000);
 
-        init_index_schema().await?;
-        init_index_browse_key().await?;
+        init_index().await?;
+        init_settings().await?;
 
         let retrieve_handler = task::spawn(async {
             crates_infos(infos_sender, "crates.io-index/").await

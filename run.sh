@@ -14,4 +14,4 @@ cp ./target/release/live /usr/local/bin/live-meili-crates
 echo please add the following line to your cronjobs with 'crontab -e'
 echo and check that it is not already there ':)'
 echo
-echo "*/10 * * * * MEILI_PROJECT_NAME=$MEILI_PROJECT_NAME MEILI_INDEX_NAME=$MEILI_INDEX_NAME MEILI_API_KEY=$MEILI_API_KEY /usr/local/bin/live-meili-crates"
+echo "*/10 * * * * MEILI_HOST_URL=$MEILI_HOST_URL MEILI_INDEX_UID=$MEILI_INDEX_UID MEILI_API_KEY=$MEILI_API_KEY /usr/local/bin/live-meili-crates"
