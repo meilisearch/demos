@@ -32,8 +32,8 @@ function handleForm() {
 }
 
 $(document).ready(function () {
-  var projectName = '51dcb49b';
-  var indexName = 'gems';
+  var url = 'https://finding-demos.meilisearch.com';
+  var indexUID = 'rubygems';
   var request;
 
   Handlebars.registerHelper("formatBigNumber", beautify);
@@ -48,7 +48,7 @@ $(document).ready(function () {
     if (request) { request.abort() }
 
     request = $.ajax({
-      url: `https://${projectName}.getmeili.com/indexes/${indexName}/search`,
+      url: `${url}/indexes/${indexUID}/search`,
       type: 'GET',
       data: {
         'attributesToHighlight': '*',
