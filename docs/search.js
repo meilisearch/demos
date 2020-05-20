@@ -34,6 +34,7 @@ function handleForm() {
 $(document).ready(function () {
   var url = 'https://finding-demos.meilisearch.com';
   var indexUID = 'rubygems';
+  var publicKey = '2b902cce4f868214987a9f3c7af51a69fa660d74a785bed258178b96e3480bb3';
   var request;
 
   Handlebars.registerHelper("formatBigNumber", beautify);
@@ -50,6 +51,9 @@ $(document).ready(function () {
     request = $.ajax({
       url: `${url}/indexes/${indexUID}/search`,
       type: 'GET',
+      headers: {
+        'X-Meili-API-Key': publicKey
+      },
       data: {
         'attributesToHighlight': '*',
         'q': value,
