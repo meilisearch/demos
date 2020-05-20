@@ -8,10 +8,6 @@ Search by gem name or by keywords.
 
 The search is powered by [MeiliSearch](https://github.com/meilisearch/MeiliSearch), the open-source and instant search engine.
 
-#### WARNING
-
-This project runs with an old version of MeiliSearch (`v0.8.4`). The settings and the methods used might be obsolete.
-
 ## See also
 
 - MeiliSearch finds [PyPI packages](https://pypi.meilisearch.com/) (Python)
@@ -19,31 +15,52 @@ This project runs with an old version of MeiliSearch (`v0.8.4`). The settings an
 
 This project uses the [Ruby SDK for MeiliSearch](https://github.com/meilisearch/meilisearch-ruby).
 
+## How to run the data collector
+
+Set:
+
+- `MEILISEARCH_URL`
+- `MEILISEARCH_MASTER_KEY`
+
+Run:
+
+```bash
+$ bundle install
+$ bundle exec ruby meilisearch/app.rb
+```
+
 ## MeiliSearch settings
 
 ```ruby
 require 'meilisearch'
 
 settings = {
-  rankingOrder: [
-    '_sum_of_typos',
-    '_number_of_words',
-    'fame',
-    '_word_proximity',
-    '_sum_of_words_attribute',
-    '_exact',
-    'total_downloads',
+  rankingRules: [
+    'typo',
+    'words',
+    'desc(fame)',
+    'proximity',
+    'attribute',
+    'exactness',
+    'desc(total_downloads)',
   ],
-  distinctField: nil,
-  rankingRules: {
-    total_downloads: 'dsc',
-    fame: 'dsc',
-  }
+  searchableAttributes: [
+    'name',
+    'summary'
+  ],
+  displayedAttributes: [
+    'name',
+    'summary',
+    'description',
+    'version',
+    'total_downloads',
+    'fame'
+  ]
 }
 
 client = MeiliSearch::Client.new(URL, API_KEY)
 index = client.index(index_uid)
-index.add_settings(settings)
+index.update_settings(settings)
 ```
 
 ## Details
