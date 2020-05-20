@@ -55,7 +55,7 @@ $(document).ready(function () {
         'X-Meili-API-Key': publicKey
       },
       data: {
-        'attributesToHighlight': '*',
+        'attributesToHighlight': 'name,summary',
         'q': value,
         'limit': 10
       },

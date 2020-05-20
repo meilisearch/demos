@@ -51,7 +51,6 @@ settings = {
   displayedAttributes: [
     'name',
     'summary',
-    'description',
     'version',
     'total_downloads',
     'fame'
