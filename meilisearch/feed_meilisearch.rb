@@ -10,14 +10,12 @@ def get_or_create_index(index_uid, settings = nil)
     index.show
     LOGGER.warn "Index #{index_uid} already exists."
   rescue MeiliSearch::HTTPError
-    index = client.create_index(
-      uid: index_uid,
-    )
+    index = client.create_index(index_uid)
     LOGGER.info "New index #{index_uid} created."
-    if settings
-      index.update_settings(settings)
-      LOGGER.info 'Settings added.'
-    end
+  end
+  if settings
+    index.update_settings(settings)
+    LOGGER.info 'Settings updated.'
   end
   index
 end
@@ -52,9 +50,7 @@ def load_data_into_meilisearch(documents)
       'name',
       'summary',
       'description',
-      'version',
-      'total_downloads',
-      'fame'
+      'version'
     ]
   }
 
