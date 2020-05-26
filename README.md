@@ -34,6 +34,8 @@ $ bundle exec ruby meilisearch/app.rb
 ```ruby
 require 'meilisearch'
 
+...
+
 settings = {
   rankingRules: [
     'typo',
@@ -51,15 +53,14 @@ settings = {
   displayedAttributes: [
     'name',
     'summary',
+    'description',
     'version',
-    'total_downloads',
-    'fame'
+    'total_downloads'
   ]
 }
 
 client = MeiliSearch::Client.new(URL, API_KEY)
-index = client.index(index_uid)
-index.update_settings(settings)
+client.index(index_uid).update_settings(settings)
 ```
 
 ## Details
