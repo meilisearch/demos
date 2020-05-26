@@ -50,7 +50,8 @@ def load_data_into_meilisearch(documents)
       'name',
       'summary',
       'description',
-      'version'
+      'version',
+      'total_downloads'
     ]
   }
 
