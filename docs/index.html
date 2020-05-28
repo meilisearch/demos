@@ -108,7 +108,7 @@ header h4 {
     <a href="https://lib.rs/crates/{{innerText name}}">
         <div class=h>
             <h4>{{{name}}}</h4>
-            <p class=desc>{{{stripScripts description}}}</p>
+            <p class=desc>{{{sanitizeHTMLEntities description}}}</p>
         </div>
         <div class=meta>
             <span class="version stable"><span>v</span>{{version}}</span>
@@ -130,15 +130,14 @@ var beautify=n=>((Math.log10(n)/3|0)==0)?n:Number((n/Math.pow(10,(Math.log10(n)/
 var source = document.getElementById("entry-template").innerHTML;
 var template = Handlebars.compile(source);
 
-function stripScripts(s) {
-  var div = document.createElement('div');
-  div.innerHTML = s;
-  var scripts = div.getElementsByTagName('script');
-  var i = scripts.length;
-  while (i--) {
-    scripts[i].parentNode.removeChild(scripts[i]);
+function sanitizeHTMLEntities(str) {
+  if (str && typeof str === 'string') {
+    str = str.replace(/</g,"&lt;");
+    str = str.replace(/>/g,"&gt;");
+    str = str.replace(/&lt;em&gt;/g,"<em>");
+    str = str.replace(/&lt;\/em&gt;/g,"<\/em>");
   }
-  return div.innerHTML;
+  return str;
 }
 
 function innerText(s) {
@@ -209,7 +208,7 @@ $(document).ready(function () {
   }
 
   Handlebars.registerHelper("formatBigNumber", beautify);
-  Handlebars.registerHelper("stripScripts", stripScripts);
+  Handlebars.registerHelper("sanitizeHTMLEntities", sanitizeHTMLEntities);
   Handlebars.registerHelper("innerText", innerText);
 
   amplitude.getInstance().logEvent('page_loaded');
@@ -246,8 +245,10 @@ $(document).ready(function () {
         $("#request-time").text(`${data.processingTimeMs} ms`);
         $("#handlebars-list").empty();
         let out_html = "";
-        $.each(data.hits, function (_, value) {
-          out_html += template(value);
+        $.each(data.hits, function (_, result) {
+          const element = {...result, ...result._formatted };
+          delete element._formatted;
+          out_html += template(element);
         });
         $("#handlebars-list").html(out_html)
       },
