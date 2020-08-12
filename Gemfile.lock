@@ -19,5 +19,8 @@ DEPENDENCIES
   byebug
   meilisearch (~> 0.13)
 
+RUBY VERSION
+   ruby 2.6.5p114
+
 BUNDLED WITH
    1.17.3
