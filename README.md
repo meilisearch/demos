@@ -2,7 +2,7 @@
 
 A [new experience of search](https://rubygems.meilisearch.com) to find your favorite RubyGems 🎉
 
-Search by gem name or by keywords.
+**Search by gem name or by keywords.**
 
 [![rubygems demo gif](misc/rubygems.gif)](https://rubygems.meilisearch.com)
 
@@ -17,10 +17,10 @@ This project uses the [Ruby SDK for MeiliSearch](https://github.com/meilisearch/
 
 ## How to run the data collector
 
-Set:
+Set the following environment variables:
 
-- `MEILISEARCH_URL`
-- `MEILISEARCH_MASTER_KEY`
+- `MEILISEARCH_HOST_URL`
+- `MEILISEARCH_API_KEY`
 
 Run:
 
