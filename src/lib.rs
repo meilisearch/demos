@@ -154,7 +154,7 @@ pub async fn chunk_complete_crates_info_to_meili(
 
     let client = HttpClient::new()?;
 
-    let mut receiver = receiver.chunks(150);
+    let mut receiver = receiver.chunks(100);
     while let Some(chunk) = StreamExt::next(&mut receiver).await {
         let url = format!("{host_url}/indexes/{index_uid}/documents",
             host_url = host_url,
