@@ -42,10 +42,8 @@ async def handle_package_loop(channel, pkg_list_size, index):
 
 async def main():
 
-    # Create a MeiliSearch index
-    index = meili.get_or_create_index()
-    if index is None:
-        exit("\tERROR: Couldn't create a Meilisearch index")
+    # Set up the MeiliSearch index
+    index = meili.setup_index()
 
     # Create an Asynchronous scheduler and channel
     scheduler = await aiojobs.create_scheduler()
@@ -58,8 +56,8 @@ async def main():
     fame_levels = {
         "top100": sorted_dict[100][1],
         "top500": sorted_dict[500][1],
-        "top1K": sorted_dict[1000][1],    
-        "top5K": sorted_dict[5000][1], 
+        "top1K": sorted_dict[1000][1],
+        "top5K": sorted_dict[5000][1],
         ">10Kmonthly": 10000
     }
 

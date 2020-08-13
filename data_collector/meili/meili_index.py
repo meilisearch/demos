@@ -3,7 +3,7 @@ import meilisearch
 import json
 
 
-def get_or_create_index():
+def setup_index():
 
     if (conf.PYPI_MEILI_URL is None or conf.PYPI_MEILI_KEY is None):
         exit("""
@@ -14,46 +14,37 @@ def get_or_create_index():
             See documentation at https://docs.meilisearch.com/
             """)
     client = meilisearch.Client(conf.PYPI_MEILI_URL, conf.PYPI_MEILI_KEY)
-    try:
-        index = client.create_index(conf.INDEX_UUID, primary_key="_id")
-        update_settings = index.update_settings(json.loads(
-            """
-            {
-                "rankingRules": [
-                    "typo",
-                    "desc(fame)",
-                    "proximity",
-                    "attribute",
-                    "exactness",
-                    "desc(downloads)"
-                ],
-                "searchableAttributes": [
-                    "name",
-                    "description",
-                    "version"
-                ],
-                "displayedAttributes": [
-                    "name",
-                    "json_data_url",
-                    "description",
-                    "project_url",
-                    "version",
-                    "_id",
-                    "downloads",
-                    "fame"
-                ]
-            }
-            """
-        ))
-        return index
-    except Exception as e:
-        print("ERROR: Couldn't create index", e)
-    try:
-        index = client.get_index(conf.INDEX_UUID)
-        return index
-    except Exception as e:
-        print("ERROR: Couldn't get index", e)
-    return None
+    index = client.get_or_create_index(conf.INDEX_UUID, {'primaryKey': '_id'})
+    index.update_settings(json.loads(
+        """
+        {
+            "rankingRules": [
+                "typo",
+                "desc(fame)",
+                "proximity",
+                "attribute",
+                "exactness",
+                "desc(downloads)"
+            ],
+            "searchableAttributes": [
+                "name",
+                "description",
+                "version"
+            ],
+            "displayedAttributes": [
+                "name",
+                "json_data_url",
+                "description",
+                "project_url",
+                "version",
+                "_id",
+                "downloads",
+                "fame"
+            ]
+        }
+        """
+    ))
+    return index
 
 
 def index_packages(pkg_to_index, index):
