@@ -1,24 +1,27 @@
-var beautify=n=>((Math.log10(n)/3|0)==0)?n:Number((n/Math.pow(10,(Math.log10(n)/3|0)*3)).toFixed(1))+["","K","M","B","T",][Math.log10(n)/3|0];
-var source = document.getElementById("entry-template").innerHTML;
-var template = Handlebars.compile(source);
+let beautify=n=>((Math.log10(n)/3|0)==0)?n:Number((n/Math.pow(10,(Math.log10(n)/3|0)*3)).toFixed(1))+["","K","M","B","T",][Math.log10(n)/3|0];
+let source = document.getElementById("entry-template").innerHTML;
+let template = Handlebars.compile(source);
 
 function innerText(s) {
-  var div = document.createElement('div');
+  let div = document.createElement('div');
   div.innerHTML = s;
   return div.innerText;
 }
 
 function getParam(key) {
-  var params = new URLSearchParams(window.location.search);
+  let params = new URLSearchParams(window.location.search);
   return params.get(key);
 }
 
-function setGetParam(key,value) {
+function setGetParam(key, value) {
   if (history.pushState) {
-    var params = new URLSearchParams(window.location.search);
+    let params = new URLSearchParams(window.location.search);
     params.set(key, value);
-    var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + params.toString();
-    window.history.pushState({path:newUrl},'',newUrl);
+    let newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname
+    if (value !== '' && value !== undefined) {
+      newUrl = newUrl + '?' + params.toString();
+    }
+    window.history.pushState({ path: newUrl }, '', newUrl);
   }
 }
 
@@ -32,10 +35,10 @@ function handleForm() {
 }
 
 $(document).ready(function () {
-  var url = 'https://finding-demos.meilisearch.com';
-  var indexUID = 'rubygems';
-  var publicKey = '2b902cce4f868214987a9f3c7af51a69fa660d74a785bed258178b96e3480bb3';
-  var request;
+  let url = 'https://finding-demos.meilisearch.com';
+  let indexUID = 'rubygems';
+  let publicKey = '2b902cce4f868214987a9f3c7af51a69fa660d74a785bed258178b96e3480bb3';
+  let request;
 
   Handlebars.registerHelper("formatBigNumber", beautify);
   Handlebars.registerHelper("innerText", innerText);
@@ -46,20 +49,24 @@ $(document).ready(function () {
 
     setGetParam('q', value);
 
+    if (value === '') {
+      value = null
+    }
+
     if (request) { request.abort() }
 
     request = $.ajax({
       url: `${url}/indexes/${indexUID}/search`,
-      type: 'GET',
+      type: 'POST',
       headers: {
-        'X-Meili-API-Key': publicKey
+        'X-Meili-API-Key': publicKey,
+        'Content-Type': 'application/json'
       },
-      data: {
-        'attributesToHighlight': 'name,summary',
+      data: JSON.stringify({
         'q': value,
+        'attributesToHighlight': ['name','summary'],
         'limit': 10
-      },
-      dataType: 'json',
+      }),
       success: function (data, status) {
         amplitude.getInstance().logEvent('search', {
           'query': data.query,
@@ -84,9 +91,7 @@ $(document).ready(function () {
   });
 
   let query = getParam('q');
-  if (query) {
-    $("#textSearch").val(query).trigger("input");
-  }
+  $("#textSearch").val(query).trigger("input");
 });
 
 $(document).keydown(function(e) {
