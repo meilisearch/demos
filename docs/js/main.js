@@ -13,12 +13,11 @@ function searchMeili (query) {
     if (xhttp) {
         xhttp.abort()
     }
-    setGetParam("q",query)
-    if (query.length == 0) {
-        emptyResults(resultsField, responseTimeField)
-        resultsField.innerHTML = "<br><h5>Start typing a package name or keyword in the search bar</h5>"
-        resultsField.innerHTML += "<img src='./img/python.png'/><hr>"
-        return
+
+    setGetParam("q", query)
+
+    if (query === '') {
+        query = null
     }
 
     xhttp = new XMLHttpRequest();
@@ -39,9 +38,15 @@ function searchMeili (query) {
             }
         }
     };
-    xhttp.open("GET", MEILI_SEARCH_URL + "?q=" + query + "&attributesToHighlight=*&limit=8", true);
+    xhttp.open("POST", MEILI_SEARCH_URL, true);
+    let body = {
+        q: query,
+        attributesToHighlight: ['*'],
+        limit: 8
+    }
     xhttp.setRequestHeader("X-Meili-API-Key", PYPI_MEILI_PUBLIC_KEY)
-    xhttp.send();
+    xhttp.setRequestHeader("Content-Type", 'application/json')
+    xhttp.send(JSON.stringify(body));
 }
 
 function handleResults(results, resultsField) {
@@ -106,7 +111,10 @@ function setGetParam(key,value) {
   if (history.pushState) {
     var params = new URLSearchParams(window.location.search);
     params.set(key, value);
-    var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + params.toString();
+    let newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname
+    if (value !== '' && value !== undefined && value !== null) {
+      newUrl = newUrl + '?' + params.toString();
+    }
     window.history.pushState({path:newUrl},'',newUrl);
   }
 }

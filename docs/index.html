@@ -70,7 +70,7 @@
                       target="_blank"><img src="./img/github.png">GitHub</a>
                   </li>
                   <li class="horizontal-menu__item" id="github-stars">
-                    <a class="github-button horizontal-menu__link" 
+                    <a class="github-button horizontal-menu__link"
                       href="https://github.com/meilisearch/meilisearch"
                       data-icon="octicon-star"
                       data-size="large"
@@ -84,7 +84,7 @@
                       class="horizontal-menu__link"
                       target="_blank"><img src="./src/logo-small.svg" width="15">  PyPI</a>
                   </li>
-                  
+
                 </ul>
               </nav>
             </div>
@@ -103,9 +103,9 @@
             <label for="search" class="sr-only">Search PyPI</label>
             <input id="search" class="search-form__search large-input"
               type="text" name="q" placeholder="Search packages by name or keyword..."
-              autocomplete="off" autocapitalize="off" spellcheck="false" 
+              autocomplete="off" autocapitalize="off" spellcheck="false"
               oninput="searchMeili(this.value)" onkeydown="handleArrow(event);">
-            
+
           </form>
         </div>
       </div>
@@ -126,7 +126,7 @@
         </div>
       </div>
 
-      
+
 
 
     </main>
@@ -160,10 +160,8 @@
   <script type="text/javascript">
     var params = new URLSearchParams(window.location.search);
     query = params.get('q')
-    if (query !== null) {
-        document.getElementById("search").value=query
-        searchMeili (query)
-    }
+    document.getElementById("search").value = query
+    searchMeili (query)
     document.getElementById("search").focus();
   </script>
 
