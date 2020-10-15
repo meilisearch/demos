@@ -49,10 +49,6 @@ $(document).ready(function () {
 
     setGetParam('q', value);
 
-    if (value === '') {
-      value = null
-    }
-
     if (request) { request.abort() }
 
     request = $.ajax({
