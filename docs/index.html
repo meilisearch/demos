@@ -158,7 +158,10 @@ function setGetParam(key,value) {
   if (history.pushState) {
     var params = new URLSearchParams(window.location.search);
     params.set(key, value);
-    var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + params.toString();
+    var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+    if (value !== '' && value !== undefined) {
+      newUrl = newUrl + '?' + params.toString();
+    }
     window.history.pushState({path:newUrl},'',newUrl);
   }
 }
@@ -175,38 +178,6 @@ $(document).ready(function () {
   var browseResult;
   var request;
 
-  function fillBrowseDocuments() {
-    $("#request-time").text(`-- ms`);
-    $("#handlebars-list").empty();
-    let out_html = "";
-    $.each(browseResult, function (_, value) {
-      out_html += template(value);
-    });
-    $("#handlebars-list").html(out_html)
-  }
-
-  function browseDocuments() {
-    if (request) { request.abort() }
-
-    if (browseResult) {
-      fillBrowseDocuments(browseResult);
-      return;
-    }
-
-    request = $.ajax({
-      url: `${url}/indexes/${indexUID}/documents`,
-      type: 'GET',
-      headers: {
-        'X-Meili-API-Key': apiKey
-      },
-      dataType: 'json',
-      success: function (data) {
-        browseResult = data;
-        fillBrowseDocuments();
-      }
-    });
-  }
-
   Handlebars.registerHelper("formatBigNumber", beautify);
   Handlebars.registerHelper("sanitizeHTMLEntities", sanitizeHTMLEntities);
   Handlebars.registerHelper("innerText", innerText);
@@ -217,11 +188,6 @@ $(document).ready(function () {
     let value = $("#textSearch").val();
 
     setGetParam('q', value);
-
-    if (value.trim() == "") {
-      browseDocuments();
-      return;
-    }
 
     if (request) { request.abort() }
 
@@ -256,11 +222,7 @@ $(document).ready(function () {
   });
 
   let query = getParam('q');
-  if (query) {
-    $("#textSearch").val(query).trigger("input");
-  } else {
-    browseDocuments();
-  }
+  $("#textSearch").val(query).trigger("input");
 
 });
 </script>
