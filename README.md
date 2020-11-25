@@ -1,4 +1,4 @@
-# Meili Crates
+# Finding Crates
 
 A [new experience of search](https://crates.meilisearch.com) to find your favorite crates 🎉
 
