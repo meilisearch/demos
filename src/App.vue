@@ -1,19 +1,24 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import instantMeiliSearch from '@meilisearch/instant-meilisearch';
+import { MEILISEARCH_HOST, MEILISEARCH_API_KEY } from './meilisearch-client'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  data() {
+    return {
+      searchClient: instantMeiliSearch(
+        MEILISEARCH_HOST,
+        MEILISEARCH_API_KEY
+      ),
+    }
+  },
+};
 </script>
 
 <style>

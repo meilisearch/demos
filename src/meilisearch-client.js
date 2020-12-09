@@ -1,0 +1,7 @@
+const MEILISEARCH_HOST = "http://127.0.0.1:7700"
+const MEILISEARCH_API_KEY = ""
+
+export {
+    MEILISEARCH_HOST,
+    MEILISEARCH_API_KEY
+}
