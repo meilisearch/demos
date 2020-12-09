@@ -14,47 +14,54 @@
       :search-client="searchClient"  
       >
         <div class="search-panel">
-          <div class="search-panel__filters">
-            <ais-clear-refinements>
-              <span slot="resetLabel">Clear all filters</span>
-            </ais-clear-refinements>
-            <h3>Nationality</h3>
-            <ais-refinement-list :transform-items="transformRefinementListItem" attribute="Nationality" />
-            <h3>Gender</h3>
-            <ais-refinement-list :transform-items="transformRefinementListItem" attribute="Gender" />
-            <h3>Medium</h3>
-            <ais-refinement-list :transform-items="transformRefinementListItem"  attribute="Medium" />
-            <h3>Classification</h3>
-            <ais-refinement-list :transform-items="transformRefinementListItem" attribute="Classification" />
-          </div>
-          <div class="search-panel__results">
-            <ais-search-box placeholder="Search here..." autofocus>
-            </ais-search-box>
-            <ais-infinite-hits class="hits"
-            :class-names="{'ais-InfiniteHits-item': 'myInfiniteHitsItem'}"
-            :transform-items="transformHitItems"
-            >
-              <template slot="item" slot-scope="{ item }" class="hit">
-                <p class="artwork-title">{{ item.Title }} <br><span class="artwork-date">{{ item.Date }}</span></p>
-                <a v-if="item.ThumbnailURL" :href="item.URL" ><img :src="item.ThumbnailURL" :alt="item.Title" class="picture"></a>
-                <a v-else-if="item.URL" :href="item.URL">No picture available. Go to MoMA's artwork website</a>
-                <p v-else>No picture available</p>
-                <div class="hit-info">
+          <ais-search-box class="search-box" placeholder="Search here..." autofocus>
+          </ais-search-box>          
+          <div class="search-panel__filters-and-results">
+            <div class="search-panel__filters-and-clear">
+              <ais-clear-refinements>
+                <span slot="resetLabel">Clear all filters</span>
+              </ais-clear-refinements>
+              <div class="search-panel__filters">
+                <div class="search-panel__filters-1">
+                  <h3>Nationality</h3>
+                  <ais-refinement-list :limit="5" :show-more="true" :transform-items="transformRefinementListItem" attribute="Nationality" />
+                </div>
+                <div class="search-panel__filters-2">
+                  <h3>Gender</h3>
+                  <ais-refinement-list :limit="5" :transform-items="transformRefinementListItem" attribute="Gender" />
+                </div>
+                <div class="search-panel__filters-3">
+                  <h3>Medium</h3>
+                  <ais-refinement-list :limit="5" :show-more="true" :transform-items="transformRefinementListItem"  attribute="Medium" />
+                </div>
+                <div class="search-panel__filters-4">
+                  <h3>Classification</h3>
+                  <ais-refinement-list :limit="5" :show-more="true" :transform-items="transformRefinementListItem" attribute="Classification" />
+                </div>
+              </div>
+            </div>
+            <div class="search-panel__results">
+              <ais-infinite-hits class="hits"
+              :class-names="{
+                'ais-InfiniteHits': 'myInfiniteHits',
+                'ais-InfiniteHits-list': 'myInfiniteHitsList',
+                'ais-InfiniteHits-item': 'myInfiniteHitsItem',
+                'ais-InfiniteHits-loadMore': 'myInfiniteHitsLoadMore'}"
+              :transform-items="transformHitItems"
+              >
+                <template slot="item" slot-scope="{ item }" class="hit">
+                  <p class="artwork-title">{{ item.Title }} <br><span class="artwork-date">{{ item.Date }}</span></p>
+                  <a v-if="item.ThumbnailURL" :href="item.URL" ><img :src="item.ThumbnailURL" :alt="item.Title" class="picture"></a>
+                  <a v-else-if="item.URL" :href="item.URL">No picture available. Go to MoMA's artwork website</a>
+                  <p v-else>No picture available</p>
                   <p>{{ item.Artist }}</p>
-                </div>
-                <div class="hit-info">
-                  <p>Medium <br>
-                  {{ item.Medium }}</p>
-                </div>
-                <div class="hit-info">
-                  <p>Dimensions <br>
-                    {{ item.Dimensions }}
-                  </p>
-                </div>
-                <div class="hit-info">Department of {{ item.Department }}</div>
-              </template>
-            </ais-infinite-hits>
-          </div>
+                  <p>Medium <br>{{ item.Medium }}</p>
+                  <p>Dimensions <br>{{ item.Dimensions }}</p>
+                  <p>Department of {{ item.Department }}</p>
+                </template>
+              </ais-infinite-hits>
+            </div>
+          </div> 
         </div>
       </ais-instant-search>
     </div>
@@ -73,6 +80,7 @@ export default {
         MEILISEARCH_HOST,
         MEILISEARCH_API_KEY
       ),
+      filters: ['Nationality, Gender, Medium, Classification']
     }
   },
   methods: {
@@ -152,9 +160,13 @@ body {
   flex: 1;
   margin-right: 3em;
   margin-bottom: 2em; 
+  
 }
 .picture {
   max-width: 100%;
+}
+.myInfiniteHitsList {
+  justify-content: center;
 }
 .myInfiniteHitsItem {
   width: 100%;
@@ -168,9 +180,29 @@ body {
 .artwork-date {
   font-weight: 200;
 }
+.search-box {
+  margin-bottom: 1rem;
+}
+.myInfiniteHitsLoadMore {
+  display: block;
+  margin: auto;
+  margin-top: 1rem;
+}
 @media screen and (min-width: 768px) {
   .myInfiniteHitsItem {
     width: 40%;
   }
+  .search-panel__filters {
+    display: flex;
+    flex-direction: column;
+    min-width: 250px;
+  }
+  .search-panel__filters-and-results {
+    display: flex;
+    flex-direction: row;
+  }
+  /* .myInfiniteHits {
+    justify-content: center;
+  } */
 }
 </style>
