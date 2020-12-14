@@ -23,9 +23,9 @@
               </ais-clear-refinements>
               <div class="search-panel__filters" >
                 <div v-for="(filter, index) of filters" v-bind:key="index" :class="['search-panel__filters-' + index]">
-                  <h3 @click.prevent="filter.isVisible = !filter.isVisible">  {{filter.name}} <font-awesome-icon :icon="filter.isVisible? 'chevron-up' : 'chevron-down'" size="xs" /></h3> 
+                  <h3 @click.prevent="filter.isExpanded = !filter.isExpanded">  {{filter.name}} <font-awesome-icon :icon="filter.isExpanded? 'chevron-up' : 'chevron-down'" size="xs" /></h3> 
                   <div >
-                    <ais-refinement-list v-show="filter.isVisible" :limit="5" :show-more="filter.name === 'Gender'? false : true" :transform-items="transformRefinementListItem" :attribute="filter.name" />
+                    <ais-refinement-list v-show="filter.isExpanded" :limit="5" :show-more="filter.name === 'Gender'? false : true" :transform-items="transformRefinementListItem" :attribute="filter.name" />
                   </div>
                 </div>
               </div>
@@ -70,19 +70,19 @@ export default {
         MEILISEARCH_HOST,
         MEILISEARCH_API_KEY
       ),
-      isVisible: true,
+      isExpanded: true,
       filters: [
         { name: 'Nationality',
-          isVisible: true 
+          isExpanded: true 
         }, 
         { name: 'Gender', 
-          isVisible: true        
+          isExpanded: true        
         },
         { name: 'Medium', 
-          isVisible: true
+          isExpanded: true
         }, 
         { name: 'Classification',
-          isVisible: true        
+          isExpanded: true        
         }
         ]
     }
@@ -205,8 +205,5 @@ body {
     display: flex;
     flex-direction: row;
   }
-  /* .myInfiniteHits {
-    justify-content: center;
-  } */
 }
 </style>
