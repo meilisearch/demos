@@ -21,22 +21,12 @@
               <ais-clear-refinements>
                 <span slot="resetLabel">Clear all filters</span>
               </ais-clear-refinements>
-              <div class="search-panel__filters">
-                <div class="search-panel__filters-1">
-                  <h3>Nationality</h3>
-                  <ais-refinement-list :limit="5" :show-more="true" :transform-items="transformRefinementListItem" attribute="Nationality" />
-                </div>
-                <div class="search-panel__filters-2">
-                  <h3>Gender</h3>
-                  <ais-refinement-list :limit="5" :transform-items="transformRefinementListItem" attribute="Gender" />
-                </div>
-                <div class="search-panel__filters-3">
-                  <h3>Medium</h3>
-                  <ais-refinement-list :limit="5" :show-more="true" :transform-items="transformRefinementListItem"  attribute="Medium" />
-                </div>
-                <div class="search-panel__filters-4">
-                  <h3>Classification</h3>
-                  <ais-refinement-list :limit="5" :show-more="true" :transform-items="transformRefinementListItem" attribute="Classification" />
+              <div class="search-panel__filters" v-for="(filter, index) of filters" v-bind:key="index">
+                <div :class="['search-panel__filters-' + index]">
+                  <h3 @click="filter.isVisible = !filter.isVisible">  {{filter.name}} <font-awesome-icon :icon=nationalityChevron size="xs" /></h3> 
+                  <div >
+                    <ais-refinement-list v-show="filter.isVisible" :limit="5" :show-more="filter.name === 'Gender'? false : true" :transform-items="transformRefinementListItem" :attribute="filter.name" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -80,7 +70,22 @@ export default {
         MEILISEARCH_HOST,
         MEILISEARCH_API_KEY
       ),
-      filters: ['Nationality, Gender, Medium, Classification']
+      isVisible: true,
+      nationalityChevron: 'chevron-down',
+      filters: [
+        { name: 'Nationality',
+          isVisible: true 
+        }, 
+        { name: 'Gender', 
+          isVisible: true        
+        },
+        { name: 'Medium', 
+          isVisible: true
+        }, 
+        { name: 'Classification',
+          isVisible: true        
+        }
+        ]
     }
   },
   methods: {
