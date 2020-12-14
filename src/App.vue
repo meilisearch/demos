@@ -21,9 +21,9 @@
               <ais-clear-refinements>
                 <span slot="resetLabel">Clear all filters</span>
               </ais-clear-refinements>
-              <div class="search-panel__filters" v-for="(filter, index) of filters" v-bind:key="index">
-                <div :class="['search-panel__filters-' + index]">
-                  <h3 @click="filter.isVisible = !filter.isVisible">  {{filter.name}} <font-awesome-icon :icon=nationalityChevron size="xs" /></h3> 
+              <div class="search-panel__filters" >
+                <div v-for="(filter, index) of filters" v-bind:key="index" :class="['search-panel__filters-' + index]">
+                  <h3 @click.prevent="filter.isVisible = !filter.isVisible">  {{filter.name}} <font-awesome-icon :icon="filter.isVisible? 'chevron-up' : 'chevron-down'" size="xs" /></h3> 
                   <div >
                     <ais-refinement-list v-show="filter.isVisible" :limit="5" :show-more="filter.name === 'Gender'? false : true" :transform-items="transformRefinementListItem" :attribute="filter.name" />
                   </div>
@@ -71,7 +71,6 @@ export default {
         MEILISEARCH_API_KEY
       ),
       isVisible: true,
-      nationalityChevron: 'chevron-down',
       filters: [
         { name: 'Nationality',
           isVisible: true 
