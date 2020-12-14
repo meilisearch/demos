@@ -161,9 +161,8 @@ body {
   flex-direction: column;
 }
 .search-panel__filters {
-  flex: 1;
   margin-right: 3em;
-  margin-bottom: 2em; 
+  margin-bottom: 2em;
   
 }
 .picture {
