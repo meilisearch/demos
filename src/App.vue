@@ -43,7 +43,7 @@
               :transform-items="transformHitItems"
               >
                 <template slot="item" slot-scope="{ item }" class="hit">
-                  <h4> <span class="artwork-title">{{ item.Title }} </span><span class="artwork-date">{{ item.Date }}</span></h4>
+                  <h4 class="hit-title"> <span class="artwork-title">{{ item.Title }} </span><br><span class="artwork-date">{{ item.Date }}</span></h4>
                   <a v-if="item.ThumbnailURL" :href="item.URL" ><img :src="item.ThumbnailURL" :alt="item.Title" class="picture"></a>
                   <a v-else-if="item.URL" :href="item.URL">No picture available. Go to MoMA's artwork website</a>
                   <p v-else>No picture available</p>
@@ -179,6 +179,10 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+.hit-title {
+  text-align: center;
 }
 .artwork-title {
   font-size: 1.1rem;
