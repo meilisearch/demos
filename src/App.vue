@@ -43,7 +43,7 @@
               :transform-items="transformHitItems"
               >
                 <template slot="item" slot-scope="{ item }" class="hit">
-                  <p class="artwork-title">{{ item.Title }} <br><span class="artwork-date">{{ item.Date }}</span></p>
+                  <h4> <span class="artwork-title">{{ item.Title }} </span><span class="artwork-date">{{ item.Date }}</span></h4>
                   <a v-if="item.ThumbnailURL" :href="item.URL" ><img :src="item.ThumbnailURL" :alt="item.Title" class="picture"></a>
                   <a v-else-if="item.URL" :href="item.URL">No picture available. Go to MoMA's artwork website</a>
                   <p v-else>No picture available</p>
@@ -101,17 +101,17 @@ export default {
   transformHitItems(items) {
     return items.map(item => ({
       ...item,
-      Artist: this. displayArtistAndBio(item.Artist, item.ArtistBio),
+      Artist: this.displayArtistAndBio(item.Artist, item.ArtistBio),
       Nationality: this.displayArrayElements(item.Nationality),
       ArtistBio: this.displayArrayElements(item.ArtistBio)
     }))
   },
   displayArrayElements(array) {
-    let temp = "";
+    let elementsString = "";
     for(var i= 0; i < array.length; i++) {
-      i === 0? temp += array[i] : temp += `, ${array[i]}`;
+      i === 0? elementsString += array[i] : elementsString += `, ${array[i]}`;
     }
-    return temp
+    return elementsString
   },
   displayArtistAndBio(artist, bio) {
     let artistAndBioString = "";
