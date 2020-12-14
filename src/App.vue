@@ -18,14 +18,17 @@
           </ais-search-box>          
           <div class="search-panel__filters-and-results">
             <div class="search-panel__filters-and-clear">
-              <ais-clear-refinements>
+              <button id="show-filters" class="btn" @click.prevent="show = !show" type="button">{{this.show? 'HIDE FILTERS' : 'SHOW FILTERS'}}</button>
+              <ais-clear-refinements v-show="show" :class-names="{'ais-ClearRefinements-button': 'btn btn--clear', 'ais-ClearRefinements-button--disabled': 'btn--clear--disabled' }">
                 <span slot="resetLabel">Clear all filters</span>
               </ais-clear-refinements>
-              <div class="search-panel__filters" >
+              <div class="search-panel__filters" v-show="show">
                 <div v-for="(filter, index) of filters" v-bind:key="index" :class="['search-panel__filters-' + index]">
                   <h3 @click.prevent="filter.isExpanded = !filter.isExpanded">  {{filter.name}} <font-awesome-icon :icon="filter.isExpanded? 'chevron-up' : 'chevron-down'" size="xs" /></h3> 
                   <div >
-                    <ais-refinement-list v-show="filter.isExpanded" :limit="5" :show-more="filter.name === 'Gender'? false : true" :transform-items="transformRefinementListItem" :attribute="filter.name" />
+                    <ais-refinement-list v-show="filter.isExpanded" :limit="5" :show-more="filter.name === 'Gender'? false : true" :transform-items="transformRefinementListItem" :attribute="filter.name" 
+                    :class-names="{'ais-RefinementList-showMore': 'btn'}"
+                    />
                   </div>
                 </div>
               </div>
@@ -70,6 +73,7 @@ export default {
         MEILISEARCH_HOST,
         MEILISEARCH_API_KEY
       ),
+      show: false,
       isExpanded: true,
       filters: [
         { name: 'Nationality',
@@ -191,9 +195,35 @@ body {
   margin: auto;
   margin-top: 1rem;
 }
+.btn {
+  height: 28px;
+  min-width: 130px;
+  padding: 5px, 12.4px;
+  font-size: .75rem;
+  font-weight: 500;
+  border-radius: 5px;
+  border: hidden;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
+  background-color: #ffcd00;
+  color: black;
+  margin: 15px;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+}
+.btn:hover {
+  box-shadow: 0 8px 11px 0 rgba(37,44,97,.15),0 4px 6px 0 rgba(93,100,148,.2);
+}
+.btn--clear {
+  background-color: #ffffff;
+  border: 0 solid;
+}
+.btn--clear:hover {
+  background-color: #ffffff;
+  box-shadow: 0 8px 11px 0 rgba(37,44,97,.15),0 4px 6px 0 rgba(93,100,148,.2);
+}
 @media screen and (min-width: 768px) {
   .myInfiniteHitsItem {
-    width: 40%;
+    width: 45%;
   }
   .search-panel__filters {
     display: flex;
