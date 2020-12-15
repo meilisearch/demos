@@ -50,14 +50,51 @@
               :transform-items="transformHitItems"
               >
                 <template slot="item" slot-scope="{ item }" class="hit">
-                  <h4 class="center-title"> <span class="artwork-title">{{ item.Title }} </span><br><span class="artwork-date">{{ item.Date }}</span></h4>
+                  <h4 class="center-title"> 
+                    <ais-highlight 
+                      attribute="Title"
+                      :hit="item" :class-names="{'ais-Highlight':'artwork-title'}"
+                    />
+                  <br>
+                    <ais-highlight 
+                      attribute="Date"
+                      :hit="item" :class-names="{'ais-Highlight':'artwork-date'}"
+                    />
+                  </h4>
                   <a v-if="item.ThumbnailURL" :href="item.URL" ><img :src="item.ThumbnailURL" :alt="item.Title" class="picture"></a>
                   <p v-else-if="item.URL" >No picture available. <a :href="item.URL">Go to MoMA's artwork website</a></p>
                   <p v-else>No picture available</p>
-                  <p>{{ item.Artist }}</p>
-                  <p class="center-title">Medium <br>{{ item.Medium }}</p>
-                  <p class="center-title">Dimensions <br>{{ item.Dimensions }}</p>
-                  <p>Department of {{ item.Department }}</p>
+                  <p class="center-title">
+                    <ais-highlight
+                      attribute="Artist"
+                      :hit="item"
+                      
+                    />
+                    <br>
+                    <ais-highlight
+                      v-show="isOnlyOne(item.Artist)"
+                      attribute="ArtistBio"
+                      :hit="item"
+                    />
+                  </p>
+                  <p class="center-title">Medium <br>
+                    <ais-highlight
+                      attribute="Medium"
+                      :hit="item"
+                    />
+                  </p>
+                  <p class="center-title">Dimensions <br>
+                    <ais-highlight
+                      attribute="Dimensions"
+                      :hit="item"
+                    />
+                  </p>
+                  <p>Department of 
+                    <ais-highlight
+                    attribute="Department"
+                    :hit="item"
+                  />
+                  </p>
                 </template>
               </ais-infinite-hits>
             </div>
@@ -108,28 +145,19 @@ export default {
   transformHitItems(items) {
     return items.map(item => ({
       ...item,
-      Artist: this.displayArtistAndBio(item.Artist, item.ArtistBio),
-      Nationality: this.displayArrayElements(item.Nationality),
-      ArtistBio: this.displayArrayElements(item.ArtistBio)
+      _highlightResult: { 
+        ...item._highlightResult,
+        Artist: { value: item._highlightResult.Artist.value.replace(/([,])/g, ", ") },
+        ArtistBio: { value: item._highlightResult.ArtistBio.value }
+      }
     }))
   },
-  displayArrayElements(array) {
-    let elementsString = "";
-    for(var i= 0; i < array.length; i++) {
-      i === 0? elementsString += array[i] : elementsString += `, ${array[i]}`;
-    }
-    return elementsString
-  },
-  displayArtistAndBio(artist, bio) {
-    let artistAndBioString = "";
-    if (artist.length === 1) {
-      artistAndBioString = `${artist[0]} (${bio[0]})`
+  isOnlyOne (artist) {
+    if (artist.length === 1) { 
+      return true
     } else {
-      for(let i= 0; i < artist.length; i++) {
-        i === 0? artistAndBioString  += `${artist[i]}` : artistAndBioString  += `, ${artist[i]}`;
-      }
+      return false
     }
-    return artistAndBioString 
   }
 },
 };
@@ -202,6 +230,10 @@ body {
 }
 .artwork-date {
   font-weight: 200;
+}
+.artist-name {
+  color: #00afd7;
+  font-weight: 500;
 }
 .search-box {
   margin-bottom: 1rem;
