@@ -15,7 +15,14 @@
       >
         <div class="search-panel">
           <ais-search-box class="search-box" placeholder="Search here..." autofocus>
-          </ais-search-box>          
+          </ais-search-box>
+          <ais-stats/>
+          <ais-current-refinements 
+            :class-names="{
+              'ais-CurrentRefinements': 'MyCustomCurrentRefinements',
+              'ais-CurrentRefinements-item': 'MyCustomCurrentRefinementsItem'
+            }"
+          />          
           <div class="search-panel__filters-and-results">
             <div class="search-panel__filters-and-clear">
               <button id="show-filters" class="btn" @click.prevent="show = !show" type="button">{{this.show? 'HIDE FILTERS' : 'SHOW FILTERS'}}</button>
@@ -45,7 +52,7 @@
                 <template slot="item" slot-scope="{ item }" class="hit">
                   <h4 class="center-title"> <span class="artwork-title">{{ item.Title }} </span><br><span class="artwork-date">{{ item.Date }}</span></h4>
                   <a v-if="item.ThumbnailURL" :href="item.URL" ><img :src="item.ThumbnailURL" :alt="item.Title" class="picture"></a>
-                  <a v-else-if="item.URL" :href="item.URL">No picture available. Go to MoMA's artwork website</a>
+                  <p v-else-if="item.URL" >No picture available. <a :href="item.URL">Go to MoMA's artwork website</a></p>
                   <p v-else>No picture available</p>
                   <p>{{ item.Artist }}</p>
                   <p class="center-title">Medium <br>{{ item.Medium }}</p>
@@ -159,7 +166,12 @@ body {
 .container {
   padding: 1rem;
 }
-
+.MyCustomCurrentRefinements {
+  margin: 1rem;
+}
+.MyCustomCurrentRefinementsItem {
+  background-color: #834fc4;
+}
 .search-panel {
   display: flex;
   flex-direction: column;
