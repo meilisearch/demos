@@ -1,10 +1,12 @@
 const MeiliSearch = require('meilisearch')
 const dataset = require('./Artworks.json')
+require('dotenv').config()
 
 ;(async () => {
     // Create client
     const client = new MeiliSearch({
-        host: 'http://127.0.0.1:7700'
+        host: process.env.MEILI_HOST,
+        apiKey: process.env.MEILI_API_KEY
     })
 
     // Create Index
