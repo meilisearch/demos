@@ -52,6 +52,7 @@ const dataset = require('./Artworks.json')
     
     // Add documents
     const batchedDataSet = batch(dataset, 500)
+    console.log('Adding documents...');
     for (let i = 0; i < batchedDataSet.length; i++) {
         let { updateId } = await index.addDocuments(batchedDataSet[i])
         await index.waitForPendingUpdate(updateId, {
