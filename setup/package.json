@@ -4,7 +4,7 @@
   "description": "",
   "main": "setup.js",
   "scripts": {
-    "prestart": "bash download-dataset.sh",
+    "get-dataset": "bash download-dataset.sh",
     "start": "node setup.js"
   },
   "keywords": [],
