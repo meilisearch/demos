@@ -107,15 +107,14 @@
 
 <script>
 import 'instantsearch.css/themes/algolia-min.css'
-import instantMeiliSearch from '@meilisearch/instant-meilisearch';
-import { MEILISEARCH_HOST, MEILISEARCH_API_KEY } from './meilisearch-client'
+import instantMeiliSearch from '@meilisearch/instant-meilisearch'
 
 export default {
   data() {
     return {
       searchClient: instantMeiliSearch(
-        MEILISEARCH_HOST,
-        MEILISEARCH_API_KEY
+        process.env.VUE_APP_MEILISEARCH_HOST,
+        process.env.VUE_APP_MEILISEARCH_API_KEY
       ),
       show: false,
       isExpanded: true,

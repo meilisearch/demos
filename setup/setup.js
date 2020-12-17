@@ -5,8 +5,8 @@ require('dotenv').config()
 ;(async () => {
     // Create client
     const client = new MeiliSearch({
-        host: process.env.MEILI_HOST,
-        apiKey: process.env.MEILI_API_KEY
+        host: process.env.VUE_APP_MEILISEARCH_HOST,
+        apiKey: process.env.VUE_APP_MEILISEARCH_API_KEY
     })
 
     // Create Index
