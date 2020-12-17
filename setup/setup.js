@@ -74,3 +74,20 @@ function batch (array, size) {
   }
   return batchedArray
 }
+
+// Transform array into string so MeiliSearch can highlight the results
+
+function arrayToString (document) {
+  for (const [key, value] of Object.entries(document)) {
+      if (Array.isArray(value)) {
+          let stringValue = value.join(', ')
+          document[key] = stringValue
+      }
+  }
+  return document
+}
+
+function normalizeDate (document) {
+  const date = document.Date 
+  const match = (/(\d{4})/).exec(date) 
+}
