@@ -7,6 +7,12 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
+  "author": "Carolina Ferreira",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meilisearch/demo-MoMA"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
