@@ -72,7 +72,7 @@
                     />
                     <br>
                     <ais-highlight
-                      v-show="isOnlyOne(item.Artist)"
+                      v-show="!item.VariousArtists"
                       attribute="ArtistBio"
                       :hit="item"
                     />
@@ -145,20 +145,11 @@ export default {
     return items.map(item => ({
       ...item,
       _highlightResult: { 
-        ...item._highlightResult,
-        Artist: { value: item._highlightResult.Artist.value.replace(/([,])/g, ", ") },
-        ArtistBio: { value: item._highlightResult.ArtistBio.value }
+        ...item._highlightResult
       }
     }))
-  },
-  isOnlyOne (artist) {
-    if (artist.length === 1) { 
-      return true
-    } else {
-      return false
-    }
   }
-},
+}
 };
 </script>
 
