@@ -1,9 +1,9 @@
 #!/bin/bash
 #
 # Download Artworks.json from MoMA's github
-if [ -s Artworks ]
-then
-curl -LJO https://github.com/MuseumofModernArt/collection/raw/master/Artworks.json
-else
-echo "File already exists"
+FILE=Artworks.json
+if [ -f "$FILE" ]; then
+    echo "$FILE already exists."
+else 
+    curl -LJO https://github.com/MuseumofModernArt/collection/raw/master/Artworks.json
 fi
