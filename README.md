@@ -17,18 +17,13 @@
   <a href="https://github.com/meilisearch/MeiliSearch/discussions" alt="Discussions"><img src="https://img.shields.io/badge/github-discussions-red" /></a>
 </p>
 
-
-
 In this repository, you will find the front-end interface to search through the [Museum Of Modern Art Collection](https://github.com/MuseumofModernArt/collection). The search is powered by [**MeiliSearch**](https://github.com/meilisearch/meilisearch), a powerful, fast and open-source search engine easy to use and deploy.
-
-
-
-
 
 ## Requirements
 
  - [npm](https://www.npmjs.com/get-npm)
  - [cURL](https://curl.haxx.se/download.html)
+
 
 ## Demo
 
@@ -36,8 +31,6 @@ If you want to replicate this demo using your own MeiliSearch instance, you will
 
   
 ### 1. Download and launch MeiliSearch
-
-  
 
 [Download and launch MeiliSearch](https://docs.meilisearch.com/guides/advanced_guides/installation.html) using the basic configuration. For example, by using [cURL](https://curl.haxx.se/) in your terminal.
 
@@ -54,15 +47,15 @@ This walkthrough runs MeiliSearch in a development environment, and therefore it
  There are many other easy ways to [download and run a MeiliSearch instance](https://docs.meilisearch.com/guides/advanced_guides/installation.html#download-and-launch).
 
 
-### 2. Change the credentials in the .env file
+### 2. Set your credentials
 
 Set the credentials of the MeiliSearch instance as environment variables. 
 ```
 VUE_APP_MEILISEARCH_HOST="yourMeiliSearchInstanceAddress"
 VUE_APP_MEILISEARCH_API_KEY="yourMeiliSearchAPIKey"
 ```
-
-Because we did not set any Master key in the previous step, we can leave `VUE_APP_MEILISEARCH_API_KEY` as an empty string.
+Because we did not set any Master key in the previous step, we can leave `VUE_APP_MEILISEARCH_API_KEY` as an empty string and only set the host: 
+`VUE_APP_MEILISEARCH_HOST='http://127.0.0.1:7700'`
 
 
 ### 3. Donwload the dataset:
@@ -76,7 +69,7 @@ $ npm run get-dataset
 Or you can get it manually in the [MoMA repository](https://github.com/MuseumofModernArt/collection/blob/master/Artworks.json) and copy it in the setup folder.
 
 
-  ### 4. Run the setup
+### 4. Run the setup
   ```bash
 
 $ npm install
@@ -93,10 +86,10 @@ This will do the following:
 
 - Add custom settings for a more relevant search.
 
+
 ### 5. Run the project
 
- 
-You can now go back to the root directory and run the project. The front-end client is now communicating with your MeiliSearch instance.
+You can now run the project. The front-end client is now communicating with your MeiliSearch instance.
 
 ```bash
 
@@ -104,7 +97,7 @@ $ npm run serve
 
 ```
 
- You can now visit `http://localhost:8080/` in your browser and start searching with MeiliSearch!
+ Visit `http://localhost:8080/` in your browser and start searching with MeiliSearch!
 
 <hr>
 
