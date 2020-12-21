@@ -10,7 +10,7 @@ require('dotenv').config()
   })
 
     // Create Index
-    //await client.createIndex('artWorks', { primaryKey: 'ObjectID' })
+    await client.createIndex('artWorks', { primaryKey: 'ObjectID' })
     const index = client.getIndex('artWorks')
     console.log('Index "artWorks" created.');
 
@@ -82,14 +82,14 @@ function batch (array, size) {
 // Transform array into string so MeiliSearch can highlight the results
 function arrayToString (document) {
   for (const [key, value] of Object.entries(document)) {
+    if (document.Artist.length > 1) {
+      document.VariousArtists = true
+    } else {
+      document.VariousArtists = false
+    }
     if (key === 'Artist' || key === 'ArtistBio') {
       let stringValue = value.join(', ')
       document[key] = stringValue
-      if (key === 'Artist' && value.length > 1) {
-        document.MultipleArtists = true
-      } else {
-        document.MultipleArtists = false
-      }
     } 
   }
   return document
@@ -117,4 +117,3 @@ function dataProcessing (data) {
   }
   return processedDataArray
 }
-
