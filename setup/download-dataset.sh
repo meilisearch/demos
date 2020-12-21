@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Download Artworks.json from MoMA's github
-FILE=Artworks.json
+FILE=setup/Artworks.json
 if [[ -f $FILE ]]; then
     echo "$FILE already exists."
 else 
