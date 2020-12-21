@@ -56,15 +56,13 @@ This walkthrough runs MeiliSearch in a development environment, and therefore it
 
 ### 2. Change the credentials in the .env file
 
-Set the credentials of the MeiliSearch instance  inside the `.env` file. 
+Set the credentials of the MeiliSearch instance as environment variables. 
 ```
 VUE_APP_MEILISEARCH_HOST="yourMeiliSearchInstanceAddress"
 VUE_APP_MEILISEARCH_API_KEY="yourMeiliSearchAPIKey"
 ```
 
 Because we did not set any Master key in the previous step, we can leave `VUE_APP_MEILISEARCH_API_KEY` as an empty string.
-
-Don't forget to add the `.env` file to the `.gitignore`.
 
 
 ### 3. Donwload the dataset:
