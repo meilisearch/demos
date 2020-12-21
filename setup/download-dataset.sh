@@ -5,5 +5,5 @@ FILE=Artworks.json
 if [[ -f $FILE ]]; then
     echo "$FILE already exists."
 else 
-    curl -LJO https://github.com/MuseumofModernArt/collection/raw/master/Artworks.json
+    cd setup/ && { curl -LJO https://github.com/MuseumofModernArt/collection/raw/master/Artworks.json; cd -; } 
 fi
