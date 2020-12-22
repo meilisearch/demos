@@ -5,6 +5,19 @@ on:
       - gh-actions
 
 jobs:
+
+  prep-meilisearch: 
+  if: github.event_name == 'push' && github.push.paths == 'setup.js'
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Get dataset
+        run: npm run get-dataset
+      
+      - name: Prep MeiliSearch
+        run: npm install
+        run: npm prep-meili
+
+      
   build-deploy:
     runs-on: ubuntu-18.04
     steps:
