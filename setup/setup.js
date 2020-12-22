@@ -23,10 +23,11 @@ require('dotenv').config()
       'ArtistBio',
       'Nationality',
       'Gender',
-      'BeginDate',
       'Date',
       'Medium',
-      'Department'
+      'Department',
+      'MultipleArtists',
+      'DateToSortBy'
     ],
     displayedAttributes: [
       'Title',
@@ -34,14 +35,14 @@ require('dotenv').config()
       'ArtistBio',
       'Nationality',
       'Gender',
-      'BeginDate',
       'Date',
       'Medium',
       'Dimensions',
       'URL',
       'Department',
       'Classification',
-      'ThumbnailURL'
+      'ThumbnailURL',
+      'MultipleArtists'
     ],
     stopWords: ['a', 'an', 'the'],
     synonyms: { },
@@ -52,8 +53,11 @@ require('dotenv').config()
   await index.updateSettings(settings)
   console.log('Settings added to "artWorks" index.')
 
+  // Process documents
+  const processedDataSet = dataProcessing(dataset)
+
   // Add documents
-  const batchedDataSet = batch(dataset, 500)
+  const batchedDataSet = batch(processedDataSet, 500)
   console.log('Adding documents...')
   for (let i = 0; i < batchedDataSet.length; i++) {
     const { updateId } = await index.addDocuments(batchedDataSet[i])
@@ -73,4 +77,43 @@ function batch (array, size) {
     index += size
   }
   return batchedArray
+}
+
+// Transform array into string so MeiliSearch can highlight the results
+function arrayToString (document) {
+  for (const [key, value] of Object.entries(document)) {
+    if (document.Artist.length > 1) {
+      document.VariousArtists = true
+    } else {
+      document.VariousArtists = false
+    }
+    if (key === 'Artist' || key === 'ArtistBio') {
+      const stringValue = value.join(', ')
+      document[key] = stringValue
+    }
+  }
+  return document
+}
+
+// Get year from Date field and add it to new field to make sorting by date easier
+function normalizeDate (document) {
+  const date = document.Date
+  const match = (/(\d{4})/).exec(date)
+  if (match) {
+    document.DateToSortBy = match[0]
+  } else {
+    document.DateToSortBy = date
+  }
+  return document
+}
+
+// Apply arrayToString and normalizeDate in each document of an array
+function dataProcessing (data) {
+  const processedDataArray = []
+  for (let i = 0; i < data.length; i++) {
+    const stringifiedDoc = arrayToString(data[i])
+    const processedDoc = normalizeDate(stringifiedDoc)
+    processedDataArray.push(processedDoc)
+  }
+  return processedDataArray
 }
