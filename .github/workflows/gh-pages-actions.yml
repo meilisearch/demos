@@ -1,35 +1,36 @@
 name: github-pages
-on: 
+on:
   push:
     branches:
       - gh-actions
 
 jobs:
 
-  prep-meilisearch: 
-    if: github.event_name == 'push' && github.push.paths == 'setup.js'
+  prep-meilisearch:
     runs-on: ubuntu-18.04
     steps:
       - name: Get dataset
         run: npm run get-dataset
-      
+
       - name: Prep MeiliSearch
         run: npm install && npm prep-meili
 
-      
+
   build-deploy:
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
+
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-node- 
+            ${{ runner.os }}-node-
+
+      - run: npm install
 
       - name: Build
         run: npm run build
