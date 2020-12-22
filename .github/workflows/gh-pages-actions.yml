@@ -7,7 +7,7 @@ on:
 jobs:
 
   prep-meilisearch: 
-  if: github.event_name == 'push' && github.push.paths == 'setup.js'
+    if: github.event_name == 'push' && github.push.paths == 'setup.js'
     runs-on: ubuntu-18.04
     steps:
       - name: Get dataset
