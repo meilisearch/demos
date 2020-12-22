@@ -14,8 +14,7 @@ jobs:
         run: npm run get-dataset
       
       - name: Prep MeiliSearch
-        run: npm install
-        run: npm prep-meili
+        run: npm install && npm prep-meili
 
       
   build-deploy:
