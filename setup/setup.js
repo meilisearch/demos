@@ -10,8 +10,8 @@ require('dotenv').config()
   })
 
   // Create Index
-  await client.createIndex('artWorks', { primaryKey: 'ObjectID' })
-  const index = client.getIndex('artWorks')
+
+  const index = await client.getOrCreateIndex('artWorks', { primaryKey: 'ObjectID' })
   console.log('Index "artWorks" created.')
 
   // Add settings
