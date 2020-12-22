@@ -1,0 +1,38 @@
+name: github-pages
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Setup node
+        uses: actions/setup-node@v1
+        run: npm install 
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node- 
+
+      - name: Build
+        uses: actions/setup-node@v1
+        run: npm run build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+    env:
+      VUE_APP_MEILISEARCH_HOST: ${{ secrets.VUE_APP_MEILISEARCH_HOST }}
+      VUE_APP_MEILISEARCH_API_KEY: ${{ secrets.VUE_APP_MEILISEARCH_API_KEY }}
