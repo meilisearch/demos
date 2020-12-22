@@ -2,7 +2,7 @@ name: github-pages
 on: 
   push:
     branches:
-      - main
+      - gh-actions
 
 jobs:
   build-deploy:
@@ -11,10 +11,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       
-      - name: Setup node
-        uses: actions/setup-node@v1
-        run: npm install 
-
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
@@ -24,7 +20,6 @@ jobs:
             ${{ runner.os }}-node- 
 
       - name: Build
-        uses: actions/setup-node@v1
         run: npm run build
 
       - name: Deploy
