@@ -125,9 +125,6 @@ export default {
         { name: 'Gender', 
           isExpanded: true        
         },
-        { name: 'Medium', 
-          isExpanded: true
-        }, 
         { name: 'Classification',
           isExpanded: true        
         }
