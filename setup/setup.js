@@ -57,7 +57,7 @@ require('dotenv').config()
   const processedDataSet = dataProcessing(dataset)
 
   // Add documents
-  const batchedDataSet = batch(processedDataSet, 500)
+  const batchedDataSet = batch(processedDataSet, 10000)
   console.log('Adding documents...')
   for (let i = 0; i < batchedDataSet.length; i++) {
     const { updateId } = await index.addDocuments(batchedDataSet[i])
