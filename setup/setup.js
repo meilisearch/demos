@@ -48,7 +48,7 @@ require('dotenv').config()
     stopWords: ['a', 'an', 'the'],
     synonyms: { },
     attributesForFaceting: [
-      'Nationality', 'Gender', 'Medium', 'Classification'
+      'Nationality', 'Gender', 'Classification'
     ]
   }
   await index.updateSettings(settings)
