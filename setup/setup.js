@@ -42,7 +42,8 @@ require('dotenv').config()
       'Department',
       'Classification',
       'ThumbnailURL',
-      'MultipleArtists'
+      'MultipleArtists',
+      'DateToSortBy'
     ],
     stopWords: ['a', 'an', 'the'],
     synonyms: { },
@@ -79,14 +80,19 @@ function batch (array, size) {
   return batchedArray
 }
 
+// Add field about Artist number before converting Artist array to string
+function addVariousArtistsField (document) {
+  if (document.Artist.length > 1) {
+    document.VariousArtists = true
+  } else {
+    document.VariousArtists = false
+  }
+  return document
+}
+
 // Transform array into string so MeiliSearch can highlight the results
 function arrayToString (document) {
   for (const [key, value] of Object.entries(document)) {
-    if (document.Artist.length > 1) {
-      document.VariousArtists = true
-    } else {
-      document.VariousArtists = false
-    }
     if (key === 'Artist' || key === 'ArtistBio') {
       const stringValue = value.join(', ')
       document[key] = stringValue
@@ -111,7 +117,8 @@ function normalizeDate (document) {
 function dataProcessing (data) {
   const processedDataArray = []
   for (let i = 0; i < data.length; i++) {
-    const stringifiedDoc = arrayToString(data[i])
+    const documentWithExtraField = addVariousArtistsField(data[i])
+    const stringifiedDoc = arrayToString(documentWithExtraField)
     const processedDoc = normalizeDate(stringifiedDoc)
     processedDataArray.push(processedDoc)
   }
