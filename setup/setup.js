@@ -2,6 +2,62 @@ const MeiliSearch = require('meilisearch')
 const dataset = require('./Artworks.json')
 require('dotenv').config()
 
+const settings = {
+  distinctAttribute: null,
+  searchableAttributes: [
+    'Title',
+    'Artist',
+    'ArtistBio',
+    'Nationality',
+    'Gender',
+    'Date',
+    'Medium',
+    'Department',
+    'MultipleArtists',
+    'DateToSortBy'
+  ],
+  displayedAttributes: [
+    'Title',
+    'Artist',
+    'ArtistBio',
+    'Nationality',
+    'Gender',
+    'Date',
+    'Medium',
+    'Dimensions',
+    'URL',
+    'Department',
+    'Classification',
+    'ThumbnailURL',
+    'MultipleArtists',
+    'DateToSortBy'
+  ],
+  stopWords: ['a', 'an', 'the'],
+  synonyms: { },
+  attributesForFaceting: [
+    'Nationality', 'Gender', 'Classification'
+  ]
+}
+
+const rankingRulesAsc = [
+  'typo',
+  'words',
+  'proximity',
+  'attribute',
+  'wordsPosition',
+  'exactness',
+  'asc(DateToSortBy)'
+]
+const rankingRulesDesc = [
+  'typo',
+  'words',
+  'proximity',
+  'attribute',
+  'wordsPosition',
+  'exactness',
+  'desc(DateToSortBy)'
+]
+
 ;(async () => {
   // Create client
   const client = new MeiliSearch({
@@ -23,42 +79,6 @@ require('dotenv').config()
   console.log('Index "artWorks" created.')
 
   // Add settings
-  const settings = {
-    distinctAttribute: null,
-    searchableAttributes: [
-      'Artist',
-      'Title',
-      'ArtistBio',
-      'Nationality',
-      'Gender',
-      'Date',
-      'Medium',
-      'Department',
-      'MultipleArtists',
-      'DateToSortBy'
-    ],
-    displayedAttributes: [
-      'Title',
-      'Artist',
-      'ArtistBio',
-      'Nationality',
-      'Gender',
-      'Date',
-      'Medium',
-      'Dimensions',
-      'URL',
-      'Department',
-      'Classification',
-      'ThumbnailURL',
-      'MultipleArtists',
-      'DateToSortBy'
-    ],
-    stopWords: ['a', 'an', 'the'],
-    synonyms: { },
-    attributesForFaceting: [
-      'Nationality', 'Gender', 'Classification'
-    ]
-  }
   await index.updateSettings(settings)
   console.log('Settings added to "artWorks" index.')
 
@@ -75,6 +95,37 @@ require('dotenv').config()
     })
   }
   console.log('Documents added to "artWorks" index.')
+
+  // ArtWorks with ASC order
+  await client.createIndex('artWorksAsc', { primaryKey: 'ObjectID' })
+  const indexAsc = client.getIndex('artWorksAsc')
+  settings.rankingRules = rankingRulesAsc
+  await indexAsc.updateSettings(settings)
+  console.log('Settings added to "artWorksAsc" index.')
+
+  console.log('Adding documents...')
+  for (let i = 0; i < batchedDataSet.length; i++) {
+    const { updateId } = await indexAsc.addDocuments(batchedDataSet[i])
+    await indexAsc.waitForPendingUpdate(updateId, {
+      timeOutMs: 100000
+    })
+  }
+  console.log('Documents added to "artWorksAsc" index.')
+
+  // ArtWorks with DESC order
+  await client.createIndex('artWorksDesc', { primaryKey: 'ObjectID' })
+  const indexDesc = client.getIndex('artWorksDesc')
+  settings.rankingRules = rankingRulesDesc
+  await indexDesc.updateSettings(settings)
+  console.log('Settings added to "artWorksDesc" index.')
+  console.log('Adding documents...')
+  for (let i = 0; i < batchedDataSet.length; i++) {
+    const { updateId } = await indexDesc.addDocuments(batchedDataSet[i])
+    await indexDesc.waitForPendingUpdate(updateId, {
+      timeOutMs: 100000
+    })
+  }
+  console.log('Documents added to "artWorksDesc" index.')
 })()
 
 // Split dataset into batches
