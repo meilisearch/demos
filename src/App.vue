@@ -17,6 +17,16 @@
           <ais-search-box class="search-box" placeholder="Search here..." autofocus>
           </ais-search-box>
           <ais-stats/>
+          <ais-sort-by
+            :items="[
+              { value: 'artWorks', label: 'Featured' },
+              { value: 'artWorksAsc', label: 'Date asc.' },
+              { value: 'artWorksDesc', label: 'Date desc.' },
+            ]"
+            :class-names="{
+              'ais-SortBy': 'MyCustomSortBy'
+            }"
+          />
           <ais-current-refinements 
             :class-names="{
               'ais-CurrentRefinements': 'MyCustomCurrentRefinements',
@@ -180,6 +190,9 @@ body {
 }
 .container {
   padding: 1rem;
+}
+.MyCustomSortBy {
+  margin: 1rem;
 }
 .MyCustomCurrentRefinements {
   margin: 1rem;
