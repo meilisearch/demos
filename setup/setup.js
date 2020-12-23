@@ -40,22 +40,22 @@ const settings = {
 }
 
 const rankingRulesAsc = [
+  'asc(DateToSortBy)',
   'typo',
   'words',
   'proximity',
   'attribute',
   'wordsPosition',
-  'exactness',
-  'asc(DateToSortBy)'
+  'exactness'
 ]
 const rankingRulesDesc = [
+  'desc(DateToSortBy)',
   'typo',
   'words',
   'proximity',
   'attribute',
   'wordsPosition',
-  'exactness',
-  'desc(DateToSortBy)'
+  'exactness'
 ]
 
 ;(async () => {
