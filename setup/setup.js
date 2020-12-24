@@ -18,8 +18,8 @@ require('dotenv').config()
   const settings = {
     distinctAttribute: null,
     searchableAttributes: [
-      'Title',
       'Artist',
+      'Title',
       'ArtistBio',
       'Nationality',
       'Gender',
