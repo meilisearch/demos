@@ -22,8 +22,6 @@ In this repository, you will find the front-end interface to search through the 
 ## Requirements
 
  - [npm](https://www.npmjs.com/get-npm)
- - [cURL](https://curl.haxx.se/download.html)
-
 
 ## Demo
 
@@ -60,7 +58,7 @@ Because we did not set any Master key in the previous step, we can leave `VUE_AP
 
 ### 3. Donwload the dataset:
 
-You can download the dataset with cURL by running the following command: 
+You can download the dataset by running the following command: 
 ```bash
 
 $ npm run get-dataset
