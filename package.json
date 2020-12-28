@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "get-dataset": "bash setup/download-dataset.sh",
+    "get-dataset": "node setup/downloadDataset.js",
     "prep-meili": "node setup/setup.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
