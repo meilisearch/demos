@@ -5,6 +5,7 @@ on:
     - gh-actions
     paths:
     - 'setup/**.js'
+    - '.github/**/push-dataset.yml'
 
 jobs: 
 
