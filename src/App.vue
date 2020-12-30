@@ -21,7 +21,7 @@
                   <ais-clear-refinements style="text-align:center;" :class-names="{'ais-ClearRefinements-button': 'btn btn--clear', 'ais-ClearRefinements-button--disabled': 'btn--clear--disabled' }">
                     <span slot="resetLabel">Clear all filters</span>
                   </ais-clear-refinements>
-                  <div v-for="(filter, index) of filters" v-bind:key="index" class="search-panel__filters d-flex flex-column align-items-center">
+                  <div v-for="(filter, index) of filters" v-bind:key="index" class="search-panel__filters d-flex flex-column align-items-start">
                     <h4 @click.prevent="filter.isExpanded = !filter.isExpanded"> <font-awesome-icon :icon="whichIcon(filter.name)" size="xs"/> {{filter.name}} <font-awesome-icon :icon="filter.isExpanded? 'chevron-up' : 'chevron-down'" size="xs" /></h4> 
                     <div class="d-flex">
                       <ais-refinement-list v-show="filter.isExpanded" :limit="5" :show-more="filter.name === 'Gender'? false : true" :transform-items="transformRefinementListItem" :attribute="filter.name" 
@@ -47,7 +47,7 @@
             </b-col>
           </b-row>
           <b-row class="mt-5">
-            <b-col class="col-10 mx-auto">
+            <b-col class="col-10 col-md-8 mx-auto ">
               <ais-current-refinements 
                 :class-names="{
                   'ais-CurrentRefinements': 'MyCustomCurrentRefinements',
