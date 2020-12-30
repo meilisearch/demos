@@ -17,11 +17,11 @@
                   </div>
                 </b-navbar-brand>
                 </div>
-                <div v-show="show" class="filters mt-5">
+                <div v-show="show" class="filters mt-5 d-flex flex-column">
                   <ais-clear-refinements style="text-align:center;" :class-names="{'ais-ClearRefinements-button': 'btn btn--clear', 'ais-ClearRefinements-button--disabled': 'btn--clear--disabled' }">
                     <span slot="resetLabel">Clear all filters</span>
                   </ais-clear-refinements>
-                  <div v-for="(filter, index) of filters" v-bind:key="index" class="search-panel__filters">
+                  <div v-for="(filter, index) of filters" v-bind:key="index" class="search-panel__filters d-flex flex-column align-items-center">
                     <h4 @click.prevent="filter.isExpanded = !filter.isExpanded"> <font-awesome-icon :icon="whichIcon(filter.name)" size="xs"/> {{filter.name}} <font-awesome-icon :icon="filter.isExpanded? 'chevron-up' : 'chevron-down'" size="xs" /></h4> 
                     <div class="d-flex">
                       <ais-refinement-list v-show="filter.isExpanded" :limit="5" :show-more="filter.name === 'Gender'? false : true" :transform-items="transformRefinementListItem" :attribute="filter.name" 
@@ -30,7 +30,7 @@
                     </div>
                   </div>
                 </div>
-                <b-button variant="light" @click.prevent="show=!show">{{this.show? 'HIDE FILTERS' : 'SHOW FILTERS'}}</b-button>
+                <b-button variant="light" class="d-md-none" @click.prevent="show=!show">{{this.show? 'HIDE FILTERS' : 'SHOW FILTERS'}}</b-button>
               </b-navbar>
           </b-nav>
         </b-col>
@@ -141,13 +141,13 @@ export default {
       show: false,
       isExpanded: true,
       filters: [
+        { name: 'Classification',
+          isExpanded: true        
+        },
         { name: 'Nationality',
           isExpanded: true 
         }, 
         { name: 'Gender', 
-          isExpanded: true        
-        },
-        { name: 'Classification',
           isExpanded: true        
         }
         ]
@@ -296,11 +296,11 @@ body {
   .myInfiniteHitsItem {
     width: 45%;
   }
-  .search-panel__filters {
+  /* .search-panel__filters {
     display: flex;
     flex-direction: column;
     min-width: 250px;
-  }
+  } */
   .search-panel__filters-and-results {
     display: flex;
     flex-direction: row;
