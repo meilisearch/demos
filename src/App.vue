@@ -47,7 +47,7 @@
             </b-col>
           </b-row>
           <b-row class="mt-5">
-            <b-col class="px-auto">
+            <b-col class="col-10 mx-auto">
               <ais-current-refinements 
                 :class-names="{
                   'ais-CurrentRefinements': 'MyCustomCurrentRefinements',
@@ -60,7 +60,7 @@
             </b-col>    
           </b-row>
           <b-row class="mt-3">
-            <b-col>
+            <b-col class="px-5">
               <ais-infinite-hits class="hits"
               :class-names="{
                 'ais-InfiniteHits': 'myInfiniteHits',
