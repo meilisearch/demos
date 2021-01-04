@@ -5,7 +5,7 @@
       :search-client="searchClient"  
     >
       <b-row>
-        <b-col class="col-md-2 nav-left">
+        <b-col class="col-md-3 col-lg-2 nav-left">
           <b-nav id="sidebar-1" class="d-flex justify-content-center">
              <b-navbar class="px-1 d-flex flex-column">
                <div class="d-flex flex-column d-md-none">
@@ -22,7 +22,7 @@
                     <span slot="resetLabel">Clear all filters</span>
                   </ais-clear-refinements>
                   <div v-for="(filter, index) of filters" v-bind:key="index" class="search-panel__filters d-flex flex-column align-items-start">
-                    <h4 @click.prevent="filter.isExpanded = !filter.isExpanded"> <font-awesome-icon :icon="whichIcon(filter.name)" size="xs"/> {{filter.name}} <font-awesome-icon :icon="filter.isExpanded? 'chevron-up' : 'chevron-down'" size="xs" /></h4> 
+                    <h4 class="filters" @click.prevent="filter.isExpanded = !filter.isExpanded"> <font-awesome-icon :icon="whichIcon(filter.name)" size="xs"/> {{filter.name}} <font-awesome-icon :icon="filter.isExpanded? 'chevron-up' : 'chevron-down'" size="xs" /></h4> 
                     <div class="d-flex">
                       <ais-refinement-list v-show="filter.isExpanded" :limit="5" :show-more="filter.name === 'Gender'? false : true" :transform-items="transformRefinementListItem" :attribute="filter.name" 
                       :class-names="{'ais-RefinementList-showMore': 'btn btn-sm'}"
@@ -34,7 +34,7 @@
               </b-navbar>
           </b-nav>
         </b-col>
-        <b-col class="col-md-10">
+        <b-col class="col-md-9 col-lg-10">
           <b-row>
             <b-col>
              <b-navbar class="pl-5 d-none d-md-flex flex-column align-items-start">
@@ -293,6 +293,9 @@ body {
   box-shadow: 0 8px 11px 0 rgba(37,44,97,.15),0 4px 6px 0 rgba(93,100,148,.2);
 }
 @media screen and (min-width: 768px) {
+  h4.filters {
+    font-size: 1.25rem;
+  }
   .myInfiniteHitsItem {
     width: 45%;
   }
@@ -306,4 +309,6 @@ body {
     flex-direction: row;
   }
 }
+
+@media screen and ()
 </style>
