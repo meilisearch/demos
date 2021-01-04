@@ -9,9 +9,9 @@ require('dotenv').config()
     apiKey: process.env.VUE_APP_MEILISEARCH_API_KEY
   })
 
-  // Create Index
-  await client.createIndex('artWorks', { primaryKey: 'ObjectID' })
-  const index = client.getIndex('artWorks')
+  // Create Index or get the existing one
+  const index = await client.getOrCreateIndex('artWorks', { primaryKey: 'ObjectID' })
+
   console.log('Index "artWorks" created.')
 
   // Add settings
