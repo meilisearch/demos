@@ -37,7 +37,7 @@
         <b-col class="col-md-10">
           <b-row>
             <b-col>
-             <b-navbar class="px-1 d-none d-md-flex flex-column align-items-start">
+             <b-navbar class="pl-5 d-none d-md-flex flex-column align-items-start">
                 <b-navbar-brand class="d-flex justify-content-center align-items-center">
                   <img src="https://raw.githubusercontent.com/meilisearch/integration-guides/master/assets/logos/logo.svg" alt="MeiliSearch logo" height="60px"> 
                   <p class="header-title my-0"> MeiliSearch x MoMA</p> 
