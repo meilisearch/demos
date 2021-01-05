@@ -58,8 +58,10 @@ Because we did not set any Master key in the previous step, we can leave `VUE_AP
 
 ### 3. Donwload the dataset:
 
-You can download the dataset by running the following command: 
+You can download the dataset by running the following commands: 
 ```bash
+
+$ npm install
 
 $ npm run get-dataset
 
@@ -68,13 +70,14 @@ Or you can get it manually in the [MoMA repository](https://github.com/MuseumofM
 
 
 ### 4. Run the setup
-  ```bash
 
-$ npm install
+
+```bash
 
 $ npm run prep-meili
 
 ```
+Don't forget to run `$ npm install` first, if you didn't do it in the previous step.
 
 This will do the following:
 
