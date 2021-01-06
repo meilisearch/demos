@@ -65,11 +65,10 @@ const rankingRulesDesc = [
     apiKey: process.env.VUE_APP_MEILISEARCH_API_KEY
   })
 
-<<<<<<< HEAD
   // Create Index or get the existing one
   const index = await client.getOrCreateIndex('artWorks', { primaryKey: 'ObjectID' })
 
-  // Check if index has is populated
+  // Check if index is populated
   const stats = await index.getStats()
 
   if (stats.numberOfDocuments === dataset.length) {
@@ -77,10 +76,6 @@ const rankingRulesDesc = [
     return
   }
 
-=======
-  // Create Index
-  const index = await client.getOrCreateIndex('artWorks', { primaryKey: 'ObjectID' })
->>>>>>> 5f61ef8 (Remove unnecessary code)
   console.log('Index "artWorks" created.')
 
   // Add settings
@@ -93,12 +88,13 @@ const rankingRulesDesc = [
   // Add documents
   const batchedDataSet = batch(processedDataSet, 10000)
   console.log('Adding documents...')
-  for (let i = 0; i < batchedDataSet.length; i++) {
-    const { updateId } = await index.addDocuments(batchedDataSet[i])
+  batchedDataSet.forEach(async (batch) => {
+    const { updateId } = await index.addDocuments(batch)
     await index.waitForPendingUpdate(updateId, {
       timeOutMs: 100000
     })
-  }
+  })
+
   console.log('Documents added to "artWorks" index.')
 
   // ArtWorks with ASC order
@@ -108,12 +104,12 @@ const rankingRulesDesc = [
   console.log('Settings added to "artWorksAsc" index.')
 
   console.log('Adding documents...')
-  for (let i = 0; i < batchedDataSet.length; i++) {
-    const { updateId } = await indexAsc.addDocuments(batchedDataSet[i])
-    await indexAsc.waitForPendingUpdate(updateId, {
+  batchedDataSet.forEach(async (batch) => {
+    const { updateId } = await indexAsc.addDocuments(batch)
+    await index.waitForPendingUpdate(updateId, {
       timeOutMs: 100000
     })
-  }
+  })
   console.log('Documents added to "artWorksAsc" index.')
 
   // ArtWorks with DESC order
@@ -122,12 +118,12 @@ const rankingRulesDesc = [
   await indexDesc.updateSettings(settings)
   console.log('Settings added to "artWorksDesc" index.')
   console.log('Adding documents...')
-  for (let i = 0; i < batchedDataSet.length; i++) {
-    const { updateId } = await indexDesc.addDocuments(batchedDataSet[i])
-    await indexDesc.waitForPendingUpdate(updateId, {
+  batchedDataSet.forEach(async (batch) => {
+    const { updateId } = await indexDesc.addDocuments(batch)
+    await index.waitForPendingUpdate(updateId, {
       timeOutMs: 100000
     })
-  }
+  })
   console.log('Documents added to "artWorksDesc" index.')
 })()
 
