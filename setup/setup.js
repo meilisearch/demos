@@ -57,7 +57,14 @@ const rankingRulesDesc = [
   'wordsPosition',
   'exactness'
 ]
-
+const defaultRankingRules = [
+  'typo',
+  'words',
+  'proximity',
+  'attribute',
+  'wordsPosition',
+  'exactness'
+]
 ;(async () => {
   // Create client
   const client = new MeiliSearch({
@@ -65,66 +72,34 @@ const rankingRulesDesc = [
     apiKey: process.env.VUE_APP_MEILISEARCH_API_KEY
   })
 
-  // Create Index or get the existing one
-  const index = await client.getOrCreateIndex('artWorks', { primaryKey: 'ObjectID' })
-
-  // Check if index is populated
-  const stats = await index.getStats()
-
-  if (stats.numberOfDocuments === dataset.length) {
-    console.log('Index "artWorks" is already populated')
-    return
-  }
-
-  console.log('Index "artWorks" created.')
-
-  // Add settings
-  await index.updateSettings(settings)
-  console.log('Settings added to "artWorks" index.')
-
   // Process documents
   const processedDataSet = dataProcessing(dataset)
 
-  // Add documents
+  // Add documents batches array
   const batchedDataSet = batch(processedDataSet, 10000)
-  console.log('Adding documents...')
-  batchedDataSet.forEach(async (batch) => {
-    const { updateId } = await index.addDocuments(batch)
-    await index.waitForPendingUpdate(updateId, {
-      timeOutMs: 100000
-    })
-  })
 
-  console.log('Documents added to "artWorks" index.')
+  // Get or create indexes
 
-  // ArtWorks with ASC order
-  const indexAsc = await client.getOrCreateIndex('artWorksAsc', { primaryKey: 'ObjectID' })
-  settings.rankingRules = rankingRulesAsc
-  await indexAsc.updateSettings(settings)
-  console.log('Settings added to "artWorksAsc" index.')
+  const artWorksIndex = await client.getOrCreateIndex('artWorks', { primaryKey: 'ObjectID' })
+  const artWorksAscIndex = await client.getOrCreateIndex('artWorksAsc', { primaryKey: 'ObjectID' })
+  const artWorksDescIndex = await client.getOrCreateIndex('artWorksDesc', { primaryKey: 'ObjectID' })
 
-  console.log('Adding documents...')
-  batchedDataSet.forEach(async (batch) => {
-    const { updateId } = await indexAsc.addDocuments(batch)
-    await index.waitForPendingUpdate(updateId, {
-      timeOutMs: 100000
-    })
-  })
-  console.log('Documents added to "artWorksAsc" index.')
+  // Check if index are populated and populate them is needed
+  const artWorks = { name: 'artWorks', index: artWorksIndex, rules: defaultRankingRules }
+  const artWorksAsc = { name: 'artWorksAsc', index: artWorksAscIndex, rules: rankingRulesAsc }
+  const artWorksDesc = { name: 'artWorksDesc', index: artWorksDescIndex, rules: rankingRulesDesc }
 
-  // ArtWorks with DESC order
-  const indexDesc = await client.getOrCreateIndex('artWorksDesc', { primaryKey: 'ObjectID' })
-  settings.rankingRules = rankingRulesDesc
-  await indexDesc.updateSettings(settings)
-  console.log('Settings added to "artWorksDesc" index.')
-  console.log('Adding documents...')
-  batchedDataSet.forEach(async (batch) => {
-    const { updateId } = await indexDesc.addDocuments(batch)
-    await index.waitForPendingUpdate(updateId, {
-      timeOutMs: 100000
-    })
-  })
-  console.log('Documents added to "artWorksDesc" index.')
+  const indexArray = [artWorks, artWorksAsc, artWorksDesc]
+
+  for (let i = 0; i < indexArray.length; i++) {
+    const isPopulated = await indexIsPopulated(indexArray[i].index, dataset)
+    if (isPopulated) {
+      console.log(`Index "${indexArray[i].name}" already exists`)
+    } else {
+      await populateIndex(indexArray[i], batchedDataSet)
+      console.log(`Documents added to "${indexArray[i].name}"`)
+    }
+  }
 })()
 
 // Split dataset into batches
@@ -181,4 +156,27 @@ function dataProcessing (data) {
     processedDataArray.push(processedDoc)
   }
   return processedDataArray
+}
+
+async function populateIndex (array, batchedDataSet) {
+  settings.rankingRules = array.rules
+  const index = array.index
+  await index.updateSettings(settings)
+  console.log(`Settings added to ${array.name} index.`)
+  console.log(`Adding documents to ${array.name}...`)
+  for (let i = 0; i < batchedDataSet.length; i++) {
+    const { updateId } = await index.addDocuments(batchedDataSet[i])
+    await index.waitForPendingUpdate(updateId, {
+      timeOutMs: 100000
+    })
+  }
+}
+
+async function indexIsPopulated (index, dataset) {
+  const indexStats = await index.getStats()
+  if (indexStats.numberOfDocuments === dataset.length) {
+    return true
+  } else {
+    return false
+  }
 }
