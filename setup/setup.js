@@ -65,6 +65,7 @@ const rankingRulesDesc = [
     apiKey: process.env.VUE_APP_MEILISEARCH_API_KEY
   })
 
+<<<<<<< HEAD
   // Create Index or get the existing one
   const index = await client.getOrCreateIndex('artWorks', { primaryKey: 'ObjectID' })
 
@@ -76,6 +77,10 @@ const rankingRulesDesc = [
     return
   }
 
+=======
+  // Create Index
+  const index = await client.getOrCreateIndex('artWorks', { primaryKey: 'ObjectID' })
+>>>>>>> 5f61ef8 (Remove unnecessary code)
   console.log('Index "artWorks" created.')
 
   // Add settings
@@ -97,8 +102,7 @@ const rankingRulesDesc = [
   console.log('Documents added to "artWorks" index.')
 
   // ArtWorks with ASC order
-  await client.createIndex('artWorksAsc', { primaryKey: 'ObjectID' })
-  const indexAsc = client.getIndex('artWorksAsc')
+  const indexAsc = await client.getOrCreateIndex('artWorksAsc', { primaryKey: 'ObjectID' })
   settings.rankingRules = rankingRulesAsc
   await indexAsc.updateSettings(settings)
   console.log('Settings added to "artWorksAsc" index.')
@@ -113,8 +117,7 @@ const rankingRulesDesc = [
   console.log('Documents added to "artWorksAsc" index.')
 
   // ArtWorks with DESC order
-  await client.createIndex('artWorksDesc', { primaryKey: 'ObjectID' })
-  const indexDesc = client.getIndex('artWorksDesc')
+  const indexDesc = await client.getOrCreateIndex('artWorksDesc', { primaryKey: 'ObjectID' })
   settings.rankingRules = rankingRulesDesc
   await indexDesc.updateSettings(settings)
   console.log('Settings added to "artWorksDesc" index.')
