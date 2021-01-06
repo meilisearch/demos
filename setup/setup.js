@@ -9,9 +9,17 @@ require('dotenv').config()
     apiKey: process.env.VUE_APP_MEILISEARCH_API_KEY
   })
 
-  // Create Index
-  await client.createIndex('artWorks', { primaryKey: 'ObjectID' })
-  const index = client.getIndex('artWorks')
+  // Create Index or get the existing one
+  const index = await client.getOrCreateIndex('artWorks', { primaryKey: 'ObjectID' })
+
+  // Check if index has is populated
+  const stats = await index.getStats()
+
+  if (stats.numberOfDocuments === dataset.length) {
+    console.log('Index "artWorks" is already populated')
+    return
+  }
+
   console.log('Index "artWorks" created.')
 
   // Add settings
