@@ -65,42 +65,6 @@ const defaultRankingRules = [
   'wordsPosition',
   'exactness'
 ]
-;(async () => {
-  // Create client
-  const client = new MeiliSearch({
-    host: process.env.VUE_APP_MEILISEARCH_HOST,
-    apiKey: process.env.VUE_APP_MEILISEARCH_API_KEY
-  })
-
-  // Process documents
-  const processedDataSet = dataProcessing(dataset)
-
-  // Add documents batches array
-  const batchedDataSet = batch(processedDataSet, 10000)
-
-  // Get or create indexes
-
-  const artWorksIndex = await client.getOrCreateIndex('artWorks', { primaryKey: 'ObjectID' })
-  const artWorksAscIndex = await client.getOrCreateIndex('artWorksAsc', { primaryKey: 'ObjectID' })
-  const artWorksDescIndex = await client.getOrCreateIndex('artWorksDesc', { primaryKey: 'ObjectID' })
-
-  // Check if index are populated and populate them is needed
-  const artWorks = { name: 'artWorks', index: artWorksIndex, rules: defaultRankingRules }
-  const artWorksAsc = { name: 'artWorksAsc', index: artWorksAscIndex, rules: rankingRulesAsc }
-  const artWorksDesc = { name: 'artWorksDesc', index: artWorksDescIndex, rules: rankingRulesDesc }
-
-  const indexArray = [artWorks, artWorksAsc, artWorksDesc]
-
-  for (const index of indexArray) {
-    const isPopulated = await indexIsPopulated(index.index, dataset)
-    if (isPopulated) {
-      console.log(`Index "${index.name}" already exists`)
-    } else {
-      await populateIndex(index, batchedDataSet)
-      console.log(`Documents added to "${index.name}"`)
-    }
-  }
-})()
 
 // Split dataset into batches
 function batch (array, size) {
@@ -172,9 +136,41 @@ async function populateIndex ({ index, rules, name }, batchedDataSet) {
 
 async function indexIsPopulated (index, dataset) {
   const indexStats = await index.getStats()
-  if (indexStats.numberOfDocuments === dataset.length) {
-    return true
-  } else {
-    return false
-  }
+  return indexStats.numberOfDocuments === dataset.length
 }
+;(async () => {
+  // Create client
+  const client = new MeiliSearch({
+    host: process.env.VUE_APP_MEILISEARCH_HOST,
+    apiKey: process.env.VUE_APP_MEILISEARCH_API_KEY
+  })
+
+  // Process documents
+  const processedDataSet = dataProcessing(dataset)
+
+  // Add documents batches array
+  const batchedDataSet = batch(processedDataSet, 10000)
+
+  // Get or create indexes
+
+  const artWorksIndex = await client.getOrCreateIndex('artWorks', { primaryKey: 'ObjectID' })
+  const artWorksAscIndex = await client.getOrCreateIndex('artWorksAsc', { primaryKey: 'ObjectID' })
+  const artWorksDescIndex = await client.getOrCreateIndex('artWorksDesc', { primaryKey: 'ObjectID' })
+
+  // Create Indexes array
+  const indexArray = [
+    { name: 'artWorks', index: artWorksIndex, rules: defaultRankingRules },
+    { name: 'artWorksAsc', index: artWorksAscIndex, rules: rankingRulesAsc },
+    { name: 'artWorksDesc', index: artWorksDescIndex, rules: rankingRulesDesc }
+  ]
+
+  for (const index of indexArray) {
+    const isPopulated = await indexIsPopulated(index.index, dataset)
+    if (isPopulated) {
+      console.log(`Index "${index.name}" already exists`)
+    } else {
+      await populateIndex(index, batchedDataSet)
+      console.log(`Documents added to "${index.name}"`)
+    }
+  }
+})()
