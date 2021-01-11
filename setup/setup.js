@@ -126,8 +126,8 @@ async function populateIndex ({ index, rules, name }, batchedDataSet) {
   await index.updateSettings({ ...settings, rankingRules: rules })
   console.log(`Settings added to ${name} index.`)
   console.log(`Adding documents to ${name}...`)
-  for (let i = 0; i < batchedDataSet.length; i++) {
-    const { updateId } = await index.addDocuments(batchedDataSet[i])
+  for (const batch of batchedDataSet)
+    const { updateId } = await index.addDocuments(batch)
     await index.waitForPendingUpdate(updateId, {
       timeOutMs: 100000
     })
