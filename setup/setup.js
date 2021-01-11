@@ -91,13 +91,13 @@ const defaultRankingRules = [
 
   const indexArray = [artWorks, artWorksAsc, artWorksDesc]
 
-  for (let i = 0; i < indexArray.length; i++) {
-    const isPopulated = await indexIsPopulated(indexArray[i].index, dataset)
+  for (const index of indexArray) {
+    const isPopulated = await indexIsPopulated(index.index, dataset)
     if (isPopulated) {
-      console.log(`Index "${indexArray[i].name}" already exists`)
+      console.log(`Index "${index.name}" already exists`)
     } else {
-      await populateIndex(indexArray[i], batchedDataSet)
-      console.log(`Documents added to "${indexArray[i].name}"`)
+      await populateIndex(index, batchedDataSet)
+      console.log(`Documents added to "${index.name}"`)
     }
   }
 })()
@@ -158,12 +158,10 @@ function dataProcessing (data) {
   return processedDataArray
 }
 
-async function populateIndex (array, batchedDataSet) {
-  settings.rankingRules = array.rules
-  const index = array.index
-  await index.updateSettings(settings)
-  console.log(`Settings added to ${array.name} index.`)
-  console.log(`Adding documents to ${array.name}...`)
+async function populateIndex ({ index, rules, name }, batchedDataSet) {
+  await index.updateSettings({ ...settings, rankingRules: rules })
+  console.log(`Settings added to ${name} index.`)
+  console.log(`Adding documents to ${name}...`)
   for (let i = 0; i < batchedDataSet.length; i++) {
     const { updateId } = await index.addDocuments(batchedDataSet[i])
     await index.waitForPendingUpdate(updateId, {
