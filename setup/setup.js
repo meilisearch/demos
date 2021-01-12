@@ -2,80 +2,69 @@ const MeiliSearch = require('meilisearch')
 const dataset = require('./Artworks.json')
 require('dotenv').config()
 
-;(async () => {
-  // Create client
-  const client = new MeiliSearch({
-    host: process.env.VUE_APP_MEILISEARCH_HOST,
-    apiKey: process.env.VUE_APP_MEILISEARCH_API_KEY
-  })
+const settings = {
+  distinctAttribute: null,
+  searchableAttributes: [
+    'Artist',
+    'Title',
+    'ArtistBio',
+    'Nationality',
+    'Gender',
+    'Date',
+    'Medium',
+    'Department',
+    'MultipleArtists',
+    'DateToSortBy'
+  ],
+  displayedAttributes: [
+    'Title',
+    'Artist',
+    'ArtistBio',
+    'Nationality',
+    'Gender',
+    'Date',
+    'Medium',
+    'Dimensions',
+    'URL',
+    'Department',
+    'Classification',
+    'ThumbnailURL',
+    'MultipleArtists',
+    'DateToSortBy'
+  ],
+  stopWords: ['a', 'an', 'the'],
+  synonyms: { },
+  attributesForFaceting: [
+    'Nationality', 'Gender', 'Classification'
+  ]
+}
 
-  // Create Index or get the existing one
-  const index = await client.getOrCreateIndex('artWorks', { primaryKey: 'ObjectID' })
-
-  // Check if index has is populated
-  const stats = await index.getStats()
-
-  if (stats.numberOfDocuments === dataset.length) {
-    console.log('Index "artWorks" is already populated')
-    return
-  }
-
-  console.log('Index "artWorks" created.')
-
-  // Add settings
-  const settings = {
-    distinctAttribute: null,
-    searchableAttributes: [
-      'Artist',
-      'Title',
-      'ArtistBio',
-      'Nationality',
-      'Gender',
-      'Date',
-      'Medium',
-      'Department',
-      'MultipleArtists',
-      'DateToSortBy'
-    ],
-    displayedAttributes: [
-      'Title',
-      'Artist',
-      'ArtistBio',
-      'Nationality',
-      'Gender',
-      'Date',
-      'Medium',
-      'Dimensions',
-      'URL',
-      'Department',
-      'Classification',
-      'ThumbnailURL',
-      'MultipleArtists',
-      'DateToSortBy'
-    ],
-    stopWords: ['a', 'an', 'the'],
-    synonyms: { },
-    attributesForFaceting: [
-      'Nationality', 'Gender', 'Classification'
-    ]
-  }
-  await index.updateSettings(settings)
-  console.log('Settings added to "artWorks" index.')
-
-  // Process documents
-  const processedDataSet = dataProcessing(dataset)
-
-  // Add documents
-  const batchedDataSet = batch(processedDataSet, 10000)
-  console.log('Adding documents...')
-  for (let i = 0; i < batchedDataSet.length; i++) {
-    const { updateId } = await index.addDocuments(batchedDataSet[i])
-    await index.waitForPendingUpdate(updateId, {
-      timeOutMs: 100000
-    })
-  }
-  console.log('Documents added to "artWorks" index.')
-})()
+const rankingRulesAsc = [
+  'asc(DateToSortBy)',
+  'typo',
+  'words',
+  'proximity',
+  'attribute',
+  'wordsPosition',
+  'exactness'
+]
+const rankingRulesDesc = [
+  'desc(DateToSortBy)',
+  'typo',
+  'words',
+  'proximity',
+  'attribute',
+  'wordsPosition',
+  'exactness'
+]
+const defaultRankingRules = [
+  'typo',
+  'words',
+  'proximity',
+  'attribute',
+  'wordsPosition',
+  'exactness'
+]
 
 // Split dataset into batches
 function batch (array, size) {
@@ -132,3 +121,56 @@ function dataProcessing (data) {
   }
   return processedDataArray
 }
+
+async function populateIndex ({ index, rules, name }, batchedDataSet) {
+  await index.updateSettings({ ...settings, rankingRules: rules })
+  console.log(`Settings added to ${name} index.`)
+  console.log(`Adding documents to ${name}...`)
+  for (const batch of batchedDataSet)
+    const { updateId } = await index.addDocuments(batch)
+    await index.waitForPendingUpdate(updateId, {
+      timeOutMs: 100000
+    })
+  }
+}
+
+async function indexIsPopulated (index, dataset) {
+  const indexStats = await index.getStats()
+  return indexStats.numberOfDocuments === dataset.length
+}
+;(async () => {
+  // Create client
+  const client = new MeiliSearch({
+    host: process.env.VUE_APP_MEILISEARCH_HOST,
+    apiKey: process.env.VUE_APP_MEILISEARCH_API_KEY
+  })
+
+  // Process documents
+  const processedDataSet = dataProcessing(dataset)
+
+  // Add documents batches array
+  const batchedDataSet = batch(processedDataSet, 10000)
+
+  // Get or create indexes
+
+  const artWorksIndex = await client.getOrCreateIndex('artWorks', { primaryKey: 'ObjectID' })
+  const artWorksAscIndex = await client.getOrCreateIndex('artWorksAsc', { primaryKey: 'ObjectID' })
+  const artWorksDescIndex = await client.getOrCreateIndex('artWorksDesc', { primaryKey: 'ObjectID' })
+
+  // Create Indexes array
+  const indexArray = [
+    { name: 'artWorks', index: artWorksIndex, rules: defaultRankingRules },
+    { name: 'artWorksAsc', index: artWorksAscIndex, rules: rankingRulesAsc },
+    { name: 'artWorksDesc', index: artWorksDescIndex, rules: rankingRulesDesc }
+  ]
+
+  for (const index of indexArray) {
+    const isPopulated = await indexIsPopulated(index.index, dataset)
+    if (isPopulated) {
+      console.log(`Index "${index.name}" already exists`)
+    } else {
+      await populateIndex(index, batchedDataSet)
+      console.log(`Documents added to "${index.name}"`)
+    }
+  }
+})()
