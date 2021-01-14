@@ -73,8 +73,7 @@
               :class-names="{
                 'ais-InfiniteHits': 'myInfiniteHits',
                 'ais-InfiniteHits-list': 'myInfiniteHitsList',
-                'ais-InfiniteHits-item': 'myInfiniteHitsItem',
-                'ais-InfiniteHits-loadMore': 'myInfiniteHitsLoadMore'}"
+                'ais-InfiniteHits-item': 'myInfiniteHitsItem'}"
               :transform-items="transformHitItems"
               >
                 <template slot="item" slot-scope="{ item }" class="hit">
@@ -129,6 +128,7 @@
                   slot-scope="{isLastPage, refineNext }"
                   :disabled="isLastPage"
                   @click="refineNext"
+                  class="mx-auto my-5"
                 >
                   Show more
                 </b-button>
@@ -272,11 +272,11 @@ body {
 .search-box {
   margin-bottom: 1rem;
 }
-.myInfiniteHitsLoadMore {
-  display: block;
-  margin: auto;
-  margin-top: 1rem;
+.hits {
+  display: flex;
+  flex-direction: column;
 }
+
 .mybtn {
   height: 28px;
   min-width: 130px;
