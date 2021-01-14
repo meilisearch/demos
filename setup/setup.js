@@ -184,7 +184,7 @@ async function meiliUpdates (client, uid) {
     { name: 'artWorksAsc', index: artWorksAscIndex, rules: rankingRulesAsc },
     { name: 'artWorksDesc', index: artWorksDescIndex, rules: rankingRulesDesc }
   ]
-  console.log(indexArray)
+
   const filteredArray = await Promise.all(
     indexArray.map(async index => await index.index.getStats()))
     .then(res =>
@@ -196,6 +196,6 @@ async function meiliUpdates (client, uid) {
     )
 
   await Promise.all(filteredArray.map(async index => await populateIndex(index, batchedDataSet)))
-  const waitForProcessing = indexArray.map(async index => await meiliUpdates(client, index.name))
+  const waitForProcessing = filteredArray.map(async index => await meiliUpdates(client, index.name))
   Promise.all(waitForProcessing)
 })()
