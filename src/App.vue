@@ -303,6 +303,9 @@ body {
   background-color: #ffffff;
   box-shadow: 0 8px 11px 0 rgba(37,44,97,.15),0 4px 6px 0 rgba(93,100,148,.2);
 }
+.mybtn--clear--disabled {
+ display: none;
+}
 @media screen and (min-width: 768px) {
   h4.filters {
     font-size: 1.25rem;
