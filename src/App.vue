@@ -57,14 +57,6 @@
           <b-row class="mt-5">
             <b-col class="col-10 mx-auto ">
               <b-row>
-                <ais-current-refinements 
-                  :class-names="{
-                    'ais-CurrentRefinements': 'MyCustomCurrentRefinements',
-                    'ais-CurrentRefinements-item': 'MyCustomCurrentRefinementsItem'
-                  }"
-                />  
-              </b-row>
-              <b-row>
                 <b-col class="col-12 col-md-10 my-3 mx-auto d-flex up-bar">
                   <ais-stats/>
                   <ais-sort-by
@@ -84,6 +76,14 @@
                   <ais-search-box class="search-box" placeholder="Search here..." autofocus>
                   </ais-search-box> 
                 </b-col>
+              </b-row>
+              <b-row>
+                <ais-current-refinements 
+                  :class-names="{
+                    'ais-CurrentRefinements': 'MyCustomCurrentRefinements',
+                    'ais-CurrentRefinements-item': 'MyCustomCurrentRefinementsItem'
+                  }"
+                />  
               </b-row>
             </b-col>    
           </b-row>
