@@ -9,7 +9,7 @@
           <b-nav id="sidebar-1" class="d-flex justify-content-center">
              <b-navbar class="px-1 d-flex flex-column">
                <div class="d-flex flex-column d-md-none">
-                <b-navbar-brand class="d-flex flex-column align-items-center">
+                <b-navbar-brand class="d-flex flex-column align-items-center navbar-mobile">
                   <img src="https://raw.githubusercontent.com/meilisearch/integration-guides/master/assets/logos/logo.svg" alt="MeiliSearch logo" width="70" height="70" class="mb-3"> 
                   <div class="d-flex flex-column align-items-center">
                     <p class='header-title'>MeiliSearch x MoMA</p> 
@@ -50,21 +50,41 @@
                   <img src="https://raw.githubusercontent.com/meilisearch/integration-guides/master/assets/logos/logo.svg" alt="MeiliSearch logo" height="60px"> 
                   <p class="header-title my-0"> MeiliSearch x MoMA</p> 
                 </b-navbar-brand>
-                <div class="disclaimer pl-2">Enjoy searching with MeiliSearch!</div>
+                <div class="disclaimer disclaimer-desktop pl-2">Enjoy searching with MeiliSearch!</div>
               </b-navbar>
             </b-col>
           </b-row>
           <b-row class="mt-5">
-            <b-col class="col-10 col-md-8 mx-auto ">
-              <ais-current-refinements 
-                :class-names="{
-                  'ais-CurrentRefinements': 'MyCustomCurrentRefinements',
-                  'ais-CurrentRefinements-item': 'MyCustomCurrentRefinementsItem'
-                }"
-              />  
-              <ais-search-box class="search-box" placeholder="Search here..." autofocus>
-              </ais-search-box>
-              <ais-stats/>
+            <b-col class="col-10 mx-auto ">
+              <b-row>
+                <ais-current-refinements 
+                  :class-names="{
+                    'ais-CurrentRefinements': 'MyCustomCurrentRefinements',
+                    'ais-CurrentRefinements-item': 'MyCustomCurrentRefinementsItem'
+                  }"
+                />  
+              </b-row>
+              <b-row>
+                <b-col class="col-12 col-md-10 my-3 mx-auto d-flex up-bar">
+                  <ais-stats/>
+                  <ais-sort-by
+                    :items="[
+                      { value: 'artWorks', label: 'Featured' },
+                      { value: 'artWorksAsc', label: 'Date asc.' },
+                      { value: 'artWorksDesc', label: 'Date desc.' },
+                    ]"
+                    :class-names="{
+                      'ais-SortBy': 'MyCustomSortBy'
+                    }"
+                  />
+                </b-col>
+              </b-row>
+              <b-row>
+                <b-col class="col-12 col-md-10 mx-auto">
+                  <ais-search-box class="search-box" placeholder="Search here..." autofocus>
+                  </ais-search-box> 
+                </b-col>
+              </b-row>
             </b-col>    
           </b-row>
           <b-row class="mt-3">
@@ -220,13 +240,21 @@ body {
 .container {
   padding: 1rem;
 }
+.navbar-mobile {
+  margin-right: 0;
+}
+.disclaimer-desktop {
+  margin-left: 60px;
+}
 .MyCustomCurrentRefinements {
   margin: 1rem;
 }
 .MyCustomCurrentRefinementsItem {
   background-color: #6c757d;
 }
-
+.up-bar {
+  justify-content: space-between;
+}
 .search-panel {
   display: flex;
   flex-direction: column;
