@@ -209,14 +209,7 @@ body {
   font-family:  -apple-system, BlinkMacSystemFont,  "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
-/* .header {
-  display: flex;
-  align-items: center;
-  min-height: 60px;
-  padding: 0.5rem 1rem;
-  margin-bottom: 1rem;
-  background-color: #00afd7;
-} */
+
 .nav-left {
   background-color: #EEE5E9;
 }
@@ -317,11 +310,6 @@ body {
   .myInfiniteHitsItem {
     width: 45%;
   }
-  /* .search-panel__filters {
-    display: flex;
-    flex-direction: column;
-    min-width: 250px;
-  } */
   .search-panel__filters-and-results {
     display: flex;
     flex-direction: row;
