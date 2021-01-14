@@ -109,7 +109,7 @@
                     />
                   </h4>
                   <a v-if="item.ThumbnailURL" :href="item.URL" ><img :src="item.ThumbnailURL" :alt="item.Title" class="picture"></a>
-                  <p v-else-if="item.URL" >No picture available. <a :href="item.URL">Go to MoMA's artwork website</a></p>
+                  <p v-else-if="item.URL" class="center-title">No picture available. <br> <a class="center-title"  :href="item.URL">Go to MoMA's artwork website</a></p>
                   <p v-else>No picture available</p>
                   <p class="center-title">
                     <ais-highlight
