@@ -231,8 +231,9 @@ body {
   margin: 1rem;
 }
 .MyCustomCurrentRefinementsItem {
-  background-color: #eb2668;
+  background-color: #6c757d;
 }
+
 .search-panel {
   display: flex;
   flex-direction: column;
