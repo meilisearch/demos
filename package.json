@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "test": "./node_modules/jest/bin/jest.js --verbose --detectOpenHandles",
+    "test:watch": "./node_modules/jest/bin/jest.js --watch",
     "get-dataset": "node setup/downloadDataset.js",
     "prep-meili": "node setup/setup.js",
     "serve": "vue-cli-service serve",
@@ -37,8 +39,17 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "jest": "^26.6.3",
     "postcss": "^7.0.35",
     "standard": "^16.0.3",
     "vue-template-compiler": "^2.6.11"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
   }
 }
