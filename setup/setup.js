@@ -152,7 +152,7 @@ async function meiliUpdates (client, uid) {
       console.log(`${enqueued.length} / ${updates.length} still enqueued`)
       console.log('-------------')
       if (enqueued.length === 0) allProcessed = true
-      await sleep(standardSpeed)
+      await setupFunctions.sleep(standardSpeed)
     } catch (e) {
       console.error(e)
     }
@@ -160,7 +160,7 @@ async function meiliUpdates (client, uid) {
   console.log(`All documents added to "${uid}"`)
 }
 
-;(async () => {
+const launchMeili = (async () => {
   // Create client
   const client = new MeiliSearch({
     host: process.env.VUE_APP_MEILISEARCH_HOST,
@@ -199,3 +199,17 @@ async function meiliUpdates (client, uid) {
   const waitForProcessing = filteredArray.map(async index => await meiliUpdates(client, index.name))
   Promise.all(waitForProcessing)
 })()
+
+const setupFunctions = {
+  launchMeili,
+  batch,
+  addVariousArtistsField,
+  arrayFieldToString,
+  normalizeDate,
+  dataProcessing,
+  populateIndex,
+  sleep,
+  meiliUpdates
+}
+
+module.exports = { setupFunctions }
