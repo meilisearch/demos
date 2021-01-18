@@ -88,14 +88,11 @@ function addVariousArtistsField (document) {
 }
 
 // Transform array into string so MeiliSearch can highlight the results
-function arrayToString (document) {
-  for (const [key, value] of Object.entries(document)) {
-    if (key === 'Artist' || key === 'ArtistBio') {
-      const stringValue = value.join(', ')
-      document[key] = stringValue
-    }
+function arrayFieldToString (fieldValue) {
+  if (Array.isArray(fieldValue)) {
+    return fieldValue.join(', ')
   }
-  return document
+  return fieldValue
 }
 
 // Get year from Date field and add it to new field to make sorting by date easier
@@ -110,15 +107,18 @@ function normalizeDate (document) {
   return document
 }
 
-// Apply arrayToString and normalizeDate in each document of an array
+// Apply arrayFieldToString and normalizeDate in each document of an array
 function dataProcessing (data) {
-  const processedDataArray = []
-  for (let i = 0; i < data.length; i++) {
-    const documentWithExtraField = addVariousArtistsField(data[i])
-    const stringifiedDoc = arrayToString(documentWithExtraField)
+  const processedDataArray = data.map(doc => {
+    const documentWithExtraField = addVariousArtistsField(doc)
+    const stringifiedDoc = {
+      ...documentWithExtraField,
+      Artist: arrayFieldToString(documentWithExtraField.Artist),
+      ArtistBio: arrayFieldToString(documentWithExtraField.ArtistBio)
+    }
     const processedDoc = normalizeDate(stringifiedDoc)
-    processedDataArray.push(processedDoc)
-  }
+    return processedDoc
+  })
   return processedDataArray
 }
 
@@ -126,18 +126,40 @@ async function populateIndex ({ index, rules, name }, batchedDataSet) {
   await index.updateSettings({ ...settings, rankingRules: rules })
   console.log(`Settings added to ${name} index.`)
   console.log(`Adding documents to ${name}...`)
-  for (const batch of batchedDataSet)
-    const { updateId } = await index.addDocuments(batch)
-    await index.waitForPendingUpdate(updateId, {
-      timeOutMs: 100000
-    })
-  }
+  const allBatches = batchedDataSet.map(async batch =>
+    await index.addDocuments(batch)
+  )
+  const promiseBatches = await Promise.all(allBatches)
+  return promiseBatches
 }
 
-async function indexIsPopulated (index, dataset) {
-  const indexStats = await index.getStats()
-  return indexStats.numberOfDocuments === dataset.length
+async function sleep (ms) {
+  return await new Promise((resolve) => setTimeout(resolve, ms))
 }
+
+async function meiliUpdates (client, uid) {
+  const standardSpeed = 500
+  let allProcessed = false
+  console.log(`Start update watch for ${uid}`)
+  console.log('-------------')
+  while (!allProcessed) {
+    try {
+      const updates = await client.getIndex(uid).getAllUpdateStatus()
+      const processed = updates.filter(update => update.status === 'processed')
+      const enqueued = updates.filter(update => update.status === 'enqueued')
+      console.log(`${uid}:`)
+      console.log(`${processed.length} / ${updates.length} have been processed`)
+      console.log(`${enqueued.length} / ${updates.length} still enqueued`)
+      console.log('-------------')
+      if (enqueued.length === 0) allProcessed = true
+      await sleep(standardSpeed)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+  console.log(`All documents added to "${uid}"`)
+}
+
 ;(async () => {
   // Create client
   const client = new MeiliSearch({
@@ -152,7 +174,6 @@ async function indexIsPopulated (index, dataset) {
   const batchedDataSet = batch(processedDataSet, 10000)
 
   // Get or create indexes
-
   const artWorksIndex = await client.getOrCreateIndex('artWorks', { primaryKey: 'ObjectID' })
   const artWorksAscIndex = await client.getOrCreateIndex('artWorksAsc', { primaryKey: 'ObjectID' })
   const artWorksDescIndex = await client.getOrCreateIndex('artWorksDesc', { primaryKey: 'ObjectID' })
@@ -164,13 +185,17 @@ async function indexIsPopulated (index, dataset) {
     { name: 'artWorksDesc', index: artWorksDescIndex, rules: rankingRulesDesc }
   ]
 
-  for (const index of indexArray) {
-    const isPopulated = await indexIsPopulated(index.index, dataset)
-    if (isPopulated) {
-      console.log(`Index "${index.name}" already exists`)
-    } else {
-      await populateIndex(index, batchedDataSet)
-      console.log(`Documents added to "${index.name}"`)
-    }
-  }
+  const filteredArray = await Promise.all(
+    indexArray.map(async index => await index.index.getStats()))
+    .then(res =>
+      indexArray.filter((index, i) => {
+        if (res[i].numberOfDocuments === dataset.length) {
+          return console.log(`Index "${index.name}" already exists`)
+        } else return true
+      })
+    )
+
+  await Promise.all(filteredArray.map(async index => await populateIndex(index, batchedDataSet)))
+  const waitForProcessing = filteredArray.map(async index => await meiliUpdates(client, index.name))
+  Promise.all(waitForProcessing)
 })()
