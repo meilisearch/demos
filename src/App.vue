@@ -50,7 +50,7 @@
                   <img src="https://raw.githubusercontent.com/meilisearch/integration-guides/master/assets/logos/logo.svg" alt="MeiliSearch logo" height="60px"> 
                   <p class="header-title my-0"> MeiliSearch x MoMA</p> 
                 </b-navbar-brand>
-                <div class="disclaimer disclaimer-desktop pl-2">Enjoy searching with MeiliSearch!</div>
+                <div class="disclaimer disclaimer-desktop">Enjoy searching with MeiliSearch!</div>
               </b-navbar>
             </b-col>
           </b-row>
