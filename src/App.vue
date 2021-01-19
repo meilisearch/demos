@@ -335,9 +335,6 @@ body {
  display: none;
 }
 @media screen and (min-width: 768px) {
-  h4.filters {
-    font-size: 1.25rem;
-  }
   .myInfiniteHitsItem {
     width: 45%;
   }
@@ -345,6 +342,17 @@ body {
     display: flex;
     flex-direction: row;
   }
-}
 
+}
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  h4.filters {
+    font-size: 1rem;
+  }
+  ais-RefinementList-labelText {
+    font-size: 0.9rem;
+  }
+  .ais-RefinementList-showMore {
+    font-size: 0.8rem;
+  }
+}
 </style>
