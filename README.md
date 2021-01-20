@@ -58,8 +58,10 @@ Because we did not set any Master key in the previous step, we can leave `VUE_AP
 
 ### 3. Donwload the dataset:
 
-You can download the dataset by running the following command: 
+You can download the dataset by running the following commands: 
 ```bash
+
+$ npm install
 
 $ npm run get-dataset
 
@@ -68,21 +70,22 @@ Or you can get it manually in the [MoMA repository](https://github.com/MuseumofM
 
 
 ### 4. Run the setup
-  ```bash
 
-$ npm install
+
+```bash
 
 $ npm run prep-meili
 
 ```
+Don't forget to run `$ npm install` first, if you didn't do it in the previous step.
 
 This will do the following:
 
-- Create an index called `artWorks` in your MeiliSearch instance.
+- Create three indexes called `artWorks`, `artWorksAsc` and `artWorksDesc` in your MeiliSearch instance.
 
-- Add all artworks documents to that index.
+- Add all artworks documents to those indexes.
 
-- Add custom settings for a more relevant search.
+- Add custom settings to each one for a more relevant search.
 
 
 ### 5. Run the project
@@ -99,4 +102,4 @@ $ npm run serve
 
 <hr>
 
-**MeiliSearch** provides and maintains many **SDKs and Integration tools** like this one. We want to provide everyone with an **amazing search experience for any kind of project**. If you want to contribute, make suggestions, or just know what's going on right now, visit us in the [integration-guides](https://github.com/meilisearch/integration-guides) repository.
+**MeiliSearch** provides and maintains many **SDKs and Integration tools** like the ones used in this project. We want to provide everyone with an **amazing search experience for any kind of project**. If you want to contribute, make suggestions, or just know what's going on right now, visit us in the [integration-guides](https://github.com/meilisearch/integration-guides) repository.
