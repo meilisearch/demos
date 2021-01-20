@@ -17,7 +17,8 @@
   <a href="https://github.com/meilisearch/MeiliSearch/discussions" alt="Discussions"><img src="https://img.shields.io/badge/github-discussions-red" /></a>
 </p>
 
-In this repository, you will find the front-end interface to search through the [Museum Of Modern Art Collection](https://github.com/MuseumofModernArt/collection). The search is powered by [**MeiliSearch**](https://github.com/meilisearch/meilisearch), a powerful, fast and open-source search engine easy to use and deploy.
+In this repository, you will find the front-end interface to search through the [Museum Of Modern Art Collection](https://github.com/MuseumofModernArt/collection) 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4408594.svg)](https://doi.org/10.5281/zenodo.4408594). The search is powered by [**MeiliSearch**](https://github.com/meilisearch/meilisearch), a powerful, fast and open-source search engine easy to use and deploy.
 
 ## Requirements
 
