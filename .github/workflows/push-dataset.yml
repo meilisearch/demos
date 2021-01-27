@@ -2,7 +2,7 @@ name: push-dataset
 on:
   push:
     branches:
-    - gh-actions
+    - main
     paths:
     - 'setup/**.js'
     - '.github/**/push-dataset.yml'
