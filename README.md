@@ -19,6 +19,8 @@ The search is powered by [MeiliSearch](https://github.com/meilisearch/MeiliSearc
 
 ## Collect packages info and index to MeiliSearch:
 
+These steps are automatically done every day.
+
 #### Setup your environment
 
 1. git clone https://github.com/meilisearch/finding-pypi.git
