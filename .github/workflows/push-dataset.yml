@@ -16,10 +16,10 @@ jobs:
           uses: actions/checkout@v2
         - name: Install modules
           run: npm install
-        - name: Test
-          run: npm run test
         - name: Get dataset
           run: npm run get-dataset
+        - name: Test
+          run: npm run test
         - name: Prep MeiliSearch
           run: npm run prep-meili
       env:
