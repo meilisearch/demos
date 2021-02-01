@@ -1,5 +1,4 @@
 import { setupFunctions } from './setup'
-setupFunctions.launchMeili = jest.fn()
 
 describe('batch', () => {
   const array = [1, 2, 3, 4, 5, 6]
@@ -121,7 +120,7 @@ describe('meiliUpdates', () => {
   const consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => {})
   const updates = [{ status: 'processed' }, { status: 'processed' }, { status: 'processed' }, { status: 'processed' }]
   const index = { getAllUpdateStatus: jest.fn().mockImplementation(() => { return updates }) }
-  const client = { getIndex: jest.fn().mockReturnValue(index) }
+  const client = { index: jest.fn().mockReturnValue(index) }
   const uid = 'art'
   test('should log into the console the update status', async () => {
     jest.spyOn(setupFunctions, 'sleep').mockImplementation(() => {})
