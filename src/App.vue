@@ -1,62 +1,99 @@
 <template>
-  <div>
-    <header class="header">
-      <h1 class='header-title'>
-        MoMA x MeiliSearch
-      </h1>
-    </header>
-    <p class="disclaimer">
-      Enjoy searching with MeiliSearch!
-    </p>
-    <div class="container">
-      <ais-instant-search
+  <b-container fluid class="px-0">
+    <ais-instant-search
       index-name="artWorks"
       :search-client="searchClient"  
-      >
-        <div class="search-panel">
-          <ais-search-box class="search-box" placeholder="Search here..." autofocus>
-          </ais-search-box>
-          <ais-stats/>
-          <ais-sort-by
-            :items="[
-              { value: 'artWorks', label: 'Featured' },
-              { value: 'artWorksAsc', label: 'Date asc.' },
-              { value: 'artWorksDesc', label: 'Date desc.' },
-            ]"
-            :class-names="{
-              'ais-SortBy': 'MyCustomSortBy'
-            }"
-          />
-          <ais-current-refinements 
-            :class-names="{
-              'ais-CurrentRefinements': 'MyCustomCurrentRefinements',
-              'ais-CurrentRefinements-item': 'MyCustomCurrentRefinementsItem'
-            }"
-          />          
-          <div class="search-panel__filters-and-results">
-            <div class="search-panel__filters-and-clear">
-              <button id="show-filters" class="btn" @click.prevent="show = !show" type="button">{{this.show? 'HIDE FILTERS' : 'SHOW FILTERS'}}</button>
-              <ais-clear-refinements v-show="show" :class-names="{'ais-ClearRefinements-button': 'btn btn--clear', 'ais-ClearRefinements-button--disabled': 'btn--clear--disabled' }">
-                <span slot="resetLabel">Clear all filters</span>
-              </ais-clear-refinements>
-              <div class="search-panel__filters" v-show="show">
-                <div v-for="(filter, index) of filters" v-bind:key="index" :class="['search-panel__filters-' + index]">
-                  <h3 @click.prevent="filter.isExpanded = !filter.isExpanded">  {{filter.name}} <font-awesome-icon :icon="filter.isExpanded? 'chevron-up' : 'chevron-down'" size="xs" /></h3> 
-                  <div >
-                    <ais-refinement-list v-show="filter.isExpanded" :limit="5" :show-more="filter.name === 'Gender'? false : true" :transform-items="transformRefinementListItem" :attribute="filter.name" 
-                    :class-names="{'ais-RefinementList-showMore': 'btn'}"
-                    />
+    >
+      <b-row>
+        <b-col class="col-md-3 col-lg-2 nav-left">
+          <b-nav id="sidebar-1" class="d-flex justify-content-center">
+             <b-navbar class="px-1 d-flex flex-column">
+               <div class="d-flex flex-column d-md-none">
+                <b-navbar-brand class="d-flex flex-column align-items-center navbar-mobile">
+                  <img src="https://raw.githubusercontent.com/meilisearch/integration-guides/master/assets/logos/logo.svg" alt="MeiliSearch logo" width="70" height="70" class="mb-3"> 
+                  <div class="d-flex flex-column align-items-center">
+                    <p class='header-title'>MeiliSearch x MoMA</p> 
+                    <p class="disclaimer">Enjoy searching with MeiliSearch!</p>
+                  </div>
+                </b-navbar-brand>
+                </div>
+                <div v-show="show" class="filters mt-5">
+                  <ais-clear-refinements style="text-align:center;" 
+                    :class-names="{
+                      'ais-ClearRefinements-button': 'mybtn mybtn--clear', 
+                      'ais-ClearRefinements-button--disabled': 'mybtn--clear--disabled' 
+                    }"
+                  >
+                    <span slot="resetLabel">Clear filters</span>
+                  </ais-clear-refinements>
+                  <div v-for="(filter, index) of filters" v-bind:key="index" class="search-panel__filters d-flex flex-column align-items-start">
+                    <h4 class="filters mt-4" @click.prevent="filter.isExpanded = !filter.isExpanded"> <font-awesome-icon :icon="whichIcon(filter.name)" size="xs"/> {{filter.name}} <font-awesome-icon :icon="filter.isExpanded? 'chevron-up' : 'chevron-down'" size="xs" /></h4> 
+                    <div class="d-flex">
+                      <ais-refinement-list v-show="filter.isExpanded" :limit="5" :show-more="filter.name === 'Gender'? false : true" :transform-items="transformRefinementListItem" :attribute="filter.name" 
+                        :class-names="{
+                          'ais-RefinementList-showMore': 'btn btn-secondary btn-sm',
+                          'ais-RefinementList': 'mx-auto'
+                        }"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="search-panel__results">
+                <b-button size="sm" variant="light" class="d-md-none" @click.prevent="show=!show">{{this.show? 'HIDE FILTERS' : 'SHOW FILTERS'}}</b-button>
+              </b-navbar>
+          </b-nav>
+        </b-col>
+        <b-col class="col-md-9 col-lg-10">
+          <b-row>
+            <b-col>
+             <b-navbar class="pl-5 d-none d-md-flex flex-column align-items-start">
+                <b-navbar-brand class="d-flex justify-content-center align-items-center">
+                  <img src="https://raw.githubusercontent.com/meilisearch/integration-guides/master/assets/logos/logo.svg" alt="MeiliSearch logo" height="60px"> 
+                  <p class="header-title my-0"> MeiliSearch x MoMA</p> 
+                </b-navbar-brand>
+                <div class="disclaimer disclaimer-desktop">Enjoy searching with MeiliSearch!</div>
+              </b-navbar>
+            </b-col>
+          </b-row>
+          <b-row class="mt-5">
+            <b-col class="col-10 mx-auto ">
+              <b-row>
+                <b-col class="col-12 col-md-10 my-3 mx-auto d-flex up-bar">
+                  <ais-stats/>
+                  <ais-sort-by
+                    :items="[
+                      { value: 'artWorks', label: 'Featured' },
+                      { value: 'artWorksAsc', label: 'Date asc.' },
+                      { value: 'artWorksDesc', label: 'Date desc.' },
+                    ]"
+                    :class-names="{
+                      'ais-SortBy': 'MyCustomSortBy'
+                    }"
+                  />
+                </b-col>
+              </b-row>
+              <b-row>
+                <b-col class="col-12 col-md-10 mx-auto">
+                  <ais-search-box class="search-box" placeholder="Search here..." autofocus>
+                  </ais-search-box> 
+                </b-col>
+              </b-row>
+              <b-row>
+                <ais-current-refinements 
+                  :class-names="{
+                    'ais-CurrentRefinements': 'MyCustomCurrentRefinements',
+                    'ais-CurrentRefinements-item': 'MyCustomCurrentRefinementsItem'
+                  }"
+                />  
+              </b-row>
+            </b-col>    
+          </b-row>
+          <b-row class="mt-3">
+            <b-col class="px-5">
               <ais-infinite-hits class="hits"
               :class-names="{
                 'ais-InfiniteHits': 'myInfiniteHits',
                 'ais-InfiniteHits-list': 'myInfiniteHitsList',
-                'ais-InfiniteHits-item': 'myInfiniteHitsItem',
-                'ais-InfiniteHits-loadMore': 'myInfiniteHitsLoadMore'}"
+                'ais-InfiniteHits-item': 'myInfiniteHitsItem'}"
               :transform-items="transformHitItems"
               >
                 <template slot="item" slot-scope="{ item }" class="hit">
@@ -72,7 +109,7 @@
                     />
                   </h4>
                   <a v-if="item.ThumbnailURL" :href="item.URL" ><img :src="item.ThumbnailURL" :alt="item.Title" class="picture"></a>
-                  <p v-else-if="item.URL" >No picture available. <a :href="item.URL">Go to MoMA's artwork website</a></p>
+                  <p v-else-if="item.URL" class="center-title">No picture available. <br> <a class="center-title"  :href="item.URL">Go to MoMA's artwork website</a></p>
                   <p v-else>No picture available</p>
                   <p class="center-title">
                     <ais-highlight
@@ -106,18 +143,29 @@
                   />
                   </p>
                 </template>
+                <b-button
+                  slot="loadMore"
+                  slot-scope="{isLastPage, refineNext }"
+                  :disabled="isLastPage"
+                  @click="refineNext"
+                  class="mx-auto my-5"
+                >
+                  Show more
+                </b-button>
               </ais-infinite-hits>
-            </div>
-          </div> 
-        </div>
-      </ais-instant-search>
-    </div>
-  </div>
+            </b-col>
+          </b-row>
+        </b-col>
+      </b-row>
+    </ais-instant-search>
+  </b-container>
 </template>
 
 <script>
 import 'instantsearch.css/themes/algolia-min.css'
 import instantMeiliSearch from '@meilisearch/instant-meilisearch'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 export default {
   data() {
@@ -126,16 +174,16 @@ export default {
         process.env.VUE_APP_MEILISEARCH_HOST,
         process.env.VUE_APP_MEILISEARCH_API_KEY
       ),
-      show: false,
+      show: true,
       isExpanded: true,
       filters: [
+        { name: 'Classification',
+          isExpanded: true        
+        },
         { name: 'Nationality',
           isExpanded: true 
         }, 
         { name: 'Gender', 
-          isExpanded: true        
-        },
-        { name: 'Classification',
           isExpanded: true        
         }
         ]
@@ -155,6 +203,15 @@ export default {
         ...item._highlightResult
       }
     }))
+  },
+  whichIcon(filterName) {
+    if (filterName === 'Gender') {
+      return 'venus-mars'
+    } else if (filterName === 'Nationality') {
+      return 'flag'
+    } else {
+      return 'hashtag'
+    }
   }
 }
 };
@@ -172,33 +229,31 @@ body {
   font-family:  -apple-system, BlinkMacSystemFont,  "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
-.header {
-  display: flex;
-  align-items: center;
-  min-height: 60px;
-  padding: 0.5rem 1rem;
-  margin-bottom: 1rem;
-  background-color: #00afd7;
+
+.nav-left {
+  background-color: #EEE5E9;
 }
 .header-title {
   font-family: 'Libre Franklin', sans-serif;
   font-size: 1.5rem;
 }
-
-.disclaimer {
-  margin-left: 1em;
-}
 .container {
   padding: 1rem;
 }
-.MyCustomSortBy {
-  margin: 1rem;
+.navbar-mobile {
+  margin-right: 0;
+}
+.disclaimer-desktop {
+  margin-left: 60px;
 }
 .MyCustomCurrentRefinements {
   margin: 1rem;
 }
 .MyCustomCurrentRefinementsItem {
-  background-color: #834fc4;
+  background-color: #6c757d;
+}
+.up-bar {
+  justify-content: space-between;
 }
 .search-panel {
   display: flex;
@@ -206,7 +261,7 @@ body {
 }
 .search-panel__filters {
   margin-right: 3em;
-  margin-bottom: 2em;
+  margin: 1em;
   
 }
 .picture {
@@ -238,12 +293,12 @@ body {
 .search-box {
   margin-bottom: 1rem;
 }
-.myInfiniteHitsLoadMore {
-  display: block;
-  margin: auto;
-  margin-top: 1rem;
+.hits {
+  display: flex;
+  flex-direction: column;
 }
-.btn {
+
+.mybtn {
   height: 28px;
   min-width: 130px;
   padding: 5px, 12.4px;
@@ -252,35 +307,52 @@ body {
   border-radius: 5px;
   border: hidden;
   box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
-  background-color: #ffcd00;
   color: black;
   margin: 15px;
   letter-spacing: 0.15em;
   cursor: pointer;
+  background-color: #6c757d
 }
-.btn:hover {
+.mybtn:hover {
   box-shadow: 0 8px 11px 0 rgba(37,44,97,.15),0 4px 6px 0 rgba(93,100,148,.2);
+  background-color: #ffffff;
 }
-.btn--clear {
+.mybtn-sm {
+  height: 25px;
+  min-width: 100px;
+  padding: 5px, 5px;
+  letter-spacing: inherit;
+}
+.mybtn--clear {
   background-color: #ffffff;
   border: 0 solid;
 }
-.btn--clear:hover {
+.mybtn--clear:hover {
   background-color: #ffffff;
   box-shadow: 0 8px 11px 0 rgba(37,44,97,.15),0 4px 6px 0 rgba(93,100,148,.2);
+}
+.mybtn--clear--disabled {
+ display: none;
 }
 @media screen and (min-width: 768px) {
   .myInfiniteHitsItem {
     width: 45%;
   }
-  .search-panel__filters {
-    display: flex;
-    flex-direction: column;
-    min-width: 250px;
-  }
   .search-panel__filters-and-results {
     display: flex;
     flex-direction: row;
+  }
+
+}
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  h4.filters {
+    font-size: 1rem;
+  }
+  ais-RefinementList-labelText {
+    font-size: 0.9rem;
+  }
+  .ais-RefinementList-showMore {
+    font-size: 0.8rem;
   }
 }
 </style>
