@@ -1,4 +1,4 @@
-const MeiliSearch = require('meilisearch')
+const { MeiliSearch } = require('meilisearch')
 const dataset = require('./Artworks.json')
 require('dotenv').config()
 
@@ -144,7 +144,7 @@ async function meiliUpdates (client, uid) {
   console.log('-------------')
   while (!allProcessed) {
     try {
-      const updates = await client.getIndex(uid).getAllUpdateStatus()
+      const updates = await client.index(uid).getAllUpdateStatus()
       const processed = updates.filter(update => update.status === 'processed')
       const enqueued = updates.filter(update => update.status === 'enqueued')
       console.log(`${uid}:`)
