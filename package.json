@@ -6,7 +6,7 @@
     "test": "./node_modules/jest/bin/jest.js --verbose --detectOpenHandles",
     "test:watch": "./node_modules/jest/bin/jest.js --watch",
     "get-dataset": "node setup/downloadDataset.js",
-    "prep-meili": "node setup/setup.js",
+    "prep-meili": "node setup/launchMeili.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "vue:lint": "vue-cli-service lint",
