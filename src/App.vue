@@ -267,6 +267,8 @@ body {
 
 .ais-Highlight-highlighted {
   background-color: #ee8ab7;
+  padding: 0, 0.15em;
+  display: inline-block;
 }
 
 .picture {
