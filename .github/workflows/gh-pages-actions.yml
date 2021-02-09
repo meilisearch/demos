@@ -32,7 +32,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          publish_branch: main
+          publish_branch: gh-pages
     env:
       VUE_APP_MEILISEARCH_HOST: ${{ secrets.VUE_APP_MEILISEARCH_HOST }}
       VUE_APP_MEILISEARCH_API_KEY: ${{ secrets.VUE_APP_MEILISEARCH_API_KEY }}
