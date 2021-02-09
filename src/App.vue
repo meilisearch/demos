@@ -228,6 +228,7 @@ h1 {
 body {
   font-family:  -apple-system, BlinkMacSystemFont,  "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  overflow-x: hidden;
 }
 
 .nav-left {
