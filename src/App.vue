@@ -262,9 +262,15 @@ body {
 }
 .search-panel__filters {
   margin-right: 3em;
-  margin: 1em;
-  
+  margin: 1em; 
 }
+
+.ais-Highlight-highlighted {
+  background-color: #ee8ab7;
+  padding: 0, 0.15em;
+  display: inline-block;
+}
+
 .picture {
   max-width: 100%;
 }
