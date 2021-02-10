@@ -21,6 +21,7 @@ Set the following envrionment variables:
 - `MEILI_INDEX_UID` (it should set to `crates` to be used with the front of this repo)
 
 ```bash
+$ rm -rf crates.io-index/
 $ ./run.sh
 ```
 
