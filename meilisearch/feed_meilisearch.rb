@@ -36,6 +36,7 @@ def load_data_into_meilisearch(documents)
       'summary'
     ],
     displayedAttributes: [
+      'id',
       'name',
       'summary',
       'description',
