@@ -163,7 +163,7 @@
 
 <script>
 import 'instantsearch.css/themes/algolia-min.css'
-import instantMeiliSearch from '@meilisearch/instant-meilisearch'
+import { instantMeiliSearch } from '@meilisearch/instant-meilisearch'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
