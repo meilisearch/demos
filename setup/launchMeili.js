@@ -45,22 +45,22 @@ const settings = {
 }
 
 const rankingRulesAsc = [
-  'asc(DateToSortBy)',
   'typo',
   'words',
   'proximity',
   'attribute',
   'wordsPosition',
-  'exactness'
+  'exactness',
+  'asc(DateToSortBy)'
 ]
 const rankingRulesDesc = [
-  'desc(DateToSortBy)',
   'typo',
   'words',
   'proximity',
   'attribute',
   'wordsPosition',
-  'exactness'
+  'exactness',
+  'desc(DateToSortBy)'
 ]
 const defaultRankingRules = [
   'typo',
