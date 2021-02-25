@@ -1,6 +1,6 @@
 # MeiliSearch finds PyPI packages
 
-A [new experience of search](https://meilisearch.github.io/finding-pypi) to find your favorite python packages 🎉
+A [new experience of search](https://pypi.meilisearch.com/) to find your favorite python packages 🎉
 
 Search by package name or by keywords.
 
@@ -23,19 +23,25 @@ These steps are automatically done every day.
 
 #### Setup your environment
 
-1. git clone https://github.com/meilisearch/finding-pypi.git
-2. cd finding-pypi
-3. python3 -m venv env_finding_pypi
-4. source env_finding_pypi/bin/activate
-5. pip3 install -r requirements.txt
-6. export PYPI_MEILI_URL="SOME_URL"
-7. export PYPI_MEILI_KEY="SOME_KEY"
+```
+git clone https://github.com/meilisearch/finding-pypi.git
+cd finding-pypi
+python3 -m venv env_finding_pypi
+source env_finding_pypi/bin/activate
+pip3 install -r requirements.txt
+export PYPI_MEILI_URL="<MEILISEARCH_URL>"
+export PYPI_MEILI_KEY="<MEILISEARCH_MASTER_KEY_IF_ANY>"
+```
 
 #### Setup your GCP Credentials
 
 In order to collect Downloads data from GCP, you need to provide GCP credentials:
 
-1. Set up your account following the instructions in https://github.com/ofek/pypinfo
-2. run `export PYPI_MEILI_GCP_CREDS="{ HERE YOUR GCP CREDENTIALS JSON FILE CONTENT (escape double quotes, "  becomes  \" )}"`
-3. Run `python3 data_collector/collector.py`
-4. Enjoy
+Set up your account following the instructions in https://github.com/ofek/pypinfo
+
+```
+export PYPI_MEILI_GCP_CREDS="{ HERE YOUR GCP CREDENTIALS JSON FILE CONTENT (escape double quotes, "  becomes  \" )}"`
+python3 data_collector/collector.py
+```
+
+Enjoy
