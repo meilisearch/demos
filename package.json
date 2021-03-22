@@ -20,8 +20,8 @@
     "url": "https://github.com/meilisearch/demo-MoMA"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.32",
-    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/vue-fontawesome": "^2.0.0",
     "@meilisearch/instant-meilisearch": "^0.3.2",
     "axios": "^0.21.1",
@@ -36,8 +36,8 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.12",
-    "@vue/cli-plugin-eslint": "~4.5.11",
-    "@vue/cli-service": "~4.5.11",
+    "@vue/cli-service": "~4.5.12",
+    "@vue/cli-plugin-eslint": "~4.5.12",
     "autoprefixer": "^10.2.5",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.22.0",
