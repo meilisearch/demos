@@ -20,7 +20,7 @@
     "url": "https://github.com/meilisearch/demo-MoMA"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/vue-fontawesome": "^2.0.0",
     "@meilisearch/instant-meilisearch": "^0.3.2",
