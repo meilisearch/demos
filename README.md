@@ -4,6 +4,8 @@
 
 
 <h1 align="center">MeiliSearch Demos</h1>
+<h5 align="center">This repository lists all available demos that use MeiliSearch and whose code you have access to 
+</h5>
 
 <h4 align="center">
   <a href="https://github.com/meilisearch/MeiliSearch">MeiliSearch</a> |
