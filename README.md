@@ -24,13 +24,13 @@
 
 # All available MeiliSearch demos
 
-| Demo repo | Live Demo  |
-|-----------|------------|
-| [ MeiliSearch finds RubyGems](https://github.com/meilisearch/demo-finding-rubygems) | https://rubygems.meilisearch.com/ |
-| [ Finding Crates ](https://github.com/meilisearch/demo-finding-crates) | https://crates.meilisearch.com/ |
-| [ MeiliSearch finds PyPI packages ](https://github.com/meilisearch/demo-finding-pypi) | https://pypi.meilisearch.com/ |
-| [ MeiliSearch x MoMA ](https://github.com/meilisearch/demo-MoMA) : search through the  [ Museum Of Modern Art Collection ](https://github.com/MuseumofModernArt/collection) | https://moma.meilisearch.com/ |
-| [ Search in Nobel Prizes with MeiliSearch ](https://github.com/meilisearch/meilisearch-vue/tree/main/examples/nobel-prizes) |  https://codesandbox.io/s/naughty-napier-zdy1r?file=/src/App.vue |
+| Demo repo | Live Demo  | Description |
+|-----------|------------|-------------|
+| [ MeiliSearch finds RubyGems](https://github.com/meilisearch/demo-finding-rubygems) | https://rubygems.meilisearch.com/ | MeiliSearch helps you find your favorite Ruby gems |
+| [ Finding Crates ](https://github.com/meilisearch/demo-finding-crates) | https://crates.meilisearch.com/ | MeiliSearch helps you find your favorite crates|
+| [ MeiliSearch finds PyPI packages ](https://github.com/meilisearch/demo-finding-pypi) | https://pypi.meilisearch.com/ | MeiliSearch helps you find your favorite python packages|
+| [ MeiliSearch x MoMA ](https://github.com/meilisearch/demo-MoMA) | https://moma.meilisearch.com/ | Search through the  [ Museum Of Modern Art Collection ](https://github.com/MuseumofModernArt/collection) with MeiliSearch|
+| [ Search in Nobel Prizes with MeiliSearch ](https://github.com/meilisearch/meilisearch-vue/tree/main/examples/nobel-prizes) |  https://codesandbox.io/s/naughty-napier-zdy1r?file=/src/App.vue | Search through all Nobel Prize winners and their details with MeiliSearch |
 
 <br>
 
