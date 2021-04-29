@@ -32,7 +32,7 @@
     "instantsearch.css": "^7.4.5",
     "meilisearch": "^0.18.2",
     "vue": "^2.6.12",
-    "vue-instantsearch": "^3.6.0"
+    "vue-instantsearch": "^3.7.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.12",
