@@ -27,7 +27,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^5.0.1",
     "bootstrap-vue": "^2.21.1",
-    "core-js": "^3.12.1",
+    "core-js": "^3.14.0",
     "dotenv": "^10.0.0",
     "instantsearch.css": "^7.4.5",
     "meilisearch": "^0.18.2",
