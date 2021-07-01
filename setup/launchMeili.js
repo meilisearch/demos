@@ -39,7 +39,7 @@ const settings = {
   ],
   stopWords: ['a', 'an', 'the'],
   synonyms: { },
-  attributesForFaceting: [
+  filterableAttributes: [
     'Nationality', 'Gender', 'Classification'
   ]
 }
