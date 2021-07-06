@@ -25,7 +25,7 @@
     "@fortawesome/vue-fontawesome": "^2.0.0",
     "@meilisearch/instant-meilisearch": "^0.5.0",
     "axios": "^0.21.1",
-    "bootstrap": "^5.0.1",
+    "bootstrap": "^5.0.2",
     "bootstrap-vue": "^2.21.1",
     "core-js": "^3.15.0",
     "dotenv": "^10.0.0",
