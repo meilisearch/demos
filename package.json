@@ -30,7 +30,7 @@
     "core-js": "^3.16.4",
     "dotenv": "^10.0.0",
     "instantsearch.css": "^7.4.5",
-    "meilisearch": "^0.19.0",
+    "meilisearch": "^0.20.0",
     "vue": "^2.6.12",
     "vue-instantsearch": "^4.0.0"
   },
