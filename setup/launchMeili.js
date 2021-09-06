@@ -49,7 +49,6 @@ const rankingRulesAsc = [
   'words',
   'proximity',
   'attribute',
-  'wordsPosition',
   'exactness',
   'asc(DateToSortBy)'
 ]
@@ -58,7 +57,6 @@ const rankingRulesDesc = [
   'words',
   'proximity',
   'attribute',
-  'wordsPosition',
   'exactness',
   'desc(DateToSortBy)'
 ]
@@ -67,7 +65,6 @@ const defaultRankingRules = [
   'words',
   'proximity',
   'attribute',
-  'wordsPosition',
   'exactness'
 ]
 
