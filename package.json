@@ -30,14 +30,15 @@
     "core-js": "^3.17.3",
     "dotenv": "^10.0.0",
     "instantsearch.css": "^7.4.5",
+    "lodash": "^4.17.21",
     "meilisearch": "^0.20.0",
     "vue": "^2.6.12",
     "vue-instantsearch": "^4.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.12",
-    "@vue/cli-service": "~4.5.12",
     "@vue/cli-plugin-eslint": "~4.5.12",
+    "@vue/cli-service": "~4.5.12",
     "autoprefixer": "^10.3.4",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.25.0",
