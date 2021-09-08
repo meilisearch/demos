@@ -54,15 +54,18 @@ function dataProcessing (data) {
   return processedDataArray
 }
 
-async function populateIndex (settings, { index, rules, name }, batchedDataSet) {
-  await index.updateSettings({ ...settings, rankingRules: rules })
-  console.log(`Settings added to ${name} index.`)
+async function populateIndex ({ index, name }, batchedDataSet) {
   console.log(`Adding documents to ${name}...`)
   const allBatches = batchedDataSet.map(async batch =>
     await index.addDocuments(batch)
   )
   const promiseBatches = await Promise.all(allBatches)
   return promiseBatches
+}
+
+async function addSettings ({ index, name }, settings) {
+  await index.updateSettings(settings)
+  console.log(`Settings added to ${index} index.`)
 }
 
 async function sleep (ms) {
@@ -100,7 +103,8 @@ const setupFunctions = {
   dataProcessing,
   populateIndex,
   sleep,
-  meiliUpdates
+  meiliUpdates,
+  addSettings
 }
 
-module.exports = { setupFunctions }
+module.exports = setupFunctions
