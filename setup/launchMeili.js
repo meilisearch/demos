@@ -1,7 +1,8 @@
 const { MeiliSearch } = require('meilisearch')
 const dataset = require('./Artworks.json')
 const { dataProcessing, batch, populateIndex, meiliUpdates, addSettings } = require('./setup')
-const _ = require('lodash')
+const isEqual = require('lodash/isEqual')
+const sortBy = require('lodash/sortBy')
 
 require('dotenv').config()
 
@@ -72,7 +73,7 @@ const settings = {
   const currentSettings = await index.getSettings()
 
   // Add new settings if they have changed
-  if (!_.isEqual({ ...settings, filterableAttributes: _.sortBy(settings.filterableAttributes) }, { ...currentSettings, filterableAttributes: _.sortBy(currentSettings.filterableAttributes) })) {
+  if (!isEqual({ ...settings, filterableAttributes: sortBy(settings.filterableAttributes) }, { ...currentSettings, filterableAttributes: sortBy(currentSettings.filterableAttributes) })) {
     await addSettings({ index, name: INDEX }, settings)
   }
 
