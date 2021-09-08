@@ -1,11 +1,11 @@
 const { MeiliSearch } = require('meilisearch')
 const dataset = require('./Artworks.json')
-const { setupFunctions } = require('./setup')
-const dataProcessing = setupFunctions.dataProcessing
-const batch = setupFunctions.batch
-const populateIndex = setupFunctions.populateIndex
-const meiliUpdates = setupFunctions.meiliUpdates
+const { dataProcessing, batch, populateIndex, meiliUpdates, addSettings } = require('./setup')
+const _ = require('lodash')
+
 require('dotenv').config()
+
+const INDEX = 'artWorks'
 
 const settings = {
   distinctAttribute: null,
@@ -38,35 +38,20 @@ const settings = {
     'DateToSortBy'
   ],
   stopWords: ['a', 'an', 'the'],
-  synonyms: { },
+  synonyms: {},
   filterableAttributes: [
     'Nationality', 'Gender', 'Classification'
+  ],
+  sortableAttributes: ['DateToSortBy'],
+  rankingRules: [
+    'typo',
+    'words',
+    'proximity',
+    'attribute',
+    'sort',
+    'exactness'
   ]
 }
-
-const rankingRulesAsc = [
-  'typo',
-  'words',
-  'proximity',
-  'attribute',
-  'exactness',
-  'asc(DateToSortBy)'
-]
-const rankingRulesDesc = [
-  'typo',
-  'words',
-  'proximity',
-  'attribute',
-  'exactness',
-  'desc(DateToSortBy)'
-]
-const defaultRankingRules = [
-  'typo',
-  'words',
-  'proximity',
-  'attribute',
-  'exactness'
-]
 
 ;(async () => {
   // Create client
@@ -82,28 +67,18 @@ const defaultRankingRules = [
   const batchedDataSet = batch(processedDataSet, 10000)
 
   // Get or create indexes
-  const artWorksIndex = await client.getOrCreateIndex('artWorks', { primaryKey: 'ObjectID' })
-  const artWorksAscIndex = await client.getOrCreateIndex('artWorksAsc', { primaryKey: 'ObjectID' })
-  const artWorksDescIndex = await client.getOrCreateIndex('artWorksDesc', { primaryKey: 'ObjectID' })
+  const index = await client.getOrCreateIndex(INDEX, { primaryKey: 'ObjectID' })
 
-  // Create Indexes array
-  const indexArray = [
-    { name: 'artWorks', index: artWorksIndex, rules: defaultRankingRules },
-    { name: 'artWorksAsc', index: artWorksAscIndex, rules: rankingRulesAsc },
-    { name: 'artWorksDesc', index: artWorksDescIndex, rules: rankingRulesDesc }
-  ]
+  const currentSettings = await index.getSettings()
 
-  const filteredArray = await Promise.all(
-    indexArray.map(async index => await index.index.getStats()))
-    .then(res =>
-      indexArray.filter((index, i) => {
-        if (res[i].numberOfDocuments === dataset.length) {
-          return console.log(`Index "${index.name}" already exists`)
-        } else return true
-      })
-    )
+  // Add new settings if they have changed
+  if (!_.isEqual({ ...settings, filterableAttributes: _.sortBy(settings.filterableAttributes) }, { ...currentSettings, filterableAttributes: _.sortBy(currentSettings.filterableAttributes) })) {
+    await addSettings({ index, name: INDEX }, settings)
+  }
 
-  await Promise.all(filteredArray.map(async index => await populateIndex(settings, index, batchedDataSet)))
-  const waitForProcessing = filteredArray.map(async index => await meiliUpdates(client, index.name))
-  Promise.all(waitForProcessing)
+  const stats = await index.getStats()
+  if (stats.numberOfDocuments !== dataset.length) {
+    await populateIndex({ index, name: INDEX }, batchedDataSet)
+  }
+  await meiliUpdates(client, INDEX)
 })()
