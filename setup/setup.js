@@ -65,7 +65,7 @@ async function populateIndex ({ index, name }, batchedDataSet) {
 
 async function addSettings ({ index, name }, settings) {
   await index.updateSettings(settings)
-  console.log(`Settings added to ${index} index.`)
+  console.log(`Settings added to ${name} index.`)
 }
 
 async function sleep (ms) {
