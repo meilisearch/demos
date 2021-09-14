@@ -65,7 +65,7 @@ const settings = {
   const processedDataSet = dataProcessing(dataset)
 
   // Add documents batches array
-  const batchedDataSet = batch(processedDataSet, 10000)
+  const batchedDataSet = batch(processedDataSet, 100000)
 
   // Get or create indexes
   const index = await client.getOrCreateIndex(INDEX, { primaryKey: 'ObjectID' })
