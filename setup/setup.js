@@ -81,9 +81,11 @@ async function meiliUpdates (client, uid) {
     try {
       const updates = await client.index(uid).getAllUpdateStatus()
       const processed = updates.filter(update => update.status === 'processed')
+      const processing = updates.filter(update => update.status === 'processing')
       const enqueued = updates.filter(update => update.status === 'enqueued')
       console.log(`${uid}:`)
       console.log(`${processed.length} / ${updates.length} have been processed`)
+      console.log(`${processing.length} / ${updates.length} is being processed`)
       console.log(`${enqueued.length} / ${updates.length} still enqueued`)
       console.log('-------------')
       if (enqueued.length === 0) allProcessed = true
