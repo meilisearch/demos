@@ -105,7 +105,7 @@ const setupFunctions = {
   dataProcessing,
   populateIndex,
   sleep,
-  meiliUpdates,
+  watchUpdates,
   addSettings
 }
 
