@@ -7,6 +7,7 @@ const sortBy = require('lodash/sortBy')
 require('dotenv').config()
 
 const INDEX = 'artWorks'
+const BATCH_SIZE = 100000
 
 const settings = {
   distinctAttribute: null,
