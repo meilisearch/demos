@@ -54,15 +54,18 @@ function dataProcessing (data) {
   return processedDataArray
 }
 
-async function populateIndex (settings, { index, rules, name }, batchedDataSet) {
-  await index.updateSettings({ ...settings, rankingRules: rules })
-  console.log(`Settings added to ${name} index.`)
+async function populateIndex ({ index, name }, batchedDataSet) {
   console.log(`Adding documents to ${name}...`)
   const allBatches = batchedDataSet.map(async batch =>
     await index.addDocuments(batch)
   )
   const promiseBatches = await Promise.all(allBatches)
   return promiseBatches
+}
+
+async function addSettings ({ index, name }, settings) {
+  await index.updateSettings(settings)
+  console.log(`Settings added to ${name} index.`)
 }
 
 async function sleep (ms) {
@@ -78,9 +81,11 @@ async function meiliUpdates (client, uid) {
     try {
       const updates = await client.index(uid).getAllUpdateStatus()
       const processed = updates.filter(update => update.status === 'processed')
+      const processing = updates.filter(update => update.status === 'processing')
       const enqueued = updates.filter(update => update.status === 'enqueued')
       console.log(`${uid}:`)
       console.log(`${processed.length} / ${updates.length} have been processed`)
+      console.log(`${processing.length} / ${updates.length} is being processed`)
       console.log(`${enqueued.length} / ${updates.length} still enqueued`)
       console.log('-------------')
       if (enqueued.length === 0) allProcessed = true
@@ -100,7 +105,8 @@ const setupFunctions = {
   dataProcessing,
   populateIndex,
   sleep,
-  meiliUpdates
+  watchUpdates,
+  addSettings
 }
 
-module.exports = { setupFunctions }
+module.exports = setupFunctions
