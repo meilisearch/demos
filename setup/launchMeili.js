@@ -1,6 +1,6 @@
 const { MeiliSearch } = require('meilisearch')
 const dataset = require('./Artworks.json')
-const { dataProcessing, batch, populateIndex, meiliUpdates, addSettings } = require('./setup')
+const { dataProcessing, batch, populateIndex, watchUpdates, addSettings } = require('./setup')
 const isEqual = require('lodash/isEqual')
 const sortBy = require('lodash/sortBy')
 
