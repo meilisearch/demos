@@ -78,8 +78,9 @@ const settings = {
   }
 
   const stats = await index.getStats()
+  // Add documents if index is empty
   if (stats.numberOfDocuments !== dataset.length) {
     await populateIndex({ index, name: INDEX }, batchedDataSet)
   }
-  await meiliUpdates(client, INDEX)
+  await watchUpdates(client, INDEX)
 })()
