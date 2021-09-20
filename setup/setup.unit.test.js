@@ -1,4 +1,4 @@
-import { setupFunctions } from './setup'
+import setupFunctions from './setup'
 
 describe('batch', () => {
   const array = [1, 2, 3, 4, 5, 6]
@@ -124,7 +124,7 @@ describe('meiliUpdates', () => {
   const uid = 'art'
   test('should log into the console the update status', async () => {
     jest.spyOn(setupFunctions, 'sleep').mockImplementation(() => {})
-    await setupFunctions.meiliUpdates(client, uid)
+    await setupFunctions.watchUpdates(client, uid)
     expect(consoleLogSpy).toHaveBeenCalledWith(`Start update watch for ${uid}`)
     expect(consoleLogSpy).toHaveBeenCalledWith('-------------')
     expect(consoleLogSpy).toHaveBeenCalledWith(`${uid}:`)
