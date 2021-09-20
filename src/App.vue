@@ -63,7 +63,7 @@
                     :items="[
                       { value: 'artWorks', label: 'Featured' },
                       { value: 'artWorks:DateToSortBy:asc', label: 'Date asc.' },
-                      { value: 'artWorks:DateToSortBy:desc', label: 'Date desc.' }                    
+                      { value: 'artWorks:DateToSortBy:desc', label: 'Date desc.' }
                     ]"
                     :class-names="{
                       'ais-SortBy': 'MyCustomSortBy'
