@@ -116,7 +116,7 @@ describe('sleep', () => {
   })
 })
 
-describe('meiliUpdates', () => {
+describe('watchUpdates', () => {
   const consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => {})
   const updates = [{ status: 'processed' }, { status: 'processed' }, { status: 'processed' }, { status: 'processed' }]
   const index = { getAllUpdateStatus: jest.fn().mockImplementation(() => { return updates }) }
