@@ -72,7 +72,7 @@ async function sleep (ms) {
   return await new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-async function meiliUpdates (client, uid) {
+async function watchUpdates (client, uid) {
   const standardSpeed = 500
   let allProcessed = false
   console.log(`Start update watch for ${uid}`)
