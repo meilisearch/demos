@@ -33,7 +33,7 @@
     "lodash": "^4.17.21",
     "meilisearch": "^0.20.1",
     "vue": "^2.6.12",
-    "vue-instantsearch": "^4.0.0"
+    "vue-instantsearch": "^4.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.12",
