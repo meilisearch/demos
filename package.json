@@ -23,7 +23,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/vue-fontawesome": "^2.0.0",
-    "@meilisearch/instant-meilisearch": "^0.5.4",
+    "@meilisearch/instant-meilisearch": "^0.5.5",
     "axios": "^0.21.4",
     "bootstrap": "^5.1.1",
     "bootstrap-vue": "^2.21.1",
