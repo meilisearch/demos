@@ -31,8 +31,12 @@ function arrayFieldToString (fieldValue) {
 function normalizeDate (document) {
   const date = document.Date
   const match = (/(\d{4})/).exec(date)
+  const parenthesis = (/[()]/g).exec(date)
+
   if (match) {
     document.DateToSortBy = match[0]
+  } else if (parenthesis) {
+    document.DateToSortBy = date.replace(/[()]/g, '')
   } else {
     document.DateToSortBy = date
   }
