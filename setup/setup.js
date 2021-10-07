@@ -29,16 +29,14 @@ function arrayFieldToString (fieldValue) {
 
 // Get year from Date field and add it to new field to make sorting by date easier
 function normalizeDate (document) {
-  const date = document.Date
-  const match = (/(\d{4})/).exec(date)
-  const parenthesis = (/[()]/g).exec(date)
-
-  if (match) {
-    document.DateToSortBy = match[0]
-  } else if (parenthesis) {
-    document.DateToSortBy = date.replace(/[()]/g, '')
+  let date = document.Date
+  if (date == null) {
+    document.DateToSortBy = 0
   } else {
-    document.DateToSortBy = date
+    date = date.replace(/\((.*)\)/, '$1') // removes parenthesis
+    date = date.replace(/.*([0-9]{4}).*/, '$1') // fetch the 4 first digits if exist
+    date = date.replace(/^[^0-9]{4}.*/, '0') // Change all fields with no valid year ( 4 digits in a row ) to 0
+    document.DateToSortBy = parseInt(date) // parse all values to int
   }
   return document
 }
