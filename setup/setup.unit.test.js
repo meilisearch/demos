@@ -67,15 +67,15 @@ describe('normalizeDate', () => {
   })
   test('DateToSortBy field should be equal to the year of the date field if a year exists', () => {
     result = setupFunctions.normalizeDate(document)
-    expect(result.DateToSortBy).toEqual('1881')
+    expect(result.DateToSortBy).toEqual(1881)
     const document2 = { Artist: ['Auguste Renoir'], Date: '25/02/1841' }
     const result2 = setupFunctions.normalizeDate(document2)
-    expect(result2.DateToSortBy).toEqual('1841')
+    expect(result2.DateToSortBy).toEqual(1841)
   })
-  test('DateToSortBy field should be equal to the date field if no year exists', () => {
+  test('DateToSortBy field should be equal to 0 if no year exists', () => {
     const documentWithNoYear = { Artist: ['René Magritte'], Date: 'Unknown' }
     result = setupFunctions.normalizeDate(documentWithNoYear)
-    expect(result.DateToSortBy).toEqual(documentWithNoYear.Date)
+    expect(result.DateToSortBy).toEqual(0)
   })
 })
 
