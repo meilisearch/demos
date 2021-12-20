@@ -35,8 +35,9 @@
 
 <br>
 
-#### Search in Steam video games with Instant MeiliSearch 🎮 
+#### Search in Steam video games with Instant MeiliSearch, maintained by the integration team 🎮 
 
+- [MeiliSearch + InstantSearch](https://codesandbox.io/s/ms-is-mese9?fontsize=14&hidenavigation=1&theme=dark)
 - [MeiliSearch + Vue InstantSearch](https://codesandbox.io/s/ms-vue-is-1d6bi?fontsize=14&hidenavigation=1&theme=dark&file=/src/App.vue)
 - [MeiliSearch + React InstantSearch](https://codesandbox.io/s/ms-angularis-7xipe)
 - [MeiliSearch + Angular InstantSearch](https://codesandbox.io/s/ms-angularis-7xipe)
