@@ -31,7 +31,7 @@
 | [ MeiliSearch finds PyPI packages ](https://github.com/meilisearch/demos/tree/main/src/finding-pypi) | https://pypi.meilisearch.com/ | MeiliSearch helps you find your favorite python packages|
 | [ MeiliSearch x MoMA ](https://github.com/meilisearch/demos/tree/main/src/MoMA) | https://moma.meilisearch.com/ | Search through the  [ Museum Of Modern Art Collection ](https://github.com/MuseumofModernArt/collection) with MeiliSearch|
 | [ Search in Nobel Prizes with MeiliSearch ](https://github.com/meilisearch/demos/tree/main/src/nobel-prizes) |  https://codesandbox.io/s/naughty-napier-zdy1r?file=/src/App.vue | Search through all Nobel Prize winners and their details with MeiliSearch |
-| [ Search in world cities ](hhttps://github.com/meilisearch/demos/tree/main/src/geo-javascript) |  https://codesandbox.io/s/instant-meilisearch-geo-search-6c96p | Play with Geosearch features and find info about large cities |
+| [ Search in world cities ](https://github.com/meilisearch/demos/tree/main/src/geo-javascript) |  https://codesandbox.io/s/instant-meilisearch-geo-search-6c96p | Play with Geosearch features and find info about large cities |
 
 <br>
 
