@@ -1,0 +1,209 @@
+#results-container {
+    min-height: 300px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+@media (min-width: 770px) {
+    #results-container {
+        width: 700px;
+        margin-top: -60px;
+    }
+}
+
+@media (max-width: 769px) {
+    #results-container {
+        padding: 0px 10px;
+        width: 100%;
+        margin-top: -30px;
+    }
+}
+
+.pkg-result {
+    background-color: #FFF;
+    border: #69C solid 1px;
+    border-radius: 2px;
+    margin-bottom: 5px;
+}
+
+.result-head {
+    display: flex;
+    width: 100%;
+}
+
+.result-name {
+    background-color: #69C;
+    color: #FFF;
+    font-size: 1.1rem;
+    font-weight: 100;
+    text-align: left;
+    padding: 4px;
+    padding-left: 8px;
+    flex-grow: 1;
+}
+
+.result-version {
+    background-color: #5787B7;
+    flex-basis: 15%;
+    padding: 2px 10px;
+    align-content: center;
+    text-align: center;
+    color: #FFF;
+}
+
+@media (max-width: 769px) {
+    .result-name {
+        flex-basis: 80%;
+    }
+    .result-version {
+        flex-basis: 20%;
+    }
+}
+
+.result-name em {
+    background-color: rgba(255, 187, 61, 0.541);
+    padding: 0;
+    margin: 0;
+    border-radius: 2px;
+}
+
+.result-body {
+    background-color: #FFF;
+    padding: 5px;
+}
+
+.result-description {
+    color: #333;
+    text-align: left;
+    padding-left: 15px;
+    display: flex;
+}
+
+.result-description em {
+    background-color:rgba(255, 187, 61, 0.25);
+    padding: 0;
+    margin: 0;
+    border-radius: 2px;
+}
+
+.result-description-img {
+    padding: 5px;
+    border-radius: 5px;
+    align-self: flex-start;
+    flex-basis: 6%;
+}
+
+.result-description-content {
+    padding: 2px;
+    margin: 2px;
+    padding-left: 14px;
+    padding-right: 18px;
+    border-radius: 2px;
+    flex-basis: 79%;
+    text-align: justify;
+}
+
+.result-description-downloads {
+    padding: 3px 6px;
+    margin: 2px;
+    margin-left: 7px;
+    border-radius: 2px;
+    background-color: rgba(161, 217, 255, 0.15);
+    flex-basis: 12%;
+    height: 45px;
+}
+
+@media (max-width: 769px) {
+    
+    .result-description {
+        padding-left: 0px;
+    }
+
+    .result-description-img {
+        padding: 0px;
+        display:none;
+    }
+    
+    .result-description-content {
+        flex-basis: 80%;
+        padding: 0 10px;
+    }
+    
+    .result-description-downloads {
+        flex-basis: 20%;
+    }
+    .result-description-downloads-title img {
+        display: none;
+    }
+}
+
+.result-description-downloads-number {
+    text-align: center;
+    background-color: None;
+    border-bottom: rgba(0, 0, 0, 0.15) solid 1px;
+    margin-bottom: 4px;
+}
+
+.result-description-downloads-title {
+    line-height: 0.6rem;
+    font-size: 0.6rem;
+    padding: 2px;
+    text-align: center;
+
+}
+
+.site-container {
+    text-align: center;
+}
+
+.footer-link {
+    text-align: center;
+}
+
+.footer-link li {
+    list-style: none;
+}
+
+.footer-link li a {
+    background-image:none;
+    color:hsla(0,0%,100%,.95);
+}
+
+.invert{
+    -webkit-filter: invert(100%);
+}
+
+.item-selected {
+    border: #69C solid 2px;
+}
+
+.item-selected .result-body {
+    background-color: #DEF;
+    padding: 5px;
+}
+
+#github-stars {
+    position: relative;
+    top:10px;
+}
+
+.homepage-banner__title {
+    font-size: 2rem;
+    padding: 0;
+    padding-bottom: 20px;
+}
+
+.banner {
+    padding:25px;
+}
+
+.horizontal-menu__item img {
+    margin-right: 5px;
+    width: 15px;
+}
+
+@media (max-width: 769px) {
+    .result-body {
+        padding: 0px !important;
+    }
+}
