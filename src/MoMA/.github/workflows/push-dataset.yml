@@ -1,0 +1,27 @@
+name: push-dataset
+on:
+  push:
+    branches:
+    - main
+    paths:
+    - 'setup/**.js'
+    - '.github/**/push-dataset.yml'
+
+jobs: 
+
+  prep-meilisearch:
+      runs-on: ubuntu-18.04
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+        - name: Install modules
+          run: npm install
+        - name: Get dataset
+          run: npm run get-dataset
+        - name: Test
+          run: npm run test
+        - name: Prep MeiliSearch
+          run: npm run prep-meili
+      env:
+        VUE_APP_MEILISEARCH_HOST: ${{ secrets.VUE_APP_MEILISEARCH_HOST }}
+        VUE_APP_MEILISEARCH_API_KEY: ${{ secrets.VUE_APP_MEILISEARCH_API_KEY }}
