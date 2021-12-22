@@ -1,24 +1,25 @@
 {
-  "name": "js-playground",
+  "name": "instant-meilisearch-geo-search",
   "version": "0.1.0",
-  "description": "Instant-meilisearch playground focussed on GeoSearch written with vanilla javascript",
-  "main": "index.js",
+  "description": "A geosearch demo using MeiliSearch, InstantSearch, GoogleMaps and instant-meilisearch",
+  "main": "index.html",
   "scripts": {
-    "start": "parcel serve index.html --open",
+    "start": "parcel index.html --open",
     "build": "parcel build index.html"
   },
+  "browserslist": ["defaults"],
+  "dependencies": {
+    "@meilisearch/instant-meilisearch": "0.5.10",
+    "instantsearch.js": "4.33.2",
+    "parcel-bundler": "^1.6.1",
+    "scriptjs": "2.5.9"
+  },
   "devDependencies": {
-    "@babel/core": "^7.13.1",
-    "parcel-bundler": "^1.12.4"
+    "@babel/core": "7.2.0"
   },
   "resolutions": {
-    "node-forge": "^0.10.0"
+    "@babel/preset-env": "7.13.8"
   },
-  "browserslist": [
-    "defaults"
-  ],
-  "license": "MIT",
-  "dependencies": {
-    "scriptjs": "^2.5.9"
-  }
+  "keywords": ["meilisearch", "search", "instant-meilisearch"],
+  "license": "MIT"
 }
