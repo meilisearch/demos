@@ -1,4 +1,4 @@
-import { instantMeiliSearch } from '../../../src/client/index'
+import { instantMeiliSearch } from '@meilisearch/instant-meilisearch'
 import injectScript from 'scriptjs'
 
 const GOOGLE_API = process.env.GOOGLE_API
