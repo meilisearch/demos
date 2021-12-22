@@ -171,8 +171,8 @@ export default {
   data() {
     return {
       searchClient: instantMeiliSearch(
-        process.env.VUE_APP_MEILISEARCH_HOST,
-        process.env.VUE_APP_MEILISEARCH_API_KEY
+        "https://demos.meilisearch.com",
+        "dc3fedaf922de8937fdea01f0a7d59557f1fd31832cb8440ce94231cfdde7f25"
       ),
       show: true,
       isExpanded: true,
