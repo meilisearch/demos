@@ -27,7 +27,7 @@ $ ./run.sh
 
 ## Details
 
-The front is deployed to GitHub Pages.
+The front is deployed to Vercel.
 
 We pull new crates and crates updates every 10 minutes from [docs.rs](https://docs.rs/releases) and all the downloads counts every day at 3:30 PM UTC from [crates.io](https://crates.io/data-access).
 
