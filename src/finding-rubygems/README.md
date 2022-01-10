@@ -65,7 +65,7 @@ client.index(index_uid).update_settings(settings)
 
 ## Details
 
-The front is deployed to GitHub Pages.
+The front is deployed to Vercel.
 
 All gems data and main of HTML/CSS come from [RubyGems website](https://rubygems.org/).
 
