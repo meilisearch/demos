@@ -37,8 +37,8 @@ See our [Documentation](https://docs.meilisearch.com/learn/security/tenant_token
 ## 📝 Requirements
 
  - [NodeJs](https://nodejs.org/en/download/)
+ - npm
  - [Docker](https://docs.docker.com/get-docker/)
- - [Meilisearch](https://docs.meilisearch.com/learn/getting_started/quick_start.html)
  
 ## 🎁 Content of this repository
 In this repository, you will find three sub directories:
@@ -48,15 +48,13 @@ In this repository, you will find three sub directories:
 
 ## 🎬 Getting Started
 
->Prerequisite: Start Docker before going further
-
-We will set up things in sequence to avoid dependencies.
+>Prerequisite: Start Docker and download latest Meilisearch docker image using the command `docker pull getmeili/meilisearch:latest` before going further.
 
 ### 1. Seed Data
 
 Navigate to `/seed` and create a **.env** file with content
 ```
-MEILI_API_KEY= <PUT_YOUR_API_KEY_HERE>
+MEILI_API_KEY=<PUT_YOUR_API_KEY_HERE>
 ```
 Then run `npm run meilisearch-serve`  to start meilisearch on docker.
 

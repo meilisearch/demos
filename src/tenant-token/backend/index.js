@@ -16,7 +16,6 @@ app.get("/", function (req, res) {
 });
 
 app.get("/create-tenant-token", async (req, res) => {
-  let tenantToken = "";
   const { value } = req.query;
 
   const { results } = await client.getKeys();
@@ -33,7 +32,7 @@ app.get("/create-tenant-token", async (req, res) => {
     new Date().setFullYear(new Date().getFullYear() + 1)
   );
 
-  tenantToken = client.generateTenantToken(payload, {
+  const tenantToken = client.generateTenantToken(payload, {
     apiKey,
     expiresAt,
   });
