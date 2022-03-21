@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { useUser } from 'context/UserContext'
 import Button from 'components/Button/Button'
-import axios from 'axios'
-import { MEILISEARCH_CONFIG } from 'config'
+import { getTenantToken } from 'config'
 
 function CreateToken({ switchToAboutMode }) {
   const [filterValue, setFilterValue] = useState('')
@@ -12,24 +11,18 @@ function CreateToken({ switchToAboutMode }) {
     if (!filterValue) {
       return alert('Please input a name')
     }
-    let existingUser = usersList.find((u) => u.name.toLowerCase() === filterValue.toLowerCase())
+    let existingUser = usersList.find(
+      (u) => u.name.toLowerCase() === filterValue.toLowerCase()
+    )
 
     if (existingUser) {
       setUser(existingUser)
     } else {
-      let response = {}
       let userName = filterValue
 
-      /* Replace this comment with the API request */
-      response = await axios({
-        url: `${MEILISEARCH_CONFIG.API_HOST}/create-tenant-token`,
-        method: 'GET',
-        params: {
-          value: userName,
-        },
-      })
+      const tenantToken = await getTenantToken(userName)
 
-      addUser({ key: response.data.token, name: userName })
+      addUser({ key: tenantToken, name: userName })
     }
     switchToAboutMode()
   }

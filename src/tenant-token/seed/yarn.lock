@@ -2,19 +2,24 @@
 # yarn lockfile v1
 
 
-"cross-fetch@^3.1.4":
+"cross-fetch@^3.1.5":
   "integrity" "sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw=="
   "resolved" "https://registry.npmjs.org/cross-fetch/-/cross-fetch-3.1.5.tgz"
   "version" "3.1.5"
   dependencies:
     "node-fetch" "2.6.7"
 
-"meilisearch@^0.24.0":
-  "integrity" "sha512-qME1dsHZePBQi8qFdhbilcFzaL+oZJgUuls+FZ23hHpdhJI+iMFSmjjcfsxq5hdg2qczbCXv7yAo3Sh8xgfkgA=="
-  "resolved" "https://registry.npmjs.org/meilisearch/-/meilisearch-0.24.0.tgz"
-  "version" "0.24.0"
+"dotenv@^16.0.0":
+  "integrity" "sha512-qD9WU0MPM4SWLPJy/r2Be+2WgQj8plChsyrCNQzW/0WjvcJQiKQJ9mH3ZgB3fxbUUxgc/11ZJ0Fi5KiimWGz2Q=="
+  "resolved" "https://registry.npmjs.org/dotenv/-/dotenv-16.0.0.tgz"
+  "version" "16.0.0"
+
+"meilisearch@^0.25.0":
+  "integrity" "sha512-TSIJTh5lva7WHBaoG3arNYQXuIAQkcD3BY09h2nHhjHS/wzxWKJM45x5bEC67Grw8zXihVqqmWty4a4ps4S+tg=="
+  "resolved" "https://registry.npmjs.org/meilisearch/-/meilisearch-0.25.0.tgz"
+  "version" "0.25.0"
   dependencies:
-    "cross-fetch" "^3.1.4"
+    "cross-fetch" "^3.1.5"
 
 "node-fetch@2.6.7":
   "integrity" "sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ=="

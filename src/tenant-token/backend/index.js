@@ -16,15 +16,16 @@ app.get("/", function (req, res) {
 });
 
 app.get("/create-tenant-token", async (req, res) => {
-  const { value } = req.query;
+  const { value: userName } = req.query;
+
+  /* Replace this comment with the API request */
 
   const { results } = await client.getKeys();
-  const apiKeyList = results.filter((res) => res.description === "SEARCH");
-  const apiKey = apiKeyList[0].key;
+  const apiKey = results[0].key;
 
   const payload = {
     tenant_token: {
-      filter: `user = ${value}`,
+      filter: `user = ${userName}`,
     },
   };
 
