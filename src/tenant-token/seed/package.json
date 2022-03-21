@@ -1,0 +1,18 @@
+{
+  "name": "meilisearch-tenant-token-seed",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "meilisearch-serve": "MEILI_API_KEY=$(grep MEILI_API_KEY .env | cut -d '=' -f2) && docker run -it --rm -p 7700:7700 -v $(pwd)/data.ms:/data.ms getmeili/meilisearch:v0.26.0 ./meilisearch --master-key=$MEILI_API_KEY",
+    "meilisearch-delete": "docker run -it --rm -p 7700:7700 -v $(pwd)/data.ms:/data.ms getmeili/meilisearch:v0.26.0 ./meilisearch --import-dump /dumps/your_dump_file.dump",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "meilisearch": "^0.25.0"
+  }
+}

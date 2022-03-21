@@ -1,0 +1,19 @@
+#seed
+/seed/.env
+/seed/node_modules/
+/seed/data.ms/
+/seed/data.json
+
+#backend
+/backend/data.json
+/backend/node_modules/
+/backend/.env
+/backend/data.ms/
+
+# frontend
+/frontend/node_modules/
+/frontend/build/
+/frontend/.env
+
+# others
+.DS_Store
