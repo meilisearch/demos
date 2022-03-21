@@ -37,7 +37,7 @@ See our [Documentation](https://docs.meilisearch.com/learn/security/tenant_token
 ## 📝 Requirements
 
  - [NodeJs](https://nodejs.org/en/download/)
- - npm
+ - [npm](https://www.npmjs.com/get-npm)
  - [Docker](https://docs.docker.com/get-docker/)
  
 ## 🎁 Content of this repository
