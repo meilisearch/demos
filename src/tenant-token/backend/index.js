@@ -16,7 +16,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/create-tenant-token", async (req, res) => {
-  const { value: userName } = req.query;
+  const { value: patientName } = req.query;
 
   /* Replace this comment with the API request */
 
@@ -25,7 +25,7 @@ app.get("/create-tenant-token", async (req, res) => {
 
   const payload = {
     tenant_token: {
-      filter: `user = ${userName}`,
+      filter: `patient = ${patientName}`,
     },
   };
 

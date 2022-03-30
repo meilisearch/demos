@@ -1,7 +1,6 @@
 import { MEILISEARCH_CONFIG } from 'config'
 import axios from 'axios'
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import { useSearch } from './MeiliSearchContext'
 
 const DEFAULT_USERS = [
   {
@@ -19,8 +18,6 @@ export function useUser() {
 export function UserProvider({ children }) {
   const [user, setUser] = useState(DEFAULT_USERS[0])
   const [usersList, setUsersList] = useState(DEFAULT_USERS)
-
-  const { setApiKey, setSearchText } = useSearch()
 
   useEffect(() => {
     const fetchIntialTokens = async () => {
@@ -40,15 +37,6 @@ export function UserProvider({ children }) {
       ])
     })
   }, [])
-
-  useEffect(() => {
-    if (user) {
-      setApiKey(user.key)
-      setSearchText('')
-    }
-
-    // eslint-disable-next-line
-  }, [user])
 
   function addUser(data) {
     setUsersList((list) => [...list, data])

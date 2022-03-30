@@ -15,14 +15,35 @@ body {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  font-family: 'Work Sans';
 }
 
-.create-token--input {
-  outline: none;
-  border-bottom: 1px solid #0005;
-  transition: 0.2s ease;
+
+@font-face {
+  font-family: 'Work Sans';
+  src: url('../public/fonts/Work_Sans/light.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
 }
 
-.create-token--input:focus {
-  border-color: #000;
-}
+@font-face {
+    font-family: 'Work Sans';
+    src: url("../public/fonts/Work_Sans/regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Work Sans';
+    src: url("../public/fonts/Work_Sans/medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Work Sans';
+    src: url("../public/fonts/Work_Sans/bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+  }
+

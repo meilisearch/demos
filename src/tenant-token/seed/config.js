@@ -3,7 +3,7 @@ const MEILISEARCH_CONFIG = {
   MASTER_KEY: process.env.MEILI_API_KEY,
   INDEX_NAME: "tenant_token",
 };
-const userNameList = [
+const patientNameList = [
   "Zia",
   "Kevin",
   "Charlotte",
@@ -26,4 +26,4 @@ const diseaseList = [
   "Typhoid",
 ];
 
-module.exports = { MEILISEARCH_CONFIG, userNameList, diseaseList };
+module.exports = { MEILISEARCH_CONFIG, patientNameList, diseaseList };

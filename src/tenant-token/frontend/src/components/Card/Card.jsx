@@ -1,18 +1,17 @@
 import React from 'react'
 
 function Card({ data }) {
-  const { isDoctorAppointed, user: userName, roomNumber, description } = data
+  const { isDoctorAppointed, patient, roomNumber, description } = data
 
   return (
     <div
-      className="flex flex-col justify-between w-[250px] bg-white  p-5 m-2 xl:mr-10"
+      className="flex flex-col justify-between w-[250px] bg-white  p-5 m-2 xl:mr-10 rounded-[20px]"
       style={{
-        boxShadow: ' 0px 0px 30px rgba(0, 0, 0, 0.05)',
-        borderRadius: '20px',
+        boxShadow: '0px 0px 30px rgba(0, 0, 0, 0.05)',
       }}
     >
       <div>
-        <div className="font-bold">{userName}</div>
+        <div className="font-bold">{patient}</div>
         {isDoctorAppointed ? (
           <div className="text-green-500 font-medium">
             Doctor is appointed ✓

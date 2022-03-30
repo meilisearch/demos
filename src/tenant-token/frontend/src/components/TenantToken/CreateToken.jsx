@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useUser } from 'context/UserContext'
 import Button from 'components/Button/Button'
-import { getTenantToken } from 'config'
+import { getTenantToken } from 'util'
 
 function CreateToken({ switchToAboutMode }) {
   const [filterValue, setFilterValue] = useState('')
@@ -50,10 +50,10 @@ function CreateToken({ switchToAboutMode }) {
             <div>{'{'}</div>
             <div className="ml-4">{'“searchRules”: {'}</div>
             <div className="ml-8">
-              “filter”: “user =
+              “filter”: patient =
               <input
                 type="text"
-                className="ml-1 w-24 modal-filter-input create-token--input"
+                className="ml-1 w-24 modal-filter-input outline-none border-b focus:border-[#000]"
                 value={filterValue}
                 placeholder="Enter name"
                 onChange={(e) => setFilterValue(e.target.value)}

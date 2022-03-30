@@ -18,10 +18,10 @@ const meiliSearchSeed = async () => {
     `Document added to the Meilisearch instance: ${MEILISEARCH_CONFIG.HOST}`
   );
 
-  await index.updateFilterableAttributes(["user", "isDoctorAppointed"]);
+  await index.updateFilterableAttributes(["patient", "isDoctorAppointed"]);
   console.log("Filterable attribute updated");
 
-  await index.updateSearchableAttributes(["user", "description", "roomNumber"]);
+  await index.updateSearchableAttributes(["patient", "description", "roomNumber"]);
   console.log("Searchable attribute updated");
 };
 
