@@ -1,0 +1,14 @@
+
+# TODO: implement variable substitution once default value is implemented
+# see https://github.com/docker/compose/issues/2441
+
+version: '2'
+services:
+  nodejs:
+    build: .
+    image: nikita_tools_dconf
+    container_name: nikita_tools_dconf
+    volumes:
+      - ../../../../:/nikita
+    environment:
+      NIKITA_TEST_MODULE: /nikita/packages/tools/env/dconf/test.coffee

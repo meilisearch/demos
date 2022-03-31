@@ -1,0 +1,34 @@
+{
+  "private": true,
+  "devDependencies": {
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-conventional": "^12.0.1",
+    "@commitlint/config-lerna-scopes": "^12.0.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^5.1.3",
+    "lerna": "^4.0.0"
+  },
+  "scripts": {
+    "compile": "lerna run compile",
+    "clean": "lerna run clean",
+    "docs:clean": "cd docs/website && yarn clean",
+    "docs:develop": "cd docs/website && yarn develop",
+    "lint": "lerna run lint",
+    "test": "lerna run test",
+    "test:local": "lerna run test:local",
+    "goodies:lxd:macos": "./packages/lxd/assets/multipass.sh",
+    "update-version": "lerna publish --skip-git --skip-npm --force-publish '*'",
+    "check-packages": "yarn clean && yarn compile && yarn test && yarn lint",
+    "publish-packages": "./scripts/publish",
+    "postinstall": "husky install"
+  },
+  "workspaces": [
+    "extra/*",
+    "packages/*"
+  ],
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}

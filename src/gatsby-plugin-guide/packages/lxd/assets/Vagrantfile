@@ -1,0 +1,82 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  
+  host = RbConfig::CONFIG['host_os']
+  # Give VM 1/4 system memory & access to all cpu cores on the host
+  if host =~ /darwin/
+    cpus = `sysctl -n hw.ncpu`.to_i / 2
+    # sysctl returns Bytes and we need to convert to MB
+    mem = `sysctl -n hw.memsize`.to_i / 1024 / 1024 / 2
+  elsif host =~ /linux/
+    cpus = `nproc`.to_i / 2
+    # meminfo shows KB and we need to convert to MB
+    mem = `grep 'MemTotal' /proc/meminfo | sed -e 's/MemTotal://' -e 's/ kB//'`.to_i / 1024 / 2
+  else # sorry Windows folks, I can't help you
+    cpus = 4
+    mem = 4096
+  end
+  mem = [mem, 20000].min # 20MB is good enough
+  
+  config.vm.box = "ubuntu/groovy64" # 20.10
+  config.ssh.insert_key = true
+  config.vm.box_check_update = false
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+  config.vm.synced_folder "../../../", "/nikita"
+  # Private network could be removed, just to provide a network access point
+  config.vm.network :private_network, ip: "192.168.56.10"
+  config.vm.network :forwarded_port, guest: 2200, host: 2200, auto_correct: true
+  config.vm.network :forwarded_port, guest: 8443, host: 8443, auto_correct: true
+  config.vbguest.no_remote = true
+  config.vbguest.auto_update = false
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = 'lxd'
+    # Do this as a linked clone if we can.
+    vb.linked_clone = true if Gem::Version.new(Vagrant::VERSION) >= Gem::Version.new('1.8.0')
+    # Half the number of CPUs
+    vb.cpus = cpus
+    # Half the memory
+    vb.memory = mem
+    vagrant_root = File.dirname(File.expand_path(__FILE__))
+    file_to_disk = File.join(vagrant_root, 'lxd_zpool.vdi')
+    unless File.exist?(file_to_disk)
+      # lxc images are tiny by default but we may also store VMs.
+      # 30GB or 40GB will do, set to 60GB for confort.
+      vb.customize ['createhd', '--filename', file_to_disk, '--size', 60 * 1024]
+    end
+    # enabling hostiocache like this isn't safe, but it should be faster.
+    vb.customize ['storagectl', :id, '--name', 'SCSI', '--hostiocache', 'on']
+    vb.customize ['storageattach', :id, '--storagectl', 'SCSI', '--port', 2, '--device', 0, '--type', 'hdd', '--medium', file_to_disk]
+  end
+
+  config.vm.provision "shell", inline: <<-SHELL
+    apt-get update
+    apt-get install -y zfsutils-linux
+    zpool create -f lxd /dev/sdc
+    lxd init --auto --storage-backend=zfs --storage-pool=lxd
+    # wdavidw: nov 12th, 2019: throw the error `chmod: cannot access '/usr/local/bin/*': No such file or directory`
+    # chmod a+rx /usr/local/bin/*
+    lxc config set core.https_address '[::]:8443'
+    lxc config set core.trust_password "secret"
+    lxc config set images.remote_cache_expiry 30
+    lxc config set images.auto_update_interval 24
+    lxc config set images.auto_update_cached false
+    # Start out by preloading/caching some container images
+    # lxc launch -e images:centos/7 preload
+    # lxc delete --force preload
+    # lxc launch -e images:centos/6 preload
+    # lxc delete --force preload
+    # lxc launch -e images:ubuntu/xenial preload
+    # lxc delete --force preload
+    # Install Node.js to run the tests
+    # apt-get install -y make
+    # curl -L https://git.io/n-install | bash -s -- -y
+    # Append lxd group to vagrant user
+    # usermod --append --groups lxd vagrant
+    # For FreeIPA, host must have fs.protected_regular set to 0,
+    # check with `sysctl -a | grep protected`
+    echo 'fs.protected_regular = 0' >> /etc/sysctl.conf && sysctl -p
+  SHELL
+end

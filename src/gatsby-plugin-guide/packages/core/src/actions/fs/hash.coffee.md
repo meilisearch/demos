@@ -1,0 +1,128 @@
+
+# `nikita.fs.hash`
+
+Retrieve the hash of a file or a directory in hexadecimal 
+form.
+
+If the target is a directory, the returned hash 
+is the sum of all the hashs of the files it recursively 
+contains. The default algorithm to compute the hash is md5.
+
+If the target is a link, the returned hash is of the linked file.
+
+It is possible to use to action to assert the target file by passing a `hash`
+used for comparaison.
+
+## Returned output
+
+* `hash`   
+  The hash of the file or directory identified by the "target" option.
+
+## Schema definitions
+
+    definitions =
+      config:
+        type: 'object'
+        properties:
+          'algo':
+            type: 'string'
+            default: 'md5'
+            description: '''
+            Any algorythm supported by `openssl` such as "md5", "sha1" and
+            "sha256".
+            '''
+          'hash':
+            type: 'string'
+            description: '''
+            Assert that the targeted content match a provided hash.
+            '''
+          'stats':
+            typeof: 'object'
+            description: '''
+            Stat object of the target file. Short-circuit to avoid fetching the
+            stat object associated with the target if one is already available.
+            '''
+          'target':
+            type: 'string'
+            description: '''
+            The file or directory to compute the hash from.
+            '''
+        required: ['target']
+
+## Handler
+
+    handler = ({config}) ->
+      {stats} = if config.stats
+      then config.stats
+      else await @fs.base.stat config.target
+      unless utils.stats.isFile(stats.mode) or utils.stats.isDirectory(stats.mode)
+        throw errors.NIKITA_FS_HASH_FILETYPE_UNSUPPORTED config: config, stats: stats
+      hash = null
+      try
+        # Target is a directory
+        if utils.stats.isDirectory stats.mode
+          {files} = await @fs.glob  "#{config.target}/**", dot: true
+          {stdout} = await @execute
+            command: [
+              'command -v openssl >/dev/null || exit 2'
+              ...files.map (file) -> "[ -f #{file} ] && openssl dgst -#{config.algo} #{file} | sed 's/^.* \\([a-z0-9]*\\)$/\\1/g'"
+              'exit 0'
+            ].join '\n'
+            trim: true
+          hashs = utils.string.lines(stdout).filter( (line) -> /\w+/.test line ).sort()
+          hash = if hashs.length is 0
+          then crypto.createHash(config.algo).update('').digest('hex')
+          else if hashs.length is 1 then hashs[0]
+          else crypto.createHash(config.algo).update(hashs.join('')).digest('hex')
+        # Target is a file
+        else if utils.stats.isFile stats.mode
+          {stdout} = await @execute
+            command: """
+            command -v openssl >/dev/null || exit 2
+            openssl dgst -#{config.algo} #{config.target} | sed 's/^.* \\([a-z0-9]*\\)$/\\1/g'
+            """
+            trim: true
+          hash = stdout
+      catch err
+        if err.exit_code is 2
+          throw errors.NIKITA_FS_HASH_MISSING_OPENSSL()
+        throw err if err
+      if config.hash and config.hash isnt hash
+        throw errors.NIKITA_FS_HASH_HASH_NOT_EQUAL config: config, hash: hash
+      hash: hash
+
+## Exports
+
+    module.exports =
+      handler: handler
+      metadata:
+        argument_to_config: 'target'
+        shy: true
+        definitions: definitions
+
+## Errors
+
+    errors =
+      NIKITA_FS_HASH_FILETYPE_UNSUPPORTED: ({config, stats}) ->
+        utils.error 'NIKITA_FS_HASH_FILETYPE_UNSUPPORTED', [
+          'only "File" and "Directory" types are supported,'
+          "got #{JSON.stringify utils.stats.type stats.mode},"
+          "location is #{JSON.stringify config.target}"
+        ], target: config.target
+      NIKITA_FS_HASH_MISSING_OPENSSL: ->
+        utils.error 'NIKITA_FS_HASH_MISSING_OPENSSL', [
+          'the `openssl` command must be present on your system,'
+          "please install it before pursuing"
+        ]
+      NIKITA_FS_HASH_HASH_NOT_EQUAL: ({config, hash}) ->
+        utils.error 'NIKITA_FS_HASH_HASH_NOT_EQUAL', [
+          'the target hash does not equal the execpted value,'
+          "got #{JSON.stringify hash},"
+          "expected #{JSON.stringify config.hash}"
+        ], target: config.target
+        
+
+## Dependencies
+
+    crypto = require 'crypto'
+    utils = require '../../utils'

@@ -1,0 +1,11 @@
+
+networks:
+  lxdbr0public:
+    ipv4.address: 172.16.0.1/24
+    ipv4.nat: true
+    ipv6.address: none
+  lxdbr1private:
+    ipv4.address: 10.10.10.1/24
+    ipv4.nat: true
+    ipv6.address: none
+    dns.domain: nikita

@@ -1,0 +1,92 @@
+{
+  "name": "@nikitajs/docker",
+  "description": "Provides Nikita actions for various Docker operations.",
+  "keywords": [
+    "nikita",
+    "build",
+    "cli",
+    "deploy",
+    "fs",
+    "install",
+    "masson",
+    "ssh",
+    "system",
+    "task"
+  ],
+  "version": "1.0.0-alpha.2",
+  "author": "David Worms <david@adaltas.com>",
+  "bugs": {
+    "url": "https://github.com/adaltas/node-nikita/issues"
+  },
+  "coffeelintConfig": {
+    "indentation": {
+      "level": "error",
+      "value": 2
+    },
+    "line_endings": {
+      "level": "error",
+      "value": "unix"
+    },
+    "max_line_length": {
+      "level": "ignore"
+    }
+  },
+  "contributors": [
+    {
+      "name": "David Worms",
+      "email": "david@adaltas.com"
+    },
+    {
+      "name": "Sergei Kudinov",
+      "email": "sergei@adaltas.com"
+    }
+  ],
+  "dependencies": {
+    "@nikitajs/file": "^1.0.0-alpha.2"
+  },
+  "peerDependencies": {
+    "@nikitajs/core": "^1.0.0-alpha.1"
+  },
+  "devDependencies": {
+    "@nikitajs/network": "^1.0.0-alpha.2",
+    "coffeescript": "^2.6.1",
+    "mocha": "^9.1.3",
+    "mocha-they": "^0.1.2",
+    "should": "^13.2.3"
+  },
+  "engines": {
+    "node": ">= 10.0.0"
+  },
+  "files": [
+    "/lib"
+  ],
+  "mocha": {
+    "throw-deprecation": true,
+    "require": [
+      "should",
+      "coffeescript/register",
+      "@nikitajs/docker/src/register",
+      "@nikitajs/network/src/register"
+    ],
+    "inline-diffs": true,
+    "timeout": 10000,
+    "reporter": "spec",
+    "recursive": true
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://nikita.js.org/",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adaltas/node-nikita",
+    "directory": "packages/docker"
+  },
+  "scripts": {
+    "build": "coffee -b -o lib src && find lib -type f | xargs sed -i -e 's/@nikitajs\\/docker\\/src/@nikitajs\\/docker\\/lib/g'",
+    "test": "npm run test:local && npm run test:env",
+    "test:env": "env/run.sh",
+    "test:local": "mocha 'test/**/*.coffee'"
+  }
+}

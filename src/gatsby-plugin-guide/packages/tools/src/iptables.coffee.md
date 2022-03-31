@@ -1,0 +1,194 @@
+
+# `nikita.tools.iptables`
+
+Iptables is used to set up, maintain, and inspect the tables of IPv4 packet 
+filter rules in the Linux kernel.
+
+Iptables rules are only inserted if the service is started on the target system.
+
+## Output
+
+* `$status`   
+  Value is "true" if Iptables rules were created or modified.
+
+## Usage
+
+Iptables comes with many modules. Each of them which must be specifically 
+integrated to the parser part of this code. For this reason, we could only
+integrate a limited set of modules and more are added based on usages. Supported
+modules are:
+
+* `state`   
+  This module, when combined with connection tracking, allows access to the
+  connection tracking state for this packet.   
+* `comment`   
+  Allows you to add comments (up to 256 characters) to any rule.   
+* `limit`   
+  Matches at a limited rate using a token bucket filter.   
+* `tcp`   
+  Used if protocol is set to "tcp", the supported properties are "dport" and
+  "sport".   
+* `udp`   
+  Used if protocol is set to "udp", the supported properties are "dport" and
+  "sport".   
+
+## Example
+
+```js
+var after = {chain: 'INPUT', jump: 'ACCEPT', 'in-interface': 'lo'}
+const {$status} = await nikita.tools.iptables({
+  rules: [
+    chain: 'INPUT', after: after, jump: 'ACCEPT', dport: 22, protocol: 'tcp'
+  ]
+})
+console.info(`Iptables was updated: ${$status}`)
+```
+
+## Hooks
+
+    on_action = ({config}) ->
+      config.rules = [config.rules] unless Array.isArray config.rules
+
+## Schema definitions
+
+    definitions =
+      config:
+        type: 'object'
+        properties:
+          'rules':
+            type: 'array'
+            items:
+              $ref: '#/definitions/rule'
+            description: '''
+            One or more objects containing iptables rule definitions.
+            '''
+          'sudo':
+            $ref: 'module://@nikitajs/core/lib/actions/execute#/definitions/config/properties/sudo'
+        required: ['rules']
+      'rule':
+        allOf: [
+          $ref: '#/definitions/rule-config'
+        ,
+          type: 'object'
+          properties:
+            'after':
+              $ref: '#/definitions/rule-config'
+            'before':
+              $ref: '#/definitions/rule-config'
+            'comment':
+              type: 'string'
+              maxLength: 256
+              description: '''
+              Allows you to add comments (up to 256 characters) to any rule.
+              '''
+            'limit':
+              type: 'string'
+              description: '''
+              The protocol of the rule or of the packet to check.
+              '''
+            'state':
+              type: 'string'
+              description: '''
+              This module, when combined with connection tracking, allows
+              access to the connection tracking state for this packet.
+              '''
+            'tcp':
+              type: ['string', 'integer']
+              description: '''
+              Used if protocol is set to "tcp", the supported properties are
+              "dport" and "sport".
+              '''
+            'udp':
+              type: ['string', 'integer']
+              description: '''
+              Used if protocol is set to "udp", the supported properties are
+              "dport" and "sport".
+              '''
+        ]
+      'rule-config':
+        type: 'object'
+        properties:
+          'chain':
+            type: 'string'
+          'dport':
+            type: ['string', 'integer']
+            description: '''
+            Destination port or port range specification, see the "tcp" and
+            "udp" modules.
+            '''
+          'jump': type: 'string'
+          'in-interface':
+            type: 'string'
+            description: '''
+            Name of an interface via which a packet was received.
+            '''
+          'out-interface':
+            type: 'string'
+            description: '''
+            Name of an interface via which a packet is going to be sent.
+            '''
+          'protocol':
+            type: 'string'
+            enum: ['tcp', 'udp', 'udplite', 'icmp', 'esp', 'ah', 'sctp', 'all']
+            description: '''
+            The protocol of the rule or of the packet to check.
+            '''
+          'rulenum': type: 'string'
+          'source':
+            type: 'string'
+            description: '''
+            Source specification. Address can be either a network name, a
+            hostname, a network IP address (with /mask), or a plain IP
+            address.
+            '''
+          'sport':
+            type: ['string', 'integer']
+            description: '''
+            Source port or port range specification, see the "tcp" and "udp"
+            modules.
+            '''
+          'target':
+            type: 'string'
+            description: '''
+            Destination specification. See the description of the -s (source)
+            flag for a detailed description of the syntax.
+            '''
+
+## Handler
+
+    handler = ({config, tools: {log}}) ->
+      log message: "List existing rules", level: 'WARN'
+      {$status} = await @service.status
+        name: 'iptables'
+      throw Error "Service iptables not started" unless $status
+      {stdout} = await @execute
+        $shy: true
+        command: 'iptables -S'
+        sudo: config.sudo
+      oldrules = utils.iptables.parse stdout
+      newrules = utils.iptables.normalize config.rules
+      command = utils.iptables.command oldrules, newrules
+      return unless command.length
+      log message: "#{command.length} modified rules", level: 'WARN'
+      await @execute
+        command: "#{command.join '; '}; service iptables save;"
+        sudo: config.sudo
+        trap: true
+
+## Exports
+
+    module.exports =
+      handler: handler
+      hooks:
+        on_action: on_action
+      metadata:
+        definitions: definitions
+
+## Dependencies
+
+    utils = require './utils'
+
+## IPTables References
+
+List rules in readable format: `iptables -L --line-numbers -nv`
+List rules in save format: `iptables -S -v`

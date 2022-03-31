@@ -1,0 +1,8 @@
+a {
+  text-decoration: none;
+}
+
+.docs-searchbar-footer-logo {
+  transform: translateY(4px);
+  margin-bottom: 0 !important;
+}

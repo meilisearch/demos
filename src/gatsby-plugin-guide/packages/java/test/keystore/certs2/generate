@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# Resources
+# http://users.skynet.be/pascalbotte/art/server-cert.htm: ca serial and pks store
+
+cd `dirname "${BASH_SOURCE}"`
+
+cacert(){
+  if [ -f "cacert_key.pem" ]; then  echo ''; echo '!!! cacert files already exists !!!'; echo ''; help; exit 1; fi
+  # RSA Private key (create "cacert_key.pem")
+  openssl genrsa -out cacert_key.pem 2048
+  # Self-signed (with the key previously generated) root CA certificate (create "cacert.pem")
+  openssl req -x509 -new -key cacert_key.pem -days 300 -out cacert.pem -subj "/C=FR/ST=IDF/L=Paris/O=Adaltas/CN=adaltas.com/emailAddress=david@adaltas.com"
+}
+
+cacert_check(){
+  shortname=`echo $1 | sed 's/\([[:alnum:]]\)\..*/\1/'`
+  openssl verify -CAfile cacert.pem ${shortname}_cert.pem
+}
+
+# The first time you use your CA to sign a certificate you can use the -CAcreateserial
+# option. This option will create a file (ca.srl) containing a serial number. You are
+# probably going to create more certificate, and the next time you will have to do that
+# use the -CAserial option (and no more -CAcreateserial) followed with the name of the
+# file containing your serial number.
+cert(){
+  if [ -z "$1" ]; then help; exit 1; fi
+  fqdn=$1
+  shortname=`echo $fqdn | sed 's/\([[:alnum:]]\)\..*/\1/'`
+  if [ ! -f cacert_key.pem ]; then echo 'Run `./generate.sh cacert` first.'; exit 1; fi
+  # Certificate signing request and private key (create "hadoop_cert.csr" and "hadoop_key.pem")
+  openssl req -newkey rsa:1024 -nodes -out ${shortname}_cert.csr -keyout ${shortname}_key.pem -subj "/C=FR/ST=IDF/L=Paris/O=Adaltas/CN=${fqdn}/emailAddress=david@adaltas.com"
+  # Sign the CSR (create "hadoop_cert.pem")
+  openssl x509 -req -days 7300 -in ${shortname}_cert.csr -CA cacert.pem -CAkey cacert_key.pem -out ${shortname}_cert.pem -CAcreateserial -CAserial cacert.seq
+  # Clean up
+  rm -rf ${shortname}_cert.csr
+}
+
+cert_view(){
+  shortname=`echo $1 | sed 's/\([[:alnum:]]\)\..*/\1/'`
+  openssl x509 -in ${shortname}_cert.pem -text
+}
+
+help(){
+  echo "./generate (cacert|cert)"
+  echo "Examples:"
+  echo "  ./generate cacert"
+  echo "  ./generate cacert_check hadoop.node1"
+  echo "  ./generate cert hadoop.node1"
+  echo "  ./generate cert_view hadoop.node1"
+}
+
+case "$1" in
+  cacert) cacert
+    ;;
+  cacert_check) cacert_check
+    ;;
+  cert) cert $2
+    ;;
+  cert_view) cert_view $2
+    ;;
+  *) help
+    ;;
+esac

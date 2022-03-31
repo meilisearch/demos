@@ -1,0 +1,11 @@
+
+version: '2'
+services:
+  nodejs:
+    build: .
+    image: nikita_system_tmpfs
+    container_name: nikita_system_tmpfs
+    volumes:
+      - ../../../../:/nikita
+    environment:
+      NIKITA_TEST_MODULE: /nikita/packages/system/env/tmpfs/test.coffee

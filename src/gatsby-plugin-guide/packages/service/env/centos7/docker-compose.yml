@@ -1,0 +1,14 @@
+
+# TODO: implement variable substitution once default value is implemented
+# see https://github.com/docker/compose/issues/2441
+
+version: '3'
+services:
+  nodejs:
+    build: .
+    image: nikita_service_centos7
+    container_name: nikita_service_centos7
+    volumes:
+      - ../../../../:/nikita
+    environment:
+      NIKITA_TEST_MODULE: /nikita/packages/service/env/centos7/test.coffee

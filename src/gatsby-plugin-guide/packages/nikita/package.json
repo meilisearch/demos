@@ -1,0 +1,76 @@
+{
+  "name": "nikita",
+  "description": "Automation and deployment solution of applications and infrastructures.",
+  "keywords": [
+    "nikita",
+    "automation",
+    "build",
+    "deploy",
+    "install",
+    "ssh",
+    "system",
+    "task"
+  ],
+  "version": "1.0.0-alpha.2",
+  "author": "David Worms <david@adaltas.com>",
+  "bugs": {
+    "email": "open@adaltas.com",
+    "url": "https://github.com/adaltas/node-nikita/issues"
+  },
+  "contributors": [
+    {
+      "name": "David Worms",
+      "email": "david@adaltas.com"
+    },
+    {
+      "name": "Pierre Sauvage",
+      "email": "pierre@adaltas.com"
+    },
+    {
+      "name": "Lucas Bakalian",
+      "email": "lucas@adaltas.com"
+    },
+    {
+      "name": "Sergei Kudinov",
+      "email": "sergei@adaltas.com"
+    }
+  ],
+  "dependencies": {
+    "@nikitajs/core": "^1.0.0-alpha.2",
+    "@nikitajs/db": "^1.0.0-alpha.2",
+    "@nikitajs/docker": "^1.0.0-alpha.2",
+    "@nikitajs/file": "^1.0.0-alpha.2",
+    "@nikitajs/ipa": "^1.0.0-alpha.2",
+    "@nikitajs/java": "^1.0.0-alpha.2",
+    "@nikitajs/krb5": "^1.0.0-alpha.2",
+    "@nikitajs/ldap": "^1.0.0-alpha.2",
+    "@nikitajs/log": "^1.0.0-alpha.2",
+    "@nikitajs/lxd": "^1.0.0-alpha.2",
+    "@nikitajs/network": "^1.0.0-alpha.2",
+    "@nikitajs/service": "^1.0.0-alpha.2",
+    "@nikitajs/system": "^1.0.0-alpha.2",
+    "@nikitajs/tools": "^1.0.0-alpha.2"
+  },
+  "devDependencies": {
+    "mocha": "^9.1.3",
+    "should": "^13.2.3"
+  },
+  "engines": {
+    "node": ">= 10.0.0"
+  },
+  "files": [
+    "/lib"
+  ],
+  "homepage": "https://nikita.js.org/",
+  "license": "MIT",
+  "main": "./lib/index",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adaltas/node-nikita",
+    "directory": "packages/nikita"
+  },
+  "scripts": {
+    "test": "npm run test:local",
+    "test:local": "mocha 'test/**/*.js'"
+  }
+}

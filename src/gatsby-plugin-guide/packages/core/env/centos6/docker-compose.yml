@@ -1,0 +1,15 @@
+
+# TODO: implement variable substitution once default value is implemented
+# see https://github.com/docker/compose/issues/2441
+
+version: '3'
+services:
+  nodejs:
+    build: .
+    image: nikita_core_centos6
+    container_name: nikita_core_centos6_nodejs
+    platform: linux/amd64 # Required on Apple M1
+    volumes:
+      - ../../../../:/nikita
+    environment:
+      NIKITA_TEST_MODULE: /nikita/packages/core/env/centos6/test.coffee

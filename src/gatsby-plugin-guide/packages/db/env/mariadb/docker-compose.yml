@@ -1,0 +1,23 @@
+
+# TODO: implement variable substitution once default value is implemented
+# see https://github.com/docker/compose/issues/2441
+
+version: '2'
+services:
+  nodejs:
+    build: .
+    image: nikita_db_mariadb_nodejs
+    container_name: nikita_db_mariadb_nodejs
+    volumes:
+      - ../../../../:/nikita
+    depends_on:
+      - mariadb
+    environment:
+      NIKITA_TEST_MODULE: /nikita/packages/db/env/mariadb/test.coffee
+  mariadb:
+    image: mariadb:latest
+    container_name: nikita_db_mariadb_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootme
+    expose:
+      - "3306"

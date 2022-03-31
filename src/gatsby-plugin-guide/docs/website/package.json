@@ -1,0 +1,82 @@
+{
+  "name": "nikita-docs",
+  "description": "Nikita Official Documentation",
+  "version": "1.0.0",
+  "author": "David Worms <david@adaltas.com>",
+  "contributors": [
+    {
+      "name": "David Worms",
+      "email": "david@adaltas.com"
+    },
+    {
+      "name": "Sergei Kudinov",
+      "email": "sergei@adaltas.com"
+    }
+  ],
+  "dependencies": {
+    "@emotion/css": "^11.1.3",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.3.0",
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/styles": "^4.11.4",
+    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
+    "classnames": "^2.3.1",
+    "docs-searchbar.js": "^2.1.0",
+    "gatsby": "^3.4.1",
+    "gatsby-image": "^3.4.0",
+    "gatsby-plugin-catch-links": "^3.4.0",
+    "gatsby-plugin-emotion": "^6.4.0",
+    "gatsby-plugin-google-analytics": "^3.4.0",
+    "gatsby-plugin-manifest": "^3.4.0",
+    "gatsby-plugin-material-ui": "^3.0.1",
+    "gatsby-plugin-mdx": "^2.4.0",
+    "gatsby-plugin-meilisearch": "^0.1.0",
+    "gatsby-plugin-offline": "^4.4.0",
+    "gatsby-plugin-react-helmet": "^4.4.0",
+    "gatsby-plugin-robots-txt": "^1.5.6",
+    "gatsby-plugin-sitemap": "^4.0.0",
+    "gatsby-remark-autolink-headers": "^4.1.0",
+    "gatsby-remark-prismjs": "^5.1.0",
+    "gatsby-remark-title-to-frontmatter": "^1.1.2",
+    "gatsby-source-filesystem": "^3.4.0",
+    "gh-pages": "^3.2.3",
+    "mixme": "^0.5.1",
+    "nikita": "^1.0.0-alpha.2",
+    "prism-themes": "^1.7.0",
+    "prismjs": "^1.26.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^4.2.0",
+    "react-modal": "^3.13.1",
+    "react-particles-js": "^3.4.1",
+    "react-scroll": "^1.8.2",
+    "react-syntax-highlighter": "^15.4.3",
+    "react-typography": "^0.16.19",
+    "remove-markdown": "^0.3.0",
+    "typography": "^0.16.19"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adaltas/node-nikita"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "main": "n/a",
+  "scripts": {
+    "build": "gatsby build",
+    "clean": "gatsby clean",
+    "deploy": "gh-pages -r https://github.com/adaltas/node-nikita-docs.git -d public",
+    "develop": "gatsby develop",
+    "format": "prettier --write 'src/**/*.js'",
+    "serve": "gatsby serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "prettier": "^2.2.1"
+  }
+}
