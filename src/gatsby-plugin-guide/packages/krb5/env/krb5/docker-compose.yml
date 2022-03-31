@@ -1,0 +1,25 @@
+
+# TODO: implement variable substitution once default value is implemented
+# see https://github.com/docker/compose/issues/2441
+
+version: '2'
+services:
+  nodejs:
+    build: ./nodejs
+    image: nikita_krb5_nodejs
+    container_name: nikita_krb5_nodejs
+    volumes:
+      - ../../../../:/nikita
+    depends_on:
+      - krb5
+    environment:
+      NIKITA_TEST_MODULE: /nikita/packages/krb5/env/krb5/test.coffee
+  krb5:
+    build: ./server
+    image: nikita_krb5_server
+    volumes:
+      - /dev/urandom:/dev/random
+    logging:
+      driver: none
+    environment:
+      BOOTSTRAP: 1

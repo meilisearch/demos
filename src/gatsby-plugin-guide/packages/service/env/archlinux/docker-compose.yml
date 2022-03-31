@@ -1,0 +1,14 @@
+
+version: '3'
+services:
+  nodejs:
+    build: .
+    image: nikita_service_archlinux
+    container_name: nikita_service_archlinux
+    platform: linux/amd64 # Required on Apple M1
+    volumes:
+      - ../../../../:/nikita
+    environment:
+      NIKITA_TEST_MODULE: /nikita/packages/service/env/archlinux/test.coffee
+    cap_add:
+      - SYS_ADMIN # Required to use `mount`

@@ -1,0 +1,23 @@
+
+# TODO: implement variable substitution once default value is implemented
+# see https://github.com/docker/compose/issues/2441
+
+version: '2'
+services:
+  nodejs:
+    build: .
+    image: nikita_ldap_openldap
+    container_name: nikita_ldap_openldap
+    volumes:
+      - ../../../../:/nikita
+    depends_on:
+      - openldap
+    environment:
+      NIKITA_TEST_MODULE: /nikita/packages/ldap/env/openldap/test.coffee
+  openldap:
+    image: osixia/openldap:latest
+    expose:
+      - "389"
+      - "636"
+    logging:
+      driver: none 

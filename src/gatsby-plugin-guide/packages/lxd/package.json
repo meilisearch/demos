@@ -1,0 +1,93 @@
+{
+  "name": "@nikitajs/lxd",
+  "description": "Provides Nikita actions for various LXD operations.",
+  "keywords": [
+    "nikita",
+    "automation",
+    "build",
+    "deploy",
+    "install",
+    "ssh",
+    "lxd",
+    "container"
+  ],
+  "version": "1.0.0-alpha.2",
+  "author": "David Worms <david@adaltas.com>",
+  "bugs": {
+    "url": "https://github.com/adaltas/node-nikita/issues"
+  },
+  "coffeelintConfig": {
+    "indentation": {
+      "level": "error",
+      "value": 2
+    },
+    "line_endings": {
+      "level": "error",
+      "value": "unix"
+    },
+    "max_line_length": {
+      "level": "ignore"
+    },
+    "no_nested_string_interpolation": {
+      "level": "ignore"
+    }
+  },
+  "contributors": [
+    {
+      "name": "David Worms",
+      "email": "david@adaltas.com"
+    },
+    {
+      "name": "Sergei Kudinov",
+      "email": "sergei@adaltas.com"
+    }
+  ],
+  "dependencies": {
+    "@nikitajs/log": "^1.0.0-alpha.2",
+    "js-yaml": "^4.1.0",
+    "object-diff": "^0.0.4",
+    "shell": "^0.8.5"
+  },
+  "peerDependencies": {
+    "@nikitajs/core": "^1.0.0-alpha.1"
+  },
+  "devDependencies": {
+    "coffeescript": "^2.6.1",
+    "mocha": "^9.1.3",
+    "mocha-they": "^0.1.2",
+    "should": "^13.2.3"
+  },
+  "engines": {
+    "node": ">= 10.0.0"
+  },
+  "files": [
+    "/lib"
+  ],
+  "mocha": {
+    "throw-deprecation": true,
+    "require": [
+      "should",
+      "coffeescript/register",
+      "@nikitajs/lxd/src/register"
+    ],
+    "inline-diffs": true,
+    "timeout": 20000,
+    "reporter": "spec",
+    "recursive": true
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://nikita.js.org/",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adaltas/node-nikita",
+    "directory": "packages/lxd"
+  },
+  "scripts": {
+    "build": "coffee -b -o lib src && find lib -type f | xargs sed -i -e 's/@nikitajs\\/lxd\\/src/@nikitajs\\/lxd\\/lib/g'",
+    "test": "npm run test:local",
+    "test:local": "mocha 'test/**/*.coffee'"
+  }
+}

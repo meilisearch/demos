@@ -1,0 +1,105 @@
+{
+  "name": "@nikitajs/log",
+  "version": "1.0.0-alpha.2",
+  "description": "Provides Nikita actions for logging.",
+  "keywords": [
+    "nikita",
+    "automation",
+    "deploy",
+    "log",
+    "logging",
+    "debug",
+    "markdown",
+    "csv",
+    "fs",
+    "cli"
+  ],
+  "author": "David Worms <david@adaltas.com>",
+  "bugs": {
+    "email": "open@adaltas.com",
+    "url": "https://github.com/adaltas/node-nikita/issues"
+  },
+  "coffeelintConfig": {
+    "indentation": {
+      "level": "error",
+      "value": 2
+    },
+    "line_endings": {
+      "level": "error",
+      "value": "unix"
+    },
+    "max_line_length": {
+      "level": "ignore"
+    },
+    "no_backticks": {
+      "level": "ignore"
+    },
+    "no_nested_string_interpolation": {
+      "level": "ignore"
+    }
+  },
+  "contributors": [
+    {
+      "name": "David Worms",
+      "email": "david@adaltas.com"
+    },
+    {
+      "name": "Alexander Hoffmann",
+      "email": "alexander@adaltas.com"
+    },
+    {
+      "name": "Sergei Kudinov",
+      "email": "sergei@adaltas.com"
+    }
+  ],
+  "dependencies": {
+    "colors": "^1.4.0",
+    "mixme": "^0.5.4",
+    "pad": "^3.2.0"
+  },
+  "devDependencies": {
+    "coffeescript": "^2.6.1",
+    "eslint": "^8.4.1",
+    "eslint-plugin-coffee": "^0.1.15",
+    "mocha": "^9.1.3",
+    "mocha-they": "^0.1.2",
+    "should": "^13.2.3"
+  },
+  "peerDependencies": {
+    "@nikitajs/core": "^1.0.0-alpha.1"
+  },
+  "engines": {
+    "node": ">= 10.0.0"
+  },
+  "files": [
+    "/lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://nikita.js.org/",
+  "license": "MIT",
+  "main": "./lib/index",
+  "mocha": {
+    "throw-deprecation": true,
+    "require": [
+      "should",
+      "coffeescript/register",
+      "@nikitajs/log/src/register"
+    ],
+    "inline-diffs": true,
+    "timeout": 10000,
+    "reporter": "spec",
+    "recursive": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adaltas/node-nikita",
+    "directory": "packages/log"
+  },
+  "scripts": {
+    "build": "coffee -b -o lib src && find lib -type f | xargs sed -i -e 's/@nikitajs\\/log\\/src/@nikitajs\\/log\\/lib/g'",
+    "test": "npm run test:local",
+    "test:local": "mocha 'test/**/*.coffee'"
+  }
+}

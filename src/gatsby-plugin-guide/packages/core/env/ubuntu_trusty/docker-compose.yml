@@ -1,0 +1,18 @@
+
+# worth investigating
+# [Baseimage-docker](https://github.com/phusion/baseimage-docker#readme):
+# Baseimage-docker only consumes 8.3 MB RAM and is much more powerful than
+# Busybox or Alpine. See why below.
+
+version: '2'
+services:
+  nodejs:
+    build: .
+    image: nikita_core_ubuntu_trusty
+    container_name: nikita_core_ubuntu_trusty_nodejs
+    volumes:
+      - ../../../../:/nikita
+    environment:
+      NIKITA_TEST_MODULE: /nikita/packages/core/env/ubuntu_trusty/test.coffee
+      DEBUG: 1
+      # DEBUG: 0

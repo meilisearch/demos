@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "plugin:coffee/eslint-recommended"
+  ],
+  "parser": "eslint-plugin-coffee",
+  "plugins": ["coffee"],
+  "rules": {
+    "coffee/implicit-arrow-linebreak": "off",
+    "coffee/comma-style": "off",
+    "coffee/jsx-wrap-multilines": "off"
+  }
+}

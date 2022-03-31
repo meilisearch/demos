@@ -1,0 +1,16 @@
+.*
+/playground
+node_modules
+!.eslintrc
+!.travis.yml
+!.gitignore
+!.github
+!.gitattributes
+!.npmignore
+!.husky
+lerna-debug.log
+yarn.lock
+yarn-error.log
+package-lock.json
+/packages/*/test.coffee
+!/packages/*/test.coffee.sample

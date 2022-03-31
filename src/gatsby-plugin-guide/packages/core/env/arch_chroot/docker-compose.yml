@@ -1,0 +1,14 @@
+
+version: '2'
+services:
+  nodejs:
+    build: .
+    image: nikita_core_arch_chroot
+    container_name: nikita_core_arch_chroot_nodejs
+    platform: linux/amd64 # Required on Apple M1
+    volumes:
+      - ../../../../:/nikita
+    environment:
+      NIKITA_TEST_MODULE: /nikita/packages/core/env/arch_chroot/test.coffee
+    cap_add:
+      - SYS_ADMIN # Required to use `mount`

@@ -1,0 +1,11 @@
+{
+  "name": "nikita-packages",
+  "version": "0.0.0",
+  "main": "index.js",
+  "author": "David Worms <david@adaltas.com> (http://www.adaltas.com)",
+  "license": "MIT",
+  "scripts": {},
+  "dependencies": {
+    "semver": "^7.3.5"
+  }
+}

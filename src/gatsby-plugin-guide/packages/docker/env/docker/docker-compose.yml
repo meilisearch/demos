@@ -1,0 +1,26 @@
+
+# TODO: implement variable substitution once default value is implemented
+# see https://github.com/docker/compose/issues/2441
+
+version: '2'
+services:
+  nodejs:
+    build: .
+    image: nikita_docker_nodejs
+    container_name: nikita_docker_nodejs
+    volumes:
+      - ../../../../:/nikita
+    depends_on:
+      - dind
+    environment:
+      NIKITA_TEST_MODULE: /nikita/packages/docker/env/docker/test.coffee
+      DOCKER_HOST: 'tcp://dind:2375'
+  dind:
+    image: docker:dind
+    privileged: true
+    environment:
+      - DOCKER_TLS_CERTDIR=
+    expose:
+      - "2375"
+    logging:
+      driver: none

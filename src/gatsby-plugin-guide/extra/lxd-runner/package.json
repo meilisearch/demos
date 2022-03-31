@@ -1,0 +1,17 @@
+{
+  "name": "@nikitajs/lxd-runner",
+  "version": "1.0.0-alpha.2",
+  "description": "",
+  "main": "lib/index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "coffee -b -o lib src"
+  },
+  "author": "David Worms",
+  "license": "MIT",
+  "dependencies": {
+    "@nikitajs/core": "^1.0.0-alpha.2",
+    "shell": "^0.8.5"
+  }
+}

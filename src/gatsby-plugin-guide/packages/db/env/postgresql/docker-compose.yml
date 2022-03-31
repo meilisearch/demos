@@ -1,0 +1,24 @@
+
+# TODO: implement variable substitution once default value is implemented
+# see https://github.com/docker/compose/issues/2441
+
+version: '2'
+services:
+  nodejs:
+    build: .
+    image: nikita_db_postgresql_nodejs
+    container_name: nikita_db_postgresql_nodejs
+    volumes:
+      - ../../../../:/nikita
+    depends_on:
+      - postgres
+    environment:
+      NIKITA_TEST_MODULE: /nikita/packages/db/env/postgresql/test.coffee
+  postgres:
+    image: postgres:9.5
+    container_name: nikita_db_postgresql_db
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: rootme
+    expose:
+      - "5432"
