@@ -5,7 +5,7 @@ import CreateToken from './CreateToken'
 function TenantToken() {
   const [show, setShow] = useState(true)
   return (
-    <div className="mt-8 pt-6 border-t border-[#E9E5ED]">
+    <div className="mt-8 pt-6 border-t border-gray-200">
       {show ? (
         <AboutToken switchToCreateMode={() => setShow(false)} />
       ) : (

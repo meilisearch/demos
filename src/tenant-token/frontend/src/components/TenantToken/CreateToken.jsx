@@ -53,7 +53,7 @@ function CreateToken({ switchToAboutMode }) {
               “filter”: patient =
               <input
                 type="text"
-                className="ml-1 w-24 modal-filter-input outline-none border-b focus:border-[#000]"
+                className="ml-1 w-24 modal-filter-input outline-none border-b focus:border-black"
                 value={filterValue}
                 placeholder="Enter name"
                 onChange={(e) => setFilterValue(e.target.value)}
