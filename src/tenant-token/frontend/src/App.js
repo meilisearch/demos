@@ -1,24 +1,22 @@
 import Header from 'components/Header/Header'
 import Content from 'components/Content/Content'
-import { MeiliSearchProvider } from 'context/MeiliSearchContext'
-import { UserProvider } from 'context/UserContext'
-import styled from 'styled-components'
-
-const Wrapper = styled.div`
-  background-color: ${(p) => p.theme.colors.gray[11]};
-  min-height: 100vh;
-`
+import { InstantSearch } from 'react-instantsearch-dom'
+import { instantMeiliSearch } from '@meilisearch/instant-meilisearch'
+import { MEILISEARCH_CONFIG } from 'config'
+import { useUser } from 'context/UserContext'
 
 function App() {
+  const { user } = useUser()
   return (
-    <Wrapper>
-      <MeiliSearchProvider>
-        <UserProvider>
-          <Header />
-          <Content />
-        </UserProvider>
-      </MeiliSearchProvider>
-    </Wrapper>
+    <div className="min-h-screen bg-custom-gray-7">
+      <InstantSearch
+        indexName={MEILISEARCH_CONFIG.INDEX}
+        searchClient={instantMeiliSearch(MEILISEARCH_CONFIG.HOST, user.key)}
+      >
+        <Header />
+        <Content />
+      </InstantSearch>
+    </div>
   )
 }
 

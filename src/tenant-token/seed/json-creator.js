@@ -1,18 +1,18 @@
 const fs = require("fs");
-const { userNameList, diseaseList } = require("./config");
+const {patientNameList, diseaseList } = require("./config");
 
 const jsonCreator = async () => {
   const list = [];
 
   for (let i = 1; i <= 100; i++) {
-    const userRandomNumber = Math.floor(Math.random() * userNameList.length);
+    const patientRandomNumber = Math.floor(Math.random() * patientNameList.length);
     const diseaseRandomNumber = Math.floor(Math.random() * diseaseList.length);
     const roomNumber = (i % 10) + 1;
 
     list.push({
-      user: userNameList[userRandomNumber],
+      patient: patientNameList[patientRandomNumber],
       id: i,
-      description: `${userNameList[userRandomNumber]} is in room number ${roomNumber} and is suffering from ${diseaseList[diseaseRandomNumber]}`,
+      description: `${patientNameList[patientRandomNumber]} is in room number ${roomNumber} and is suffering from ${diseaseList[diseaseRandomNumber]}`,
       roomNumber,
       isDoctorAppointed: Math.random() < 0.75,
     });

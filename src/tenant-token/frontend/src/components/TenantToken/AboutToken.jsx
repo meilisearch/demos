@@ -3,9 +3,8 @@ import Select from 'components/Select/Select'
 import { useUser } from 'context/UserContext'
 import React from 'react'
 
-function AboutToken(props) {
-  const {user, setUser, usersList} = useUser()
-  const { switchToCreateMode } = props
+function AboutToken({ switchToCreateMode }) {
+  const { user, setUser, usersList } = useUser()
 
   return (
     <>
@@ -36,7 +35,6 @@ function AboutToken(props) {
           onChange={(data) => {
             setUser(JSON.parse(data.value))
           }}
-          style={{ width: 216 }}
         />
       </div>
       <Button className="mt-7" onClick={switchToCreateMode}>

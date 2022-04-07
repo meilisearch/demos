@@ -3,16 +3,13 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import { ThemeProvider } from 'styled-components'
-import theme from 'theme'
-import GlobalStyle from 'GlobalStyle'
+import { UserProvider } from 'context/UserContext'
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
+    <UserProvider>
       <App />
-    </ThemeProvider>
+    </UserProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )
