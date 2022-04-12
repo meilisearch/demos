@@ -5,7 +5,7 @@ API_KEY = ENV['MEILISEARCH_API_KEY']
 
 def feed_meilisearch_with(documents, index_uid, settings = nil)
   client = MeiliSearch::Client.new(URL, API_KEY)
-  index = client.get_or_create_index(index_uid)
+  index = client.index(index_uid)
   LOGGER.info "Index #{index_uid} is ready."
   if settings
     index.update_settings(settings)
