@@ -35,11 +35,9 @@ function handleForm() {
 }
 
 $(document).ready(function () {
-  // let url = 'https://finding-demos.meilisearch.com';
-  let url = 'http://127.0.0.1:7700/';
+  let url = 'https://finding-demos.meilisearch.com';
   let indexUID = 'rubygems';
-  // let publicKey = '2b902cce4f868214987a9f3c7af51a69fa660d74a785bed258178b96e3480bb3';
-  let publicKey = '';
+  let publicKey = '2b902cce4f868214987a9f3c7af51a69fa660d74a785bed258178b96e3480bb3';
   let request;
 
   Handlebars.registerHelper("formatBigNumber", beautify);
