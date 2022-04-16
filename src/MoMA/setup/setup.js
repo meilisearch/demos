@@ -56,18 +56,18 @@ function dataProcessing (data) {
   return processedDataArray
 }
 
-async function populateIndex ({ index, name }, batchedDataSet) {
-  console.log(`Adding documents to ${name}...`)
+async function populateIndex (index_uid, batchedDataSet, client) {
+  console.log(`Adding documents to ${index_uid}...`)
   const allBatches = batchedDataSet.map(async batch =>
-    await index.addDocuments(batch)
+    await client.index(index_uid).addDocuments(batch)
   )
   const promiseBatches = await Promise.all(allBatches)
   return promiseBatches
 }
 
-async function addSettings ({ index, name }, settings) {
-  await index.updateSettings(settings)
-  console.log(`Settings added to ${name} index.`)
+async function addSettings (index_uid, settings, client) {
+  await client.index(index_uid).updateSettings(settings)
+  console.log(`Settings added to ${index_uid} index.`)
 }
 
 async function sleep (ms) {
@@ -81,14 +81,14 @@ async function watchUpdates (client, uid) {
   console.log('-------------')
   while (!allProcessed) {
     try {
-      const updates = await client.index(uid).getAllUpdateStatus()
-      const processed = updates.filter(update => update.status === 'processed')
-      const processing = updates.filter(update => update.status === 'processing')
-      const enqueued = updates.filter(update => update.status === 'enqueued')
+      const updates = await client.index(uid).getTasks()
+      const processed = updates.results.filter(update => update.status === 'succeeded')
+      const processing = updates.results.filter(update => update.status === 'processing')
+      const enqueued = updates.results.filter(update => update.status === 'enqueued')
       console.log(`${uid}:`)
-      console.log(`${processed.length} / ${updates.length} have been processed`)
-      console.log(`${processing.length} / ${updates.length} is being processed`)
-      console.log(`${enqueued.length} / ${updates.length} still enqueued`)
+      console.log(`${processed.length} / ${updates.results.length} have been processed`)
+      console.log(`${processing.length} / ${updates.results.length} is being processed`)
+      console.log(`${enqueued.length} / ${updates.results.length} still enqueued`)
       console.log('-------------')
       if (enqueued.length === 0) allProcessed = true
       await setupFunctions.sleep(standardSpeed)
