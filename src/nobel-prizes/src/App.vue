@@ -53,8 +53,10 @@ export default {
     return {
       searchClient: instantMeiliSearch(
         MEILISEARCH_HOST,
-        MEILISEARCH_API_KEY
+        MEILISEARCH_API_KEY, 
+        {finitePagination: true}
       ),
+      
     };
   },
   methods: {

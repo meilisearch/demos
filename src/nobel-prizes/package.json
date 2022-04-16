@@ -4,16 +4,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "start": "node setup/setup.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@meilisearch/instant-meilisearch": "^0.5.9",
+    "@meilisearch/instant-meilisearch": "^0.7.0",
     "instantsearch.css": "7.4.5",
-    "meilisearch": "^0.22.3",
-    "vue": "^2.6.11",
-    "vue-instantsearch": "^3.6.0"
+    "meilisearch": "^0.25.0",
+    "vue": "^2.6.12",
+    "vue-instantsearch": "^4.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-eslint": "4.1.1",
