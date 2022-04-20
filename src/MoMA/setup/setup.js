@@ -56,18 +56,18 @@ function dataProcessing (data) {
   return processedDataArray
 }
 
-async function populateIndex (index_uid, batchedDataSet, client) {
-  console.log(`Adding documents to ${index_uid}...`)
+async function populateIndex (indexUID, batchedDataSet, client) {
+  console.log(`Adding documents to ${indexUID}...`)
   const allBatches = batchedDataSet.map(async batch =>
-    await client.index(index_uid).addDocuments(batch)
+    await client.index(indexUID).addDocuments(batch)
   )
   const promiseBatches = await Promise.all(allBatches)
   return promiseBatches
 }
 
-async function addSettings (index_uid, settings, client) {
-  await client.index(index_uid).updateSettings(settings)
-  console.log(`Settings added to ${index_uid} index.`)
+async function addSettings (indexUID, settings, client) {
+  await client.index(indexUID).updateSettings(settings)
+  console.log(`Settings added to ${indexUID} index.`)
 }
 
 async function sleep (ms) {

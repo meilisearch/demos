@@ -10,10 +10,10 @@
              <b-navbar class="px-1 d-flex flex-column">
                <div class="d-flex flex-column d-md-none">
                 <b-navbar-brand class="d-flex flex-column align-items-center navbar-mobile">
-                  <img src="https://raw.githubusercontent.com/meilisearch/integration-guides/master/assets/logos/logo.svg" alt="MeiliSearch logo" width="70" height="70" class="mb-3"> 
+                  <img src="https://raw.githubusercontent.com/meilisearch/integration-guides/master/assets/logos/logo.svg" alt="Meilisearch logo" width="70" height="70" class="mb-3"> 
                   <div class="d-flex flex-column align-items-center">
-                    <p class='header-title'>MeiliSearch x MoMA</p> 
-                    <p class="disclaimer">Enjoy searching with MeiliSearch!</p>
+                    <p class='header-title'>Meilisearch x MoMA</p> 
+                    <p class="disclaimer">Enjoy searching with Meilisearch!</p>
                   </div>
                 </b-navbar-brand>
                 </div>
@@ -47,10 +47,10 @@
             <b-col>
              <b-navbar class="pl-5 d-none d-md-flex flex-column align-items-start">
                 <b-navbar-brand class="d-flex justify-content-center align-items-center">
-                  <img src="https://raw.githubusercontent.com/meilisearch/integration-guides/master/assets/logos/logo.svg" alt="MeiliSearch logo" height="60px"> 
-                  <p class="header-title my-0"> MeiliSearch x MoMA</p> 
+                  <img src="https://raw.githubusercontent.com/meilisearch/integration-guides/master/assets/logos/logo.svg" alt="Meilisearch logo" height="60px"> 
+                  <p class="header-title my-0"> Meilisearch x MoMA</p> 
                 </b-navbar-brand>
-                <div class="disclaimer disclaimer-desktop">Enjoy searching with MeiliSearch!</div>
+                <div class="disclaimer disclaimer-desktop">Enjoy searching with Meilisearch!</div>
               </b-navbar>
             </b-col>
           </b-row>
