@@ -1,6 +1,6 @@
 const { MeiliSearch } = require('meilisearch')
 const dataset = require('./prizes.json')
-const index_uid = "prizes"
+const indexUID = "prizes"
 
 ;(async () => {
     // Create client
@@ -11,9 +11,9 @@ const index_uid = "prizes"
 
     // Create Index if it does not already exist
     console.log("before")
-    await client.createIndex(index_uid)
+    await client.createIndex(indexUID)
     console.log("after")
-    console.log(`Index ${index_uid} created.`);
+    console.log(`Index ${indexUID} created.`);
 
     // Add settings
     const settings = {
@@ -27,12 +27,12 @@ const index_uid = "prizes"
           "category"
         ]
       }
-    await client.index(index_uid).updateSettings(settings)
-    console.log(`Settings added to ${index_uid} index`)
+    await client.index(indexUID).updateSettings(settings)
+    console.log(`Settings added to ${indexUID} index`)
 
     // Add documents
-    await client.index(index_uid).addDocumentsInBatches(dataset)
+    await client.index(indexUID).addDocumentsInBatches(dataset)
     
-    console.log(`Documents added to ${index_uid} index.`);
+    console.log(`Documents added to ${indexUID} index.`);
 
 })()
