@@ -6,12 +6,12 @@ A [new experience of search](https://crates.meilisearch.com) to find your favori
 
 [![crates demo gif](assets/crates-io-demo.gif)](https://crates.meilisearch.com)
 
-The search is powered by [MeiliSearch](https://github.com/meilisearch/MeiliSearch), the open-source and instant search engine.
+The search is powered by [Meilisearch](https://github.com/meilisearch/MeiliSearch), the open-source and instant search engine.
 
 ## See also
 
-- MeiliSearch finds [PyPI packages](https://pypi.meilisearch.com/) (Python)
-- MeiliSearch finds [RubyGems](https://rubygems.meilisearch.com/) (Ruby)
+- Meilisearch finds [PyPI packages](https://pypi.meilisearch.com/) (Python)
+- Meilisearch finds [RubyGems](https://rubygems.meilisearch.com/) (Ruby)
 
 ## How to run the data collector
 
@@ -31,4 +31,4 @@ The front is deployed to Vercel.
 
 We pull new crates and crates updates every 10 minutes from [docs.rs](https://docs.rs/releases) and all the downloads counts every day at 3:30 PM UTC from [crates.io](https://crates.io/data-access).
 
-Here is the [repository of MeiliSearch](https://github.com/meilisearch/MeiliSearch).
+Here is the [repository of Meilisearch](https://github.com/meilisearch/MeiliSearch).
