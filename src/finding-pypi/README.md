@@ -1,10 +1,10 @@
-# MeiliSearch finds PyPI packages
+# Meilisearch finds PyPI packages
 
 A [new experience of search](https://pypi.meilisearch.com/) to find your favorite python packages 🎉
 
 Search by package name or by keywords.
 
-The search is powered by [MeiliSearch](https://github.com/meilisearch/MeiliSearch), the open-source and instant search engine.
+The search is powered by [Meilisearch](https://github.com/meilisearch/MeiliSearch), the open-source and instant search engine.
 
 # Demo
 
@@ -17,7 +17,7 @@ The search is powered by [MeiliSearch](https://github.com/meilisearch/MeiliSearc
 
 # Developer environment
 
-## Collect packages info and index to MeiliSearch:
+## Collect packages info and index to Meilisearch:
 
 These steps are automatically done every day.
 
