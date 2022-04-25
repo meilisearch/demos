@@ -1,4 +1,4 @@
-# MeiliSearch finds RubyGems
+# Meilisearch finds RubyGems
 
 A [new experience of search](https://rubygems.meilisearch.com) to find your favorite RubyGems 🎉
 
@@ -6,14 +6,14 @@ A [new experience of search](https://rubygems.meilisearch.com) to find your favo
 
 [![rubygems demo gif](misc/rubygems.gif)](https://rubygems.meilisearch.com)
 
-The search is powered by [MeiliSearch](https://github.com/meilisearch/MeiliSearch), the open-source and instant search engine.
+The search is powered by [Meilisearch](https://github.com/meilisearch/MeiliSearch), the open-source and instant search engine.
 
 ## See also
 
-- MeiliSearch finds [PyPI packages](https://pypi.meilisearch.com/) (Python)
-- MeiliSearch finds [Crates](https://crates.meilisearch.com/) (Rust)
+- Meilisearch finds [PyPI packages](https://pypi.meilisearch.com/) (Python)
+- Meilisearch finds [Crates](https://crates.meilisearch.com/) (Rust)
 
-This project uses the [Ruby SDK for MeiliSearch](https://github.com/meilisearch/meilisearch-ruby).
+This project uses the [Ruby SDK for Meilisearch](https://github.com/meilisearch/meilisearch-ruby).
 
 ## How to run the data collector
 
@@ -29,7 +29,7 @@ $ bundle install
 $ bundle exec ruby meilisearch/app.rb
 ```
 
-## MeiliSearch settings
+## Meilisearch settings
 
 ```ruby
 require 'meilisearch'
@@ -69,6 +69,6 @@ The front is deployed to Vercel.
 
 All gems data and main of HTML/CSS come from [RubyGems website](https://rubygems.org/).
 
-The script to fetch data and push them to MeiliSearch runs every day on Heroku with to Heroku Scheduler.
+The script to fetch data and push them to Meilisearch runs every day on Heroku with to Heroku Scheduler.
 
-Here is the [repository of MeiliSearch](https://github.com/meilisearch/MeiliSearch).
+Here is the [repository of Meilisearch](https://github.com/meilisearch/MeiliSearch).
