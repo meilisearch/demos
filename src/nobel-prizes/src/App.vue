@@ -1,11 +1,11 @@
 <template>
   <div>
     <header class="header">
-      <h1 class="header-title">Search in Nobel Prizes with MeiliSearch</h1>
+      <h1 class="header-title">Search in Nobel Prizes with Meilisearch</h1>
     </header>
     <p class="disclaimer">
       This is a modified Nobel prizes dataset only for demo purposes. Enjoy
-      searching with MeiliSearch!
+      searching with Meilisearch!
     </p>
     <div class="container">
       <ais-instant-search :search-client="searchClient" index-name="prizes">
@@ -53,8 +53,10 @@ export default {
     return {
       searchClient: instantMeiliSearch(
         MEILISEARCH_HOST,
-        MEILISEARCH_API_KEY
+        MEILISEARCH_API_KEY, 
+        {finitePagination: true}
       ),
+      
     };
   },
   methods: {
