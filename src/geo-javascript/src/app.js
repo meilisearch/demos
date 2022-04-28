@@ -10,7 +10,7 @@ injectScript(
       indexName: 'world_cities',
       searchClient: instantMeiliSearch(
         'https://demos.meilisearch.com',
-        'dc3fedaf922de8937fdea01f0a7d59557f1fd31832cb8440ce94231cfdde7f25',
+        'L4h8HWpdac31f126b8eebbb23e2d10752e86d57d8a388e6910c2fedfb53542547dd4775c',
         {
           limitPerRequest: 200,
         }
