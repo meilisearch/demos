@@ -68,20 +68,20 @@ const settings = {
   // Add documents batches array
   const batchedDataSet = batch(processedDataSet, BATCH_SIZE)
 
-  // Get or create indexes
-  const index = await client.getOrCreateIndex(INDEX, { primaryKey: 'ObjectID' })
+  // Create indexes
+  await client.createIndex(INDEX, { primaryKey: 'ObjectID' })
 
-  const currentSettings = await index.getSettings()
+  const currentSettings = await client.index(INDEX).getSettings()
 
   // Add new settings if they have changed
   if (!isEqual({ ...settings, filterableAttributes: sortBy(settings.filterableAttributes) }, { ...currentSettings, filterableAttributes: sortBy(currentSettings.filterableAttributes) })) {
-    await addSettings({ index, name: INDEX }, settings)
+    await addSettings(INDEX, settings, client)
   }
 
-  const stats = await index.getStats()
+  const stats = await client.index(INDEX).getStats()
   // Add documents if index is empty
   if (stats.numberOfDocuments !== dataset.length) {
-    await populateIndex({ index, name: INDEX }, batchedDataSet)
+    await populateIndex(INDEX, batchedDataSet, client)
   }
   await watchUpdates(client, INDEX)
 })()
