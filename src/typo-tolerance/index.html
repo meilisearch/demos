@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/instantsearch.css@7/themes/algolia-min.css"
+  />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meilisearch demo: typo tolerance</title>
+  </head>
+  <body>
+    <div class="ais-InstantSearch">
+      <p>
+        <img src="assets/meili_logo.svg" alt="Meilisearch" width="400" height="100" />
+      </p>
+      <h1>Typo tolerant search</h1>
+
+      <div id="searchbox" class="ais-SearchBox"></div>
+      <div class="flex-container">
+          <div class="left-panel">
+            <h2>Default typo tolerance</h2>
+            <table>
+              <tr>
+                <th>Typos allowed</th>
+                <th>Query length</th>
+              </tr>
+              <tr>
+                <td>1 typo</td>
+                <td>5 characters</td>
+              </tr>
+              <tr>
+                <td>2 typos</td>
+                <td>9 characters</td>
+              </tr>
+            </table> 
+            <div id="hits-1"></div>
+        </div>
+  
+        <div class="left-panel">
+          <h2>Custom typo tolerance</h2>
+          <table>
+            <tr>
+              <th>Typos allowed</th>
+              <th>Query length</th>
+            </tr>
+            <tr>
+              <td>1 typo</td>
+              <td>2 characters</td>
+            </tr>
+            <tr>
+              <td>2 typos</td>
+              <td>4 characters</td>
+            </tr>
+          </table>
+          <div id="hits-2"></div>
+        </div>
+      </div>
+
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
