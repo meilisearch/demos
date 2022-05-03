@@ -19,23 +19,22 @@ const settings = {
     'authors',
     'shortDescription',
     'thumbnailUrl'
-  ],
+  ]
 }
 
 const defaultTypoTolerance = {
-    minWordSizeForTypos: {
-        oneTypo: 5,
-        twoTypos: 9
-    }
+  minWordSizeForTypos: {
+    oneTypo: 5,
+    twoTypos: 9
+  }
 }
 const customTypoTolerance = {
-    disableOnAttributes: ["isbn"],
-    minWordSizeForTypos: {
-        oneTypo: 2,
-        twoTypos: 4
-    }
+  disableOnAttributes: ['isbn'],
+  minWordSizeForTypos: {
+    oneTypo: 2,
+    twoTypos: 4
+  }
 }
-
 
 ;(async () => {
   // Create client
@@ -44,25 +43,23 @@ const customTypoTolerance = {
     apiKey: 'masterKey'
   })
 
-
-const indexArray = [
+  const indexArray = [
     { uid: DEFAULT_INDEX, typoTolerance: defaultTypoTolerance },
     { uid: TYPO_TOLERANT_INDEX, typoTolerance: customTypoTolerance }
-]
-  // Add settings and documents
+  ]
+  // Create index and add settings and documents
   await Promise.all(
     indexArray.map(async index => {
-        const res = await client.createIndex(index.uid)
-        await populateIndex(settings, index, dataset, client)
-    } )
+      await client.createIndex(index.uid)
+      await populateIndex(settings, index, dataset, client)
+    })
   )
 
+  // Watch tasks
 
-// Watch tasks
-
-const waitForProcessing = indexArray.map(async index => {
+  const waitForProcessing = indexArray.map(async index => {
     await watchTasks(client, index.uid)
-} )
+  })
 
-Promise.all(waitForProcessing)
+  Promise.all(waitForProcessing)
 })()

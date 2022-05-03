@@ -1,34 +1,32 @@
 import './style.css'
-import { instantMeiliSearch } from "@meilisearch/instant-meilisearch";
-import instantsearch from "instantsearch.js";
+import { instantMeiliSearch } from '@meilisearch/instant-meilisearch'
+import instantsearch from 'instantsearch.js'
 import { searchBox, hits, configure } from 'instantsearch.js/es/widgets'
 
-
-
 const searchClient = instantMeiliSearch(
-  "http://127.0.0.1:7700",
-  "apiKey",
+  'http://127.0.0.1:7700',
+  'apiKey',
   {
     limitPerRequest: 30
   }
 )
 const booksTypoIndex = instantsearch({
-  indexName: "books_typo",
-  searchClient: searchClient
-});
+  indexName: 'books_typo',
+  searchClient
+})
 
-booksTypoIndex.addWidgets([  
+booksTypoIndex.addWidgets([
   configure({
     attributesToSnippet: ['shortDescription:40']
-  }), 
+  }),
   hits({
-    transformItems(items) {
+    transformItems (items) {
       return items.map(item => ({
         ...item,
-        authors: item.authors.join(", ")
-      }));
+        authors: item.authors.join(', ')
+      }))
     },
-    container: "#hits-2",
+    container: '#hits-2',
     templates: {
       item: `
       <div>
@@ -43,35 +41,34 @@ booksTypoIndex.addWidgets([
       `
     }
   })
-]);
+])
 
-booksTypoIndex.start();
+booksTypoIndex.start()
 
 const booksIndex = instantsearch({
-  indexName: "books_default",
-  searchClient: searchClient,
-    searchFunction(helper) {
+  indexName: 'books_default',
+  searchClient,
+  searchFunction (helper) {
     booksTypoIndex.helper.setQuery(helper.state.query).search()
     helper.search()
-      
   }
-});
+})
 
 booksIndex.addWidgets([
   configure({
     attributesToSnippet: ['shortDescription:40']
   }),
   searchBox({
-    container: "#searchbox"
+    container: '#searchbox'
   }),
   hits({
-    transformItems(items) {
+    transformItems (items) {
       return items.map(item => ({
         ...item,
-        authors: item.authors.join(", ")
-      }));
+        authors: item.authors.join(', ')
+      }))
     },
-    container: "#hits-1",
+    container: '#hits-1',
     templates: {
       item: `
       <div>
@@ -86,6 +83,6 @@ booksIndex.addWidgets([
       `
     }
   })
-]);
+])
 
-booksIndex.start();
+booksIndex.start()
