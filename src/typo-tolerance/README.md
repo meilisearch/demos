@@ -63,7 +63,7 @@ Because we did not set any Master key in the previous step, we can leave `VITE_M
 
 ```bash
 
-$ npm install
+npm install
 
 ```
 
