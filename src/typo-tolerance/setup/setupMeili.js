@@ -51,7 +51,6 @@ const customTypoTolerance = {
   // Create index and add settings and documents
   await Promise.all(
     indexArray.map(async index => {
-      await client.createIndex(index.uid)
       await populateIndex(settings, index, dataset, client)
     })
   )
