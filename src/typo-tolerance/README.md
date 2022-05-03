@@ -24,7 +24,7 @@
 
 ## Demo
 
-If you want to replicate this demo using your own Meilisearch instance, you will have to follow these steps:
+If you want to replicate this demo using your own Meilisearch instance, you have to follow these steps:
 
   
 ### 1. Downloand and launch Meilisearch
