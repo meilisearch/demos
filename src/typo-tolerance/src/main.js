@@ -2,10 +2,12 @@ import './style.css'
 import { instantMeiliSearch } from '@meilisearch/instant-meilisearch'
 import instantsearch from 'instantsearch.js'
 import { searchBox, hits, configure } from 'instantsearch.js/es/widgets'
+const MEILISEARCH_HOST = import.meta.env.VITE_MEILISEARCH_HOST
+const MEILISEARCH_API_KEY = import.meta.env.VITE_MEILISEARCH_API_KEY
 
 const searchClient = instantMeiliSearch(
-  'http://127.0.0.1:7700',
-  'apiKey',
+  MEILISEARCH_HOST,
+  MEILISEARCH_API_KEY,
   {
     limitPerRequest: 30
   }

@@ -1,6 +1,7 @@
 const { MeiliSearch } = require('meilisearch')
 const dataset = require('./books.json')
 const { watchTasks, populateIndex } = require('./setupFunctions')
+require('dotenv').config()
 
 const DEFAULT_INDEX = 'books_default'
 const TYPO_TOLERANT_INDEX = 'books_typo'
@@ -39,8 +40,8 @@ const customTypoTolerance = {
 ;(async () => {
   // Create client
   const client = new MeiliSearch({
-    host: 'http://127.0.0.1:7700',
-    apiKey: 'masterKey'
+    host: process.env.VITE_MEILISEARCH_HOST,
+    apiKey: process.env.VITE_MEILISEARCH_API_KEY
   })
 
   const indexArray = [
