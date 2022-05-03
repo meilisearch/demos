@@ -77,7 +77,7 @@ $ npm run setup
 
 This does the following:
 
-- Create two indexes called `books_default` and `books_typo` in your Meilisearch instance.
+- Creates two indexes called `books_default` and `books_typo` in your Meilisearch instance.
 
 - Add documents to those indexes.
 
