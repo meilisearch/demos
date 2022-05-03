@@ -79,9 +79,8 @@ This does the following:
 
 - Creates two indexes called `books_default` and `books_typo` in your Meilisearch instance.
 
-- Add documents to those indexes.
-
-- Add custom settings to each one.
+- Adds documents to those indexes.
+- Adds custom settings to each one.
 
 👉 Feel free to modify the typo tolerance rules in `customTypeTolerance`, located inside `setupFunctions.js`. Doing so will allow you to see how different configurations impact the returned search results.
 
