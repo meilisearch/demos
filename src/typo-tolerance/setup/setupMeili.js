@@ -57,7 +57,6 @@ const customTypoTolerance = {
   )
 
   // Watch tasks
-
   const waitForProcessing = indexArray.map(async index => {
     await watchTasks(client, index.uid)
   })
