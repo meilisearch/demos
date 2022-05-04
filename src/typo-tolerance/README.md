@@ -82,7 +82,7 @@ This does the following:
 - Adds documents to those indexes.
 - Adds custom settings to each one.
 
-👉 Feel free to modify the typo tolerance rules in `customTypeTolerance`, located inside `setupFunctions.js`. Doing so will allow you to see how different configurations impact the returned search results.
+👉 Feel free to modify the typo tolerance rules in `customTypoTolerance`, located inside `setupFunctions.js`. Doing so will allow you to see how different configurations impact the returned search results.
 
 ### 5. Run the project
 
