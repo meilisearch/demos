@@ -40,8 +40,8 @@ const customTypoTolerance = {
 ;(async () => {
   // Create client
   const client = new MeiliSearch({
-    host: process.env.VITE_MEILISEARCH_HOST,
-    apiKey: process.env.VITE_MEILISEARCH_API_KEY
+    host: process.env.VITE_MEILI_HOST,
+    apiKey: process.env.VITE_MEILI_ADMIN_API_KEY
   })
 
   const indexArray = [

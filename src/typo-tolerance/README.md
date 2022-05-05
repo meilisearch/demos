@@ -52,12 +52,14 @@ There are many other easy ways to [download and run a Meilisearch instance](http
 
 Set the credentials of the Meilisearch instance as environment variables. 
 ```
-VITE_MEILISEARCH_HOST="<yourMeilisearchInstanceAddress>"
-VITE_MEILISEARCH_API_KEY="<yourMeilisearchAPIKey>"
+VITE_MEILI_HOST="<yourMeilisearchInstanceAddress>"
+VITE_MEILI_SEARCH_API_KEY="<yourMeilisearchSearchAPIKey>"
+VITE_MEILI_ADMIN_API_KEY="<yourMeilisearchAdminAPIKey>"
 ```
-Because we did not set any Master key in the previous step, we can leave `VITE_MEILISEARCH_API_KEY` as an empty string and only set the host: 
+Because we did not set any Master key in the previous step, we can leave `VITE_MEILI_SEARCH_API_KEY` and `VITE_MEILI_ADMIN_API_KEY` as an empty string and only set the host: 
 `VITE_MEILISEARCH_HOST='http://127.0.0.1:7700'`
 
+You can learn more about master and API keys in [the dedicated section of our documentation](https://docs.meilisearch.com/learn/security/master_api_keys.html).
 
 ### 3. Install the dependencies
 
