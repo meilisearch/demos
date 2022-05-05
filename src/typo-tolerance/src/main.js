@@ -23,7 +23,7 @@ booksTypoIndex.addWidgets([
   }),
   hits({
     transformItems (items) {
-      items.map(item => {
+      return items.map(item => {
         let authors = ''
         if (Array.isArray(item.authors)) authors = item.authors.join(', ')
 
@@ -70,7 +70,7 @@ booksIndex.addWidgets([
   }),
   hits({
     transformItems (items) {
-      items.map(item => {
+      return items.map(item => {
         let authors = ''
         if (Array.isArray(item.authors)) authors = item.authors.join(', ')
 
