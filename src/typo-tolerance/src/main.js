@@ -23,10 +23,15 @@ booksTypoIndex.addWidgets([
   }),
   hits({
     transformItems (items) {
-      return items.map(item => ({
-        ...item,
-        authors: item.authors.join(', ')
-      }))
+      items.map(item => {
+        let authors = ''
+        if (Array.isArray(authors)) authors = item.authors.join(', ')
+
+        return {
+          ...item,
+          authors
+        }
+      })
     },
     container: '#hits-2',
     templates: {
@@ -65,10 +70,15 @@ booksIndex.addWidgets([
   }),
   hits({
     transformItems (items) {
-      return items.map(item => ({
-        ...item,
-        authors: item.authors.join(', ')
-      }))
+      items.map(item => {
+        let authors = ''
+        if (Array.isArray(authors)) authors = item.authors.join(', ')
+
+        return {
+          ...item,
+          authors
+        }
+      })
     },
     container: '#hits-1',
     templates: {
