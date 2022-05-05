@@ -72,7 +72,7 @@ booksIndex.addWidgets([
     transformItems (items) {
       items.map(item => {
         let authors = ''
-        if (Array.isArray(authors)) authors = item.authors.join(', ')
+        if (Array.isArray(item.authors)) authors = item.authors.join(', ')
 
         return {
           ...item,
