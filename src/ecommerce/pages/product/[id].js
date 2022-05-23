@@ -6,8 +6,8 @@ import styles from "../../styles/product.module.css";
 import { MeiliSearch } from "meilisearch";
 
 const client = new MeiliSearch({
-  host: process.env.NEXT_MEILI_HOST_NAME,
-  apiKey: process.env.NEXT_MEILI_API_KEY,
+  host: process.env.NEXT_PUBLIC_MEILI_HOST_NAME,
+  apiKey: process.env.NEXT_PUBLIC_MEILI_API_KEY,
 });
 
 const index = client.index("products");

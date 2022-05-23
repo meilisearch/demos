@@ -1,27 +1,23 @@
 import Head from "next/head";
-import { StoreProvider } from "../context/store-context";
-import { DisplayProvider } from "../context/display-context";
+import Layout from "../components/layout/Layout";
 import "../styles/globals.css";
 import "../styles/searchBoxAIS.css";
-import Layout from "../components/layout/Layout";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <StoreProvider>
-      <DisplayProvider>
-        <Head>
-          <title>E-Commerce MeiliSearch with Medusa</title>
-          <meta
-            name="description"
-            content="Integrating Meilisearch in Medusa"
-          />
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </DisplayProvider>
-    </StoreProvider>
+    <>
+      <Head>
+        <title>MeiliSearch E-Commerce</title>
+        <meta
+          name="description"
+          content="Meilisearch Ecommerce demo for scalability and extensibility"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </>
   );
 }
 

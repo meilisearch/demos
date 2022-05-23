@@ -1,46 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import { BiShoppingBag } from "react-icons/bi";
 import { SearchBox } from "react-instantsearch-dom";
-import DisplayContext from "../../context/display-context";
-import StoreContext from "../../context/store-context";
-import MedusaLogo from "../../public/medusa-logo.svg";
+import MeilisearchLogo from "../../public/meilisearch-logo.svg";
 import styles from "../../styles/nav-bar.module.css";
-import { quantity, sum } from "../../utils/helper-functions";
 
 export const NavBar = () => {
-  const { updateCartViewDisplay } = useContext(DisplayContext);
-  const { cart } = useContext(StoreContext);
-  const [isCheckout, setIsCheckout] = useState(true);
-
-  const router = useRouter();
-
-  useEffect(() => {
-    if (router.pathname === "/checkout" || router.pathname === "/payment") {
-      setIsCheckout(true);
-    } else {
-      setIsCheckout(false);
-    }
-  }, [router.pathname]);
-
   return (
     <div className={styles.container}>
       <Link href="/">
         <a style={{ width: "125px" }}>
-          <Image src={MedusaLogo} height="40px" width="100%" alt="logo" />
+          <Image src={MeilisearchLogo} width="75px" alt="logo" />
         </a>
       </Link>
       <SearchBox />
-      {!isCheckout ? (
-        <button className={styles.btn} onClick={() => updateCartViewDisplay()}>
-          <BiShoppingBag />{" "}
-          <span>
-            {cart.items.length > 0 ? cart.items.map(quantity).reduce(sum) : 0}
-          </span>
-        </button>
-      ) : null}
+      <button className={styles.btn}>
+        <BiShoppingBag /> <span>0</span>
+      </button>
     </div>
   );
 };

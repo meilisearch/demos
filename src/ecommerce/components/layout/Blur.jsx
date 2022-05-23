@@ -1,14 +1,9 @@
-import React, { useContext } from "react";
-import DisplayContext from "../../context/display-context";
-import styles from "../../styles/blur.module.css";
+import React from "react";
 
 const Blur = () => {
-  const { cartView, updateCartViewDisplay } = useContext(DisplayContext);
   return (
     <div
-      className={`${styles.blur} ${cartView ? styles.active : null}`}
-      onClick={() => updateCartViewDisplay()}
-      onKeyDown={() => updateCartViewDisplay()}
+      className="styles.blur"
       role="button"
       tabIndex="-1"
       aria-label="Close cart view"
