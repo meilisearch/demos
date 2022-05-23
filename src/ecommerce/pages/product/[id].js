@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import { BiShoppingBag } from "react-icons/bi";
-import styles from "../../styles/product.module.css";
-import { MeiliSearch } from "meilisearch";
+import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { BiShoppingBag } from 'react-icons/bi';
+import styles from '../../styles/product.module.css';
+import { MeiliSearch } from 'meilisearch';
 
 const client = new MeiliSearch({
   host: process.env.NEXT_PUBLIC_MEILI_HOST_NAME,
   apiKey: process.env.NEXT_PUBLIC_MEILI_API_KEY,
 });
 
-const index = client.index("products");
+const index = client.index('products');
 
 const Product = () => {
   const router = useRouter();
@@ -29,16 +29,16 @@ const Product = () => {
   }, [router.query.id]);
 
   const handleQtyChange = (action) => {
-    if (action === "inc") {
+    if (action === 'inc') {
       setQuantity((prev) => prev + 1);
     }
-    if (action === "dec") {
+    if (action === 'dec') {
       setQuantity((prev) => (prev === 1 ? 1 : prev - 1));
     }
   };
 
   if (!product) {
-    return <p style={{ textAlign: "center" }}>Loading...</p>;
+    return <p style={{ textAlign: 'center' }}>Loading...</p>;
   }
 
   return (
@@ -86,14 +86,14 @@ const Product = () => {
             <div className={styles.qty}>
               <button
                 className={styles.qtybtn}
-                onClick={() => handleQtyChange("dec")}
+                onClick={() => handleQtyChange('dec')}
               >
                 -
               </button>
               <span className={styles.ticker}>{quantity}</span>
               <button
                 className={styles.qtybtn}
-                onClick={() => handleQtyChange("inc")}
+                onClick={() => handleQtyChange('inc')}
               >
                 +
               </button>

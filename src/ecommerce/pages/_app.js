@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>MeiliSearch E-Commerce</title>
+        <title>Meilisearch E-Commerce</title>
         <meta
           name="description"
           content="Meilisearch Ecommerce demo for scalability and extensibility"

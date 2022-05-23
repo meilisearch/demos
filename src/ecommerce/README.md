@@ -1,10 +1,10 @@
   <p align="center">
   <img src="https://raw.githubusercontent.com/meilisearch/integration-guides/master/assets/logos/logo.svg" alt="Meilisearch" width="200" height="200" />
 </p>
-<h1 align="center">MeiliSearch Ecommerce</h1>
+<h1 align="center">Meilisearch Ecommerce</h1>
 
 <h4 align="center">
-  <a href="https://github.com/meilisearch/MeiliSearch">MeiliSearch</a> |
+  <a href="https://github.com/meilisearch/MeiliSearch">Meilisearch</a> |
   <a href="https://docs.meilisearch.com">Documentation</a> |
   <a href="https://www.meilisearch.com">Website</a> |
   <a href="https://blog.meilisearch.com">Blog</a> |
@@ -50,8 +50,8 @@ There are many other easy ways to [download and run a Meilisearch instance](http
 Create a **.env** file with content
 
 ```
-NEXT_MEILI_HOST_NAME=http://localhost:7700
-NEXT_MEILI_API_KEY=<PUT_YOUR_API_KEY_HERE>
+NEXT_PUBLIC_MEILI_HOST_NAME=http://localhost:7700
+NEXT_PUBLIC_MEILI_API_KEY=<PUT_YOUR_API_KEY_HERE>
 
 ```
 
@@ -68,7 +68,7 @@ This will create an index `products` and seed data in your meilisearch.
 
 ## 4. Start server
 
-Don't forget to run `$ npm install` first, if you didn't do it in the previous step.
+Don't forget to run `npm install` first, if you didn't do it in the previous step.
 
 ```
 npm run dev
