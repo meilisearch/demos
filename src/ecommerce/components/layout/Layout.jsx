@@ -1,8 +1,8 @@
-import React from "react";
-import NavBar from "./NavBar";
-import Blur from "./Blur";
-import { InstantSearch } from "react-instantsearch-dom";
-import { instantMeiliSearch } from "@meilisearch/instant-meilisearch";
+import React from 'react';
+import NavBar from './NavBar';
+import Blur from './Blur';
+import { InstantSearch } from 'react-instantsearch-dom';
+import { instantMeiliSearch } from '@meilisearch/instant-meilisearch';
 
 const searchClient = instantMeiliSearch(
   process.env.NEXT_PUBLIC_MEILI_HOST_NAME,
@@ -11,7 +11,7 @@ const searchClient = instantMeiliSearch(
 
 const Layout = ({ children }) => {
   return (
-    <InstantSearch indexName="products" searchClient={searchClient}>
+    <InstantSearch indexName='products' searchClient={searchClient}>
       <Blur />
       <NavBar />
       <main>{children}</main>
@@ -20,3 +20,4 @@ const Layout = ({ children }) => {
 };
 
 export default Layout;
+

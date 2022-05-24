@@ -1,5 +1,5 @@
-import styles from "../styles/home.module.css";
-import Results from "../components/home/SearchResult";
+import styles from '../styles/home.module.css';
+import Results from '../components/home/SearchResult';
 
 export default function Home() {
   return (
@@ -18,3 +18,4 @@ export const getStaticProps = async () => {
     props: {},
   };
 };
+

@@ -46,11 +46,11 @@ const Product = () => {
       <figure className={styles.image}>
         <div className={styles.placeholder}>
           <Image
-            height="100%"
-            width="100%"
+            height='100%'
+            width='100%'
             priority={true}
             loader={() => product.images[0]}
-            loading="eager"
+            loading='eager'
             src={product.images[0]}
             alt={`${product.title}`}
           />
@@ -59,13 +59,13 @@ const Product = () => {
       <div className={styles.info}>
         <span />
         <div className={styles.details}>
-          <div className="title">
+          <div className='title'>
             <h1>{product.title}</h1>
           </div>
-          <p className="price">${product.price}</p>
+          <p className='price'>${product.price}</p>
           <div className={styles.selection}>
             <p>Select Size</p>
-            <div className="selectors">
+            <div className='selectors'>
               {product.variants
                 .slice(0)
                 .reverse()
@@ -104,10 +104,10 @@ const Product = () => {
             <BiShoppingBag />
           </button>
           <div className={styles.tabs}>
-            <div className="tab-titles">
+            <div className='tab-titles'>
               <button className={styles.tabtitle}>Product Description</button>
             </div>
-            <div className="tab-content">
+            <div className='tab-content'>
               <p>{product.description}</p>
             </div>
           </div>
@@ -118,3 +118,4 @@ const Product = () => {
 };
 
 export default Product;
+

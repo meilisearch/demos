@@ -1,9 +1,9 @@
-import React from "react";
-import { connectRange } from "react-instantsearch-dom";
+import React from 'react';
+import { connectRange } from 'react-instantsearch-dom';
+import Rheostat from 'rheostat';
 
-import "rheostat/initialize";
-import Rheostat from "rheostat";
-import "rheostat/css/rheostat.css";
+import 'rheostat/initialize';
+import 'rheostat/css/rheostat.css';
 
 const RangeSlider = (props) => {
   let { min, max, currentRefinement, canRefine, refine } = props;
@@ -52,17 +52,11 @@ const RangeSlider = (props) => {
       onChange={onChange}
       onValuesUpdated={onValuesUpdated}
     >
-      <div
-        className="rheostat-marker rheostat-marker--large"
-        style={{ left: 0 }}
-      >
-        <div className="rheostat-value">{stateMin}</div>
+      <div className='rheostat-marker rheostat-marker--large' style={{ left: 0 }}>
+        <div className='rheostat-value'>{stateMin}</div>
       </div>
-      <div
-        className="rheostat-marker rheostat-marker--large"
-        style={{ right: 0 }}
-      >
-        <div className="rheostat-value">{stateMax}</div>
+      <div className='rheostat-marker rheostat-marker--large' style={{ right: 0 }}>
+        <div className='rheostat-value'>{stateMax}</div>
       </div>
     </Rheostat>
   );
