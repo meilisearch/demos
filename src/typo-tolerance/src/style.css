@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import url('http://fonts.cdnfonts.com/css/monaco');
 
 body {
   font-family: 'Poppins', sans-serif;;
@@ -64,6 +65,7 @@ summary::marker {
   display: none;
   content: '';
 }
+
 .arrow {
   width: 16px;
   height: 16px;
@@ -111,15 +113,6 @@ code {
   letter-spacing: 0.16em;
 }
 
-.ais-ClearRefinements {
-  margin: 1em 0;
-}
-
-.flex-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
 .left-panel, .right-panel {
   flex-basis: 45%
 }
@@ -131,19 +124,23 @@ code {
   overflow: hidden;
   margin: 0 auto;
 }
+
 .ais-Hits {
   color: inherit
 }
+
 .ais-Hits-item {
   margin-bottom: 1em;
   width: calc(50% - 1rem);
-  border-radius: 4px;
-  border-color: #D6D4E8;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 30px rgba(57, 72, 110, 0.05);
+  border-radius: 8px;
+  border: none;
 }
 
 .ais-Hits-item img {
   margin-right: 1em;
-  width: 100%;
+  width: 50%;
   height: 100%;
   margin-bottom: 0.5em;
 }
@@ -161,9 +158,11 @@ code {
 .hit-info {
   font-size: 90%;
 }
+
 .isbn {
   font-size: 70%;
 }
+
 .field-name {
   font-weight: 500;
 }
