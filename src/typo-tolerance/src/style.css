@@ -29,14 +29,22 @@ body {
   text-align: center;
   padding-top: 1rem;
 }
-h1 {
+.title h1 {
   font-size: 40px;
   font-weight: 600;
+}
+
+.title p {
+  font-weight: 400;
 }
 
 .central-width {
   max-width: 70%;
   margin: auto;
+}
+
+.results-heading {
+  margin-bottom: 1rem;
 }
 
 .results-container {
@@ -47,21 +55,60 @@ h1 {
   gap: 2rem;
 }
 
-table {
-  border-radius: 5px;
-  border-collapse: collapse;
-  width: 80%;
-  margin: 1rem 0rem;
+h2 {
+  font-weight: 500;
+  margin: 0;
 }
 
-th {
-  background-color: #F5F5FB;
+summary::marker {
+  display: none;
+  content: '';
+}
+.arrow {
+  width: 16px;
+  height: 16px;
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: center;
-  padding: 0.25rem;
+.summary-settings {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 7px;
+  gap: 4px;
+  font-size: 14px;
+  width: 142px;
+  height: 28px;
+  left: 549px;
+  top: 287px;
+  color: #4F55E3;
+  background-color: #CFD0F7;
+  border-radius: 8px;
+}
+
+details[open] summary div.summary-settings > svg {
+  transform: rotate(180deg);
+}
+
+pre {
+  background-color: #504164;
+  color: #EDEEF7;
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+code {
+  font-family: 'Monaco';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 19px;
+
+  letter-spacing: 0.16em;
 }
 
 .ais-ClearRefinements {
