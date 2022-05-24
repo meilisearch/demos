@@ -2,9 +2,9 @@ import {
   ClearRefinements,
   RatingMenu,
   RefinementList,
-} from 'react-instantsearch-dom';
-import styles from '../../styles/searchFilters.module.css';
-import CustomRangeSlider from '../slider/Slider';
+} from "react-instantsearch-dom";
+import styles from "../../styles/searchFilters.module.css";
+import CustomRangeSlider from "../slider/Slider";
 
 const SearchFilters = () => (
   <div className={styles.products}>
@@ -23,7 +23,7 @@ const SearchFilters = () => (
     <h4>Price</h4>
     <CustomRangeSlider attribute="price" />
 
-    <h4 style={{ marginTop: '5rem' }}>Rating</h4>
+    <h4 style={{ marginTop: "5rem" }}>Rating</h4>
     <RatingMenu attribute="rating" max={5} />
   </div>
 );
