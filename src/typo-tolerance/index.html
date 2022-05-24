@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/instantsearch.css@7/themes/algolia-min.css"
-  />
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/instantsearch.css@7/themes/algolia-min.css"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meilisearch demo: typo tolerance</title>
   </head>
@@ -13,7 +13,12 @@
     <div class="ais-InstantSearch">
       <div class="search-header">
         <div class="search-header-content central-width">
-          <img src="assets/meili_logo.svg" alt="Meilisearch" width="20%" height="auto" />
+          <img
+            src="assets/meili_logo.svg"
+            alt="Meilisearch"
+            width="20%"
+            height="auto"
+          />
           <div id="searchbox" class="ais-SearchBox"></div>
         </div>
       </div>
@@ -21,7 +26,8 @@
         <div class="title central-width">
           <h1>Typo tolerant search</h1>
           <p>
-            This demo presents different typo tolerance configurations in action. <br>
+            This demo presents different typo tolerance configurations in
+            action. <br />
             Click on the settings to check the configuration.
           </p>
         </div>
@@ -31,13 +37,25 @@
               <h2>Default typo tolerance</h2>
               <details>
                 <summary>
-                    <div class="summary-settings">
-                      <span> SETTINGS INFO </span>
-                      <svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg" class="arrow">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.293 1.293C0.480528 1.10553 0.734836 1.00021 1 1.00021C1.26516 1.00021 1.51947 1.10553 1.707 1.293L8 7.586L14.293 1.293C14.3852 1.19749 14.4956 1.1213 14.6176 1.0689C14.7396 1.01649 14.8708 0.988901 15.0036 0.987747C15.1364 0.986593 15.2681 1.01189 15.391 1.06218C15.5138 1.11246 15.6255 1.18671 15.7194 1.2806C15.8133 1.3745 15.8875 1.48615 15.9378 1.60904C15.9881 1.73194 16.0134 1.86362 16.0123 1.9964C16.0111 2.12918 15.9835 2.2604 15.9311 2.3824C15.8787 2.50441 15.8025 2.61475 15.707 2.707L8.707 9.707C8.51947 9.89447 8.26516 9.99978 8 9.99978C7.73484 9.99978 7.48053 9.89447 7.293 9.707L0.293 2.707C0.105529 2.51947 0.000213623 2.26516 0.000213623 2C0.000213623 1.73483 0.105529 1.48053 0.293 1.293Z" fill="#4F55E3"/>
-                      </svg>
-                    </div>
-                </summary> 
+                  <div class="summary-settings">
+                    <span> SETTINGS INFO </span>
+                    <svg
+                      width="17"
+                      height="10"
+                      viewBox="0 0 17 10"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="arrow"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M0.293 1.293C0.480528 1.10553 0.734836 1.00021 1 1.00021C1.26516 1.00021 1.51947 1.10553 1.707 1.293L8 7.586L14.293 1.293C14.3852 1.19749 14.4956 1.1213 14.6176 1.0689C14.7396 1.01649 14.8708 0.988901 15.0036 0.987747C15.1364 0.986593 15.2681 1.01189 15.391 1.06218C15.5138 1.11246 15.6255 1.18671 15.7194 1.2806C15.8133 1.3745 15.8875 1.48615 15.9378 1.60904C15.9881 1.73194 16.0134 1.86362 16.0123 1.9964C16.0111 2.12918 15.9835 2.2604 15.9311 2.3824C15.8787 2.50441 15.8025 2.61475 15.707 2.707L8.707 9.707C8.51947 9.89447 8.26516 9.99978 8 9.99978C7.73484 9.99978 7.48053 9.89447 7.293 9.707L0.293 2.707C0.105529 2.51947 0.000213623 2.26516 0.000213623 2C0.000213623 1.73483 0.105529 1.48053 0.293 1.293Z"
+                        fill="#4F55E3"
+                      />
+                    </svg>
+                  </div>
+                </summary>
                 <div class="dropdown-settings">
                   <pre><code>
 "typoTolerance": {
@@ -60,12 +78,24 @@
               <h2>Custom typo tolerance</h2>
               <details>
                 <summary>
-                    <div class="summary-settings">
-                      <span> SETTINGS INFO </span>
-                      <svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg" class="arrow">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.293 1.293C0.480528 1.10553 0.734836 1.00021 1 1.00021C1.26516 1.00021 1.51947 1.10553 1.707 1.293L8 7.586L14.293 1.293C14.3852 1.19749 14.4956 1.1213 14.6176 1.0689C14.7396 1.01649 14.8708 0.988901 15.0036 0.987747C15.1364 0.986593 15.2681 1.01189 15.391 1.06218C15.5138 1.11246 15.6255 1.18671 15.7194 1.2806C15.8133 1.3745 15.8875 1.48615 15.9378 1.60904C15.9881 1.73194 16.0134 1.86362 16.0123 1.9964C16.0111 2.12918 15.9835 2.2604 15.9311 2.3824C15.8787 2.50441 15.8025 2.61475 15.707 2.707L8.707 9.707C8.51947 9.89447 8.26516 9.99978 8 9.99978C7.73484 9.99978 7.48053 9.89447 7.293 9.707L0.293 2.707C0.105529 2.51947 0.000213623 2.26516 0.000213623 2C0.000213623 1.73483 0.105529 1.48053 0.293 1.293Z" fill="#4F55E3"/>
-                      </svg>
-                    </div>
+                  <div class="summary-settings">
+                    <span> SETTINGS INFO </span>
+                    <svg
+                      width="17"
+                      height="10"
+                      viewBox="0 0 17 10"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="arrow"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M0.293 1.293C0.480528 1.10553 0.734836 1.00021 1 1.00021C1.26516 1.00021 1.51947 1.10553 1.707 1.293L8 7.586L14.293 1.293C14.3852 1.19749 14.4956 1.1213 14.6176 1.0689C14.7396 1.01649 14.8708 0.988901 15.0036 0.987747C15.1364 0.986593 15.2681 1.01189 15.391 1.06218C15.5138 1.11246 15.6255 1.18671 15.7194 1.2806C15.8133 1.3745 15.8875 1.48615 15.9378 1.60904C15.9881 1.73194 16.0134 1.86362 16.0123 1.9964C16.0111 2.12918 15.9835 2.2604 15.9311 2.3824C15.8787 2.50441 15.8025 2.61475 15.707 2.707L8.707 9.707C8.51947 9.89447 8.26516 9.99978 8 9.99978C7.73484 9.99978 7.48053 9.89447 7.293 9.707L0.293 2.707C0.105529 2.51947 0.000213623 2.26516 0.000213623 2C0.000213623 1.73483 0.105529 1.48053 0.293 1.293Z"
+                        fill="#4F55E3"
+                      />
+                    </svg>
+                  </div>
                 </summary>
                 <div class="dropdown-settings">
                   <pre><code>
