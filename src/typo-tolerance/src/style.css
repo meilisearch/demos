@@ -5,6 +5,18 @@ body {
   color: #21004B;
   padding: 1em;
 }
+.search-header {
+  background-color: #FFFFFF;
+}
+.search-header-content {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+#searchbox.ais-SearchBox {
+  width: 60%;
+}
 table {
   border-radius: 5px;
   border-collapse: collapse;
