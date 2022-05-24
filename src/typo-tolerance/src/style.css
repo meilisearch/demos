@@ -1,14 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
-@import url('http://fonts.cdnfonts.com/css/monaco');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url("http://fonts.cdnfonts.com/css/monaco");
 
 body {
-  font-family: 'Poppins', sans-serif;;
-  color: #21004B;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  color: #21004b;
   margin: 0;
 }
 
 .search-header {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .search-header-content {
@@ -23,16 +24,14 @@ body {
 }
 
 .main-container {
-  background-color: #F5F5FB;
+  background-color: #f5f5fb;
 }
 
-.title {
-  text-align: center;
-  padding-top: 1rem;
-}
 .title h1 {
-  font-size: 40px;
+  font-size: 2.5rem;
   font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
 }
 
 .title p {
@@ -44,8 +43,14 @@ body {
   margin: auto;
 }
 
-.results-heading {
+.title {
+  text-align: center;
+  padding-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.results-heading {
+  margin: 1.5rem 0;
 }
 
 .results-container {
@@ -61,14 +66,18 @@ h2 {
   margin: 0;
 }
 
+details {
+  margin-top: 0.5rem;
+}
+
 summary::marker {
   display: none;
-  content: '';
+  content: "";
 }
 
 .arrow {
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
   /* Inside auto layout */
   flex: none;
   order: 1;
@@ -80,16 +89,14 @@ summary::marker {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 4px 7px;
-  gap: 4px;
-  font-size: 14px;
-  width: 142px;
-  height: 28px;
-  left: 549px;
-  top: 287px;
-  color: #4F55E3;
-  background-color: #CFD0F7;
-  border-radius: 8px;
+  padding: 0.25rem 0.43rem;
+  gap: 0.25rem;
+  font-size: 0.87rem;
+  width: 8.8rem;
+  height: 1.75rem;
+  color: #4f55e3;
+  background-color: #cfd0f7;
+  border-radius: 0.5rem;
 }
 
 details[open] summary div.summary-settings > svg {
@@ -98,24 +105,26 @@ details[open] summary div.summary-settings > svg {
 
 pre {
   background-color: #504164;
-  color: #EDEEF7;
+  color: #edeef7;
   border-radius: 8px;
   padding: 2rem;
 }
 
 code {
-  font-family: 'Monaco';
+  font-family: "Monaco";
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
-  line-height: 19px;
+  font-size: 0.75rem;
+  line-height: 1.18rem;
 
   letter-spacing: 0.16em;
 }
 
-.left-panel, .right-panel {
-  flex-basis: 45%
+.left-panel,
+.right-panel {
+  flex-basis: 45%;
 }
+
 .ais-Pagination {
   margin-top: 1em;
 }
@@ -126,13 +135,13 @@ code {
 }
 
 .ais-Hits {
-  color: inherit
+  color: inherit;
 }
 
 .ais-Hits-item {
   margin-bottom: 1em;
   width: calc(50% - 1rem);
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 0px 30px rgba(57, 72, 110, 0.05);
   border-radius: 8px;
   border: none;
@@ -166,6 +175,7 @@ code {
 .field-name {
   font-weight: 500;
 }
+
 .ais-Highlight-highlighted {
   background-color: #bfbdff;
   font-size: inherit;
