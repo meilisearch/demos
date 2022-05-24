@@ -11,14 +11,24 @@
   </head>
   <body>
     <div class="ais-InstantSearch">
+
       <div class="search-header">
         <div class="search-header-content central-width">
           <img src="assets/meili_logo.svg" alt="Meilisearch" width="20%" height="auto" />
           <div id="searchbox" class="ais-SearchBox"></div>
         </div>
       </div>
-      <div id="searchbox" class="ais-SearchBox"></div>
-      <div class="flex-container">
+
+      <div class="main-container">
+        <div class="title central-width">
+          <h1>Typo tolerant search</h1>
+          <p>
+            This demo presents different typo tolerance configurations in action. <br>
+            You can click on the settings to check the configuration.
+          </p>
+        </div>
+
+        <div class="results-container central-width">
           <div class="left-panel">
             <h2>Default typo tolerance</h2>
             <p>Typo tolerance enabled</p>
@@ -37,29 +47,28 @@
               </tr>
             </table> 
             <div id="hits-1"></div>
-        </div>
-  
-        <div class="left-panel">
-          <h2>Custom typo tolerance</h2>
-          <p>Typo tolerance disabled on <code>isbn</code> attribute</p>
-          <table>
-            <tr>
-              <th>Typos allowed</th>
-              <th>Query length</th>
-            </tr>
-            <tr>
-              <td>1 typo</td>
-              <td>2 characters</td>
-            </tr>
-            <tr>
-              <td>2 typos</td>
-              <td>4 characters</td>
-            </tr>
-          </table>
-          <div id="hits-2"></div>
+          </div>
+          <div class="left-panel">
+            <h2>Custom typo tolerance</h2>
+            <p>Typo tolerance disabled on <code>isbn</code> attribute</p>
+            <table>
+              <tr>
+                <th>Typos allowed</th>
+                <th>Query length</th>
+              </tr>
+              <tr>
+                <td>1 typo</td>
+                <td>2 characters</td>
+              </tr>
+              <tr>
+                <td>2 typos</td>
+                <td>4 characters</td>
+              </tr>
+            </table>
+            <div id="hits-2"></div>
+          </div>
         </div>
       </div>
-
     </div>
     <script type="module" src="/src/main.js"></script>
   </body>
