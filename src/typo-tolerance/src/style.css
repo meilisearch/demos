@@ -70,6 +70,10 @@ details {
   margin-top: 0.5rem;
 }
 
+summary {
+  cursor: pointer;
+}
+
 summary::marker {
   display: none;
   content: "";
