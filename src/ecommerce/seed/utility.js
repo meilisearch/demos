@@ -2,7 +2,7 @@ async function sleep(ms) {
   return await new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export async function watchUpdates(client, uid) {
+exports.watchUpdates = async (client, uid) => {
   const standardSpeed = 500;
   let allProcessed = false;
   console.log(`Start update watch for ${uid}`);
@@ -35,4 +35,4 @@ export async function watchUpdates(client, uid) {
     }
   }
   console.log(`All documents added to "${uid}"`);
-}
+};
