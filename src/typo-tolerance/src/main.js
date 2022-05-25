@@ -42,7 +42,7 @@ booksTypoIndex.addWidgets([
         </div>
         <div class="hit-info">by {{authors}}</div>
         <div class="hit-info isbn"><span class="field-name">ISBN:</span> {{#helpers.highlight}}{ "attribute": "isbn" }{{/helpers.highlight}}</div>
-        <img src="{{thumbnailUrl}}" align="left" />
+        <img src="{{thumbnailUrl}}"/>
         <div class="hit-description">{{#helpers.highlight}}{ "attribute": "shortDescription" }{{/helpers.highlight}}</div>
       </div>
       `
@@ -89,7 +89,7 @@ booksIndex.addWidgets([
         </div>
         <div class="hit-info">by {{authors}}</div>
         <div class="hit-info isbn"><span class="field-name">ISBN:</span> {{#helpers.highlight}}{ "attribute": "isbn" }{{/helpers.highlight}}</div>
-        <img src="{{thumbnailUrl}}" align="left" />
+        <img src="{{thumbnailUrl}}"/>
         <div class="hit-description">{{#helpers.highlight}}{ "attribute": "shortDescription" }{{/helpers.highlight}}</div>
       </div>
       `
