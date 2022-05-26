@@ -1,17 +1,17 @@
-import Link from 'next/link';
-import { Pagination, SortBy, connectStateResults } from 'react-instantsearch-dom';
-import SearchFilters from './SearchFilters';
-import styles from '../../styles/searchResult.module.css';
+import Link from "next/link";
+import { Pagination, SortBy, connectStateResults } from "react-instantsearch-dom";
+import SearchFilters from "./SearchFilters";
+import styles from "../../styles/searchResult.module.css";
 
 const getString = (str, length = 40, desc) => {
-  const strng = str.replace(/[^\w\s]/gi, '');
+  const strng = str.replace(/[^\w\s]/gi, "");
   if (!strng) {
-    const description = desc.replace(/[^\w\s]/gi, '');
+    const description = desc.replace(/[^\w\s]/gi, "");
     return `${description.substring(0, length)}${
-      description.length > length ? '...' : ''
+      description.length > length ? "..." : ""
     }`;
   }
-  return `${strng?.substring(0, length)}${strng.length > length ? '...' : ''}`;
+  return `${strng?.substring(0, length)}${strng.length > length ? "..." : ""}`;
 };
 
 const Hit = ({ product }) => {
@@ -43,12 +43,12 @@ const Hit = ({ product }) => {
                 <div className={styles.productRateWrap}>
                   <span className={styles.productRate}>
                     {reviewCount} review
-                    {reviewCount === 1 ? '' : 's'}
-                  </span>{' '}
+                    {reviewCount === 1 ? "" : "s"}
+                  </span>{" "}
                   <span>⭐ {rating}</span>
                 </div>
               ) : (
-                'No Review'
+                "No Review"
               )}
             </div>
           </div>
@@ -62,7 +62,7 @@ const Results = connectStateResults(({ searchState, searchResults, searching }) 
   const hits = searchResults?.hits;
 
   if (!searchResults) {
-    return 'Loading';
+    return "Loading";
   }
 
   return (
@@ -73,26 +73,26 @@ const Results = connectStateResults(({ searchState, searchResults, searching }) 
           <>
             <div className={styles.resultPara}>
               <span>
-                Showing {searchResults?.hits.length || 0} of{' '}
-                {searchResults?.nbHits || 0}{' '}
+                Showing {searchResults?.hits.length || 0} of{" "}
+                {searchResults?.nbHits || 0}{" "}
                 {searchState.query && !searching && `for "${searchState.query}"`}
               </span>
-              <div style={{ display: 'flex', gap: '1rem' }}>
+              <div style={{ display: "flex", gap: "1rem" }}>
                 <SortBy
-                  defaultRefinement='products'
+                  defaultRefinement="products"
                   items={[
-                    { value: 'products', label: 'Sort' },
+                    { value: "products", label: "Default Sort" },
                     {
-                      value: 'products:price:desc',
-                      label: 'Price: High to Low',
+                      value: "products:price:desc",
+                      label: "Price: High to Low",
                     },
                     {
-                      value: 'products:price:asc',
-                      label: 'Price: Low to High',
+                      value: "products:price:asc",
+                      label: "Price: Low to High",
                     },
                     {
-                      value: 'products:reviews_count:desc',
-                      label: 'Most Reviews',
+                      value: "products:reviews_count:desc",
+                      label: "Most Reviews",
                     },
                   ]}
                 />
