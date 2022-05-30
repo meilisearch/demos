@@ -1,10 +1,10 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
-import { BiShoppingBag } from 'react-icons/bi';
-import { SearchBox } from 'react-instantsearch-dom';
-import MeilisearchLogo from '../../public/meilisearch-logo.svg';
-import styles from '../../styles/nav-bar.module.css';
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
+import { BiShoppingBag } from 'react-icons/bi'
+import { SearchBox } from 'react-instantsearch-dom'
+import MeilisearchLogo from '../../public/meilisearch-logo.svg'
+import styles from '../../styles/nav-bar.module.css'
 
 export const NavBar = () => {
   return (
@@ -19,8 +19,7 @@ export const NavBar = () => {
         <BiShoppingBag /> <span>0</span>
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default NavBar;
-
+export default NavBar

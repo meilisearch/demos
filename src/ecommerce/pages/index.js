@@ -1,7 +1,7 @@
-import styles from '../styles/home.module.css';
-import Results from '../components/home/SearchResult';
+import styles from '../styles/home.module.css'
+import Results from '../components/home/SearchResult'
 
-export default function Home() {
+export default function Home () {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
@@ -10,12 +10,11 @@ export default function Home() {
         </div>
       </main>
     </div>
-  );
+  )
 }
 
 export const getStaticProps = async () => {
   return {
-    props: {},
-  };
-};
-
+    props: {}
+  }
+}

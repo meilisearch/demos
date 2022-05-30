@@ -1,7 +1,6 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: [''],
-  },
-};
-
+    domains: ['']
+  }
+}
