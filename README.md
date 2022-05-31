@@ -32,6 +32,8 @@
 | [ Meilisearch x MoMA ](https://github.com/meilisearch/demos/tree/main/src/MoMA) | https://moma.meilisearch.com/ | Search through the  [ Museum Of Modern Art Collection ](https://github.com/MuseumofModernArt/collection) with Meilisearch|
 | [ Search in Nobel Prizes with Meilisearch ](https://github.com/meilisearch/demos/tree/main/src/nobel-prizes) |  https://nobel-prizes.meilisearch.com/ | Search through all Nobel Prize winners and their details with Meilisearch |
 | [ Search in world cities ](https://github.com/meilisearch/demos/tree/main/src/geo-javascript) |  https://geosearch-js.meilisearch.com/ | Play with Geosearch features and find info about large cities |
+| [ Tenant token demo ](https://github.com/meilisearch/demos/tree/main/src/tenant-token) |  https://tenant-token.meilisearch.com/ | Use tenant tokens to restrict access to data based on different user names. |
+| [ Typo tolerance demo ](https://github.com/meilisearch/demos/tree/main/src/typo-tolerance) |  https://typo-tolerance.meilisearch.com/ | This demo presents different typo tolerance configurations in action.  |
 
 <br>
 
