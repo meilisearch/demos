@@ -6,7 +6,8 @@
     "dev": "next dev -p 8000",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint --ext .js .",
+    "lint:fix": "eslint --ext .js . --fix",
     "seed": "node seed/seed.js"
   },
   "dependencies": {
@@ -22,7 +23,6 @@
   "devDependencies": {
     "eslint": "7.29.0",
     "eslint-config-next": "11.0.0",
-    "prettier": "^2.6.2",
-    "standard": "^17.0.0"
+    "prettier": "^2.6.2"
   }
 }
