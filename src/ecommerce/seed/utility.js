@@ -1,5 +1,5 @@
-async function sleep (ms) {
-  return await new Promise((resolve) => setTimeout(resolve, ms))
+async function sleep(ms) {
+  return await new Promise(resolve => setTimeout(resolve, ms))
 }
 
 exports.watchUpdates = async (client, uid) => {
@@ -11,14 +11,12 @@ exports.watchUpdates = async (client, uid) => {
     try {
       const updates = await client.index(uid).getTasks()
       const processed = updates.results.filter(
-        (update) => update.status === 'succeeded'
+        update => update.status === 'succeeded'
       )
       const processing = updates.results.filter(
-        (update) => update.status === 'processing'
+        update => update.status === 'processing'
       )
-      const enqueued = updates.results.filter(
-        (update) => update.status === 'enqueued'
-      )
+      const enqueued = updates.results.filter(update => update.status === 'enqueued')
       console.log(`${uid}:`)
       console.log(
         `${processed.length} / ${updates.results.length} have been processed`

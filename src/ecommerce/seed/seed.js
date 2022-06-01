@@ -4,16 +4,16 @@ const { MeiliSearch } = require('meilisearch')
 
 const client = new MeiliSearch({
   host: process.env.NEXT_PUBLIC_MEILI_HOST_NAME,
-  apiKey: process.env.NEXT_PUBLIC_MEILI_API_KEY
+  apiKey: process.env.NEXT_PUBLIC_MEILI_API_KEY,
 })
 
 const INDEX_NAME = 'products'
 
 const index = client.index(INDEX_NAME)
 
-const data = require('./data.json');
+const data = require('./data.json')
 
-(async () => {
+;(async () => {
   console.log(`Adding Filterable and Sortable Attributes to "${INDEX_NAME}"`)
   await index.updateFilterableAttributes([
     'brand',
@@ -21,7 +21,7 @@ const data = require('./data.json');
     'tag',
     'rating',
     'reviews_count',
-    'price'
+    'price',
   ])
   await index.updateSortableAttributes(['reviews_count', 'rating', 'price'])
 
