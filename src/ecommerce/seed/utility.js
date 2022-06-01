@@ -16,7 +16,9 @@ exports.watchUpdates = async (client, uid) => {
       const processing = updates.results.filter(
         update => update.status === 'processing'
       )
-      const enqueued = updates.results.filter(update => update.status === 'enqueued')
+      const enqueued = updates.results.filter(
+        update => update.status === 'enqueued'
+      )
       console.log(`${uid}:`)
       console.log(
         `${processed.length} / ${updates.results.length} have been processed`
@@ -24,7 +26,9 @@ exports.watchUpdates = async (client, uid) => {
       console.log(
         `${processing.length} / ${updates.results.length} is being processed`
       )
-      console.log(`${enqueued.length} / ${updates.results.length} still enqueued`)
+      console.log(
+        `${enqueued.length} / ${updates.results.length} still enqueued`
+      )
       console.log('-------------')
       if (enqueued.length === 0) allProcessed = true
       await sleep(standardSpeed)
