@@ -21,6 +21,6 @@ Updating a demo to the most recent version causes a number of issues. As a resul
 - Because new values for the `Default Search API Key` and `Default Admin API Key` are generated after updating Meilisearch on DigitalOcean:
     - Update breaking changes note with the new `Default Search API Key` value;
     - Update these changes in the code/env file;
-    - Communicate the new API keys to whoever owns the demo sandboxes.
+    - Communicate the new API keys to the owners of the demo sandboxes.
 
     
