@@ -1,9 +1,0 @@
-name: Other
-description: Any other topic you want to talk about.
-body:
-  - type: textarea
-    attributes:
-      label: Other
-      description: What would you want to talk about ?
-    validations:
-      required: false

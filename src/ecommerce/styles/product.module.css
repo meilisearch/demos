@@ -31,15 +31,6 @@
   padding: 1rem 3rem;
 }
 
-.return {
-  display: flex;
-  align-items: center;
-}
-
-.return svg {
-  margin-right: 0.7rem;
-}
-
 .sizebtn {
   padding: 0.7rem;
   border: none;
@@ -153,4 +144,3 @@
     padding: 0 22px;
   }
 }
-

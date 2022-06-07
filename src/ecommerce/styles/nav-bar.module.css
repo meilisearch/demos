@@ -11,15 +11,6 @@
   border-bottom: 1px solid #0001;
 }
 
-.container h1 {
-  margin: 0;
-}
-
-.logo {
-  font-size: var(--fz-xl);
-  color: var(--logo-color-900);
-}
-
 .btn {
   border: none;
   background: transparent;
@@ -43,4 +34,3 @@
     padding: 20px 22px;
   }
 }
-
