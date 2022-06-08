@@ -47,10 +47,10 @@ There are many other easy ways to [download and run a Meilisearch instance](http
 
 ### 2. Set Environment Variables
 
-Create a **.env** file with content
+Create a **.env** file with the credentials of your Meilisearch instance
 
 ```
-NEXT_PUBLIC_MEILI_HOST_NAME=http://localhost:7700
+NEXT_PUBLIC_MEILI_HOST_NAME=<PUT_YOUR_MEILI_HOST_HERE>
 NEXT_PUBLIC_MEILI_API_KEY=<PUT_YOUR_API_KEY_HERE>
 
 ```
