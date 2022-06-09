@@ -1,0 +1,28 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2021": true,
+    "node": true
+  },
+  "globals": {},
+  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+  "parserOptions": {
+    "ecmaVersion": 12
+  },
+  "plugins": ["prettier"],
+  "rules": {
+    "no-unused-vars": ["error", { "varsIgnorePattern": "^omit.*$" }],
+    "array-callback-return": "off",
+    "arrow-parens": ["error", "as-needed"],
+    "prettier/prettier": [
+      "error",
+      {
+        "quoteProps": "consistent",
+        "semi": false,
+        "arrowParens": "avoid",
+        "singleQuote": true
+      }
+    ]
+  }
+}

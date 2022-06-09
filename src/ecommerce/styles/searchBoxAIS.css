@@ -1,0 +1,209 @@
+.ais-SearchBox {
+  flex: 1;
+  margin: 0 2rem;
+  text-align: center;
+}
+
+.ais-SearchBox-submit,
+.ais-SearchBox-reset {
+  display: none;
+}
+
+.ais-SearchBox-input {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 18px 0 rgb(0 0 0 / 10%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  height: 64px;
+  padding: 4px 30px 0 30px;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.ais-Pagination {
+  width: 100%;
+}
+
+.ais-Pagination-list {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.ais-Pagination-link {
+  background-color: rgb(240, 240, 240);
+  padding: 0.5rem 0.8rem;
+  border-radius: 5px;
+}
+
+.ais-Pagination-link--selected {
+  font-weight: bold;
+  color: #fff;
+  background-color: #ff5a9d;
+}
+
+.ais-Pagination-item--previousPage .ais-Pagination-link,
+.ais-Pagination-item--firstPage .ais-Pagination-link,
+.ais-Pagination-item--nextPage .ais-Pagination-link,
+.ais-Pagination-item--lastPage .ais-Pagination-link {
+  background-color: #0000;
+}
+
+.ais-Pagination-item {
+  list-style-type: none;
+}
+
+.ais-SortBy-select {
+  cursor: pointer;
+  border: none;
+  padding: 0.5rem 1rem;
+  outline: none;
+  transition: 0.2s ease;
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+
+.ais-SortBy-select:hover {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.ais-RefinementList-list {
+  padding: 0;
+}
+
+.ais-ClearRefinements-button {
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: 0.2s ease;
+  background-color: #44206a;
+  color: #fff;
+}
+
+.ais-ClearRefinements-button:hover {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.ais-ClearRefinements-button--disabled {
+  opacity: 0.3;
+}
+
+.ais-RefinementList-item {
+  list-style-type: none;
+}
+
+.ais-RefinementList-count {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 30px;
+  background-color: #4f55e3;
+  color: #fff;
+}
+
+.ais-RefinementList-searchBox .ais-SearchBox {
+  margin: 0;
+}
+
+.ais-RefinementList-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.ais-RefinementList-labelText {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.ais-RefinementList-showMore {
+  background-color: #44206a;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+.rheostat_1 {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.rheostat-marker {
+  position: absolute;
+}
+
+.rheostat-value {
+  background-color: rgb(235, 235, 235);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.rheostat-value::before {
+  content: '$';
+}
+
+.ais-RatingMenu-list {
+  padding: 0;
+}
+
+.ais-RatingMenu-item {
+  list-style-type: none;
+}
+
+.ais-RatingMenu-starIcon--full {
+  fill: rgb(199, 199, 0);
+}
+
+.ais-RatingMenu-count {
+  display: none;
+}
+
+.ais-RatingMenu-item {
+  opacity: 0.3;
+}
+
+.ais-RatingMenu-item--selected {
+  opacity: 1;
+}
+
+.ais-RatingMenu-item--selected .ais-RatingMenu-count {
+  display: inline;
+  padding: 0.2rem 0.5rem;
+  border-radius: 30px;
+  background-color: #4f55e3;
+  color: #fff;
+}
+
+.ais-RatingMenu-link {
+  display: flex;
+  margin-top: 0.5rem;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.DefaultProgressBar_background__horizontal {
+  height: 13px !important;
+  top: -1px !important;
+}
+
+.DefaultBackground_background__horizontal {
+  border-radius: 30px;
+}
+
+.DefaultHandle_handle__horizontal {
+  border-radius: 50% !important;
+}
+
+.DefaultHandle_handle__horizontal:before {
+  display: none !important;
+}
+
+.DefaultHandle_handle__horizontal:after {
+  display: none !important;
+}
