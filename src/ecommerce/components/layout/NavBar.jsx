@@ -9,9 +9,9 @@ import styles from '../../styles/nav-bar.module.css'
 export const NavBar = () => {
   return (
     <div className={styles.container}>
-      <Link href='/'>
+      <Link href="/">
         <a style={{ width: '125px' }}>
-          <Image src={MeilisearchLogo} width='75px' alt='logo' />
+          <Image src={MeilisearchLogo} width="75px" alt="logo" />
         </a>
       </Link>
       <SearchBox />

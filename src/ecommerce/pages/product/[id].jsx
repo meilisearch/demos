@@ -1,44 +1,44 @@
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import { BiShoppingBag } from 'react-icons/bi';
-import styles from '../../styles/product.module.css';
-import { MeiliSearch } from 'meilisearch';
+import React, { useEffect, useState } from 'react'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { BiShoppingBag } from 'react-icons/bi'
+import styles from '../../styles/product.module.css'
+import { MeiliSearch } from 'meilisearch'
 
 const client = new MeiliSearch({
   host: process.env.NEXT_PUBLIC_MEILI_HOST_NAME,
   apiKey: process.env.NEXT_PUBLIC_MEILI_API_KEY,
-});
+})
 
-const index = client.index('products');
+const index = client.index('products')
 
 const Product = () => {
-  const router = useRouter();
+  const router = useRouter()
 
-  const [product, setProduct] = useState(null);
-  const [quantity, setQuantity] = useState(1);
+  const [product, setProduct] = useState(null)
+  const [quantity, setQuantity] = useState(1)
 
   useEffect(() => {
     const fetch = async () => {
       if (router.query.id) {
-        const doc = await index.getDocument(router.query.id);
-        setProduct(doc);
+        const doc = await index.getDocument(router.query.id)
+        setProduct(doc)
       }
-    };
-    fetch();
-  }, [router.query.id]);
+    }
+    fetch()
+  }, [router.query.id])
 
-  const handleQtyChange = (action) => {
+  const handleQtyChange = action => {
     if (action === 'inc') {
-      setQuantity((prev) => prev + 1);
+      setQuantity(prev => prev + 1)
     }
     if (action === 'dec') {
-      setQuantity((prev) => (prev === 1 ? 1 : prev - 1));
+      setQuantity(prev => (prev === 1 ? 1 : prev - 1))
     }
-  };
+  }
 
   if (!product) {
-    return <p style={{ textAlign: 'center' }}>Loading...</p>;
+    return <p style={{ textAlign: 'center' }}>Loading...</p>
   }
 
   return (
@@ -69,7 +69,7 @@ const Product = () => {
               {product.variants
                 .slice(0)
                 .reverse()
-                .map((v) => {
+                .map(v => {
                   return (
                     <button
                       key={v.id}
@@ -77,7 +77,7 @@ const Product = () => {
                     >
                       {v.title}
                     </button>
-                  );
+                  )
                 })}
             </div>
           </div>
@@ -114,7 +114,7 @@ const Product = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Product;
+export default Product

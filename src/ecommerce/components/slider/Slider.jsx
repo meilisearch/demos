@@ -5,7 +5,7 @@ import Rheostat from 'rheostat'
 import 'rheostat/initialize'
 import 'rheostat/css/rheostat.css'
 
-const RangeSlider = (props) => {
+const RangeSlider = props => {
   let { min, max, currentRefinement, canRefine, refine } = props
   min = 0
   max = 4300
@@ -16,14 +16,14 @@ const RangeSlider = (props) => {
     setStateMin(0)
     setStateMax(4300)
     refine({ min: 0, max: 4300 })
-  }, [])
+  }, [refine])
 
   React.useEffect(() => {
     if (canRefine) {
       setStateMin(currentRefinement.min)
       setStateMax(currentRefinement.max)
     }
-  }, [currentRefinement.min, currentRefinement.max])
+  }, [canRefine, currentRefinement.min, currentRefinement.max])
 
   if (min === max) {
     return null
@@ -52,11 +52,17 @@ const RangeSlider = (props) => {
       onChange={onChange}
       onValuesUpdated={onValuesUpdated}
     >
-      <div className='rheostat-marker rheostat-marker--large' style={{ left: 0 }}>
-        <div className='rheostat-value'>{stateMin}</div>
+      <div
+        className="rheostat-marker rheostat-marker--large"
+        style={{ left: 0 }}
+      >
+        <div className="rheostat-value">{stateMin}</div>
       </div>
-      <div className='rheostat-marker rheostat-marker--large' style={{ right: 0 }}>
-        <div className='rheostat-value'>{stateMax}</div>
+      <div
+        className="rheostat-marker rheostat-marker--large"
+        style={{ right: 0 }}
+      >
+        <div className="rheostat-value">{stateMax}</div>
       </div>
     </Rheostat>
   )

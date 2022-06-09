@@ -6,8 +6,8 @@
     "dev": "next dev -p 8000",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --ext .js .",
-    "lint:fix": "eslint --ext .js . --fix",
+    "lint": "eslint --ext .js,.jsx .",
+    "lint:fix": "eslint --ext .js,.jsx . --fix",
     "seed": "node seed/seed.js"
   },
   "dependencies": {
