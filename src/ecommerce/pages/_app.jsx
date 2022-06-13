@@ -3,16 +3,16 @@ import Layout from '../components/layout/Layout'
 import '../styles/globals.css'
 import '../styles/searchBoxAIS.css'
 
-function MyApp ({ Component, pageProps }) {
+function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
         <title>Meilisearch E-Commerce</title>
         <meta
-          name='description'
-          content='Meilisearch Ecommerce demo for scalability and extensibility'
+          name="description"
+          content="Meilisearch Ecommerce demo for scalability and extensibility"
         />
-        <link rel='icon' href='/favicon.ico' />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
         <Component {...pageProps} />

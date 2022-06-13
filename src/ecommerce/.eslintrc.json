@@ -6,9 +6,10 @@
     "node": true
   },
   "globals": {},
-  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+  "extends": ["next", "eslint:recommended", "plugin:prettier/recommended"],
   "parserOptions": {
-    "ecmaVersion": 12
+    "ecmaVersion": 12,
+    "sourceType": "module"
   },
   "plugins": ["prettier"],
   "rules": {
