@@ -1,0 +1,179 @@
+@import "../default.css";
+
+.typography {
+  font-family: "Poppins", sans-serif;
+  color: var(--valhalla-500);
+}
+
+.title-xl {
+  font-weight: 700;
+  font-size: 35px;
+  line-height: 140%;
+  letter-spacing: -1%;
+}
+
+.title-l {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 140%;
+  letter-spacing: -1%;
+}
+
+.title-m {
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 140%;
+  letter-spacing: -1%;
+}
+
+.title-s {
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 140%;
+  letter-spacing: -1%;
+}
+
+.title-xs {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 140%;
+  letter-spacing: 0%;
+}
+
+.title-caps {
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 130%;
+  letter-spacing: 3%;
+}
+
+.title-caps-xs {
+  font-weight: 700;
+  font-size: 9px;
+  line-height: 130%;
+  letter-spacing: 3%;
+}
+
+.body-l {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 150%;
+  letter-spacing: 0%;
+}
+
+.body-m {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0%;
+}
+
+.body-s {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 150%;
+  letter-spacing: 0%;
+}
+
+.body-xs {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 150%;
+  letter-spacing: 0%;
+}
+
+@media screen and (min-width: 768px) {
+  .title-xl {
+    font-size: 52px;
+  }
+
+  .title-l {
+    font-size: 42px;
+  }
+
+  .title-m {
+    font-size: 34px;
+  }
+
+  .title-s {
+    font-size: 26px;
+  }
+
+  .title-xs {
+    font-size: 22px;
+  }
+
+  .title-caps {
+    font-size: 13px;
+  }
+
+  .body-l {
+    font-size: 16px;
+  }
+
+  .body-m {
+    font-size: 15px;
+  }
+
+  .body-s {
+    font-size: 13px;
+  }
+
+  .body-xs {
+    font-size: 11px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .title-xl {
+    font-size: 64px;
+  }
+
+  .title-l {
+    font-size: 52px;
+  }
+
+  .title-m {
+    font-size: 40px;
+  }
+
+  .title-s {
+    font-size: 32px;
+  }
+
+  .title-xs {
+    font-size: 26px;
+  }
+
+  .title-caps {
+    font-size: 14px;
+  }
+
+  .title-caps-xs {
+    font-size: 10px;
+  }
+
+  .body-l {
+    font-size: 18px;
+  }
+
+  .body-m {
+    font-size: 16px;
+  }
+
+  .body-s {
+    font-size: 14px;
+  }
+
+  .body-xs {
+    font-size: 12px;
+  }
+}
+
+.text-bold {
+  font-weight: 600;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
