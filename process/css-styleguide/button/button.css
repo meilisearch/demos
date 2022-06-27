@@ -1,0 +1,103 @@
+@import "../default.css";
+
+.btn {
+  font-family: "Poppins", sans-serif;
+
+  border-radius: 176px;
+  border-width: 2px;
+  border-style: solid;
+  padding: 12px 24px;
+  cursor: pointer;
+  outline: none;
+  transition: 0.3s ease;
+  transition-property: background-color, border-color;
+  color: var(--white);
+}
+
+.btn-dodger-blue {
+  background-color: var(--dodger-blue-500);
+  border-color: var(--dodger-blue-500);
+}
+
+.btn-hot-pink {
+  background-color: var(--hot-pink-500);
+  border-color: var(--hot-pink-500);
+}
+
+.btn-lila {
+  background-color: var(--lila-500);
+  border-color: var(--lila-500);
+}
+
+.btn-turquoise {
+  background-color: var(--turquoise-600);
+  border-color: var(--turquoise-600);
+}
+
+.btn-watermelon {
+  background-color: var(--watermelon-500);
+  border-color: var(--watermelon-500);
+}
+
+.btn-peppermint {
+  background-color: var(--peppermint-500);
+  border-color: var(--peppermint-500);
+}
+
+.btn-candlelight {
+  background-color: var(--candlelight-600);
+  border-color: var(--candlelight-600);
+}
+
+.btn-disable {
+  background-color: var(--ashes-900);
+  border-color: var(--ashes-900);
+  pointer-events: none;
+}
+
+.btn-secondary {
+  background-color: var(--transparent);
+  color: var(--valhalla-300);
+}
+
+.btn-dodger-blue:hover {
+  background-color: var(--dodger-blue-600);
+  border-color: var(--dodger-blue-600);
+  color: var(--white);
+}
+
+.btn-hot-pink:hover {
+  background-color: var(--hot-pink-600);
+  border-color: var(--hot-pink-600);
+  color: var(--white);
+}
+
+.btn-lila:hover {
+  background-color: var(--lila-600);
+  border-color: var(--lila-600);
+  color: var(--white);
+}
+
+.btn-turquoise:hover {
+  background-color: var(--turquoise-700);
+  border-color: var(--turquoise-700);
+  color: var(--white);
+}
+
+.btn-watermelon:hover {
+  background-color: var(--watermelon-600);
+  border-color: var(--watermelon-600);
+  color: var(--white);
+}
+
+.btn-peppermint:hover {
+  background-color: var(--peppermint-600);
+  border-color: var(--peppermint-600);
+  color: var(--white);
+}
+
+.btn-candlelight:hover {
+  background-color: var(--candlelight-700);
+  border-color: var(--candlelight-700);
+  color: var(--white);
+}

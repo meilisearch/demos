@@ -1,0 +1,55 @@
+@import "../default.css";
+
+.input {
+  font-family: "Poppins", sans-serif;
+  padding: 12px 16px;
+  background: var(--white);
+  border: 1px solid var(--ashes-900);
+  border-radius: 8px;
+  color: var(--valhalla-300);
+  transition: 0.3s ease;
+  transition-property: background-color, border-color, box-shadow;
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--ashes-900);
+}
+
+.input:hover {
+  border-color: var(--dodger-blue-500);
+}
+
+.input:focus,
+.input:active {
+  border-color: var(--dodger-blue-500);
+  box-shadow: 0px 0px 0px 4px #4b4ded33;
+}
+
+.input--error {
+  background-color: var(--watermelon-100);
+  border: 1px solid var(--watermelon-200);
+}
+
+.input--error:hover {
+  border-color: var(--watermelon-500);
+}
+
+.input--error:focus,
+.input--error:active {
+  background-color: var(--white);
+  border-color: var(--watermelon-500);
+  box-shadow: 0px 0px 0px 4px rgba(255, 78, 98, 0.2);
+}
+
+.input--label {
+  color: var(--valhalla-400);
+}
+
+.input--message {
+  color: var(--valhalla-100);
+}
+
+.input--message-error {
+  color: var(--watermelon-500);
+}
