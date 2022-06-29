@@ -1,0 +1,48 @@
+@import "../default.css";
+
+.tag {
+  padding: 4px 7px;
+  border-radius: 8px;
+}
+
+.tag-success {
+  background-color: var(--peppermint-100);
+  color: var(--peppermint-700);
+}
+
+.tag-error {
+  background-color: var(--watermelon-100);
+  color: var(--watermelon-700);
+}
+
+.tag-process {
+  background-color: var(--lila-100);
+  color: var(--lila-700);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tag-terminate {
+  background-color: var(--ashes-400);
+  color: var(--valhalla-100);
+}
+
+.tag-loader {
+  display: inline-block;
+  height: 11px;
+  width: 11px;
+  border: 2px solid var(--lila-700);
+  border-bottom-color: var(--transparent);
+  border-radius: 50%;
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
