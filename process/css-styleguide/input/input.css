@@ -2,10 +2,10 @@
 
 .input {
   font-family: "Poppins", sans-serif;
-  padding: 12px 16px;
+  padding: 0.75rem 1rem;
   background: var(--white);
   border: 1px solid var(--ashes-900);
-  border-radius: 8px;
+  border-radius: 0.5rem;
   color: var(--valhalla-300);
   transition: 0.3s ease;
   transition-property: background-color, border-color, box-shadow;

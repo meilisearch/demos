@@ -3,10 +3,10 @@
 .btn {
   font-family: "Poppins", sans-serif;
 
-  border-radius: 176px;
-  border-width: 2px;
+  border-radius: 0.7rem;
+  border-width: 0.1rem;
   border-style: solid;
-  padding: 12px 24px;
+  padding: 0.8rem 1.5rem;
   cursor: pointer;
   outline: none;
   transition: 0.3s ease;
