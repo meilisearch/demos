@@ -19,8 +19,8 @@ The style guide consists of a number of common UI components such as buttons, he
 
 ### Button
 
-1. The Base class for styling the button is `.btn` that will set some basics stylings to button.
-2. Style Support : Change the color styling of the button by using classes like `.btn-dodger-blue`
+1. The base class for styling a button is `.btn`. It will set some basic stylings to the button.
+2. Style support: change the color styling of the button by using classes like `.btn-dodger-blue`
 
 ```sh
 <button class="btn btn-dodger-blue" type="button">Click Me</button>
@@ -32,7 +32,7 @@ Output :
 
 ### Heading
 
-1. The Base class for styling the heading is `.typography` that will assign font-styling to text.
+1. The base class for styling the heading is `.typography`. It will assign font styling to text.
 2. Classes to change text and size includes `.title-xl` `.title-l` `.title-m` `.title-s`
 
 ```sh
@@ -45,8 +45,8 @@ Output :
 
 ### Input
 
-1.  The parent class `.input` will assign some basics styling to the input.
-2.  Styling can also be given to labels depending upon varoius needs, some of the classes are `.input--label` `.input--message` `.input--message-error`
+1.  The parent class `.input` will assign some basic styling to the input.
+2.  Styling can also be given to labels depending upon various needs, some of the classes are `.input--label` `.input--message` `.input--message-error`
 
 ```sh
 <input
@@ -76,7 +76,7 @@ Output :
 
 ### Search Input
 
-1. The class `.input-search` will give styling to search input and will also handles the events like active, focus and hover.
+1. The class `.input-search` will give styling to search input and will also handle the events like active, focus and hover.
 
 ```sh
 <input
