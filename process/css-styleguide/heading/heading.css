@@ -1,7 +1,7 @@
-@import "../default.css";
+@import '../default.css';
 
 .typography {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: var(--valhalla-500);
 }
 

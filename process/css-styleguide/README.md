@@ -62,7 +62,7 @@ Output :
 
 ### Modal
 
-1. To use Modal, Warp the content inside parent element such as `div` and give it `.modal` class, this will render the content in Modal.
+1. To use Modal, wrap the content inside the parent element such as `div` and give it `.modal` class, this will render the content in Modal.
 
 ```sh
 <div class="modal">
