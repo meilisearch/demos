@@ -11,7 +11,7 @@
     "seed": "node seed/seed.js"
   },
   "dependencies": {
-    "@meilisearch/instant-meilisearch": "0.7.0",
+    "@meilisearch/instant-meilisearch": "0.8.0",
     "dotenv": "^16.0.1",
     "next": "^11.1.2",
     "react": "17.0.2",
