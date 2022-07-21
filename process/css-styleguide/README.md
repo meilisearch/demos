@@ -28,7 +28,7 @@ The style guide consists of a number of common UI components such as buttons, he
 
 Output :
 
-![Screenshot from 2022-07-11 15-07-19](https://user-images.githubusercontent.com/64376712/178236035-083e0575-eb6c-4e13-8952-c19c9270cd8e.png)
+![Screenshot from 2022-07-16 17-23-48](https://user-images.githubusercontent.com/64376712/179353830-490f0c28-f3d3-4059-a039-df657be396ba.png)
 
 ### Heading
 
@@ -41,7 +41,7 @@ Output :
 
 Output :
 
-![Screenshot from 2022-07-11 15-07-45](https://user-images.githubusercontent.com/64376712/178236110-32d14e90-9684-43b7-9ed3-c0776767aba9.png)
+![Screenshot from 2022-07-16 17-40-45](https://user-images.githubusercontent.com/64376712/179354378-c98ae1ec-3331-472d-94dd-08a8863c210a.png)
 
 ### Input
 
@@ -58,7 +58,7 @@ Output :
 
 Output :
 
-![Screenshot from 2022-07-11 15-08-08](https://user-images.githubusercontent.com/64376712/178236190-07504bfa-ced5-4c71-bd12-b05109e24884.png)
+![Screenshot from 2022-07-16 17-41-11](https://user-images.githubusercontent.com/64376712/179354416-16d343f4-5d81-44c3-82bc-2e6f3f88f4ba.png)
 
 ### Modal
 
@@ -92,8 +92,14 @@ Output :
 
 ### Tag
 
-1. Choose the styling of the tag depending upon the requirements by using different classes like
-   `.tag-sucess` `.tag-process` along with `.tag`
+1. Choose the styling of the tag depending upon the requirements by using different classes.
+   Classes list :
+   1. `.tag` (required - base class name)
+   2. `.tag-sucess`
+   3. `.tag-process`
+   4. `.tag-error`
+   5. `.tag-loader`
+   6. `.tag-delete`
 
 ```sh
 <span class="tag tag-success typography body-s">active</span>

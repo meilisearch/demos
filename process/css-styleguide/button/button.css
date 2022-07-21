@@ -1,9 +1,7 @@
 @import "../default.css";
 
 .btn {
-  font-family: "Poppins", sans-serif;
-
-  border-radius: 0.7rem;
+  border-radius: 2rem;
   border-width: 0.1rem;
   border-style: solid;
   padding: 0.8rem 1.5rem;
@@ -60,43 +58,50 @@
   color: var(--valhalla-300);
 }
 
-.btn-dodger-blue:hover {
+.btn-dodger-blue:hover,
+.btn-dodger-blue:focus {
   background-color: var(--dodger-blue-600);
   border-color: var(--dodger-blue-600);
   color: var(--white);
 }
 
-.btn-hot-pink:hover {
+.btn-hot-pink:hover,
+.btn-hot-pink:focus {
   background-color: var(--hot-pink-600);
   border-color: var(--hot-pink-600);
   color: var(--white);
 }
 
-.btn-lila:hover {
+.btn-lila:hover,
+.btn-lila:focus {
   background-color: var(--lila-600);
   border-color: var(--lila-600);
   color: var(--white);
 }
 
-.btn-turquoise:hover {
+.btn-turquoise:hover,
+.btn-turquoise:focus {
   background-color: var(--turquoise-700);
   border-color: var(--turquoise-700);
   color: var(--white);
 }
 
-.btn-watermelon:hover {
+.btn-watermelon:hover,
+.btn-watermelon:focus {
   background-color: var(--watermelon-600);
   border-color: var(--watermelon-600);
   color: var(--white);
 }
 
-.btn-peppermint:hover {
+.btn-peppermint:hover,
+.btn-peppermint:focus {
   background-color: var(--peppermint-600);
   border-color: var(--peppermint-600);
   color: var(--white);
 }
 
-.btn-candlelight:hover {
+.btn-candlelight:hover,
+.btn-candlelight:focus {
   background-color: var(--candlelight-700);
   border-color: var(--candlelight-700);
   color: var(--white);

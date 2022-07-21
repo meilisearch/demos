@@ -23,7 +23,7 @@
   gap: 0.375rem;
 }
 
-.tag-terminate {
+.tag-delete {
   background-color: var(--ashes-400);
   color: var(--valhalla-100);
 }

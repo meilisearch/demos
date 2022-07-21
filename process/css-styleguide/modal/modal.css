@@ -1,8 +1,4 @@
-@import '../default.css';
-
-body {
-  background-color: #fbfbfb;
-}
+@import "../default.css";
 
 .modal {
   background: var(--white);
