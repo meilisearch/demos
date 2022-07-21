@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tags / Pills</title>
 
-    <link rel="stylesheet" href="../heading/heading.css" />
-    <link rel="stylesheet" href="./tag.css" />
-    <link rel="stylesheet" href="../spacing.css" />
-    <style>
-      .tag-container--local {
-        padding: 1rem;
-      }
-    </style>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tags</title>
+  <link rel="stylesheet" href="../heading/heading.css" />
+  <link rel="stylesheet" href="./tag.css" />
+  <link rel="stylesheet" href="../spacing.css" />
+  <style>
+    .tag-container--local {
+      padding: 1rem;
+    }
+  </style>
+</head>
 
-  <body class="p-3">
-    <div class="tag-container--local">
-      <span class="tag tag-success typography body-s">active</span>
-      <br />
-      <br />
-      <span class="tag tag-error typography body-s">inactive</span>
-      <br />
-      <br />
+<body class="p-3">
+  <div class="tag-container--local">
+    <div class="mb-4">
+      <span class="tag tag-success typography body-s">Success</span>
+    </div>
+    <div class="mb-4">
+      <span class="tag tag-error typography body-s">Error</span>
+    </div>
+    <div class="mb-4">
       <span class="tag tag-process typography body-s">
         <span class="tag-loader"></span>
         creating
       </span>
-      <br />
-      <br />
-      <span class="tag tag-terminate typography body-s">deleted</span>
     </div>
-  </body>
+
+    <span class="tag tag-delete typography body-s">deleted</span>
+  </div>
+</body>
+
 </html>

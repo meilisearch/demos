@@ -1,7 +1,7 @@
-@import '../default.css';
+@import "../default.css";
 
 .input {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   padding: 0.75rem 1rem;
   background: var(--white);
   border: 1px solid var(--ashes-900);
