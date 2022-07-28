@@ -11,7 +11,7 @@
     "defaults"
   ],
   "dependencies": {
-    "@meilisearch/instant-meilisearch": "^0.7.0",
+    "@meilisearch/instant-meilisearch": "^0.8.0",
     "instantsearch.js": "^4.33.2",
     "parcel-bundler": "^1.6.1",
     "scriptjs": "2.5.9"
