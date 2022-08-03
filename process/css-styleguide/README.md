@@ -33,7 +33,7 @@ Output :
 ### Heading
 
 1. The base class for styling the heading is `.typography`. It will assign font styling to text.
-2. Classes to change text and size includes `.title-xl` `.title-l` `.title-m` `.title-s`
+2. Classes to change the text size include `.title-xl`, `.title-l`, `.title-m`, and `.title-s`
 
 ```sh
 <h1 class="typography title-xl">This is Title XL</h1>
