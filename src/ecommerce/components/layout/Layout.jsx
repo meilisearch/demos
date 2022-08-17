@@ -4,8 +4,8 @@ import { InstantSearch } from 'react-instantsearch-dom'
 import { instantMeiliSearch } from '@meilisearch/instant-meilisearch'
 
 const searchClient = instantMeiliSearch(
-  process.env.NEXT_PUBLIC_MEILI_HOST_NAME,
-  process.env.NEXT_PUBLIC_MEILI_API_KEY
+  "https://ms-336e328523ff-106.lon.meilisearch.io",
+  "b4b6d1b32716ac8680fce331770f8309c7476a15d11513665c552eb70b5b3e8d"
 )
 
 const Layout = ({ children }) => {
