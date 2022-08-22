@@ -55,7 +55,7 @@ Output :
 
 ```sh
 <div class="modal">
-    <div class="typography title-l">This is a modal</div>
+    <div class="title title-l">This is a modal</div>
 </div>
 ```
 
@@ -93,7 +93,7 @@ Output :
   👉 `.tag-loader` is the loader animation and is to be used with `.tag-process`
 
 ```sh
-<span class="tag tag-success typography body-s">active</span>
+<span class="tag tag-success body body-s">active</span>
 ```
 
 Output :
