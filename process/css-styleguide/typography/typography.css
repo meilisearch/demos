@@ -1,15 +1,11 @@
 @import "../default.css";
 
-.inter {
-  font-family: "Inter", sans-serif;
-}
-
-.poppins {
-  font-family: "Poppins", sans-serif;
-}
-
 .typography {
   color: var(--valhalla-500);
+}
+
+.title {
+  font-family: "Poppins", sans-serif;
 }
 
 .title-xl {
@@ -61,6 +57,10 @@
   line-height: 130%;
   letter-spacing: 3%;
   text-transform: uppercase;
+}
+
+.body {
+  font-family: "Inter", sans-serif;
 }
 
 .body-l {
