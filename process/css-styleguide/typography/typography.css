@@ -8,42 +8,42 @@
   font-weight: 700;
   font-size: 2.2rem;
   line-height: 140%;
-  letter-spacing: -1%;
+  letter-spacing: -0.01rem;
 }
 
 .title-l {
   font-weight: 700;
   font-size: 1.9rem;
   line-height: 140%;
-  letter-spacing: -1%;
+  letter-spacing: -0.01rem;
 }
 
 .title-m {
   font-weight: 600;
   font-size: 1.6rem;
   line-height: 140%;
-  letter-spacing: -1%;
+  letter-spacing: -0.01rem;
 }
 
 .title-s {
   font-weight: 600;
   font-size: 1.3rem;
   line-height: 140%;
-  letter-spacing: -1%;
+  letter-spacing: -0.01rem;
 }
 
 .title-xs {
   font-weight: 500;
   font-size: 1.1rem;
   line-height: 140%;
-  letter-spacing: 0%;
+  letter-spacing: 0rem;
 }
 
 .title-caps {
   font-weight: 700;
   font-size: 0.7rem;
   line-height: 130%;
-  letter-spacing: 3%;
+  letter-spacing: 0.03rem;
   text-transform: uppercase;
 }
 
@@ -51,7 +51,7 @@
   font-weight: 700;
   font-size: 0.6rem;
   line-height: 130%;
-  letter-spacing: 3%;
+  letter-spacing: 0.03rem;
   text-transform: uppercase;
 }
 
@@ -63,28 +63,28 @@
   font-weight: 400;
   font-size: 0.9rem;
   line-height: 150%;
-  letter-spacing: 0%;
+  letter-spacing: 0rem;
 }
 
 .body-m {
   font-weight: 400;
   font-size: 0.9rem;
   line-height: 150%;
-  letter-spacing: 0%;
+  letter-spacing: 0rem;
 }
 
 .body-s {
   font-weight: 400;
   font-size: 0.6rem;
   line-height: 150%;
-  letter-spacing: 0%;
+  letter-spacing: 0rem;
 }
 
 .body-xs {
   font-weight: 400;
   font-size: 0.6rem;
   line-height: 150%;
-  letter-spacing: 0%;
+  letter-spacing: 0rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -224,7 +224,7 @@
 }
 
 .text-peppermint-500 {
-  color: var(--peppermint-500);
+  color: var(--pepermint-500);
 }
 
 .text-candlelight-500 {
