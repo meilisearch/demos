@@ -10,6 +10,7 @@
   transition: 0.3s ease;
   transition-property: background-color, border-color;
   color: var(--white);
+  font-family: "Inter", sans-serif;
 }
 
 .btn-dodger-blue {
