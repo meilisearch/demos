@@ -82,13 +82,15 @@ Output :
 ### Tag
 
 1. Choose the styling of the tag depending upon the requirements by using different classes.
-   Classes list :
+   Classes list:
    1. `.tag` (required - base class name)
    2. `.tag-sucess`
    3. `.tag-process`
-   4. `.tag-error`
-   5. `.tag-loader`
+   4. `.tag-loader`
+   5. `.tag-error`
    6. `.tag-delete`
+
+  👉 `.tag-loader` is the loader animation and is to be used with `.tag-process`
 
 ```sh
 <span class="tag tag-success typography body-s">active</span>
