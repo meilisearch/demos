@@ -1,9 +1,5 @@
 @import "../default.css";
 
-.typography {
-  color: var(--valhalla-500);
-}
-
 .title {
   font-family: "Poppins", sans-serif;
 }
@@ -185,4 +181,56 @@
 
 .text-underline {
   text-decoration: underline;
+}
+
+.text-white {
+  color: var(--white);
+}
+
+.text-valhalla-500 {
+  color: var(--valhalla-500)
+}
+
+.text-valhalla-300 {
+  color: var(--valhalla-300)
+}
+
+.text-valhalla-100 {
+  color: var(--valhalla-100)
+}
+
+.text-ashes-900 {
+  color: var(--ashes-900)
+}
+
+.text-ashes-500 {
+  color: var(--ashes-500)
+}
+
+.text-hot-pink-500 {
+  color: var(--hot-pink-500);
+}
+
+.text-hot-pink-400 {
+  color: var(--hot-pink-400);
+}
+
+.text-dodger-blue-500 {
+  color: var(--dodger-blue-500);
+}
+
+.text-dodger-blue-400 {
+  color: var(--dodger-blue-400);
+}
+
+.text-peppermint-500 {
+  color: var(--peppermint-500);
+}
+
+.text-candlelight-500 {
+  color: var(--candlelight-500);
+}
+
+.text-watermelon-500 {
+  color: var(--watermelon-500);
 }
