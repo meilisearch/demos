@@ -1,12 +1,12 @@
-# Meilisearch Demos Style Guide
+# Meilisearch demos style guide
 
 Meilisearch Demos style guide contains a set of common UI elements along with their CSS for any developer to choose from to maintain consistent styling across the demos created for Meilisearch. If you are interested in creating a demo, you can refer to the common UI components and use those in your project.
 
-## About the Style Guides
+## About the style guides
 
 The style guide consists of a number of common UI components such as buttons, headings, search inputs that can be included while creating the UI of a project.
 
-## Components Included
+## Components included
 
 - Button
 - Inputs
@@ -15,7 +15,7 @@ The style guide consists of a number of common UI components such as buttons, he
 - Tags
 - Typography: headings and body text
 
-## Brief Examples and Usage
+## Brief examples and usage
 
 ### Button
 
@@ -62,7 +62,7 @@ Output :
 
 ![Screenshot from 2022-07-11 15-08-37](https://user-images.githubusercontent.com/64376712/178236255-d999514e-50f9-4960-9958-497ce207d1ed.png)
 
-### Search Input
+### Search input
 
 1. The class `.input-search` will give styling to the search input and will also handle the events like active, focus and hover.
 
@@ -98,6 +98,7 @@ Output :
 ![Screenshot from 2022-07-11 15-09-14](https://user-images.githubusercontent.com/64376712/178236349-c88eeb11-ec81-4da0-90c9-54ab722d9efc.png)
 
 ### Typography: headings and body text
+
 #### Headings
 1. The base class for styling the heading is `.title`. It will assign font styling to text.
 2. Classes to change heading size include `.title-xl` `.title-l` `.title-m` `.title-s`, `.title-xs`, `.title-caps`, and `.title-caps-xs`.
