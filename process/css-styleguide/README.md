@@ -9,7 +9,7 @@ The style guide consists of a number of common UI components such as buttons, he
 ## Components Included
 
 - Button
-- Heading
+- Typography: headings and body text
 - Inputs
 - Modal
 - Search Input
@@ -30,18 +30,6 @@ Output :
 
 ![Screenshot from 2022-07-16 17-23-48](https://user-images.githubusercontent.com/64376712/179353830-490f0c28-f3d3-4059-a039-df657be396ba.png)
 
-### Heading
-
-1. The base class for styling the heading is `.typography`. It will assign font styling to text.
-2. Classes to change text and size includes `.title-xl` `.title-l` `.title-m` `.title-s`
-
-```sh
-<h1 class="typography title-xl">This is Title XL</h1>
-```
-
-Output :
-
-![Screenshot from 2022-07-16 17-40-45](https://user-images.githubusercontent.com/64376712/179354378-c98ae1ec-3331-472d-94dd-08a8863c210a.png)
 
 ### Input
 
@@ -108,3 +96,36 @@ Output :
 Output :
 
 ![Screenshot from 2022-07-11 15-09-14](https://user-images.githubusercontent.com/64376712/178236349-c88eeb11-ec81-4da0-90c9-54ab722d9efc.png)
+
+### Typography: headings and body text
+#### Headings
+1. The base class for styling the heading is `.title`. It will assign font styling to text.
+2. Classes to change heading size include `.title-xl` `.title-l` `.title-m` `.title-s`, `.title-xs`, `.title-caps`, and `.title-caps-xs`.
+
+#### Body text
+1. The base class for styling body text is `.body`. It will assign font styling to text.
+2. Classes to change body text size include `.body-l` `.body-m` `.body-s`, and `.body-xs`.
+3. Class `.text-bold` will give a weight of 600 to body text.
+4. To underline text, use the `.text-underline` class.
+
+#### Colors
+To apply basic colors to text you can use the following classes:
+- `.text-valhalla-500`, `.text-valhalla-300`, `.text-valhalla-100`
+- `.text-ashes-900`, `.text-ashes-500`
+
+To highlight text, you can use the following classes:
+- `.text-hot-pink-500`, `.text-hot-pink-400`
+- `.text-dodger-blue-500`, `.text-dodger-blue-400`
+
+Technical colors can be applied with the following classes:
+- `.text-peppermint-500`
+- `.text-candlelight-500`
+- `.text-watermelon-500`
+
+```sh
+<h1 class="title title-xl text-valhalla-500">Title XL</h1>
+``` 
+
+Output :
+
+![Screenshot from 2022-07-16 17-40-45](https://user-images.githubusercontent.com/64376712/179354378-c98ae1ec-3331-472d-94dd-08a8863c210a.png)
