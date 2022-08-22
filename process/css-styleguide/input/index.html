@@ -8,31 +8,22 @@
     <link rel="stylesheet" href="../typography/typography.css" />
     <link rel="stylesheet" href="./input.css" />
     <link rel="stylesheet" href="../spacing.css" />
-    <style>
-      .input-container--local {
-        padding: 1rem;
-      }
-    </style>
   </head>
   <body class="p-2">
-    <div class="input-container--local">
-      <input type="text" class="input mr-3 mb-4" placeholder="Write something" />
-      <div><label class="text-valhalla-500 poppins body body-s">Label</label></div>
-      <div>
-        <input type="text" class="input mb-4" placeholder="Write something" />
+    <div class="p-4">
+      <div class="mb-4">
+        <input type="text" class="input" placeholder="Write something" />
       </div>
-      <span class="text-valhalla-500 poppins body body-xs input--message">Lorem Message</span>
-      <label class="text-valhalla-500 poppins body body-s">Label</label>
-      <div>
-        <input
-          type="text"
-          class="input input--error"
-          placeholder="Write something"
-        />
+      <div class="mb-4">
+        <label class="input--label body body-s">Label</label>
+        <input type="text" class="input" placeholder="Write something" />
+        <div class="text-valhalla-500 body body-xs input--message">Lorem Message</div>
       </div>
-      <span class="text-valhalla-500 body body-xs input--message-error"
-        >Lorem Message Error</span
-      >
+      <div>
+        <label class="input--label body body-s">Label</label>
+        <input type="text" class="input input--error" placeholder="Write something"/>
+        <div class="text-valhalla-500 body body-xs input--message-error">Lorem Message Error</div>
+      </div>
     </div>
   </body>
 </html>

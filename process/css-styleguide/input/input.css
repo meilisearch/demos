@@ -1,7 +1,7 @@
 @import "../default.css";
 
 .input {
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", sans-serif;
   padding: 0.75rem 1rem;
   background: var(--white);
   border: 1px solid var(--ashes-900);
@@ -10,6 +10,7 @@
   transition: 0.3s ease;
   transition-property: background-color, border-color, box-shadow;
   outline: none;
+  margin: 0;
 }
 
 .input::placeholder {
@@ -44,12 +45,15 @@
 
 .input--label {
   color: var(--valhalla-400);
+  display: block;
 }
 
 .input--message {
   color: var(--valhalla-100);
+  margin-top: 0.25rem;
 }
 
 .input--message-error {
   color: var(--watermelon-500);
+  margin-top: 0.25rem;
 }
