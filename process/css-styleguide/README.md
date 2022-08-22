@@ -1,6 +1,6 @@
 # Meilisearch Demos Style Guide
 
-Meilisearch Demos style guide contains a set of common UI elements along with their CSS for any developer to choose from to maintain consistent styling across the demos that are created for Meilisearch. In case you are interested in creating a demo, you can refer to the common UI components and use those in your project.
+Meilisearch Demos style guide contains a set of common UI elements along with their CSS for any developer to choose from to maintain consistent styling across the demos created for Meilisearch. If you are interested in creating a demo, you can refer to the common UI components and use those in your project.
 
 ## About the Style Guides
 
@@ -46,7 +46,7 @@ Output :
 ### Input
 
 1.  The parent class `.input` will assign some basic styling to the input.
-2.  Styling can also be given to labels depending upon various needs, some of the classes are `.input--label` `.input--message` `.input--message-error`
+2.  Labels can also be styled depending upon various needs. The classes are `.input--label`, `.input--message`, `.input--error`, and `.input--message-error`
 
 ```sh
 <input
@@ -62,7 +62,7 @@ Output :
 
 ### Modal
 
-1. To use Modal, wrap the content inside the parent element such as `div` and give it `.modal` class, this will render the content in Modal.
+1. To render the content in a modal window, wrap it inside the parent element such as `div` and give it the `.modal` class.
 
 ```sh
 <div class="modal">
@@ -76,7 +76,7 @@ Output :
 
 ### Search Input
 
-1. The class `.input-search` will give styling to search input and will also handle the events like active, focus and hover.
+1. The class `.input-search` will give styling to the search input and will also handle the events like active, focus and hover.
 
 ```sh
 <input
