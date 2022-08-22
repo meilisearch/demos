@@ -9,10 +9,11 @@ The style guide consists of a number of common UI components such as buttons, he
 ## Components included
 
 - Button
-- Inputs
+- Input
+- Logos
 - Modal
 - Search Input
-- Tags
+- Tag
 - Typography: headings and body text
 
 ## Brief examples and usage
