@@ -4,7 +4,9 @@ Meilisearch Demos style guide contains a set of common UI elements along with th
 
 ## About the style guides
 
-The style guide consists of a number of common UI components such as buttons, headings, search inputs that can be included while creating the UI of a project.
+The style guide consists of a number of common UI components such as buttons, headings, search inputs that can be included while creating the UI of a project. It is based on the [Meilisearch Design System](https://www.figma.com/file/XXmUvsZzfZBKt1i2v12wf4/Design-System?node-id=1504%3A282).
+
+For creating beautiful in-brand demos, we encourage you to consult the [Meilisearch Guide to Design a Demo](https://www.figma.com/file/YUqMlOmApYd0D2aitPyDce/Guide-to-design-a-demo?node-id=2%3A8).
 
 ## Components included
 
@@ -16,7 +18,7 @@ The style guide consists of a number of common UI components such as buttons, he
 - Tag
 - Typography: headings and body text
 
-## Brief examples and usage
+## Usage
 
 ### Button
 
