@@ -9,35 +9,199 @@
     <link rel="stylesheet" href="../typography/typography.css" />
     <link rel="stylesheet" href="../spacing.css" />
   </head>
+  <style>
+    .title {
+      grid-area: title;
+    }
+    .button-container {
+      display: grid;
+      width: 50%;
+      grid-template-columns: 1fr 1fr; 
+      grid-template-rows: 1fr 1fr 1fr 1fr;
+      grid-template-areas:
+      "title title"
+      "small-primary-btn small-secondary-btn"
+      "medium-primary-btn medium-secondary-btn"
+      "large-primary-btn large-secondary-btn";
+    }
+  </style>
 
   <body class="p-5">
-    <div class="p-2 text-valhalla-500 body">Disable</div>
-    <button class="btn btn-disable mb-2" disabled type="button">
-      Click Me
-    </button>
+    
+    <div class="button-container p-2 mb-3">
+      <h2 class="text-valhalla-500 title title-xs">Disabled</h2>
+      <div class="small-primary-btn mb-2">
+        <button class="btn btn-sm btn-hot-pink" disabled type="button">Button</button>
+      </div>
+      <div class="small-secondary-btn mb-2">
+        <button class="btn btn-sm btn-hot-pink btn-secondary" disabled type="button"> Button </button>
+      </div>
+      <div class="medium-primary-btn mb-2">
+        <button class="btn btn-hot-pink" disabled type="button"> Button </button>
+      </div>
+      <div class="medium-secondary-btn mb-2">
+        <button class="btn btn-hot-pink btn-secondary"disabled  type="button"> Button </button>
+      </div>
+      <div class="large-primary-btn mb-2">
+        <button class="btn btn-lg btn-hot-pink"disabled  type="button"> Button </button>
+      </div>
+      <div class="large-secondary-btn mb-2">
+        <button class="btn btn-lg btn-hot-pink btn-secondary" disabled type="button"> Button </button>
+      </div>
+    </div>
 
-    <div class="p-2 text-valhalla-500 body">Secondary</div>
-    <button class="btn btn-hot-pink btn-secondary mb-2" type="button">
-      Click Me
-    </button>
-    <div class="p-2 text-valhalla-500 body">Dodger Blue</div>
-    <button class="btn btn-dodger-blue mb-2" type="button">Click Me</button>
-    <div class="p-2 text-valhalla-500 body">Hot Pink</div>
-    <button class="btn btn-hot-pink mb-2" type="button">Click Me</button>
+    <div class="button-container p-2 mb-3">
+      <h2 class="text-valhalla-500 title title-xs">Dodger Blue</h2>
+      <div class="small-primary-btn mb-2">
+        <button class="btn btn-sm btn-dodger-blue" type="button">Button</button>
+      </div>
+      <div class="small-secondary-btn mb-2">
+        <button class="btn btn-sm btn-dodger-blue btn-secondary" type="button"> Button </button>
+      </div>
+      <div class="medium-primary-btn mb-2">
+        <button class="btn btn-dodger-blue" type="button"> Button </button>
+      </div>
+      <div class="medium-secondary-btn mb-2">
+        <button class="btn btn-dodger-blue btn-secondary" type="button"> Button </button>
+      </div>
+      <div class="large-primary-btn mb-2">
+        <button class="btn btn-lg btn-dodger-blue" type="button"> Button </button>
+      </div>
+      <div class="large-secondary-btn mb-2">
+        <button class="btn btn-lg btn-dodger-blue btn-secondary" type="button"> Button </button>
+      </div>
+    </div>
 
-    <div class="p-2 text-valhalla-500 body">Lila</div>
-    <button class="btn btn-lila mb-2" type="button">Click Me</button>
+    <div class="button-container p-2 mb-3">
+      <h2 class="text-valhalla-500 title title-xs">Hot pink</h2>
+      <div class="small-primary-btn mb-2">
+        <button class="btn btn-sm btn-hot-pink" type="button">Button</button>
+      </div>
+      <div class="small-secondary-btn mb-2">
+        <button class="btn btn-sm btn-hot-pink btn-secondary" type="button"> Button </button>
+      </div>
+      <div class="medium-primary-btn mb-2">
+        <button class="btn btn-hot-pink" type="button"> Button </button>
+      </div>
+      <div class="medium-secondary-btn mb-2">
+        <button class="btn btn-hot-pink btn-secondary" type="button"> Button </button>
+      </div>
+      <div class="large-primary-btn mb-2">
+        <button class="btn btn-lg btn-hot-pink" type="button"> Button </button>
+      </div>
+      <div class="large-secondary-btn mb-2">
+        <button class="btn btn-lg btn-hot-pink btn-secondary" type="button"> Button </button>
+      </div>
+    </div>
 
-    <div class="p-2 text-valhalla-500 body">Turquoise</div>
-    <button class="btn btn-turquoise mb-2" type="button">Click Me</button>
+    <div class="button-container p-2 mb-3">
+      <h2 class="text-valhalla-500 title title-xs">Lila</h2>
+      <div class="small-primary-btn mb-2">
+        <button class="btn btn-sm btn-lila" type="button">Button</button>
+      </div>
+      <div class="small-secondary-btn mb-2">
+        <button class="btn btn-sm btn-lila btn-secondary" type="button"> Button </button>
+      </div>
+      <div class="medium-primary-btn mb-2">
+        <button class="btn btn-lila" type="button"> Button </button>
+      </div>
+      <div class="medium-secondary-btn mb-2">
+        <button class="btn btn-lila btn-secondary" type="button"> Button </button>
+      </div>
+      <div class="large-primary-btn mb-2">
+        <button class="btn btn-lg btn-lila" type="button"> Button </button>
+      </div>
+      <div class="large-secondary-btn mb-2">
+        <button class="btn btn-lg btn-lila btn-secondary" type="button"> Button </button>
+      </div>
+    </div>
 
-    <div class="p-2 text-valhalla-500 body">Watermelon</div>
-    <button class="btn btn-watermelon mb-2" type="button">Click Me</button>
+    <div class="button-container p-2 mb-3">
+      <h2 class="text-valhalla-500 title title-xs">Turquoise</h2>
+      <div class="small-primary-btn mb-2">
+        <button class="btn btn-sm btn-turquoise" type="button">Button</button>
+      </div>
+      <div class="small-secondary-btn mb-2">
+        <button class="btn btn-sm btn-turquoise btn-secondary" type="button"> Button </button>
+      </div>
+      <div class="medium-primary-btn mb-2">
+        <button class="btn btn-turquoise" type="button"> Button </button>
+      </div>
+      <div class="medium-secondary-btn mb-2">
+        <button class="btn btn-turquoise btn-secondary" type="button"> Button </button>
+      </div>
+      <div class="large-primary-btn mb-2">
+        <button class="btn btn-lg btn-turquoise" type="button"> Button </button>
+      </div>
+      <div class="large-secondary-btn mb-2">
+        <button class="btn btn-lg btn-turquoise btn-secondary" type="button"> Button </button>
+      </div>
+    </div>
 
-    <div class="p-2 text-valhalla-500 body">Peppermint</div>
-    <button class="btn btn-peppermint mb-2" type="button">Click Me</button>
+    <div class="button-container p-2 mb-3">
+      <h2 class="text-valhalla-500 title title-xs">Watermelon</h2>
+      <div class="small-primary-btn mb-2">
+        <button class="btn btn-sm btn-watermelon" type="button">Button</button>
+      </div>
+      <div class="small-secondary-btn mb-2">
+        <button class="btn btn-sm btn-watermelon btn-secondary" type="button"> Button </button>
+      </div>
+      <div class="medium-primary-btn mb-2">
+        <button class="btn btn-watermelon" type="button"> Button </button>
+      </div>
+      <div class="medium-secondary-btn mb-2">
+        <button class="btn btn-watermelon btn-secondary" type="button"> Button </button>
+      </div>
+      <div class="large-primary-btn mb-2">
+        <button class="btn btn-lg btn-watermelon btn-lila" type="button"> Button </button>
+      </div>
+      <div class="large-secondary-btn mb-2">
+        <button class="btn btn-lg btn-watermelon btn-lila btn-secondary" type="button"> Button </button>
+      </div>
+    </div>
 
-    <div class="p-2 text-valhalla-500 body">Candlelight</div>
-    <button class="btn btn-candlelight mb-2" type="button">Click Me</button>
+    <div class="button-container p-2 mb-3">
+      <h2 class="text-valhalla-500 title title-xs">Peppermint</h2>
+      <div class="small-primary-btn mb-2">
+        <button class="btn btn-sm btn-peppermint" type="button">Button</button>
+      </div>
+      <div class="small-secondary-btn mb-2">
+        <button class="btn btn-sm btn-peppermint btn-secondary" type="button"> Button </button>
+      </div>
+      <div class="medium-primary-btn mb-2">
+        <button class="btn btn-peppermint" type="button"> Button </button>
+      </div>
+      <div class="medium-secondary-btn mb-2">
+        <button class="btn btn-peppermint btn-secondary" type="button"> Button </button>
+      </div>
+      <div class="large-primary-btn mb-2">
+        <button class="btn btn-lg btn-peppermint" type="button"> Button </button>
+      </div>
+      <div class="large-secondary-btn mb-2">
+        <button class="btn btn-lg btn-peppermint btn-secondary" type="button"> Button </button>
+      </div>
+    </div>
+
+    <div class="button-container p-2 mb-3">
+      <h2 class="text-valhalla-500 title title-xs">Candlelight</h2>
+      <div class="small-primary-btn mb-2">
+        <button class="btn btn-sm btn-candlelight" type="button">Button</button>
+      </div>
+      <div class="small-secondary-btn mb-2">
+        <button class="btn btn-sm btn-candlelight btn-secondary" type="button"> Button </button>
+      </div>
+      <div class="medium-primary-btn mb-2">
+        <button class="btn btn-candlelight" type="button"> Button </button>
+      </div>
+      <div class="medium-secondary-btn mb-2">
+        <button class="btn btn-candlelight btn-secondary" type="button"> Button </button>
+      </div>
+      <div class="large-primary-btn mb-2">
+        <button class="btn btn-lg btn-candlelight" type="button"> Button </button>
+      </div>
+      <div class="large-secondary-btn mb-2">
+        <button class="btn btn-lg btn-candlelight btn-secondary" type="button"> Button </button>
+      </div>
+    </div>
   </body>
 </html>
