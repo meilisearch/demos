@@ -59,7 +59,7 @@ Output :
 1.  The parent class `.input` will assign some basic styling to the input.
 2.  Labels can also be styled depending upon various needs. The classes are `.input--label`, `.input--message`, `.input--error`, and `.input--message-error`
 
-```sh
+```html
 <input
   type="text"
   class="input input--label"
@@ -75,7 +75,7 @@ Output :
 
 1. To render the content in a modal window, wrap it inside the parent element such as `div` and give it the `.modal` class.
 
-```sh
+```html
 <div class="modal">
     <div class="title title-l">This is a modal</div>
 </div>
@@ -89,7 +89,7 @@ Output :
 
 1. The class `.input-search` will give styling to the search input and will also handle the events like active, focus and hover.
 
-```sh
+```html
 <input
     type="search"
     placeholder="Search something"
@@ -114,7 +114,7 @@ Output :
 
   👉 `.tag-loader` is the loader animation and is to be used with `.tag-process`
 
-```sh
+```html
 <span class="tag tag-success body body-s">active</span>
 ```
 
@@ -148,7 +148,7 @@ Technical colors can be applied with the following classes:
 - `.text-candlelight-500`
 - `.text-watermelon-500`
 
-```sh
+```html
 <h1 class="title title-xl text-valhalla-500">Title XL</h1>
 ``` 
 
