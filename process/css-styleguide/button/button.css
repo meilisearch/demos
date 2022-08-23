@@ -20,6 +20,7 @@
   transition-property: background-color, border-color;
   color: var(--white);
   font-family: "Inter", sans-serif;
+  font-weight: 600;
 }
 
 .btn-lg {
