@@ -20,12 +20,32 @@ The style guide consists of a number of common UI components such as buttons, he
 
 ### Button
 
-1. The base class for styling a button is `.btn`. It will set some basic stylings to the button.
-2. Style support: change the color styling of the button by using classes like `.btn-dodger-blue`
+1. The base class for styling a button is `.btn`.
+2. Change the color styling of the button by using the followung classes: 
+- `.btn-dodger-blue` 
+- `.btn-hot-pink`
+- `.btn-lila` 
+- `.btn-turquoise`
+- `.btn-watermelon`
+- `.btn-peppermint`
+- `.btn-candlelight`
 
-```sh
-<button class="btn btn-dodger-blue" type="button">Click Me</button>
+```html
+<button class="btn btn-dodger-blue" type="button">Button</button>
 ```
+
+3. You can create a secondary button by adding the `btn-secondary` class
+
+```html
+<button class="btn btn-dodger-blue btn-secondary" type="button">Button</button>
+```
+
+4. To change the size of the button, you can add `btn-sm` or `btn-lg` to the class list.
+
+```html
+<button class="btn btn-sm btn-dodger-blue" type="button">Button</button>
+```
+
 
 Output :
 
