@@ -109,7 +109,7 @@ The search form is composed of 3 elements, each with its own corresponding class
 
 Output :
 
-TBD 
+<img width="488" alt="Capture d’écran 2022-08-25 à 18 07 31" src="https://user-images.githubusercontent.com/48251481/186716079-47c20b88-f806-4daf-ac2a-95795067ed3e.png">
 
 ### Tag
 
