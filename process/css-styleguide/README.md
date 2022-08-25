@@ -51,7 +51,7 @@ For creating beautiful in-brand demos, we encourage you to consult the [Meilisea
 
 Output :
 
-![Screenshot from 2022-07-16 17-23-48](https://user-images.githubusercontent.com/64376712/179353830-490f0c28-f3d3-4059-a039-df657be396ba.png)
+<img width="50%" alt="Capture d’écran 2022-08-23 à 10 33 08" src="https://user-images.githubusercontent.com/48251481/186461703-49f5d19b-128e-4b28-9348-f1838c69ab74.png">
 
 
 ### Input
@@ -69,7 +69,7 @@ Output :
 
 Output :
 
-![Screenshot from 2022-07-16 17-41-11](https://user-images.githubusercontent.com/64376712/179354416-16d343f4-5d81-44c3-82bc-2e6f3f88f4ba.png)
+<img width="311" alt="Capture d’écran 2022-08-23 à 10 34 05" src="https://user-images.githubusercontent.com/48251481/186462336-24f8c55e-29fc-49c8-93c4-e45a90eb1e72.png">
 
 ### Modal
 
@@ -130,7 +130,8 @@ TBD
 
 Output :
 
-![Screenshot from 2022-07-11 15-09-14](https://user-images.githubusercontent.com/64376712/178236349-c88eeb11-ec81-4da0-90c9-54ab722d9efc.png)
+<img width="125" alt="Capture d’écran 2022-08-23 à 10 35 58" src="https://user-images.githubusercontent.com/48251481/186462461-fe47b488-be82-4b6b-8ef0-0469c5bb0c6f.png">
+
 
 ### Typography: headings and body text
 
@@ -164,4 +165,4 @@ Technical colors can be applied with the following classes:
 
 Output :
 
-![Screenshot from 2022-07-16 17-40-45](https://user-images.githubusercontent.com/64376712/179354378-c98ae1ec-3331-472d-94dd-08a8863c210a.png)
+<img width="284" alt="Capture d’écran 2022-08-23 à 10 36 41" src="https://user-images.githubusercontent.com/48251481/186462510-6babff7a-e595-43bf-bdeb-f0270b381907.png">
