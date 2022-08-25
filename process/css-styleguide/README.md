@@ -85,21 +85,31 @@ Output :
 
 ![Screenshot from 2022-07-11 15-08-37](https://user-images.githubusercontent.com/64376712/178236255-d999514e-50f9-4960-9958-497ce207d1ed.png)
 
-### Search input
+### Search form
 
-1. The class `.input-search` will give styling to the search input and will also handle the events like active, focus and hover.
+The search form is composed of 3 elements, each with its own corresponding classes:
+1. A form with a `.search-form` class, which gives flex container properties to the form element
+
+2. An input: the base class `.input` assign basic input style to the input. It needs to be combined with `search-input` give it a search bar style, adding the magnifier glass to it.
+
+3. A reset button: the base class for styling a reset button is `.search-input-reset`.
 
 ```html
-<input
-    type="search"
-    placeholder="Search something"
-    class="input input-search"
- />
+  <form class="search-form">
+    <input
+      type="search"
+      placeholder="Search something"
+      class="input search-input"
+    />
+    <button type="reset" class="search-input-reset">
+      <!-- Icon here  -->
+    </button>
+  </form>
 ```
 
 Output :
 
-![Screenshot from 2022-07-11 15-09-00](https://user-images.githubusercontent.com/64376712/178236293-3bb79c1a-8960-4634-847f-991a245f7f35.png)
+TBD 
 
 ### Tag
 
