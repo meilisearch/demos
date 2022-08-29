@@ -143,6 +143,8 @@ Output :
 3. Class `.text-bold` will give a weight of 600 to body text.
 4. To underline text, use the `.text-underline` class.
 
+💡 Both headings and body text are responsive 
+
 #### Colors
 To apply basic colors to text you can use the following classes:
 - `.text-valhalla-500`, `.text-valhalla-300`, `.text-valhalla-100`
