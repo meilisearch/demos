@@ -1,4 +1,4 @@
-@import "./default.css";
+@import "../default.css";
 
 .p-0 {
   padding: var(--size-0);
@@ -23,6 +23,7 @@
 .p-5 {
   padding: var(--size-5);
 }
+
 .pl-0 {
   padding-left: var(--size-0);
 }
