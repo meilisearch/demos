@@ -36,13 +36,13 @@ For creating beautiful in-brand demos, we encourage you to consult the [Meilisea
 <button class="btn btn-dodger-blue" type="button">Button</button>
 ```
 
-3. You can create a secondary button by adding the `btn-secondary` class
+3. You can create a secondary button by adding the `.btn-secondary` class
 
 ```html
 <button class="btn btn-dodger-blue btn-secondary" type="button">Button</button>
 ```
 
-4. To change the size of the button, you can add `btn-sm` or `btn-lg` to the class list.
+4. To change the size of the button, you can add `.btn-sm` or `.btn-lg` to the class list.
 
 ```html
 <button class="btn btn-sm btn-dodger-blue" type="button">Button</button>
@@ -90,7 +90,7 @@ Output :
 The search form is composed of 3 elements, each with its own corresponding classes:
 1. A form with a `.search-form` class, which gives flex container properties to the form element
 
-2. An input: the base class `.input` assign basic input style to the input. It needs to be combined with `search-input` to give it a search bar style, adding the magnifier glass to it.
+2. An input: the base class `.input` assign basic input style to the input. It needs to be combined with `.search-input` to give it a search bar style, adding the magnifier glass to it.
 
 3. A reset button: the base class for styling a reset button is `.search-input-reset`.
 
