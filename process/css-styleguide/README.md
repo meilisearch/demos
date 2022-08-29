@@ -6,15 +6,16 @@ Meilisearch Demos theme contains a set of common UI elements along with their CS
 
 This theme is based on the [Meilisearch Design System](https://www.figma.com/file/XXmUvsZzfZBKt1i2v12wf4/Design-System?node-id=1504%3A282) and the [Meilisearch Guide to Design a Demo](https://www.figma.com/file/YUqMlOmApYd0D2aitPyDce/Guide-to-design-a-demo?node-id=2%3A8) (_private links_).
 
-## Components included
+## Components and utilities included
 
-- [Button](#-button)
-- [Input](#-input)
-- [Logos](#-Logos)
-- [Modal](#-modal)
+- [Button](#button)
+- [Input](#input)
+- [Logos](#Logos)
+- [Modal](#modal)
 - [Search Form](#search-form)
-- [Tag](#-tag)
-- [Typography: headings and body text](#typography-headings-and-body-text)
+- [Tag](#tag)
+- [Typography: headings and body text](#-typography-headings-and-body-text)
+- [Spacing stylesheet](#spacing-stylesheet)
 
 ## Usage
 
@@ -163,3 +164,25 @@ Technical colors can be applied with the following classes:
 Output :
 
 <img width="284" alt="Capture d’écran 2022-08-23 à 10 36 41" src="https://user-images.githubusercontent.com/48251481/186462510-6babff7a-e595-43bf-bdeb-f0270b381907.png">
+
+### Spacing stylesheet
+Spacing utilities include margin and padding.
+The classes are named using the format {property}{sides}-{size}
+
+Where property is:
+- `m` - for classes that set margin
+- `p` - for classes that set padding
+
+Where sides is:
+- `t` - for classes that set margin-top or padding-top
+- `b` - for classes that set margin-bottom or padding-bottom
+- `x` - for classes that set both *-left and *-right
+- `y` - for classes that set both *-top and *-bottom
+
+Where size is:
+- `0` - for classes that remove the margin or padding by setting it to 0
+- `1` - for classes that set the margin or padding to 0.25 rem
+- `2` - for classes that set the margin or padding to 0.5 rem
+- `3` - for classes that set the margin or padding to 0.75 rem
+- `4` - for classes that set the margin or padding to 1 rem
+- `5` - for classes that set the margin or padding to 1.25 rem
