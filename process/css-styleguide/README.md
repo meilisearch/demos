@@ -14,7 +14,7 @@ This theme is based on the [Meilisearch Design System](https://www.figma.com/fil
 - [Modal](#modal)
 - [Search Form](#search-form)
 - [Tag](#tag)
-- [Typography: headings and body text](#-typography-headings-and-body-text)
+- [Typography: headings and body text](#typography-headings-and-body-text)
 - [Spacing stylesheet](#spacing-stylesheet)
 
 ## Usage
