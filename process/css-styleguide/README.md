@@ -186,3 +186,17 @@ Where size is:
 - `3` - for classes that set the margin or padding to 0.75 rem
 - `4` - for classes that set the margin or padding to 1 rem
 - `5` - for classes that set the margin or padding to 1.25 rem
+
+Note that `side` is optional, if you omit it, the property will be applied to all sides.
+
+Example:
+
+```html
+ <div class="m-5">Applies a margin of 1rem to all sides</div>
+ <div class="mt-5">Applies a margin of 1rem to the top side</div>
+ <div class="mb-5">Applies a margin of 1rem to the bottom side</div>
+ <div class="my-5">Applies a margin of 1rem to the top and bottom sides</div>
+ <div class="mr-5">Applies a margin of 1rem to the right side</div>
+ <div class="ml-5">Applies a margin of 1rem to the left side</div>
+ <div class="mx-5">Applies a margin of 1rem to the right and left sides</div>
+```
