@@ -23,7 +23,7 @@ For creating beautiful in-brand demos, we encourage you to consult the [Meilisea
 ### Button
 
 1. The base class for styling a button is `.btn`.
-2. Change the color styling of the button by using the followung classes: 
+2. Change the color styling of the button by using the following classes:
 - `.btn-dodger-blue` 
 - `.btn-hot-pink`
 - `.btn-lila` 
@@ -90,7 +90,7 @@ Output :
 The search form is composed of 3 elements, each with its own corresponding classes:
 1. A form with a `.search-form` class, which gives flex container properties to the form element
 
-2. An input: the base class `.input` assign basic input style to the input. It needs to be combined with `search-input` give it a search bar style, adding the magnifier glass to it.
+2. An input: the base class `.input` assign basic input style to the input. It needs to be combined with `search-input` to give it a search bar style, adding the magnifier glass to it.
 
 3. A reset button: the base class for styling a reset button is `.search-input-reset`.
 
@@ -116,7 +116,7 @@ Output :
 1. Choose the styling of the tag depending upon the requirements by using different classes.
    Classes list:
    1. `.tag` (required - base class name)
-   2. `.tag-sucess`
+   2. `.tag-success`
    3. `.tag-process`
    4. `.tag-loader`
    5. `.tag-error`
