@@ -1,10 +1,10 @@
-# Meilisearch demos style guide
+# Meilisearch demos theme
 
-Meilisearch Demos style guide contains a set of common UI elements along with their CSS for any developer to choose from to maintain consistent styling across the demos created for Meilisearch. If you are interested in creating a demo, you can refer to the common UI components and use those in your project.
+Meilisearch Demos theme contains a set of common UI elements along with their CSS for any developer to choose from to maintain consistent styling across the demos created for Meilisearch. If you are interested in creating a demo, you can refer to the common UI components and use those in your project.
 
-## About the style guides
+## About the theme
 
-The style guide consists of a number of common UI components such as buttons, headings, search inputs that can be included while creating the UI of a project. It is based on the [Meilisearch Design System](https://www.figma.com/file/XXmUvsZzfZBKt1i2v12wf4/Design-System?node-id=1504%3A282).
+This theme is based on the [Meilisearch Design System](https://www.figma.com/file/XXmUvsZzfZBKt1i2v12wf4/Design-System?node-id=1504%3A282).
 
 For creating beautiful in-brand demos, we encourage you to consult the [Meilisearch Guide to Design a Demo](https://www.figma.com/file/YUqMlOmApYd0D2aitPyDce/Guide-to-design-a-demo?node-id=2%3A8).
 
