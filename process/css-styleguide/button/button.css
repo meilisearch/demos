@@ -78,6 +78,7 @@
   background-color: var(--ashes-900);
   border-color: var(--ashes-900);
   pointer-events: none;
+  cursor: not-allowed;
 }
 
 .btn-dodger-blue:hover,
