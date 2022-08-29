@@ -10,13 +10,13 @@ For creating beautiful in-brand demos, we encourage you to consult the [Meilisea
 
 ## Components included
 
-- Button
-- Input
-- Logos
-- Modal
-- Search Input
-- Tag
-- Typography: headings and body text
+- [Button](#-button)
+- [Input](#-input)
+- [Logos](#-Logos)
+- [Modal](#-modal)
+- [Search Form](#search-form)
+- [Tag](#-tag)
+- [Typography: headings and body text](#typography-headings-and-body-text)
 
 ## Usage
 
