@@ -130,8 +130,7 @@ Output :
 
 Output :
 
-<img width="125" alt="Capture d’écran 2022-08-23 à 10 35 58" src="https://user-images.githubusercontent.com/48251481/186462461-fe47b488-be82-4b6b-8ef0-0469c5bb0c6f.png">
-
+<img width="124" alt="Capture d’écran 2022-08-29 à 14 28 00" src="https://user-images.githubusercontent.com/48251481/187201058-47e4bafe-ca14-4595-87b0-193dfc2f9a5f.png">
 
 ### Typography: headings and body text
 
