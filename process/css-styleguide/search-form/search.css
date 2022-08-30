@@ -32,7 +32,7 @@
   line-height: 1.5rem;
 }
 
-.search-input-reset {
+.search-input-reset  {
   align-items: center;
   border-radius: 50%;
   display: flex;
@@ -46,6 +46,14 @@
   cursor: pointer;
 }
 
+.search-input::-webkit-search-cancel-button {
+  appearance: none;
+}
+
+.search-input-reset svg {
+  fill: var(--ashes-900)
+}
+
 button.search-input-reset {
   background-color: transparent;
   border: none;
@@ -53,4 +61,12 @@ button.search-input-reset {
 
 button.search-input-reset[hidden] {
   display: none;
+}
+
+button.search-input-reset:focus-visible {
+  outline: none;
+}
+
+button.search-input-reset:focus-visible svg {
+  fill: var(--valhalla-100);
 }
