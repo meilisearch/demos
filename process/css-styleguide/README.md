@@ -11,7 +11,6 @@ This theme is based on the [Meilisearch Design System](https://www.figma.com/fil
 - [Button](#button)
 - [Input](#input)
 - [Logos](#Logos)
-- [Modal](#modal)
 - [Search Form](#search-form)
 - [Tag](#tag)
 - [Typography: headings and body text](#typography-headings-and-body-text)
@@ -70,19 +69,16 @@ Output :
 
 <img width="311" alt="Capture d’écran 2022-08-23 à 10 34 05" src="https://user-images.githubusercontent.com/48251481/186462336-24f8c55e-29fc-49c8-93c4-e45a90eb1e72.png">
 
-### Modal
+### Logos
 
-1. To render the content in a modal window, wrap it inside the parent element such as `div` and give it the `.modal` class.
+You'll find the Meilisearch logo system both for light and dark backgrounds. The Meilisearch logo system is composed of:
+- Default logo (logomark followed by logotype)
+- Logomark
+- Logotype
+- Vertical logo (logomark above logotype)
 
-```html
-<div class="modal">
-    <div class="title title-l">This is a modal</div>
-</div>
-```
+Each logo can be found in its colored and monochrome version.
 
-Output :
-
-![Screenshot from 2022-07-11 15-08-37](https://user-images.githubusercontent.com/64376712/178236255-d999514e-50f9-4960-9958-497ce207d1ed.png)
 
 ### Search form
 

@@ -1,7 +1,0 @@
-@import "../default.css";
-
-.modal {
-  background: var(--white);
-  box-shadow: 0px 0px 1.9rem rgba(0, 0, 0, 0.05);
-  border-radius: 1rem;
-}
