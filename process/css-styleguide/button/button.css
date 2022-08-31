@@ -141,43 +141,50 @@
   background-color: var(--transparent);
 }
 
-.btn-dodger-blue.btn-secondary:hover {
+.btn-dodger-blue.btn-secondary:hover,
+.btn-dodger-blue.btn-secondary:focus {
   background-color: var(--dodger-blue-500);
   border-color: var(--dodger-blue-500);
   color: var(--white);
 }
 
-.btn-hot-pink.btn-secondary:hover {
+.btn-hot-pink.btn-secondary:hover,
+.btn-hot-pink.btn-secondary:focus {
   background-color: var(--hot-pink-500);
   border-color: var(--hot-pink-500);
   color: var(--white);
 }
 
-.btn-lila.btn-secondary:hover {
+.btn-lila.btn-secondary:hover,
+.btn-lila.btn-secondary:focus {
   background-color: var(--lila-500);
   border-color: var(--lila-500);
   color: var(--white);
 }
 
+.btn-turquoise.btn-secondary:hover,
 .btn-turquoise.btn-secondary:hover {
   background-color: var(--turquoise-600);
   border-color: var(--turquoise-600);
   color: var(--white);
 }
 
+.btn-watermelon.btn-secondary:hover,
 .btn-watermelon.btn-secondary:hover {
   background-color: var(--watermelon-500);
   border-color: var(--watermelon-500);
   color: var(--white);
 }
 
-.btn-peppermint.btn-secondary:hover {
+.btn-peppermint.btn-secondary:hover,
+.btn-peppermint.btn-secondary:focus {
   background-color: var(--peppermint-500);
   border-color: var(--peppermint-500);
   color: var(--white);
 }
 
-.btn-candlelight.btn-secondary:hover {
+.btn-candlelight.btn-secondary:hover,
+.btn-candlelight.btn-secondary:focus {
   background-color: var(--candlelight-600);
   border-color: var(--candlelight-600);
   color: var(--white);
