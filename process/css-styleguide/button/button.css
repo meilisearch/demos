@@ -163,14 +163,14 @@
 }
 
 .btn-turquoise.btn-secondary:hover,
-.btn-turquoise.btn-secondary:hover {
+.btn-turquoise.btn-secondary:focus {
   background-color: var(--turquoise-600);
   border-color: var(--turquoise-600);
   color: var(--white);
 }
 
 .btn-watermelon.btn-secondary:hover,
-.btn-watermelon.btn-secondary:hover {
+.btn-watermelon.btn-secondary:focus {
   background-color: var(--watermelon-500);
   border-color: var(--watermelon-500);
   color: var(--white);
