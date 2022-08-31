@@ -51,7 +51,8 @@
 }
 
 .search-input-reset svg {
-  fill: var(--ashes-900)
+  fill: var(--ashes-900);
+  transition: 0.3s;
 }
 
 button.search-input-reset {
@@ -67,6 +68,7 @@ button.search-input-reset:focus-visible {
   outline: none;
 }
 
-button.search-input-reset:focus-visible svg {
+button.search-input-reset:focus-visible svg,
+button.search-input-reset:hover svg {
   fill: var(--valhalla-100);
 }
