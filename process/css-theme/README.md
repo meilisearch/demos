@@ -4,7 +4,7 @@ Meilisearch Demos theme contains a set of common UI elements along with their CS
 
 ## About the theme
 
-This theme is based on the [Meilisearch Design System](https://www.figma.com/file/XXmUvsZzfZBKt1i2v12wf4/Design-System?node-id=1504%3A282) and the [Meilisearch Guide to Design a Demo](https://www.figma.com/file/YUqMlOmApYd0D2aitPyDce/Guide-to-design-a-demo?node-id=2%3A8) (_private links_).
+This theme is based on the Meilisearch Design System and the [Meilisearch Guide to Design a Demo](https://www.figma.com/file/YUqMlOmApYd0D2aitPyDce/Guide-to-design-a-demo?node-id=2%3A8) (_private link_).
 
 ## Components and utilities included
 
