@@ -5,7 +5,7 @@ import instantsearch from 'instantsearch.js'
 import { searchBox, hits, stats } from 'instantsearch.js/es/widgets'
 import { connectConfigure } from 'instantsearch.js/es/connectors'
 const MEILISEARCH_HOST = import.meta.env.VITE_MEILI_HOST
-const MEILISEARCH_API_KEY = import.meta.env.VITE_MEILI_ADMIN_API_KEY
+const MEILISEARCH_API_KEY = import.meta.env.VITE_MEILI_SEARCH_API_KEY
 
 const searchClient = instantMeiliSearch(
   MEILISEARCH_HOST,
