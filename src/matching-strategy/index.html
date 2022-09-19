@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/instantsearch.css@7/themes/algolia-min.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meilisearch demo: typo tolerance</title>
+  </head>
+  <body>
+    <div class="ais-InstantSearch">
+      <div class="search-header">
+        <div class=" central-width">
+          <div class="search-header-content">
+            <div id="logo"></div>
+          <div id="searchbox" class="ais-SearchBox"></div>
+        </div>
+        </div>
+      </div>
+      <div class="main-container">
+        <div class="central-width">
+          <div id="configure" class="heading info align-with-results">
+            <div id="left-info">
+              <h1 class="title title-l">Matching strategy</h1>
+              <p class="body body-l mt-2">
+                This demo presents different matching strategies in
+                action
+              </p>
+            </div>
+            <div id="right-info"></div>
+          </div>
+          <div id="stats"></div>
+          <div id="hits-1"></div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
