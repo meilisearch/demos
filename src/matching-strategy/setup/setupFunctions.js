@@ -7,19 +7,16 @@ async function sleep (ms) {
 }
 
 async function watchTasks (client, uid) {
-  const standardSpeed = 500
   let allProcessed = false
   console.log(`Start update watch for ${uid}`)
   console.log('-------------')
   while (!allProcessed) {
     try {
       const tasks = await client.index(uid).getTasks()
-      const enqueued = tasks.results.filter(update => update.status === 'enqueued')
-      console.log(`${uid}:`)
-      console.log('Adding documents')
+      console.log(`${uid} index: adding documents`)
       console.log('-------------')
-      if (enqueued.length === 0) allProcessed = true
-      await sleep(standardSpeed)
+      await client.index(uid).waitForTasks(tasks)
+      allProcessed = true
     } catch (e) {
       console.error(e)
     }

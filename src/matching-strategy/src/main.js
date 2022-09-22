@@ -121,7 +121,10 @@ moviesIndex.addWidgets([
         <img src="{{poster}}"/>
         <div class="hit-description body">{{#helpers.highlight}}{ "attribute": "overview" }{{/helpers.highlight}}</div>
       </div>
-      `
+      `,
+      empty(results, { html }) {
+        return html`<div class="body"> Sorry, no results matching your request 😔 </div>`;
+      },
     }
   })
 ])
