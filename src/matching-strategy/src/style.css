@@ -1,8 +1,10 @@
 @import url("http://fonts.cdnfonts.com/css/monaco");
 
-body {
+html, body {
   font-size: 16px;
   color: #21004b;
+  background-color: #f5f5fb;
+  min-height: 100vh;
 }
 
 .search-header {
