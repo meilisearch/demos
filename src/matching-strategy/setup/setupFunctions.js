@@ -7,19 +7,15 @@ async function sleep (ms) {
 }
 
 async function watchTasks (client, uid) {
-  let allProcessed = false
   console.log(`Start update watch for ${uid}`)
   console.log('-------------')
-  while (!allProcessed) {
-    try {
-      const tasks = await client.index(uid).getTasks()
-      console.log(`${uid} index: adding documents`)
-      console.log('-------------')
-      await client.index(uid).waitForTasks(tasks)
-      allProcessed = true
-    } catch (e) {
-      console.error(e)
-    }
+  try {
+    const tasks = await client.index(uid).getTasks()
+    console.log(`${uid} index: adding documents`)
+    console.log('-------------')
+    await client.index(uid).waitForTasks(tasks)
+  } catch (e) {
+    console.error(e)
   }
   console.log(`All documents added to "${uid}"`)
 }
