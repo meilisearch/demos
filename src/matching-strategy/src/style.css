@@ -1,0 +1,172 @@
+@import url("http://fonts.cdnfonts.com/css/monaco");
+
+html, body {
+  font-size: 16px;
+  color: #21004b;
+  background-color: #f5f5fb;
+  min-height: 100vh;
+}
+
+.search-header {
+  background-color: #ffffff;
+}
+
+.search-header-content {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.central-width {
+  max-width: 85%;
+  margin: auto;
+}
+
+.main-container {
+  background-color: #f5f5fb;
+  padding-top: 5rem;
+}
+
+.heading {
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.8rem;
+  background-color: var(--ashes-600);
+  padding: 2rem;
+}
+
+#logo {
+  background-image: url(./assets/meilisearch-logomark.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 35%;
+  height: auto;
+}
+
+#searchbox.ais-SearchBox {
+  width: 60%;
+}
+
+button.btn.btn-dodger-blue.btn-lg {
+  margin-top: 1.5rem;
+  align-self: center;
+}
+
+h1.title.title-l {
+  font-weight: normal;
+}
+
+pre {
+  background-color: #504164;
+  color: #edeef7;
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+code.body.body-code {
+  font-family: "Monaco";;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.7rem;
+  line-height: 1.18rem;
+  letter-spacing: 0.16em;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#left-info {
+  display: flex;
+  flex-direction: column;
+}
+
+#right-info {
+  display: flex;
+  justify-content: flex-end;
+  height: 55%;
+}
+
+#stats {
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+button[type="submit"].ais-SearchBox-submit {
+  display: none;
+}
+
+.ais-Pagination {
+  margin-top: 1em;
+}
+
+.ais-InstantSearch {
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.ais-Hits {
+  color: inherit;
+}
+
+.ais-Hits-item {
+  margin-bottom: 1em;
+  width: calc(33% - 1rem);
+  background: #ffffff;
+  box-shadow: 0px 0px 30px rgba(57, 72, 110, 0.05);
+  border-radius: 8px;
+  border: none;
+  padding: 1.5rem;
+}
+
+.ais-Hits-item img {
+  margin-right: 1.5em;
+  width: 33%;
+  height: 100%;
+  margin-bottom: 0.5em;
+  float: left;
+}
+
+.hit-description {
+  font-size: 90%;
+  margin-bottom: 0.5em;
+}
+
+.ais-Highlight-highlighted {
+  background-color: #bfbdff;
+  font-size: inherit;
+}
+
+.stats-bold {
+  font-weight: bold;
+}
+
+.stats-regular {
+  font-weight: normal
+}
+
+@media screen and (min-width: 768px) {
+  code.body.body-code {
+    font-size: 1rem;
+    padding: 1.5rem;
+  }
+  .align-with-results {
+    margin-right: 0.85rem;
+  }
+  button.btn.btn-dodger-blue.btn-lg {
+    align-self: flex-start;
+  }
+  .search-header-content {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+  #logo {
+    background-image: url(./assets/meili_logo.svg);
+  }
+}
