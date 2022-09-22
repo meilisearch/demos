@@ -24,8 +24,15 @@
 
 ## Demo
 
-If you want to replicate this demo using your own Meilisearch instance, you have to follow these steps:
+This demo showcases Meilisearch's v0.29 new feature: matching strategy customization.
 
+v0.29 introduces a new search parameter: matchingStrategy. This parameter lets you define, at search time, how Meilisearch should match query terms:
+- `last`: returns documents that contain all query terms first. Additional results are then retrieved by decreasing number of query terms present in a match
+- `all`: only returns documents containing all query terms.
+
+You can find more information about this feature in [our documentation](https://docs.meilisearch.com/reference/api/search.html#search-parameters)
+
+If you want to replicate this demo using your own Meilisearch instance, you have to follow these steps:
   
 ### 1. Downloand and launch Meilisearch
 
