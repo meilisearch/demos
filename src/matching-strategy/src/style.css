@@ -1,5 +1,6 @@
 @import url("http://fonts.cdnfonts.com/css/monaco");
 
+
 html, body {
   font-size: 16px;
   color: #21004b;
@@ -37,7 +38,7 @@ html, body {
 }
 
 #logo {
-  background-image: url(./assets/meilisearch-logomark.svg);
+  background-image: url(/meilisearch-logomark.svg);
   background-size: contain;
   background-repeat: no-repeat;
   width: 35%;
@@ -167,6 +168,6 @@ button[type="submit"].ais-SearchBox-submit {
     padding-right: 5rem;
   }
   #logo {
-    background-image: url(./assets/meili_logo.svg);
+    background-image: url(/meili_logo.svg);
   }
 }
