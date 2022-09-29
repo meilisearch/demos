@@ -43,3 +43,9 @@
 - [Meilisearch + Vue InstantSearch](https://codesandbox.io/s/ms-vue-is-1d6bi?fontsize=14&hidenavigation=1&theme=dark&file=/src/App.vue)
 - [Meilisearch + React InstantSearch](https://codesandbox.io/s/ms-react-is-sh9ud?fontsize=14&hidenavigation=1&theme=dark)
 - [Meilisearch + Angular InstantSearch](https://codesandbox.io/s/ms-angularis-7xipe)
+<br>
+<p align="center">
+<h3>It&rsquo;s Hacktoberfest 2022 @Meilisearch</h3>
+<p><a href="https://hacktoberfest.com">Hacktoberfest</a> is a celebration of the open-source community. This year, and for the third time in a row, Meilisearch is participating in this fantastic event.</p>
+<p>You&rsquo;d like to contribute? Don&rsquo;t hesitate to check out our <a href="https://github.com/meilisearch/meilisearch-ruby/blob/main/CONTRIBUTING.md">contributing guidelines</a>.<br /><br />And for the longer, more complete guideline documentation you can follow <a href="https://github.com/meilisearch/.github/blob/main/Hacktoberfest_2022_contributors_guidelines.md">this link</a>.</p>
+</p>
