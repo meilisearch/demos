@@ -39,10 +39,11 @@
 | [ Search in world cities ](https://github.com/meilisearch/demos/tree/main/src/geo-javascript) |  https://geosearch-js.meilisearch.com/ | Play with Geosearch features and find info about large cities |
 | [ Tenant token demo ](https://github.com/meilisearch/demos/tree/main/src/tenant-token) |  https://tenant-token.meilisearch.com/ | Use tenant tokens to restrict access to data based on different user names. |
 | [ Typo tolerance demo ](https://github.com/meilisearch/demos/tree/main/src/typo-tolerance) |  https://typo-tolerance.meilisearch.com/ | This demo presents different typo tolerance configurations in action.  |
+| [ Where To Watch demo ](https://github.com/meilisearch/demo-movies) |  https://where2watch.meilisearch.com/ | This demo presents a website that lets you know where to watch a movie.  |
 
 <br>
 
-#### Search in Steam video games with Instant Meilisearch, maintained by the integration team 🎮 
+#### Search in Steam video games with Instant Meilisearch, maintained by the integration team 🎮
 
 - [Meilisearch + InstantSearch](https://codesandbox.io/s/ms-is-mese9?fontsize=14&hidenavigation=1&theme=dark)
 - [Meilisearch + Vue InstantSearch](https://codesandbox.io/s/ms-vue-is-1d6bi?fontsize=14&hidenavigation=1&theme=dark&file=/src/App.vue)
