@@ -40,6 +40,7 @@
 | [ Tenant token demo ](https://github.com/meilisearch/demos/tree/main/src/tenant-token) |  https://tenant-token.meilisearch.com/ | Use tenant tokens to restrict access to data based on different user names. |
 | [ Typo tolerance demo ](https://github.com/meilisearch/demos/tree/main/src/typo-tolerance) |  https://typo-tolerance.meilisearch.com/ | This demo presents different typo tolerance configurations in action.  |
 | [ Where To Watch demo ](https://github.com/meilisearch/demo-movies) |  https://where2watch.meilisearch.com/ | This demo presents a website that lets you know where to watch a movie.  |
+| [ E-commerce demo ](https://github.com/meilisearch/demos/tree/main/src/ecommerce) |  https://ecommerce.meilisearch.com/ | This demo presents an e-commerce website that leverages Meilisearch to search through its catalog.  |
 
 <br>
 
