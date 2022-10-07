@@ -11,14 +11,14 @@ _Based on [How to Search Nobel Prize Winners Faster With Meilisearch and JavaScr
 
 ## Run and develop locally
 
-First, you will need to install [yarn](https://classic.yarnpkg.com/en/docs/install/) or [npm](https://www.npmjs.com/get-npm).</br>
+First, you will need to install [yarn](https://classic.yarnpkg.com/en/docs/install/).</br>
 Then run:
 
 ```bash
 $ git clone git@github.com:meilisearch/meilisearch-vue.git
 $ cd meilisearch-vue/examples/nobel-prizes
-$ yarn # or npm install
-$ yarn serve # or npm run serve
+$ yarn
+$ yarn serve
 ```
 
 You can now visit `http://localhost:8080/` in your browser.
@@ -45,8 +45,8 @@ This walkthrough runs Meilisearch in a development environment, and therefore it
 Go inside the `setup` directory and run the following commands:
 ```bash
 $ cd setup/
-$ yarn # or npm install
-$ yarn start # or npm run start
+$ yarn
+$ yarn start
 ```
 
 This will do the following:

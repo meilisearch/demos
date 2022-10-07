@@ -19,7 +19,7 @@
 
 ## Requirements
 
- - [yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com/get-npm)
+ - [yarn](https://yarnpkg.com/)
  - [Docker](https://docs.docker.com/get-docker/)
 
 ## Demo
@@ -73,25 +73,12 @@ You can learn more about master and API keys in [the dedicated section of our do
 yarn
 
 ```
-or
 
-```bash
-
-npm install
-
-```
 ### 4. Run the setup
 
 ```bash
 
 yarn setup
-
-```
-or 
-
-```bash
-
-npm run setup
 
 ```
 
@@ -109,14 +96,6 @@ You can now run the project. The front-end client is now communicating with your
 ```bash
 
 yarn dev
-
-```
-
-or
-
-```bash
-
-npm run dev
 
 ```
 
