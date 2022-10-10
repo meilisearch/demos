@@ -23,7 +23,7 @@
 ## 📝 Requirements
 
 - [NodeJs](https://nodejs.org/en/download/)
-- [npm](https://www.npmjs.com/get-npm)
+- [Yarn](https://yarnpkg.com/getting-started/install)
 
 ## 🎬 Getting Started
 
@@ -60,18 +60,18 @@ NEXT_PUBLIC_MEILI_API_KEY=<PUT_YOUR_API_KEY_HERE>
 Run the following commands:
 
 ```
-npm install
-npm run seed
+yarn
+yarn seed
 ```
 
 This will create an index `products` and seed data in your meilisearch.
 
 ## 4. Start server
 
-Don't forget to run `npm install` first, if you didn't do it in the previous step.
+Don't forget to run `yarn` first, if you didn't do it in the previous step.
 
 ```
-npm run dev
+yarn dev
 ```
 
 This will start your frontend server on [http://localhost:8000](http://localhost:8000).
