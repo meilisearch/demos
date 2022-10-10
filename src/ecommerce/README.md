@@ -23,7 +23,7 @@
 ## 📝 Requirements
 
 - [NodeJs](https://nodejs.org/en/download/)
-- [npm](https://www.npmjs.com/get-npm)
+- [Yarn](https://yarnpkg.com/getting-started/install)
 
 ## 🎬 Getting Started
 

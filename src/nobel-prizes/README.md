@@ -78,7 +78,7 @@ You can now go back to the root directory and run the project. The front-end cli
 
 ```bash
 $ cd ..
-$ yarn serve # or npm run serve
+$ yarn serve
 ```
 
 You can now visit `http://localhost:8080/` in your browser.
