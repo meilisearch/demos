@@ -78,12 +78,12 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@meilisearch/instant-meilisearch@0.8.2-beta.0":
-  version "0.8.2-beta.0"
-  resolved "https://registry.yarnpkg.com/@meilisearch/instant-meilisearch/-/instant-meilisearch-0.8.2-beta.0.tgz#eecb5c735c72b012d64347b6a7ba6adb4d11e76a"
-  integrity sha512-yF9MzB9QvYBYv+ORTg2ByUpAhuEWT7OJosg+nkVOOKS0bXmLNGnP8/oLChhv/lQRYqwsBTCSuUsDmKACpmom6w==
+"@meilisearch/instant-meilisearch@0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@meilisearch/instant-meilisearch/-/instant-meilisearch-0.9.0.tgz#b85b40d2e82d93a57fb97e7bc6e9516ff073b6a5"
+  integrity sha512-XEQQGpQFra1T/9s2Sm9nwS9n19BBtlmobp1MMfj/y9OtRb8vG38kFtfICpDb3DqGcyecn56rUh4urUk6ErIxRQ==
   dependencies:
-    meilisearch "0.28.0-beta.0"
+    meilisearch "^0.28.0"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -1146,17 +1146,10 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-meilisearch@0.28.0-beta.0:
-  version "0.28.0-beta.0"
-  resolved "https://registry.yarnpkg.com/meilisearch/-/meilisearch-0.28.0-beta.0.tgz#8470ff4e2095b440b85b56590591eb7af87c2159"
-  integrity sha512-pdOVzLsMKvxnQuBS/U7krojxocG6sqW2sntyPS3F+LdH+gm+GFd5ychXc4O7XiRUtMrFvhgzU0yBYlnS9/1tPw==
-  dependencies:
-    cross-fetch "^3.1.5"
-
-meilisearch@^0.27.0:
-  version "0.27.0"
-  resolved "https://registry.yarnpkg.com/meilisearch/-/meilisearch-0.27.0.tgz#8bd57ddb77b975f93e054cb977b951c488ece297"
-  integrity sha512-kZOZFIuSO7c6xRf+Y2/9/h6A9pl0sCl/G44X4KuaSwxGbruOZPhmxbeVEgLHBv4pUFvQ56rNVTA/2d/5GCU1YA==
+meilisearch@^0.28.0:
+  version "0.28.0"
+  resolved "https://registry.yarnpkg.com/meilisearch/-/meilisearch-0.28.0.tgz#650f08a56ef0a989a41d13233f7a744cfa7f54df"
+  integrity sha512-zC50xLyPWBtfAIZiFTSJyYJp/a5bO+dSSigBKUEoShFkuv9+/KC4J3T3ZejNVHXG2DU0ohOMf8TZ3HAHXNd3EA==
   dependencies:
     cross-fetch "^3.1.5"
 
