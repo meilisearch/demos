@@ -892,12 +892,12 @@
   resolved "https://registry.npmjs.org/@iarna/toml/-/toml-2.2.5.tgz"
   integrity sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==
 
-"@meilisearch/instant-meilisearch@^0.8.0":
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/@meilisearch/instant-meilisearch/-/instant-meilisearch-0.8.0.tgz#c15db59446ed450f8ee22c079fcdf848b70bbab1"
-  integrity sha512-yqSm0oi7pqEHn5ZD3kIc8RE2wQGXn3bwXrZxHz9K1R7Ld72inax3PvdVZbVKSuyv4i2tnBh9WFT3YfrewL0Kew==
+"@meilisearch/instant-meilisearch@^0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@meilisearch/instant-meilisearch/-/instant-meilisearch-0.9.0.tgz#b85b40d2e82d93a57fb97e7bc6e9516ff073b6a5"
+  integrity sha512-XEQQGpQFra1T/9s2Sm9nwS9n19BBtlmobp1MMfj/y9OtRb8vG38kFtfICpDb3DqGcyecn56rUh4urUk6ErIxRQ==
   dependencies:
-    meilisearch "^0.27.0"
+    meilisearch "^0.28.0"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -3275,10 +3275,10 @@ mdn-data@2.0.4:
   resolved "https://registry.npmjs.org/mdn-data/-/mdn-data-2.0.4.tgz"
   integrity sha512-iV3XNKw06j5Q7mi6h+9vbx23Tv7JkjEVgKHW4pimwyDGWm0OIQntJJ+u1C6mg6mK1EaTv42XQ7w76yuzH7M2cA==
 
-meilisearch@^0.27.0:
-  version "0.27.0"
-  resolved "https://registry.yarnpkg.com/meilisearch/-/meilisearch-0.27.0.tgz#8bd57ddb77b975f93e054cb977b951c488ece297"
-  integrity sha512-kZOZFIuSO7c6xRf+Y2/9/h6A9pl0sCl/G44X4KuaSwxGbruOZPhmxbeVEgLHBv4pUFvQ56rNVTA/2d/5GCU1YA==
+meilisearch@^0.28.0:
+  version "0.28.0"
+  resolved "https://registry.yarnpkg.com/meilisearch/-/meilisearch-0.28.0.tgz#650f08a56ef0a989a41d13233f7a744cfa7f54df"
+  integrity sha512-zC50xLyPWBtfAIZiFTSJyYJp/a5bO+dSSigBKUEoShFkuv9+/KC4J3T3ZejNVHXG2DU0ohOMf8TZ3HAHXNd3EA==
   dependencies:
     cross-fetch "^3.1.5"
 

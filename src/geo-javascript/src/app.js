@@ -9,8 +9,8 @@ injectScript(
     const search = instantsearch({
       indexName: 'world_cities',
       searchClient: instantMeiliSearch(
-        'https://ms-a79a247a550f-106.lon.meilisearch.io',
-        '87b5f3f9fd344ccad333adce78f21309fdecb4a72fa48608df1e9c6935d8c647',
+        'https://ms-69223ce62f2d-106.lon.meilisearch.io',
+        '2969134b46109f7a8d0330f6d1655d9c65c84752ac130674859feeefdf216f25',
       ),
     })
 
