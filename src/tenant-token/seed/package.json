@@ -12,6 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.0",
-    "meilisearch": "^0.25.0"
+    "meilisearch": "^0.29.0"
   }
 }
