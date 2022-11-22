@@ -78,14 +78,24 @@ moviesIndex.addWidgets([
     container: '#hits-per-page',
     items: [
       { label: '9 hits per page', value: 9, default: true },
-      { label: '16 hits per page', value: 16 },
-    ]
+      { label: '18 hits per page', value: 18 },
+      { label: '36 hits per page', value: 36 },
+    ],
+    cssClasses: {
+      select: 'select-page-menu',
+    }
   }),
   pagination({
     container: '#pagination',
     cssClasses: {
       link: 'body text-valhalla-500'
-    }
+    },
+    templates: {
+      first: 'First',
+      previous: 'Previous',
+      next: 'Next',
+      last: 'Last',
+    },
   })  
 ])
 
