@@ -29,6 +29,8 @@ html, body {
 .heading {
   padding-top: 1rem;
   margin-bottom: 1rem;
+  border-radius: 0.8rem;
+  background-color: var(--ashes-600);
   padding: 2rem;
 }
 
@@ -78,7 +80,7 @@ h1.title.title-l {
 
 .select-page-menu {
   color: #21004b;
-  background-color: #cfd0f7;
+  background-color: #f5f5fb;
 }
 
 button[type="submit"].ais-SearchBox-submit {
