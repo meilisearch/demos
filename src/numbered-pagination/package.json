@@ -7,9 +7,16 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "setup": "node setup/setupMeili.js"
+    "setup": "node setup/setupMeili.js",
+    "lint": "eslint --ext .js .",
+    "lint:fix": "eslint --ext .js . --fix"
   },
   "devDependencies": {
+    "eslint": "^8.0.1",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
     "vite": "^3.2.3"
   },
   "dependencies": {
