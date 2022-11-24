@@ -79,10 +79,10 @@ moviesIndex.addWidgets([
     items: [
       { label: '9 hits per page', value: 9, default: true },
       { label: '18 hits per page', value: 18 },
-      { label: '36 hits per page', value: 36 },
+      { label: '36 hits per page', value: 36 }
     ],
     cssClasses: {
-      select: 'select-page-menu',
+      select: 'select-page-menu'
     }
   }),
   pagination({
@@ -94,9 +94,9 @@ moviesIndex.addWidgets([
       first: 'First',
       previous: 'Previous',
       next: 'Next',
-      last: 'Last',
-    },
-  })  
+      last: 'Last'
+    }
+  })
 ])
 
 moviesIndex.start()
