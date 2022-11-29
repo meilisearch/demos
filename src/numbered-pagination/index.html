@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/meilisearch.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/instantsearch.css@7/themes/algolia-min.css"
+  />
+    <title>Meilisearch demo: numbered pagination</title>
+    <script src="https://thrilling-thirtyeight.meilisearch.com/script.js" data-site="QNBPJXIV" defer></script>
+  </head>
+  <body>
+    <div class="ais-InstantSearch">
+      <div class="search-header">
+        <div class=" central-width">
+          <div class="search-header-content">
+            <div id="logo"></div>
+          <div id="searchbox" class="ais-SearchBox"></div>
+        </div>
+        </div>
+      </div>
+      <div class="main-container">
+        <div class="central-width">
+          <div id="configure" class="heading info align-with-results">
+            <div id="left-info">
+              <h1 class="title title-l">Numbered pagination</h1>
+              <p class="body body-l mt-2">
+                This demo presents <a href="https://docs.meilisearch.com/learn/advanced/pagination.html#numbered-page-selectors">numbered pagination</a> in
+                action.
+              </p>
+            </div>
+            <div id="right-info">
+              <div id="hits-per-page"></div>
+            </div>
+          </div>
+          <div id="stats"></div>
+          <div id="hits"></div>
+          <div id="pagination"></div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
