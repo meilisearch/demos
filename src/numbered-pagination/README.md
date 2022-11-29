@@ -31,7 +31,7 @@ You can find more information about this pagination mode in [our documentation](
 
 If you want to replicate this demo using your own Meilisearch instance, you have to follow these steps:
   
-### 1. Downloand and launch Meilisearch
+### 1. Download and launch Meilisearch
 
 [Download and launch Meilisearch](https://docs.meilisearch.com/learn/getting_started/quick_start.html) using the basic configuration. For example, by using [Docker](https://docs.docker.com/get-docker/) in your terminal.
 
