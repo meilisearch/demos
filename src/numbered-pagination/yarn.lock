@@ -71,12 +71,12 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@meilisearch/instant-meilisearch@0.10.0-beta.0":
-  version "0.10.0-beta.0"
-  resolved "https://registry.yarnpkg.com/@meilisearch/instant-meilisearch/-/instant-meilisearch-0.10.0-beta.0.tgz#2d589b4016a8cfe64d346fca41a366645baf41a4"
-  integrity sha512-duFmmxDUxKGwuImiSgaSnTnM7FxAyY6fsOjwZ5cUaNKvtcwcBQMBln+/jTYw1rP4mWDgamRSYDoiXAcWdg8piw==
+"@meilisearch/instant-meilisearch@0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@meilisearch/instant-meilisearch/-/instant-meilisearch-0.10.0.tgz#8da43daae6465f8c71892bf89dc3b368d5e0616b"
+  integrity sha512-SujWInvOMDkSfOSoMSxAs/SbwiLZyVzxBMY9ke7veyUM7quOu6/Qa3kMwO0lb+gbd+mepkOGGygg8qB3++k9jQ==
   dependencies:
-    meilisearch "^0.30.0-beta.0"
+    meilisearch "^0.30.0"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -1071,10 +1071,10 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-meilisearch@^0.30.0-beta.0:
-  version "0.30.0-beta.0"
-  resolved "https://registry.yarnpkg.com/meilisearch/-/meilisearch-0.30.0-beta.0.tgz#1a23b8f9adc82cf8983c20d7d72ce631a0a242cb"
-  integrity sha512-LuSJi+mQG/V0PqnPJuYSldt8EmJRowYZ1pGYKtirjA+15UFK7+SWSaQPanw0ful0tz90zGNLN/BivX+LHlQwpw==
+meilisearch@^0.30.0:
+  version "0.30.0"
+  resolved "https://registry.yarnpkg.com/meilisearch/-/meilisearch-0.30.0.tgz#707f9a6b07440c496b965379616e084f112160ae"
+  integrity sha512-3y1hALOwTDpquYar+gDREqRasFPWKxkWAhk6h+RF+nKObPVf9N77wcTNvukGwOKbxRyJnKge0OPgAB1BkB9VVw==
   dependencies:
     cross-fetch "^3.1.5"
 
