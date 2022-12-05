@@ -79,10 +79,8 @@ $ npm run setup
 
 This does the following:
 
-- Creates one indexes called `movies` and `books_typo` in your Meilisearch instance.
-
-- Adds documents to those indexes.
-- Adds custom settings to each one.
+- Creates one index called `movies` in your Meilisearch instance.
+- Adds documents to this index.
 
 👉 Feel free to modify the typo tolerance rules in `customTypoTolerance`, located inside `setupFunctions.js`. Doing so will allow you to see how different configurations impact the returned search results.
 
