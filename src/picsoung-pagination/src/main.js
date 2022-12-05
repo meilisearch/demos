@@ -3,6 +3,7 @@ import './meilisearch.min.css'
 import { instantMeiliSearch } from '@meilisearch/instant-meilisearch'
 import instantsearch from 'instantsearch.js'
 import { searchBox, hits, configure } from 'instantsearch.js/es/widgets'
+import { connectConfigure } from 'instantsearch.js/es/connectors'
 const MEILISEARCH_HOST = import.meta.env.VITE_MEILI_HOST
 const MEILISEARCH_API_KEY = import.meta.env.VITE_MEILI_SEARCH_API_KEY
 
@@ -19,10 +20,52 @@ const moviesIndex = instantsearch({
   searchClient,
 })
 
+const renderConfigure = (renderOptions, isFirstRender) => {
+  const { refine, widgetParams } = renderOptions
+
+  if (isFirstRender) {
+    const leftInfo = document.getElementById('left-info')
+    const rightInfo = document.getElementById('right-info')
+    const button = document.createElement('button')
+    const pre = document.createElement('pre')
+    const code = document.createElement('code')
+    button.className = 'btn btn-dodger-blue btn-lg'
+    pre.className = 'my-1'
+    code.className = 'body body-code'
+
+    button.addEventListener('click', () => {
+      refine({
+        matchingStrategy: widgetParams.searchParameters.matchingStrategy === 'all' ? 'last' : 'all'
+      })
+    })
+
+    widgetParams.container.appendChild(leftInfo)
+    leftInfo.appendChild(button)
+    widgetParams.container.appendChild(rightInfo)
+    rightInfo.appendChild(pre)
+    pre.appendChild(code)
+  }
+
+  widgetParams.container.querySelector(
+    'button'
+  ).textContent = `Set "matchingStrategy" to ${
+    widgetParams.searchParameters.matchingStrategy === 'all' ? 'last' : 'all'
+  }`
+
+  widgetParams.container.querySelector('code').innerHTML = JSON.stringify(
+    widgetParams.searchParameters,
+    null,
+    2
+  )
+}
+
+// Create the custom widget
+const customConfigure = connectConfigure(
+  renderConfigure,
+  () => {}
+)
+
 moviesIndex.addWidgets([
-  configure({
-    attributesToSnippet: ['shortDescription:40']
-  }),
   searchBox({
     container: '#searchbox',
     cssClasses: {
@@ -32,6 +75,12 @@ moviesIndex.addWidgets([
         'search-input'
       ],
       reset: 'search-input-reset'
+    }
+  }),
+  customConfigure({
+    container: document.querySelector('#configure'),
+    searchParameters: {
+      matchingStrategy: 'last'
     }
   }),
   hits({
