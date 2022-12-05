@@ -24,12 +24,16 @@
 
 ## Demo
 
+[Try it live](https://picsoung-pagination.vercel.app/)
+
 If you want to replicate this demo using your own Meilisearch instance, you have to follow these steps:
 
   
 ### 1. Downloand and launch Meilisearch
 
-[Download and launch Meilisearch](https://docs.meilisearch.com/learn/getting_started/quick_start.html) using the basic configuration. For example, by using [Docker](https://docs.docker.com/get-docker/) in your terminal.
+[Download and launch Meilisearch](https://docs.meilisearch.com/learn/getting_started/quick_start.html) using the basic configuration.
+
+For example, by using [Docker](https://docs.docker.com/get-docker/) in your terminal.
 
 ```bash
 
@@ -55,7 +59,11 @@ Set the credentials of the Meilisearch instance as environment variables.
 VITE_MEILI_HOST="<yourMeilisearchInstanceAddress>"
 VITE_MEILI_SEARCH_API_KEY="<yourMeilisearchSearchAPIKey>"
 VITE_MEILI_ADMIN_API_KEY="<yourMeilisearchAdminAPIKey>"
+VITE_DEFAULT_PAGE_SIZE=<yourDefaultPageSize>
 ```
+
+You can also copy the `.env.example` file and rename it `.env`.
+
 Because we did not set any Master key in the previous step, we can leave `VITE_MEILI_SEARCH_API_KEY` and `VITE_MEILI_ADMIN_API_KEY` as an empty string and only set the host: 
 `VITE_MEILI_HOST='http://127.0.0.1:7700'`
 
