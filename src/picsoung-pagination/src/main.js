@@ -33,24 +33,25 @@ const renderConfigure = (renderOptions, isFirstRender) => {
     pre.className = 'my-1'
     code.className = 'body body-code'
 
-    button.addEventListener('click', () => {
+    const select = document.createElement('select')
+    for(let i=1; i<=6; i++){
+      var option = document.createElement("option");
+      option.text = `${i*import.meta.env.VITE_DEFAULT_PAGE_SIZE}`
+      select.add(option)
+    }
+
+    select.addEventListener('change', () => {
       refine({
-        matchingStrategy: widgetParams.searchParameters.matchingStrategy === 'all' ? 'last' : 'all'
+        hitsPerPage: select.value
       })
     })
 
     widgetParams.container.appendChild(leftInfo)
-    leftInfo.appendChild(button)
+    leftInfo.appendChild(select)
     widgetParams.container.appendChild(rightInfo)
     rightInfo.appendChild(pre)
     pre.appendChild(code)
   }
-
-  widgetParams.container.querySelector(
-    'button'
-  ).textContent = `Set "matchingStrategy" to ${
-    widgetParams.searchParameters.matchingStrategy === 'all' ? 'last' : 'all'
-  }`
 
   widgetParams.container.querySelector('code').innerHTML = JSON.stringify(
     widgetParams.searchParameters,
@@ -80,7 +81,7 @@ moviesIndex.addWidgets([
   customConfigure({
     container: document.querySelector('#configure'),
     searchParameters: {
-      matchingStrategy: 'last'
+      hitsPerPage: import.meta.env.VITE_DEFAULT_PAGE_SIZE
     }
   }),
   hits({
