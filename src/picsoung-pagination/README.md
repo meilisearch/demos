@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/meilisearch/integration-guides/master/assets/logos/logo.svg" alt="Meilisearch" width="200" height="200" />
 </p>
-<h1 align="center">Meilisearch typo tolerance demo</h1>
+<h1 align="center">Meilisearch Pagination demo</h1>
 
 <h4 align="center">
   <a href="https://github.com/meilisearch/MeiliSearch">MeiliSearch</a> |
@@ -13,7 +13,7 @@
 </h4>
 
 <p align="center">
-  <a href="https://slack.meilisearch.com"><img src="https://img.shields.io/badge/slack-Meilisearch-blue.svg?logo=slack" alt="Slack"></a>
+  <a href="https://discord.gg/meilisearch"><img src="https://img.shields.io/badge/discord-Meilisearch-blueviolet.svg?logo=discord" alt="Discord"></a>
   <a href="https://github.com/meilisearch/MeiliSearch/discussions" alt="Discussions"><img src="https://img.shields.io/badge/github-discussions-red" /></a>
 </p>
 
@@ -79,7 +79,7 @@ $ npm run setup
 
 This does the following:
 
-- Creates two indexes called `books_default` and `books_typo` in your Meilisearch instance.
+- Creates one indexes called `movies` and `books_typo` in your Meilisearch instance.
 
 - Adds documents to those indexes.
 - Adds custom settings to each one.
