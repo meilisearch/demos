@@ -1,0 +1,186 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url("http://fonts.cdnfonts.com/css/monaco");
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  color: #21004b;
+  margin: 0;
+}
+
+.search-header {
+  background-color: #ffffff;
+}
+
+.search-header-content {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+#searchbox.ais-SearchBox {
+  width: 60%;
+}
+
+.main-container {
+  background-color: #f5f5fb;
+}
+
+.title h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+}
+
+.title p {
+  font-weight: 400;
+}
+
+.central-width {
+  max-width: 70%;
+  margin: auto;
+}
+
+.title {
+  text-align: center;
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.results-heading {
+  margin: 1.5rem 0;
+}
+
+.results-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+h2 {
+  font-weight: 500;
+  margin: 0;
+}
+
+details {
+  margin-top: 0.5rem;
+}
+
+summary {
+  cursor: pointer;
+}
+
+summary::marker {
+  display: none;
+  content: "";
+}
+
+.arrow {
+  width: 1rem;
+  height: 1rem;
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.summary-settings {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem 0.43rem;
+  gap: 0.25rem;
+  font-size: 0.87rem;
+  width: 8.8rem;
+  height: 1.75rem;
+  color: #4f55e3;
+  background-color: #cfd0f7;
+  border-radius: 0.5rem;
+}
+
+details[open] summary div.summary-settings > svg {
+  transform: rotate(180deg);
+}
+
+pre {
+  background-color: #504164;
+  color: #edeef7;
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+code {
+  font-family: "Monaco";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.18rem;
+
+  letter-spacing: 0.16em;
+}
+
+.left-panel,
+.right-panel {
+  flex-basis: 45%;
+}
+
+.ais-Pagination {
+  margin-top: 1em;
+}
+
+.ais-InstantSearch {
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.ais-Hits {
+  color: inherit;
+}
+
+.ais-Hits-item {
+  margin-bottom: 1em;
+  width: calc(50% - 1rem);
+  background: #ffffff;
+  box-shadow: 0px 0px 30px rgba(57, 72, 110, 0.05);
+  border-radius: 8px;
+  border: none;
+}
+
+.ais-Hits-item img {
+  margin-right: 1em;
+  width: 50%;
+  height: 100%;
+  margin-bottom: 0.5em;
+}
+
+.hit-name {
+  margin-bottom: 0.5em;
+  font-size: 1.25rem;
+}
+
+.hit-description {
+  font-size: 90%;
+  margin-bottom: 0.5em;
+}
+
+.hit-info {
+  font-size: 90%;
+}
+
+.isbn {
+  font-size: 70%;
+}
+
+.field-name {
+  font-weight: 500;
+}
+
+.ais-Highlight-highlighted {
+  background-color: #bfbdff;
+  font-size: inherit;
+}
