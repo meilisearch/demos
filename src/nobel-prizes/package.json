@@ -10,9 +10,9 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@meilisearch/instant-meilisearch": "^0.9.0",
+    "@meilisearch/instant-meilisearch": "^0.10.1",
     "instantsearch.css": "7.4.5",
-    "meilisearch": "^0.28.0",
+    "meilisearch": "^0.30.0",
     "vue": "^2.6.12",
     "vue-instantsearch": "^4.6.0"
   },
