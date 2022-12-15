@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/meilisearch/integration-guides/master/assets/logos/logo.svg" alt="Meilisearch" width="200" height="200" />
 </p>
-<h1 align="center">Meilisearch matching strategy demo</h1>
+<h1 align="center">Meilisearch numbered pagination demo</h1>
 
 <h4 align="center">
   <a href="https://github.com/meilisearch/MeiliSearch">MeiliSearch</a> |

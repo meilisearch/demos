@@ -71,10 +71,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@meilisearch/instant-meilisearch@0.10.0":
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@meilisearch/instant-meilisearch/-/instant-meilisearch-0.10.0.tgz#8da43daae6465f8c71892bf89dc3b368d5e0616b"
-  integrity sha512-SujWInvOMDkSfOSoMSxAs/SbwiLZyVzxBMY9ke7veyUM7quOu6/Qa3kMwO0lb+gbd+mepkOGGygg8qB3++k9jQ==
+"@meilisearch/instant-meilisearch@^0.10.1":
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/@meilisearch/instant-meilisearch/-/instant-meilisearch-0.10.1.tgz#07220e88d30121d1f07c465fdeae7c048d20ed4a"
+  integrity sha512-uEw1P5zTRNtZvXrFqs2I2O1RNRZMXH2n6d3WEV7IWjKMO9drRLnI69YZALvG50238/9qWam4h07zXsq8ElXPBA==
   dependencies:
     meilisearch "^0.30.0"
 
