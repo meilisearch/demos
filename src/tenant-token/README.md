@@ -68,11 +68,12 @@ npm start
 
 ## 2. Backend
 
-Navigate to `/backend` and create a **.env** file with content
+Navigate to `/backend` and create a **.env** file with content. Make sure the API key UID is a valid UUID v4. It would be used to generate a new API key dedicated to the tenant_token index and to sign the tenant tokens.
 
 ```
 MEILI_HOST=http://localhost:7700
-MEILI_API_KEY=<PUT_YOUR_API_KEY_HERE>
+MEILI_API_KEY=<PUT_YOUR_ADMIN_API_KEY_OR_MASTER_KEY_HERE>
+MEILI_API_KEY_UID=<PUT_YOUR_API_KEY_UID_HERE>
 ```
 Run the following commands:
 
@@ -89,7 +90,7 @@ Navigate to `/frontend` and create a **.env** file with content
 
 ```
 REACT_APP_MEILI_HOST=http://localhost:7700
-REACT_APP_MEILI_API_KEY=<PUT_YOUR_API_KEY_HERE>
+REACT_APP_MEILI_API_KEY=<PUT_YOUR_SEARCH_API_KEY_HERE>
 REACT_APP_MEILI_INDEX=tenant_token
 REACT_APP_API_HOST=http://localhost:5000
 ```

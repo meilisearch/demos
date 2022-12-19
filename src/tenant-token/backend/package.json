@@ -7,7 +7,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
-    "meilisearch": "^0.25.0"
+    "meilisearch": "^0.30.0"
   },
   "scripts": {
     "start": "node index.js",
