@@ -9,6 +9,8 @@ const client = new MeiliSearch({
   apiKey: process.env.MEILI_API_KEY || "masterKey",
 });
 
+const apiKeyUid = process.env.MEILI_API_KEY_UID;
+
 app.use(cors());
 
 app.get("/", function (req, res) {
@@ -33,7 +35,7 @@ app.get("/create-tenant-token", async (req, res) => {
     new Date().setFullYear(new Date().getFullYear() + 1)
   );
 
-  const tenantToken = client.generateTenantToken(payload, {
+  const tenantToken = client.generateTenantToken(apiKeyUid, payload, {
     apiKey,
     expiresAt,
   });
@@ -52,6 +54,7 @@ app.listen(port, async () => {
       description: "SEARCH",
       actions: ["search"],
       indexes: ["tenant_token"],
+      uid: apiKeyUid,
       expiresAt: "2025-01-01T00:00:00Z",
     });
     console.log("Created API Key");
