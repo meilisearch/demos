@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "meilisearch-serve": "MEILI_API_KEY=$(grep MEILI_API_KEY .env | cut -d '=' -f2) && docker run -it --rm -p 7700:7700 -v $(pwd)/meili_data:/meili_data getmeili/meilisearch:latest meilisearch --master-key=$MEILI_API_KEY",
+    "meilisearch-serve": "MEILI_API_KEY=$(grep MEILI_API_KEY .env | cut -d '=' -f2) && docker run -it --rm -p 7700:7700 -v $(pwd)/meili_data:/meili_data getmeili/meilisearch:v0.30.4 meilisearch --master-key=$MEILI_API_KEY",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
