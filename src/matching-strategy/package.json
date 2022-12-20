@@ -20,9 +20,9 @@
     "vite": "^3.1.0"
   },
   "dependencies": {
-    "@meilisearch/instant-meilisearch": "0.9.0",
+    "@meilisearch/instant-meilisearch": "^0.10.1",
     "dotenv": "^16.0.2",
     "instantsearch.js": "^4.46.1",
-    "meilisearch": "^0.28.0"
+    "meilisearch": "^0.30.0"
   }
 }
