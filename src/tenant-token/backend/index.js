@@ -6,10 +6,8 @@ const app = express();
 
 const client = new MeiliSearch({
   host: process.env.MEILI_HOST || "http://localhost:7700",
-  apiKey: process.env.MEILI_API_KEY || "masterKey",
+  apiKey: process.env.MEILI_MASTER_KEY,
 });
-
-const apiKeyUid = process.env.MEILI_API_KEY_UID;
 
 app.use(cors());
 
@@ -23,7 +21,8 @@ app.get("/create-tenant-token", async (req, res) => {
   /* Replace this comment with the API request */
 
   const { results } = await client.getKeys();
-  const apiKey = results[0].key;
+  const apiKey = results.filter((res) => res.name === "Default Search API Key")[0].key;
+  const apiKeyUid = results.filter((res) => res.name === "Default Search API Key")[0].uid;
 
   const payload = {
     tenant_token: {
@@ -42,23 +41,8 @@ app.get("/create-tenant-token", async (req, res) => {
   return res.json({ token: tenantToken });
 });
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 
 app.listen(port, async () => {
-  console.log("Checking for an API Key");
-  const { results } = await client.getKeys();
-  const apiKeyList = results.filter((res) => res.description === "SEARCH");
-
-  if (apiKeyList.length === 0) {
-    await client.createKey({
-      description: "SEARCH",
-      actions: ["search"],
-      indexes: ["tenant_token"],
-      uid: apiKeyUid,
-      expiresAt: "2025-01-01T00:00:00Z",
-    });
-    console.log("Created API Key");
-  }
-
   console.log(`Server started at PORT: ${port}`);
 });
