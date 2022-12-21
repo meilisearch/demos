@@ -72,7 +72,7 @@ Navigate to `/backend` and create a **.env** file with content.
 
 ```
 MEILI_HOST=http://localhost:7700
-MEILI_API_KEY=<PUT_YOUR_MASTER_KEY_HERE>
+MEILI_ADMIN_API_KEY=<PUT_YOUR_ADMIN_API_KEY_HERE>
 ```
 Run the following commands:
 
