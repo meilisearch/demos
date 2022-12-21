@@ -6,7 +6,7 @@ const app = express();
 
 const client = new MeiliSearch({
   host: process.env.MEILI_HOST || "http://localhost:7700",
-  apiKey: process.env.MEILI_MASTER_KEY,
+  apiKey: process.env.MEILI_ADMIN_API_KEY,
 });
 
 app.use(cors());
