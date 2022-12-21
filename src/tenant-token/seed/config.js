@@ -1,6 +1,6 @@
 const MEILISEARCH_CONFIG = {
   HOST: "http://localhost:7700",
-  MASTER_KEY: process.env.MEILI_API_KEY,
+  MASTER_KEY: process.env.MEILI_MASTER_KEY,
   INDEX_NAME: "tenant_token",
 };
 const patientNameList = [

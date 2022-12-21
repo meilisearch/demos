@@ -5,7 +5,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 const DEFAULT_USERS = [
   {
     name: 'Admin',
-    key: MEILISEARCH_CONFIG.MASTER_KEY,
+    key: MEILISEARCH_CONFIG.SEARCH_API_KEY,
   },
 ]
 

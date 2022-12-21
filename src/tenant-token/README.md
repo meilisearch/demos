@@ -42,19 +42,19 @@ See our [Documentation](https://docs.meilisearch.com/learn/security/tenant_token
  
 ## 🎁 Content of this repository
 In this repository, you will find three sub directories:
-  1. **Frontend** - React App to search,create token and switch between tokens.
+  1. **Frontend** - React App to search, create token and switch between tokens.
   2. **Backend** - Express App to handle Apis.
   3. **Seed** - Script to feed intial data in meilisearch.
 
 ## 🎬 Getting Started
 
->Prerequisite: Start Docker and download latest Meilisearch docker image using the command `docker pull getmeili/meilisearch:latest` before going further.
+>Prerequisite: Start Docker and download latest Meilisearch docker image using the command `docker pull getmeili/meilisearch:v0.30.4` before going further.
 
 ### 1. Seed Data
 
 Navigate to `/seed` and create a **.env** file with content
 ```
-MEILI_API_KEY=<PUT_YOUR_API_KEY_HERE>
+MEILI_MASTER_KEY=<PUT_YOUR_MASTER_KEY_HERE>
 ```
 Then run `npm run meilisearch-serve`  to start meilisearch on docker.
 
@@ -68,11 +68,11 @@ npm start
 
 ## 2. Backend
 
-Navigate to `/backend` and create a **.env** file with content
+Navigate to `/backend` and create a **.env** file with content.
 
 ```
 MEILI_HOST=http://localhost:7700
-MEILI_API_KEY=<PUT_YOUR_API_KEY_HERE>
+MEILI_ADMIN_API_KEY=<PUT_YOUR_ADMIN_API_KEY_HERE>
 ```
 Run the following commands:
 
@@ -81,7 +81,7 @@ npm i
 npm start
 ```
 
-This will start your express server on [http://localhost:5000](http://localhost:5000)
+This will start your express server on [http://localhost:5001](http://localhost:5000)
 
 ## 3. Frontend
 
@@ -89,9 +89,9 @@ Navigate to `/frontend` and create a **.env** file with content
 
 ```
 REACT_APP_MEILI_HOST=http://localhost:7700
-REACT_APP_MEILI_API_KEY=<PUT_YOUR_API_KEY_HERE>
+REACT_APP_MEILI_SEARCH_API_KEY=<PUT_YOUR_SEARCH_API_KEY_HERE>
 REACT_APP_MEILI_INDEX=tenant_token
-REACT_APP_API_HOST=http://localhost:5000
+REACT_APP_API_HOST=http://localhost:5001
 ```
 
 Run the following commands:

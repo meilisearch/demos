@@ -11,7 +11,7 @@ function App() {
     <div className="min-h-screen bg-custom-gray-7">
       <InstantSearch
         indexName={MEILISEARCH_CONFIG.INDEX}
-        searchClient={instantMeiliSearch(MEILISEARCH_CONFIG.HOST, user.key)}
+        searchClient={instantMeiliSearch(MEILISEARCH_CONFIG.HOST, user.key, { finitePagination : true })}
       >
         <Header />
         <Content />

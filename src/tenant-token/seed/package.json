@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "meilisearch-serve": "MEILI_API_KEY=$(grep MEILI_API_KEY .env | cut -d '=' -f2) && docker run -it --rm -p 7700:7700 -v $(pwd)/data.ms:/data.ms getmeili/meilisearch:latest ./meilisearch --master-key=$MEILI_API_KEY",
+    "meilisearch-serve": "MEILI_MASTER_KEY=$(grep MEILI_MASTER_KEY .env | cut -d '=' -f2 | tr -d \"'\" | tr -d '\"') && docker run -it --rm -p 7700:7700 -v $(pwd)/meili_data:/meili_data getmeili/meilisearch:v0.30.4 meilisearch --master-key=$MEILI_MASTER_KEY",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.0",
-    "meilisearch": "^0.25.0"
+    "meilisearch": "^0.30.0"
   }
 }
