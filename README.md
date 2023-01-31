@@ -10,7 +10,7 @@
 <h4 align="center">
   <a href="https://github.com/meilisearch/meilisearch">Meilisearch</a> |
   <a href="https://docs.meilisearch.com">Documentation</a> |
-  <a href="https://slack.meilisearch.com">Slack</a> |
+  <a href="https://discord.gg/meilisearch">Discord</a> |
   <a href="https://www.meilisearch.com">Website</a> |
   <a href="https://blog.meilisearch.com">Blog</a> |
   <a href="https://fr.linkedin.com/company/meilisearch">LinkedIn</a> |
@@ -18,14 +18,6 @@
   <a href="https://docs.meilisearch.com/faq/">FAQ</a>
 </h4>
 
-<p align="center">
-  <a href="https://slack.meilisearch.com"><img src="https://img.shields.io/badge/slack-Meilisearch-blue.svg?logo=slack" alt="Slack"></a>
-</p>
-<p align="center">
-<h3>🎃 It&rsquo;s Hacktoberfest 2022 @Meilisearch</h3>
-<p><a href="https://hacktoberfest.com">Hacktoberfest</a> is a celebration of the open-source community. This year, and for the third time in a row, Meilisearch is participating in this fantastic event.</p>
-<p>You&rsquo;d like to contribute? Don&rsquo;t hesitate to check out our <a href="https://github.com/meilisearch/demos/blob/main/CONTRIBUTING.md">contributing guidelines</a>.<br /><br />And for the longer, more complete documentation of the Hacktoberfest guidelines you can follow <a href="https://github.com/meilisearch/.github/blob/main/Hacktoberfest_2022_contributors_guidelines.md">this link</a>.</p>
-</p>
 
 # All available Meilisearch demos
 
