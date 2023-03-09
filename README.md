@@ -39,7 +39,7 @@
 | [ Search in world cities ](https://github.com/meilisearch/demos/tree/main/src/geo-javascript) |  https://geosearch-js.meilisearch.com/ | Play with Geosearch features and find info about large cities |
 | [ Tenant token demo ](https://github.com/meilisearch/demos/tree/main/src/tenant-token) |  https://tenant-token.meilisearch.com/ | Use tenant tokens to restrict access to data based on different user names. |
 | [ Typo tolerance demo ](https://github.com/meilisearch/demos/tree/main/src/typo-tolerance) |  https://typo-tolerance.meilisearch.com/ | This demo presents different typo tolerance configurations in action.  |
-| [ Where To Watch demo ](https://github.com/meilisearch/demo-movies) |  https://where2watch.meilisearch.com/ | An application to help you find where to stream movies.  |
+| [ Where To Watch demo ](https://github.com/meilisearch/demo-movies) |  https://where2watch.meilisearch.com/ | An application to help you find streaming platforms to watch movies.  |
 | [ Ecommerce demo ](https://github.com/meilisearch/ecommerce-demo) |  https://ecommerce.meilisearch.com/ | Ecommerce website using disjunctive facets, range and rating filtering, and pagination.  |
 
 <br>
