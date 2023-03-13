@@ -13,7 +13,7 @@
   <a href="https://discord.gg/meilisearch">Discord</a> |
   <a href="https://www.meilisearch.com">Website</a> |
   <a href="https://blog.meilisearch.com">Blog</a> |
-  <a href="https://fr.linkedin.com/company/meilisearch">LinkedIn</a> |
+  <a href="https://linkedin.com/company/meilisearch">LinkedIn</a> |
   <a href="https://twitter.com/meilisearch">Twitter</a> |
   <a href="https://docs.meilisearch.com/faq/">FAQ</a>
 </h4>
@@ -31,8 +31,8 @@
 | [ Search in world cities ](https://github.com/meilisearch/demos/tree/main/src/geo-javascript) |  https://geosearch-js.meilisearch.com/ | Play with Geosearch features and find info about large cities |
 | [ Tenant token demo ](https://github.com/meilisearch/demos/tree/main/src/tenant-token) |  https://tenant-token.meilisearch.com/ | Use tenant tokens to restrict access to data based on different user names. |
 | [ Typo tolerance demo ](https://github.com/meilisearch/demos/tree/main/src/typo-tolerance) |  https://typo-tolerance.meilisearch.com/ | This demo presents different typo tolerance configurations in action.  |
-| [ Where To Watch demo ](https://github.com/meilisearch/demo-movies) |  https://where2watch.meilisearch.com/ | This demo presents a website that lets you know where to watch a movie.  |
-| [ E-commerce demo ](https://github.com/meilisearch/demos/tree/main/src/ecommerce) |  https://ecommerce.meilisearch.com/ | This demo presents an e-commerce website that leverages Meilisearch to search through its catalog.  |
+| [ Where To Watch demo ](https://github.com/meilisearch/demo-movies) |  https://where2watch.meilisearch.com/ | An application to help you find streaming platforms to watch movies.  |
+| [ Ecommerce demo ](https://github.com/meilisearch/ecommerce-demo) |  https://ecommerce.meilisearch.com/ | Ecommerce website using disjunctive facets, range and rating filtering, and pagination.  |
 
 <br>
 
