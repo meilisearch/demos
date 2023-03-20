@@ -5,33 +5,32 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="theme-color" content="#000000" />
+  <meta name="description"
+    content="Search across more than 30000 cities in this geosearch example application powered by Meilisearch.">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7/themes/algolia-min.css" />
   <link rel="stylesheet" href="./src/index.css" />
   <link rel="stylesheet" href="./src/app.css" />
 
-  <title>Meilisearch + InstantSearch 🌍</title>
+  <title>Geosearch demo - Meilisearch</title>
   <script src="https://thrilling-thirtyeight.meilisearch.com/script.js" data-site="QNBPJXIV" defer></script>
 </head>
 
 <body>
-  <div class="ais-InstantSearch">
-    <h1>Meilisearch + InstantSearch.js</h1>
-    <h2>Search in world cities </h2>
-    <p>
-      This is a dataset of 32419 world cities with more than 10000 inhabitants.
-    </p>
-
-    <div class="left-panel">
-      <div id="sort-by"></div>
-    </div>
-
-    <div class="right-panel">
-      <div id="searchbox" class="ais-SearchBox"></div>
-      <div id="maps" style="height: 500px; width: 500px"></div>
-      <br>
-      <div id="hits"></div>
-      <div id="pagination"></div>
+  <div>
+    <h1>Meilisearch geosearch demo</h1>
+    <h2>Search for populated cities</h2>
+    <div class="flex">
+      <div class="left-panel">
+        <div class="mb-2">This dataset contains 32419 cities with more than 10000 inhabitants.</div>
+        <div id="maps" style="height: 500px; width: 500px"></div>
+      </div>
+      <div class="right-panel">
+        <div id="searchbox" class="mb-1"></div>
+        <div id="sort-by" class="mb-1"></div>
+        <div id="hits" class="mb-1"></div>
+        <div id="pagination"></div>
+      </div>
     </div>
   </div>
 
