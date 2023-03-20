@@ -1,6 +1,6 @@
 {
   "name": "instant-meilisearch-geo-search",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A geosearch demo using MeiliSearch, InstantSearch, GoogleMaps and instant-meilisearch",
   "main": "index.html",
   "scripts": {

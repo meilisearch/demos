@@ -1,54 +1,36 @@
 body {
-  font-family: sans-serif;
-  padding: 1em;
+  padding: 2rem;
 }
 
-.ais-ClearRefinements {
-  margin: 1em 0;
+.mb-1 {
+  margin-bottom: 1rem;
 }
 
-.ais-SearchBox {
-  margin: 1em 0;
+.mb-2 {
+  margin-bottom: 2rem;
 }
 
-.ais-Pagination {
-  margin-top: 1em;
+.flex {
+  display: flex
 }
 
 .left-panel {
-  float: left;
-  width: 200px;
+  margin-right: 2rem;
 }
 
 .right-panel {
-  margin-left: 210px;
+  flex-grow: 1;
 }
 
-.ais-InstantSearch {
-  max-width: 960px;
-  overflow: hidden;
-  margin: 0 auto;
+.ais-InfiniteHits {
+  max-height: 68vh;
+  overflow-y: scroll;
 }
+
 .ais-InfiniteHits-item {
-  margin-bottom: 1em;
   width: calc(50% - 1rem);
-}
-.ais-Hits-item {
-  margin-bottom: 1em;
-  width: calc(50% - 1rem);
-}
-
-.ais-Hits-item img {
-  margin-right: 1em;
-  width: 100%;
-  height: 100%;
-  margin-bottom: 0.5em;
 }
 
 .hit-name {
-  margin-bottom: 0.5em;
-}
-
-.hit-info {
-  font-size: 90%;
+  margin-bottom: 0.25rem;
 }
