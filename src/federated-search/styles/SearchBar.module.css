@@ -1,0 +1,12 @@
+.searchForm {
+    display: flex;
+    height: 2.8rem;
+    position: relative;
+    width: 80%;
+}
+
+@media screen and (min-width: 768px) {
+    .searchForm {
+        width: 60%;
+    }
+}
