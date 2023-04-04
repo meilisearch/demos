@@ -1,6 +1,7 @@
 import React from 'react'
-import { InstantSearch, Index, SearchBox, Hits } from 'react-instantsearch-dom'
+import { InstantSearch, Index, Hits } from 'react-instantsearch-dom'
 import { instantMeiliSearch } from '@meilisearch/instant-meilisearch'
+import SearchBar from '../components/SearchBar'
 const searchClient = instantMeiliSearch(
   'http://localhost:7700',
   '',
@@ -9,7 +10,7 @@ const searchClient = instantMeiliSearch(
 
 const App = () => (
   <InstantSearch indexName="movies" searchClient={searchClient}>
-    <SearchBox/>
+    <SearchBar/>
     <Index indexName="movies">
       <h2>index: Movies</h2>
       <Hits />
