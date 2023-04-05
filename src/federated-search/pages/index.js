@@ -12,15 +12,20 @@ const searchClient = instantMeiliSearch(
 const App = () => (
   <InstantSearch indexName="movies" searchClient={searchClient}>
     <SearchBar/>
-    <Index indexName="movies">
-      <h2>index: Movies</h2>
-      <Results type='movie' />
-    </Index>
-
-    <Index indexName="actors">
-      <h2>index: Actors</h2>
-      <Results type='actor' />
-    </Index>
+    <div className='mainContainer'>
+      <div className='leftPanel'>
+        <Index indexName="movies">
+          <h2>index: Movies</h2>
+          <Results type='movie' />
+        </Index>
+      </div>
+      <div className='rightPanel'>
+        <Index indexName="actors">
+          <h2>index: Actors</h2>
+          <Results type='actor' />
+        </Index>
+      </div>
+    </div>
   </InstantSearch>
 )
 

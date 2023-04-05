@@ -7,39 +7,39 @@
     border: none;
     padding: 1.5rem;
 }
-.movieHeading {
+.actorHeading {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     /* align-items: center; */
     margin-bottom: 2rem;
 }
-.title {
+.name {
     margin-right: 0.5rem;
 }
 
-.title > span[class^="ais-Highlight"],
-.title > mark[class^="ais-Highlight"] {
+.name > span[class^="ais-Highlight"],
+.name > mark[class^="ais-Highlight"] {
   color: var(--valhalla-500);
   font-size: 1.25rem;
   font-weight: 600;
 }
-.posterImg {
+.pictureImg {
     border-radius: 5px;
     margin-right: 1.5em;
-    margin-bottom: 0.5em;
-    float: left;
     width: 33%;
     height: 100%;
+    margin-bottom: 0.5em;
+    float: left;
 }
 
 /* @media screen and (min-width: 768px) {
     .card {
         width: calc(40% - 1rem);
     }
-} */
+}
 
-/* @media screen and (min-width: 992px) {
+@media screen and (min-width: 992px) {
     .card{
         width: calc(33% - 1rem);
         margin-left: 1rem;
