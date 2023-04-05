@@ -1,7 +1,7 @@
 import React from 'react'
 import { InstantSearch, Index } from 'react-instantsearch-hooks-web';
 import { instantMeiliSearch } from '@meilisearch/instant-meilisearch'
-import SearchBar from '../components/SearchBar'
+import Header from '../components/Header';
 import Results from '../components/Results'
 const searchClient = instantMeiliSearch(
   'http://localhost:7700',
@@ -11,8 +11,8 @@ const searchClient = instantMeiliSearch(
 
 const App = () => (
   <InstantSearch indexName="movies" searchClient={searchClient}>
-    <SearchBar/>
-    <div className='mainContainer'>
+    <Header/>
+    <div className='mainContainer centralWidth'>
       <div className='leftPanel'>
         <Index indexName="movies">
           <h2>index: Movies</h2>
