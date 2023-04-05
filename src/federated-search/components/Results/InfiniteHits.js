@@ -4,7 +4,7 @@ import ActorCard from './ActorCard'
 import { useInfiniteHits } from 'react-instantsearch-hooks-web';
 import styles from '../../styles/Results.module.css'
 
-export function InfiniteHits(props) {
+const InfiniteHits = (props) => {
   let movie = true
   if (props.type !== 'movie') {
     movie = false
@@ -19,6 +19,7 @@ export function InfiniteHits(props) {
     <div className={styles.resultsContainer}>
       <ul className={styles.resultsList}>
         {hits.map((hit, index) => (
+
           movie ?
           <MovieCard key={index} hit={hit} /> 
           :

@@ -3,7 +3,7 @@ import SearchInput from './SearchInput'
 import { useSearchBox } from 'react-instantsearch-hooks-web';
 import styles from '../../styles/SearchBar.module.css'
 
-function SearchBar(props) {
+const SearchBar = (props) => {
   const { query, refine } = useSearchBox(props);
   const [value, setValue] = React.useState(query)
   React.useEffect(() => {
