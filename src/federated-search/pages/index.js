@@ -1,5 +1,5 @@
 import React from 'react'
-import { InstantSearch, Index, Hits } from 'react-instantsearch-dom'
+import { InstantSearch, Index, Hits} from 'react-instantsearch-hooks-web';
 import { instantMeiliSearch } from '@meilisearch/instant-meilisearch'
 import SearchBar from '../components/SearchBar'
 const searchClient = instantMeiliSearch(
