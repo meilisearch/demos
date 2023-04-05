@@ -1,13 +1,15 @@
 import React from 'react'
 import SearchInput from './SearchInput'
-import { connectSearchBox } from 'react-instantsearch-dom'
-import styles from '../styles/SearchBar.module.css'
+import { useSearchBox } from 'react-instantsearch-hooks-web';
+import styles from '../../styles/SearchBar.module.css'
 
-const SearchBar = connectSearchBox(({ currentRefinement, refine }) => {
-  const [value, setValue] = React.useState(currentRefinement)
+function SearchBar(props) {
+  const { query, refine } = useSearchBox(props);
+  const [value, setValue] = React.useState(query)
   React.useEffect(() => {
     refine(value)
   }, [value])
+
   return (
     <div className={styles.searchForm}>
       <SearchInput
@@ -19,6 +21,6 @@ const SearchBar = connectSearchBox(({ currentRefinement, refine }) => {
       />
     </div>
   )
-})
+}
 
 export default SearchBar

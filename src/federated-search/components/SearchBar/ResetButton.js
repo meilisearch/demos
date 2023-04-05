@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../styles/ResetButton.module.css'
+import styles from '../../styles/ResetButton.module.css'
 
 const ResetButton = ({ type, ...props }) => {
   return (

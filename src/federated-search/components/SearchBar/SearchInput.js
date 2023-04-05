@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import ResetButton from './ResetButton'
-import styles from '../styles/Input.module.css'
+import styles from '../../styles/Input.module.css'
 
 const Input = ({ type, value, clear, ...props }) => {
   const input = useRef(null)
