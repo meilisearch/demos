@@ -15,13 +15,13 @@ const App = () => (
     <div className='mainContainer centralWidth'>
       <div className='leftPanel'>
         <Index indexName="movies">
-          <h2>index: Movies</h2>
+          <h2>Movies</h2>
           <Results type='movie' />
         </Index>
       </div>
       <div className='rightPanel'>
         <Index indexName="actors">
-          <h2>index: Actors</h2>
+          <h2>Actors</h2>
           <Results type='actor' />
         </Index>
       </div>
