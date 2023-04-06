@@ -1,28 +1,26 @@
 import React from 'react'
-import { InstantSearch, Index } from 'react-instantsearch-hooks-web';
+import { InstantSearch, Index } from 'react-instantsearch-hooks-web'
 import { instantMeiliSearch } from '@meilisearch/instant-meilisearch'
-import Header from '../components/Header';
-import Results from '../components/Results'
-const searchClient = instantMeiliSearch(
-  'http://localhost:7700',
-  '',
-  { keepZeroFacets: true }
-)
+import Header from '../components/Header'
+import MovieResults from '../components/Results/MovieResults'
+import ActorResults from '../components/Results/ActorResults'
+
+const searchClient = instantMeiliSearch('http://localhost:7700', '')
 
 const App = () => (
   <InstantSearch indexName="movies" searchClient={searchClient}>
-    <Header/>
-    <div className='mainContainer centralWidth'>
-      <div className='leftPanel'>
+    <Header />
+    <div className="mainContainer centralWidth">
+      <div className="leftPanel">
         <Index indexName="movies">
           <h2>Movies</h2>
-          <Results type='movie' />
+          <MovieResults />
         </Index>
       </div>
-      <div className='rightPanel'>
+      <div className="rightPanel">
         <Index indexName="actors">
           <h2>Actors</h2>
-          <Results type='actor' />
+          <ActorResults />
         </Index>
       </div>
     </div>
