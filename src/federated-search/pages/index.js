@@ -12,10 +12,8 @@ const App = () => (
     <Header />
     <div className="mainContainer centralWidth">
       <div className="leftPanel">
-        <Index indexName="movies">
           <h2>Movies</h2>
           <MovieResults />
-        </Index>
       </div>
       <div className="rightPanel">
         <Index indexName="actors">
