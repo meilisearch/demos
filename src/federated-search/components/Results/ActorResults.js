@@ -1,14 +1,26 @@
 import React from 'react'
-import { useInstantSearch } from 'react-instantsearch-hooks-web'
+import { useInstantSearch, InfiniteHits } from 'react-instantsearch-hooks-web'
 import NoResults from './NoResults'
-import ActorHits from './ActorHits'
+import ActorCard from './ActorCard'
 
 const ActorResults = () => {
   const { results } = useInstantSearch()
   const hasResults = results.nbHits !== 0
   return (
     <React.Fragment>
-      {hasResults ? <ActorHits /> : <NoResults />}
+      {hasResults ? 
+        <div className="resultsContainer">
+          <InfiniteHits
+            hitComponent={ActorCard}
+            showPrevious={false}
+            classNames={{
+              list: 'resultsList',
+              item: 'card',
+            }}
+          />
+        </div>
+      : 
+      <NoResults />}
     </React.Fragment>
   )
 }
