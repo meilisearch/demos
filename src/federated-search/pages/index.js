@@ -10,6 +10,13 @@ const searchClient = instantMeiliSearch('http://localhost:7700', '')
 const App = () => (
   <InstantSearch indexName="movies" searchClient={searchClient}>
     <Header />
+    <div class="title">
+      <h1>Federated search</h1>
+      <p>
+        This demo showcases federated search in
+        action.
+      </p>
+    </div>
     <div className="mainContainer centralWidth">
       <div className="leftPanel">
           <h2>Movies</h2>

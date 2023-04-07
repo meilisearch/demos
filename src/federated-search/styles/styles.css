@@ -112,6 +112,23 @@ body {
 h2 {
   margin: 1rem 0 1rem 0;
 }
+
+.title {
+  text-align: center;
+  padding-top: 1rem;
+  margin: 1rem 0 1rem 0;
+}
+.title h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+}
+
+.title p {
+  font-weight: 400;
+}
+
 .centralWidth {
   max-width: 85%;
   margin: auto;
