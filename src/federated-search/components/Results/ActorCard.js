@@ -35,7 +35,7 @@ const ActorCard = ({ hit }) => {
       <div className={styles.extraDataContainer}>
         <div className={styles.known_for}>
           <p>
-            Known for:
+            <span>Known for: </span>
             <Highlight
               attribute="known_for"
               highlightedTagName="mark"
