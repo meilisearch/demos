@@ -8,6 +8,10 @@
     padding: 1.5rem;
 }
 
+.actorMainInfo {
+    overflow: hidden;
+}
+
 .actorHeading {
     display: flex;
     flex-direction: column;
@@ -33,4 +37,16 @@
     height: 100%;
     margin-bottom: 0.5em;
     float: left;
+}
+
+.extraData {
+    margin-top: 1rem;
+}
+
+.knownFor {
+    font-weight: 700;
+    font-size: 0.8rem;
+    line-height: 130%;
+    letter-spacing: 0.03rem;
+    text-transform: uppercase;
 }
