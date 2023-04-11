@@ -16,6 +16,7 @@ const ActorResults = () => {
             classNames={{
               list: 'resultsList',
               item: 'card',
+              loadMore: 'loadMoreButton'
             }}
           />
         </div>

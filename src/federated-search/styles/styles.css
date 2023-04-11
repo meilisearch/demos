@@ -183,3 +183,25 @@ h2 {
   border: none;
   padding: 1.5rem;
 }
+
+.loadMoreButton {
+  background-color: var( --dodger-blue-500);
+  font-size: 0.9rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  display: block;
+  margin: auto;
+  padding: 0.5rem 1rem;
+}
+
+.loadMoreButton:hover,
+.loadMoreButton:focus {
+  background-color: var(--dodger-blue-600);
+  border-color: var(--dodger-blue-600);
+  color: var(--white);
+}
+
+.loadMoreButton:disabled {
+  cursor: not-allowed;
+  background-color: var(--ashes-900);
+}
