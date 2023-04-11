@@ -2,7 +2,7 @@
   <img src="https://raw.githubusercontent.com/meilisearch/integration-guides/master/assets/logos/logo.svg" alt="Meilisearch" width="200" height="200" />
 </p>
 
-<h1 align="center">Meilisearch Federated search demi</h1>
+<h1 align="center">Meilisearch Federated search demo</h1>
 
 <h4 align="center">
   <a href="https://github.com/meilisearch/meilisearch">Meilisearch</a> |
@@ -53,9 +53,9 @@ docker run -it --rm \
 # Use ${pwd} instead of $(pwd) in PowerShell
 ```
 
-Environment variables should hold your Meilisearch database credentials. The easiest way to launch a database is to [create a free project](https://cloud.meilisearch.com/) on Meilisearch Cloud. Alternatively, you can read [local installation](https://docs.meilisearch.com/learn/getting_started/installation.html#local-installation) documentation for self-hosted options.
+Alternatively, you can launch a database by [creating a free project](https://cloud.meilisearch.com/) on Meilisearch Cloud. 
 
-This project loads environment variables from an `.env` file. You can duplicate the existing `.env.example` file and rename it as `.env`. Update the content of the file to match your credentials.
+Environment variables should hold your Meilisearch database credentials. This project loads environment variables from an `.env` file. You can duplicate the existing `.env.example` file and rename it as `.env`. Update the content of the file to match your credentials.
 
 ```bash
 # .env
