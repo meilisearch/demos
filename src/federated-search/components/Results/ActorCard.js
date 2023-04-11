@@ -11,7 +11,6 @@ const ActorCard = ({ hit }) => {
     knownFor = false
   }
   return (
-    <>
     <div className={styles.actorMainInfo}>
       <div className={styles.pictureContainer}>
         <img
@@ -29,15 +28,6 @@ const ActorCard = ({ hit }) => {
             className={styles.name}
           />
         </div>
-      </div>
-      <div >
-        <Snippet
-        attribute="biography"
-        highlightedTagName="mark"
-        hit={hit}
-      />
-      </div>
-    </div>
         {
           knownFor ? 
           <div className={styles.extraData}>
@@ -51,7 +41,15 @@ const ActorCard = ({ hit }) => {
           :
           ''
         }
-    </>
+      </div>
+      <div >
+        <Snippet
+        attribute="biography"
+        highlightedTagName="mark"
+        hit={hit}
+      />
+      </div>
+    </div>
   )
 }
 

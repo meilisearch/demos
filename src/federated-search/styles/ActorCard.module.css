@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .name {
@@ -40,7 +40,8 @@
 }
 
 .extraData {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
 }
 
 .knownFor {
