@@ -64,6 +64,7 @@ Environment variables should hold your Meilisearch database credentials. This pr
 NEXT_PUBLIC_MEILISEARCH_HOST="use the Database URL here"
 NEXT_PUBLIC_MEILISEARCH_SEARCH_API_KEY="use the Default Search API Key here"
 NEXT_PUBLIC_MEILISEARCH_ADMIN_API_KEY="use the Default Admin API Key here"
+```
 
 
 ### Database
