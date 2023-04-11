@@ -109,6 +109,9 @@ body {
   background-color: #f5f5fb;
   min-height: 100vh;
 }
+h1, h2 {
+  font-family: "Poppins", sans-serif;
+}
 h2 {
   margin: 1rem 0 1rem 0;
 }
@@ -127,6 +130,7 @@ h2 {
 
 .title p {
   font-weight: 400;
+  font-family: "Poppins", sans-serif;
 }
 
 .centralWidth {
