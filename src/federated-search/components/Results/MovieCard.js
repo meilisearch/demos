@@ -26,19 +26,19 @@ const MovieCard = ({ hit }) => {
                 className={styles.title}
               />
             </div>
-            <Director crew={hit.crew}/>
+            <Director crew={hit.crew} />
             <div>{hit.runtime} minutes</div>
             <div className={styles.genres}>
               <Genre genres={hit.genres} />
             </div>
           </div>
           <div className={styles.movieInfoTitle}>Cast</div>
-            <Cast cast={hit.cast}/>
-          </div>
+          <Cast cast={hit.cast} />
         </div>
+      </div>
       <div className={styles.extraData}>
         <Highlight attribute="overview" highlightedTagName="mark" hit={hit} />
-      </div> 
+      </div>
     </>
   )
 }

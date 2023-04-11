@@ -5,27 +5,27 @@ import Header from '../components/Header'
 import MovieResults from '../components/Results/MovieResults'
 import ActorResults from '../components/Results/ActorResults'
 
-const searchClient = instantMeiliSearch(process.env.NEXT_PUBLIC_MEILISEARCH_HOST, process.env.NEXT_PUBLIC_MEILISEARCH_SEARCH_API_KEY)
+const searchClient = instantMeiliSearch(
+  process.env.NEXT_PUBLIC_MEILISEARCH_HOST,
+  process.env.NEXT_PUBLIC_MEILISEARCH_SEARCH_API_KEY
+)
 
 const App = () => (
   <InstantSearch indexName="movies" searchClient={searchClient}>
     <Header />
     <div class="title">
       <h1>Federated search</h1>
-      <p>
-        This demo showcases federated search in
-        action.
-      </p>
+      <p>This demo showcases federated search in action.</p>
     </div>
     <div className="mainContainer centralWidth">
       <div className="leftPanel">
         <Configure hitsPerPage={10} />
-          <h2>Movies</h2>
-          <MovieResults />
+        <h2>Movies</h2>
+        <MovieResults />
       </div>
       <div className="rightPanel">
         <Index indexName="actors">
-        <Configure hitsPerPage={10} attributesToSnippet={['biography:80']} />
+          <Configure hitsPerPage={10} attributesToSnippet={['biography:80']} />
           <h2>Actors</h2>
           <ActorResults />
         </Index>

@@ -8,7 +8,7 @@ const MovieResults = () => {
   const hasResults = results.nbHits !== 0
   return (
     <React.Fragment>
-      {hasResults ? 
+      {hasResults ? (
         <div className="resultsContainer">
           <InfiniteHits
             hitComponent={MovieCard}
@@ -16,12 +16,13 @@ const MovieResults = () => {
             classNames={{
               list: 'resultsList',
               item: 'card',
-              loadMore: 'loadMoreButton'
+              loadMore: 'loadMoreButton',
             }}
           />
         </div>
-      : 
-      <NoResults />}
+      ) : (
+        <NoResults />
+      )}
     </React.Fragment>
   )
 }
