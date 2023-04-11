@@ -1,5 +1,5 @@
 import React from 'react'
-import { InstantSearch, Index } from 'react-instantsearch-hooks-web'
+import { InstantSearch, Index, Configure } from 'react-instantsearch-hooks-web'
 import { instantMeiliSearch } from '@meilisearch/instant-meilisearch'
 import Header from '../components/Header'
 import MovieResults from '../components/Results/MovieResults'
@@ -19,11 +19,13 @@ const App = () => (
     </div>
     <div className="mainContainer centralWidth">
       <div className="leftPanel">
+        <Configure hitsPerPage={10} />
           <h2>Movies</h2>
           <MovieResults />
       </div>
       <div className="rightPanel">
         <Index indexName="actors">
+        <Configure hitsPerPage={10} attributesToSnippet={['biography:80']} />
           <h2>Actors</h2>
           <ActorResults />
         </Index>
