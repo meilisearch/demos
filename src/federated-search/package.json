@@ -14,6 +14,8 @@
   },
   "dependencies": {
     "@meilisearch/instant-meilisearch": "^0.12.0",
+    "dotenv": "^16.0.3",
+    "meilisearch": "^0.32.3",
     "next": "^13.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

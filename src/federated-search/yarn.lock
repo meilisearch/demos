@@ -574,6 +574,11 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
+dotenv@^16.0.3:
+  version "16.0.3"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.0.3.tgz#115aec42bac5053db3c456db30cc243a5a836a07"
+  integrity sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==
+
 emoji-regex@^9.2.2:
   version "9.2.2"
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-9.2.2.tgz#840c8803b0d8047f4ff0cf963176b32d4ef3ed72"
@@ -1500,6 +1505,13 @@ meilisearch@^0.32.1:
   version "0.32.1"
   resolved "https://registry.yarnpkg.com/meilisearch/-/meilisearch-0.32.1.tgz#3b09a3d2a5d70949c38f410a53c22f0136d4e8f6"
   integrity sha512-ceC0TSKL7GF91b50y1Qb2lKUUF/d5uZ242Iry093cTDRO3KfL/lcSwXxNxKzluk71iBPH0A0cKAIy6v06sPriA==
+  dependencies:
+    cross-fetch "^3.1.5"
+
+meilisearch@^0.32.3:
+  version "0.32.3"
+  resolved "https://registry.yarnpkg.com/meilisearch/-/meilisearch-0.32.3.tgz#cbc224014c3dddc818090f4b501029993f117b6a"
+  integrity sha512-EOgfBuRE5SiIPIpEDYe2HO0D7a4z5bexIgaAdJFma/dH5hx1kwO+u/qb2g3qKyjG+iA3l8MlmTj/Xd72uahaAw==
   dependencies:
     cross-fetch "^3.1.5"
 
