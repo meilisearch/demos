@@ -109,9 +109,12 @@ body {
   background-color: #f5f5fb;
   min-height: 100vh;
 }
-h1, h2 {
+
+h1,
+h2 {
   font-family: "Poppins", sans-serif;
 }
+
 h2 {
   margin: 1rem 0 1rem 0;
 }
@@ -121,6 +124,7 @@ h2 {
   padding-top: 1rem;
   margin: 1rem 0 1rem 0;
 }
+
 .title h1 {
   font-size: 2.5rem;
   font-weight: 600;
@@ -137,17 +141,21 @@ h2 {
   max-width: 85%;
   margin: auto;
 }
+
 .mainContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
+  padding-bottom: 2rem;
 }
+
 .leftPanel,
 .rightPanel {
   flex-basis: 45%;
 }
+
 .resultsContainer {
   color: inherit;
   width: 100%;
@@ -161,10 +169,11 @@ h2 {
 
 @media screen and (min-width: 992px) {
   .resultsContainer {
-      color: inherit;
-      width: 80%;
+    color: inherit;
+    width: 80%;
   }
 }
+
 .card {
   margin-bottom: 1em;
   width: 100%;
