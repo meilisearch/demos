@@ -10,7 +10,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "next lint --ext .js . --fix"
+    "lint:fix": "next lint --ext .js . --fix",
+    "setup": "node setup/index.js"
   },
   "dependencies": {
     "@meilisearch/instant-meilisearch": "^0.12.0",
