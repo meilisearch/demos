@@ -1,0 +1,9 @@
+.genreTag {
+    padding: 0.25rem 0.4375rem;
+    border: solid 1px;
+    border-radius: 1.5rem;
+    border-color: var(--dodger-blue-700);
+    background-color: var(--dodger-blue-200);
+    color: var(--dodger-blue-700);
+    margin-right: 0.25rem;
+}
