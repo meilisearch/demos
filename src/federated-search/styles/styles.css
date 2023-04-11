@@ -167,13 +167,6 @@ h2 {
   justify-content: space-between;
 }
 
-@media screen and (min-width: 992px) {
-  .resultsContainer {
-    color: inherit;
-    width: 80%;
-  }
-}
-
 .card {
   margin-bottom: 1em;
   width: 100%;
