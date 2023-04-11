@@ -1,9 +1,12 @@
-import React from 'react'
-import { Highlight } from 'react-instantsearch-hooks-web'
+import React, {useState} from 'react'
+import { Highlight, Snippet } from 'react-instantsearch-hooks-web'
 import styles from '../../styles/ActorCard.module.css'
 
 const ActorCard = ({ hit }) => {
+  const [fullBio, setFullBio] = useState(false);
+
   let knownFor = true
+  
   if (hit.known_for.length === 0) {
     knownFor = false
   }
@@ -27,13 +30,12 @@ const ActorCard = ({ hit }) => {
           />
         </div>
       </div>
-      <div>
-        <Highlight
-          attribute="biography"
-          highlightedTagName="mark"
-          hit={hit}
-          className={styles.biography}
-        />
+      <div >
+        <Snippet
+        attribute="biography"
+        highlightedTagName="mark"
+        hit={hit}
+      />
       </div>
     </div>
         {
