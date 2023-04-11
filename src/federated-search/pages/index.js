@@ -5,7 +5,7 @@ import Header from '../components/Header'
 import MovieResults from '../components/Results/MovieResults'
 import ActorResults from '../components/Results/ActorResults'
 
-const searchClient = instantMeiliSearch('http://localhost:7700', '')
+const searchClient = instantMeiliSearch(process.env.NEXT_PUBLIC_MEILISEARCH_HOST, process.env.NEXT_PUBLIC_MEILISEARCH_SEARCH_API_KEY)
 
 const App = () => (
   <InstantSearch indexName="movies" searchClient={searchClient}>
