@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Cast = ({ cast }) => {
+  if (cast) 
   return (
     <>
       {cast.map((people, index) => (
