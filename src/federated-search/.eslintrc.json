@@ -1,0 +1,18 @@
+{
+  "extends": ["next/core-web-vitals", "plugin:prettier/recommended"],
+  "plugins": ["prettier"],
+  "rules": {
+    "no-unused-vars": ["error", { "varsIgnorePattern": "^omit.*$" }],
+    "array-callback-return": "off",
+    "arrow-parens": ["error", "as-needed"],
+    "prettier/prettier": [
+      "error",
+      {
+        "quoteProps": "consistent",
+        "semi": false,
+        "arrowParens": "avoid",
+        "singleQuote": true
+      }
+    ]
+  }
+}

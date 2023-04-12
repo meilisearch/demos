@@ -1,0 +1,36 @@
+.searchInputReset {
+    align-items: center;
+    border-radius: 50%;
+    display: flex;
+    height: 20px;
+    justify-content: center;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    cursor: pointer;
+}
+
+.searchInputReset svg {
+    fill: var(--ashes-900);
+    transition: 0.3s;
+}
+
+.searchInputReset {
+    background-color: transparent;
+    border: none;
+}
+
+.searchInputReset[hidden] {
+    display: none;
+}
+
+.searchInputReset:focus-visible {
+    outline: none;
+}
+
+.searchInputReset:focus-visible svg,
+.searchInputReset:hover svg {
+    fill: var(--valhalla-100);
+}

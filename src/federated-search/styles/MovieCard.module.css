@@ -1,0 +1,61 @@
+.card {
+    margin-bottom: 1em;
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0px 0px 30px rgba(57, 72, 110, 0.05);
+    border-radius: 8px;
+    border: none;
+    padding: 1.5rem;
+}
+
+.movieHeading {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+}
+
+.title {
+    margin-right: 0.5rem;
+}
+
+.title>span[class^="ais-Highlight"],
+.title>mark[class^="ais-Highlight"] {
+    color: var(--valhalla-500);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.posterImg {
+    border-radius: 5px;
+    margin-right: 1.5em;
+    margin-bottom: 0.5em;
+    float: left;
+    width: 33%;
+    height: 100%;
+}
+
+.movieInfoTitle {
+    font-weight: 700;
+    font-size: 0.8rem;
+    line-height: 130%;
+    letter-spacing: 0.03rem;
+    text-transform: uppercase;
+}
+
+.extraData {
+    margin-top: 1rem
+}
+
+.movieMainInfo {
+    overflow: hidden;
+}
+
+
+
+.genres {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+

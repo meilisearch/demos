@@ -1,0 +1,48 @@
+.header {
+    background-color: #ffffff;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.headerContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.logo {
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: auto;
+}
+
+.logoLink {
+    width: 20%;
+}
+
+.stats {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logomark {
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 60%;
+    height: auto;
+}
+
+@media screen and (min-width: 768px) {
+    .logomark {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .logo {
+        display: none;
+    }
+}
