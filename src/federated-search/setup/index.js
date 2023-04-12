@@ -4,8 +4,8 @@ const actorsSettings = require('./actorsSettings')
 const { watchTasks, populateIndex } = require('./setupFunctions')
 const moviesDataset = require('./movies.json')
 const actorsDataset = require('./actors.json')
-const MOVIES_INDEX = 'movies'
-const ACTORS_INDEX = 'actors'
+const MOVIES_INDEX = 'moviesTmdb'
+const ACTORS_INDEX = 'actorsTmdb'
 
 require('dotenv').config()
 
