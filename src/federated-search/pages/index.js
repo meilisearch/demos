@@ -11,7 +11,7 @@ const searchClient = instantMeiliSearch(
 )
 
 const App = () => (
-  <InstantSearch indexName="movies" searchClient={searchClient}>
+  <InstantSearch indexName="moviesTmdb" searchClient={searchClient}>
     <Header />
     <div class="title">
       <h1>Federated search</h1>
@@ -24,7 +24,7 @@ const App = () => (
         <MovieResults />
       </div>
       <div className="rightPanel">
-        <Index indexName="actors">
+        <Index indexName="actorsTmdb">
           <Configure hitsPerPage={10} attributesToSnippet={['biography:80']} />
           <h2>Actors</h2>
           <ActorResults />
