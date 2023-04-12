@@ -15,7 +15,7 @@ const App = () => (
     <Header />
     <div class="title">
       <h1>Federated search</h1>
-      <p>This demo showcases federated search in action.</p>
+      <p>Search across several indexes with Meilisearch's federated search</p>
     </div>
     <div className="mainContainer centralWidth">
       <div className="leftPanel">
