@@ -31,8 +31,10 @@
 | [ Geosearch demo ](https://github.com/meilisearch/demos/tree/main/src/geo-javascript) |  https://geosearch-js.meilisearch.com/ | Use Google Maps and Meilisearch to geo search across 30,000 cities. |
 | [ Tenant token demo ](https://github.com/meilisearch/demos/tree/main/src/tenant-token) |  https://tenant-token.meilisearch.com/ | Use tenant tokens to restrict access to data based on different user names. |
 | [ Typo tolerance demo ](https://github.com/meilisearch/demos/tree/main/src/typo-tolerance) |  https://typo-tolerance.meilisearch.com/ | This demo presents different typo tolerance configurations in action.  |
+| [ Matching strategy demo ](https://github.com/meilisearch/demos/tree/main/src/matching-strategy) |  https://matching-strategy.meilisearch.com/ | Switch the strategy used to match query terms in documents.  |
 | [ Where To Watch demo ](https://github.com/meilisearch/demo-movies) |  https://where2watch.meilisearch.com/ | An application to help you find streaming platforms to watch movies.  |
 | [ Ecommerce demo ](https://github.com/meilisearch/ecommerce-demo) |  https://ecommerce.meilisearch.com/ | Ecommerce website using disjunctive facets, range and rating filtering, and pagination.  |
+| [ Federated search demo ](https://github.com/meilisearch/federated-search) |  https://federated-search.meilisearch.com/ | Search across several indexes with Meilisearch's federated search. |
 
 <br>
 
