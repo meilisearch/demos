@@ -1,47 +1,59 @@
 <p align="center">
-  <img src="https://github.com/meilisearch/meilisearch/blob/main/assets/logo.svg" alt="Meilisearch" width="200" height="200" />
+  <a href="https://www.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos" target="_blank">
+    <img src="https://github.com/meilisearch/meilisearch/blob/main/assets/logo.svg" alt="Meilisearch" width="200" height="200" />
+  </a>
 </p>
 
 
 <h1 align="center">Meilisearch Demos</h1>
-<h5 align="center">This repository lists all available demos that use Meilisearch and whose code you have access to 
-</h5>
+<p align="center">
+  All Meilisearch demos are open-source and you can play with them live. ⚡️ 
+</p>
 
 <h4 align="center">
-  <a href="https://github.com/meilisearch/meilisearch">Meilisearch</a> |
-  <a href="https://docs.meilisearch.com">Documentation</a> |
-  <a href="https://discord.gg/meilisearch">Discord</a> |
-  <a href="https://www.meilisearch.com">Website</a> |
-  <a href="https://blog.meilisearch.com">Blog</a> |
-  <a href="https://linkedin.com/company/meilisearch">LinkedIn</a> |
-  <a href="https://twitter.com/meilisearch">Twitter</a> |
-  <a href="https://docs.meilisearch.com/faq/">FAQ</a>
+  <a href="https://www.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos">Website</a> |
+  <a href="https://roadmap.meilisearch.com/tabs/1-under-consideration">Roadmap</a> |
+  <a href="https://www.meilisearch.com/pricing?utm_campaign=oss&utm_source=github&utm_medium=demos">Meilisearch Cloud</a> |
+  <a href="https://blog.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos">Blog</a> |
+  <a href="https://docs.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos">Documentation</a> |
+  <a href="https://docs.meilisearch.com/faq/?utm_campaign=oss&utm_source=github&utm_medium=demos">FAQ</a> |
+  <a href="https://discord.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos">Discord</a>
 </h4>
 
+> Meilisearch is an open-source search engine that offers fast, relevant search out of the box. 
+ 
+👉 [Meilisearch repository](https://github.com/meilisearch/meilisearch)
 
-# All available Meilisearch demos
+## ✨ Use case demos
 
-| Demo repo | Live Demo  | Description |
+| Repository | Live Preview | Description |
+|------------|---------|-------------|
+| [ Where To Watch ](https://github.com/meilisearch/demo-movies) |  [https://where2watch.meilisearch.com](https://where2watch.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | An application to help you find streaming platforms to watch movies.  |
+| [ Ecommerce demo ](https://github.com/meilisearch/ecommerce-demo) |  [https://ecommerce.meilisearch.com](https://ecommerce.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Ecommerce website using disjunctive facets, range and rating filtering, and pagination.  |
+| [ SaaS demo ](https://github.com/meilisearch/saas-demo) |  [https://saas.meilisearch.com](https://saas.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | App search in a CRM use case with app-wide search across multiple indexes. |
+
+## 📍 Feature showcase demos
+
+| Repository | Live Preview   | Description |
 |-----------|------------|-------------|
-| [ Meilisearch finds RubyGems ](https://github.com/meilisearch/demos/tree/main/src/finding-rubygems) | https://rubygems.meilisearch.com/ | Meilisearch helps you find your favorite Ruby gems |
-| [ Finding Crates ](https://github.com/meilisearch/demos/tree/main/src/finding-crates) | https://crates.meilisearch.com/ | Meilisearch helps you find your favorite crates|
-| [ Meilisearch finds PyPI packages ](https://github.com/meilisearch/demos/tree/main/src/finding-pypi) | https://pypi.meilisearch.com/ | Meilisearch helps you find your favorite python packages|
-| [ Meilisearch x MoMA ](https://github.com/meilisearch/demos/tree/main/src/MoMA) | https://moma.meilisearch.com/ | Search through the  [ Museum Of Modern Art Collection ](https://github.com/MuseumofModernArt/collection) with Meilisearch|
-| [ Search in Nobel Prizes with Meilisearch ](https://github.com/meilisearch/demos/tree/main/src/nobel-prizes) |  https://nobel-prizes.meilisearch.com/ | Search through all Nobel Prize winners and their details with Meilisearch |
-| [ Geosearch demo ](https://github.com/meilisearch/demos/tree/main/src/geo-javascript) |  https://geosearch-js.meilisearch.com/ | Use Google Maps and Meilisearch to geo search across 30,000 cities. |
-| [ Tenant token demo ](https://github.com/meilisearch/demos/tree/main/src/tenant-token) |  https://tenant-token.meilisearch.com/ | Use tenant tokens to restrict access to data based on different user names. |
-| [ Typo tolerance demo ](https://github.com/meilisearch/demos/tree/main/src/typo-tolerance) |  https://typo-tolerance.meilisearch.com/ | This demo presents different typo tolerance configurations in action.  |
-| [ Matching strategy demo ](https://github.com/meilisearch/demos/tree/main/src/matching-strategy) |  https://matching-strategy.meilisearch.com/ | Switch the strategy used to match query terms in documents.  |
-| [ Where To Watch demo ](https://github.com/meilisearch/demo-movies) |  https://where2watch.meilisearch.com/ | An application to help you find streaming platforms to watch movies.  |
-| [ Numbered pagination demo ](https://github.com/meilisearch/demos/tree/main/src/numbered-pagination) |  https://numbered-pagination.meilisearch.com/ | Use numbered pagination to navigate search results.  |
-| [ Ecommerce demo ](https://github.com/meilisearch/ecommerce-demo) |  https://ecommerce.meilisearch.com/ | Ecommerce website using disjunctive facets, range and rating filtering, and pagination.  |
-| [ Federated search demo ](https://github.com/meilisearch/demos/tree/main/src/federated-search) |  https://federated-search.meilisearch.com/ | Search across several indexes with Meilisearch's federated search. |
+| [ Finding RubyGems ](https://github.com/meilisearch/demos/tree/main/src/finding-rubygems) | [https://rubygems.meilisearch.com](https://rubygems.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Find your favorite Ruby gems |
+| [ Finding Crates ](https://github.com/meilisearch/demos/tree/main/src/finding-crates) | [https://crates.meilisearch.com](https://crates.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Find your favorite Rust crates |
+| [ Meilisearch finds PyPI packages ](https://github.com/meilisearch/demos/tree/main/src/finding-pypi) | [https://pypi.meilisearch.com](https://pypi.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Find your favorite Python packages |
+| [ Meilisearch x MoMA ](https://github.com/meilisearch/demos/tree/main/src/MoMA) | [https://moma.meilisearch.com](https://moma.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Search through the  [ Museum Of Modern Art Collection ](https://github.com/MuseumofModernArt/collection) with Meilisearch|
+| [ Search in Nobel Prizes with Meilisearch ](https://github.com/meilisearch/demos/tree/main/src/nobel-prizes) |  [https://nobel-prizes.meilisearch.com](https://nobel-prizes.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Search through all Nobel Prize winners and their details with Meilisearch |
+| [ Geosearch demo ](https://github.com/meilisearch/demos/tree/main/src/geo-javascript) |  [https://geosearch-js.meilisearch.com](https://geosearch-js.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Use Google Maps and Meilisearch to geo search across 30,000 cities |
+| [ Tenant token demo ](https://github.com/meilisearch/demos/tree/main/src/tenant-token) |  [https://tenant-token.meilisearch.com](https://tenant-token.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Use tenant tokens to restrict access to data based on user names |
+| [ Typo tolerance demo ](https://github.com/meilisearch/demos/tree/main/src/typo-tolerance) |  [https://typo-tolerance.meilisearch.com](https://typo-tolerance.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | See different typo tolerance configurations in action  |
 
 <br>
 
-#### Search in Steam video games with Instant Meilisearch, maintained by the integration team 🎮
+## 🔍 InstantSearch demos
 
-- [Meilisearch + InstantSearch](https://codesandbox.io/s/ms-is-mese9?fontsize=14&hidenavigation=1&theme=dark)
+ > These demos are maintained by the [integrations](https://github.com/meilisearch/integration-guides) team. They always use the latest version of [Instant Meilisearch](https://github.com/meilisearch/meilisearch-js-plugins/tree/main/packages/instant-meilisearch). 
+
+ Search in Steam video games with Instant Meilisearch. 🎮
+
+- [Meilisearch + InstantSearch.js](https://codesandbox.io/s/ms-is-mese9?fontsize=14&hidenavigation=1&theme=dark)
 - [Meilisearch + Vue InstantSearch](https://codesandbox.io/s/ms-vue-is-1d6bi?fontsize=14&hidenavigation=1&theme=dark&file=/src/App.vue)
 - [Meilisearch + React InstantSearch](https://codesandbox.io/s/ms-react-is-sh9ud?fontsize=14&hidenavigation=1&theme=dark)
 - [Meilisearch + Angular InstantSearch](https://codesandbox.io/s/ms-angularis-7xipe)
