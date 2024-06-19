@@ -36,6 +36,7 @@
 
 | Repository | Live Preview   | Description |
 |-----------|------------|-------------|
+| [ Songs demo ](https://github.com/meilisearch/musicbrainz-demo) | [https://music.meilisearch.com](https://music.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Search through 40 million songs with Meilisearch |
 | [ Finding RubyGems ](https://github.com/meilisearch/demos/tree/main/src/finding-rubygems) | [https://rubygems.meilisearch.com](https://rubygems.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Find your favorite Ruby gems |
 | [ Finding Crates ](https://github.com/meilisearch/demos/tree/main/src/finding-crates) | [https://crates.meilisearch.com](https://crates.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Find your favorite Rust crates |
 | [ Meilisearch finds PyPI packages ](https://github.com/meilisearch/demos/tree/main/src/finding-pypi) | [https://pypi.meilisearch.com](https://pypi.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Find your favorite Python packages |
