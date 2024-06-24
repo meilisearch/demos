@@ -31,6 +31,7 @@
 | [ Where To Watch ](https://github.com/meilisearch/demo-movies) |  [https://where2watch.meilisearch.com](https://where2watch.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | An application to help you find streaming platforms to watch movies.  |
 | [ Ecommerce demo ](https://github.com/meilisearch/ecommerce-demo) |  [https://ecommerce.meilisearch.com](https://ecommerce.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Ecommerce website using disjunctive facets, range and rating filtering, and pagination.  |
 | [ SaaS demo ](https://github.com/meilisearch/saas-demo) |  [https://saas.meilisearch.com](https://saas.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | App search in a CRM use case with app-wide search across multiple indexes. |
+| [ Songs ](https://github.com/meilisearch/saas-demo) |  [https://music.meilisearch.com](https://music.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Search through a dataset of 47 million songs. |
 
 ## 📍 Feature showcase demos
 
