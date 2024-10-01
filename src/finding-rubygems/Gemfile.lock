@@ -1,26 +1,42 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    byebug (11.0.1)
-    httparty (0.20.0)
-      mime-types (~> 3.0)
+    bigdecimal (3.1.8)
+    csv (3.3.0)
+    debug (1.9.2)
+      irb (~> 1.10)
+      reline (>= 0.3.8)
+    httparty (0.22.0)
+      csv
+      mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
-    meilisearch (0.18.2)
-      httparty (>= 0.17.1, < 0.21.0)
-    mime-types (3.4.1)
-      mime-types-data (~> 3.2015)
-    mime-types-data (3.2022.0105)
-    multi_xml (0.6.0)
+    io-console (0.7.2)
+    irb (1.14.1)
+      rdoc (>= 4.0.0)
+      reline (>= 0.4.2)
+    meilisearch (0.28.3)
+      httparty (~> 0.17)
+    mini_mime (1.1.5)
+    multi_xml (0.7.1)
+      bigdecimal (~> 3.1)
+    psych (5.1.2)
+      stringio
+    rdoc (6.7.0)
+      psych (>= 4.0.0)
+    reline (0.5.10)
+      io-console (~> 0.5)
+    stringio (3.1.1)
 
 PLATFORMS
+  arm64-darwin-23
   ruby
 
 DEPENDENCIES
-  byebug
-  meilisearch (~> 0.18.2)
+  debug
+  meilisearch (~> 0.28.3)
 
 RUBY VERSION
-   ruby 2.6.6p146
+   ruby 3.3.5p100
 
 BUNDLED WITH
-   1.17.3
+   2.5.20

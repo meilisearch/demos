@@ -37,20 +37,20 @@ require 'meilisearch'
 ...
 
 settings = {
-  rankingRules: [
+  ranking_rules: [
     'typo',
     'words',
-    'desc(fame)',
+    'fame:desc',
     'proximity',
     'attribute',
     'exactness',
-    'desc(total_downloads)',
+    'total_downloads:desc',
   ],
-  searchableAttributes: [
+  searchable_attributes: [
     'name',
     'summary'
   ],
-  displayedAttributes: [
+  displayed_attributes: [
     'name',
     'summary',
     'description',

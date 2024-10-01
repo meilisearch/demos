@@ -4,10 +4,10 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-ruby '2.6.6'
+ruby '3.3.5'
 
-gem 'meilisearch', '~>0.18.2'
+gem 'meilisearch', '~> 0.28.3'
 
 group :test, :development do
-  gem 'byebug'
+  gem 'debug', platforms: %i[mri mingw x64_mingw]
 end
