@@ -55,7 +55,7 @@ $(document).ready(function () {
       url: `${url}/indexes/${indexUID}/search`,
       type: 'POST',
       headers: {
-        'X-Meili-API-Key': publicKey,
+        'Authorization': `Bearer ${publicKey}`,
         'Content-Type': 'application/json'
       },
       data: JSON.stringify({
