@@ -12,31 +12,27 @@ def feed_meilisearch_with(documents, index_uid, settings = nil)
     LOGGER.info 'Settings updated.'
   end
   LOGGER.info 'Adding documents...'
-  documents.each_slice(1800).with_index do |slice, i|
-    # puts "Adding slice #{i}"
-    index.add_documents(slice)
-  end
+  index.add_documents_in_batches(documents, 1800)
   LOGGER.info 'Done!'
 end
 
 def load_data_into_meilisearch(documents)
   index_uid = 'rubygems'
   settings = {
-    rankingRules: [
+    ranking_rules: [
       'typo',
       'words',
-      'desc(fame)',
+      'fame:desc',
       'proximity',
       'attribute',
       'exactness',
-      'desc(total_downloads)',
+      'total_downloads:desc',
     ],
-    searchableAttributes: [
+    searchable_attributes: [
       'name',
       'summary'
     ],
-    displayedAttributes: [
-      'id',
+    displayed_attributes: [
       'name',
       'summary',
       'description',
