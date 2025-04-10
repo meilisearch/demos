@@ -39,13 +39,15 @@
 |-----------|------------|-------------|
 | [ Songs demo ](https://github.com/meilisearch/musicbrainz-demo) | [https://music.meilisearch.com](https://music.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Search through 40 million songs with Meilisearch |
 | [ Finding RubyGems ](https://github.com/meilisearch/demos/tree/main/src/finding-rubygems) | [https://rubygems.meilisearch.com](https://rubygems.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Find your favorite Ruby gems |
-| [ Finding Crates ](https://github.com/meilisearch/demos/tree/main/src/finding-crates) | [https://crates.meilisearch.com](https://crates.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Find your favorite Rust crates |
-| [ Meilisearch finds PyPI packages ](https://github.com/meilisearch/demos/tree/main/src/finding-pypi) | [https://pypi.meilisearch.com](https://pypi.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Find your favorite Python packages |
+| [ Finding Crates ](https://github.com/meilisearch/demos/tree/main/src/finding-crates) | 🔴 No longer available | Find your favorite Rust crates |
+| [ Meilisearch finds PyPI packages ](https://github.com/meilisearch/demos/tree/main/src/finding-pypi) | 🔴 No longer available | Find your favorite Python packages |
 | [ Meilisearch x MoMA ](https://github.com/meilisearch/demos/tree/main/src/MoMA) | [https://moma.meilisearch.com](https://moma.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Search through the  [ Museum Of Modern Art Collection ](https://github.com/MuseumofModernArt/collection) with Meilisearch|
 | [ Search in Nobel Prizes with Meilisearch ](https://github.com/meilisearch/demos/tree/main/src/nobel-prizes) |  [https://nobel-prizes.meilisearch.com](https://nobel-prizes.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Search through all Nobel Prize winners and their details with Meilisearch |
 | [ Geosearch demo ](https://github.com/meilisearch/demos/tree/main/src/geo-javascript) |  [https://geosearch-js.meilisearch.com](https://geosearch-js.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Use Google Maps and Meilisearch to geo search across 30,000 cities |
 | [ Tenant token demo ](https://github.com/meilisearch/demos/tree/main/src/tenant-token) |  [https://tenant-token.meilisearch.com](https://tenant-token.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Use tenant tokens to restrict access to data based on user names |
 | [ Typo tolerance demo ](https://github.com/meilisearch/demos/tree/main/src/typo-tolerance) |  [https://typo-tolerance.meilisearch.com](https://typo-tolerance.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | See different typo tolerance configurations in action  |
+
+🔴 *No longer available*: the live demo is no longer hosted, but the code is still available in the repository.
 
 <br>
 
