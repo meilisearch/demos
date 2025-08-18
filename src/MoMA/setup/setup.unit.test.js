@@ -1,3 +1,4 @@
+import { vi, describe, test, expect } from 'vitest'
 import setupFunctions from './setup'
 
 describe('batch', () => {
@@ -103,35 +104,45 @@ describe('dataProcessing', () => {
 describe('sleep', () => {
   const ms = 500
   test('should return a Promise', () => {
-    jest.useFakeTimers()
+    vi.useFakeTimers()
     const result = setupFunctions.sleep(ms)
-    jest.runAllTimers()
+    vi.runAllTimers()
     expect(result).toBeInstanceOf(Promise)
   })
   test('should call setTimeOut with the time in ms passed as parameter', () => {
-    jest.useFakeTimers()
+    vi.useFakeTimers()
+    const setTimeoutSpy = vi.spyOn(globalThis, 'setTimeout')
     setupFunctions.sleep(ms)
-    jest.runAllTimers()
-    expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), ms)
+    vi.runAllTimers()
+    expect(setTimeoutSpy).toHaveBeenCalledWith(expect.any(Function), ms)
+    vi.restoreAllMocks()
   })
 })
 
 describe('watchUpdates', () => {
-  const consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => {})
-  const updates = [{ status: 'processed' }, { status: 'processed' }, { status: 'processed' }, { status: 'processed' }]
-  const index = { getAllUpdateStatus: jest.fn().mockImplementation(() => { return updates }) }
-  const client = { index: jest.fn().mockReturnValue(index) }
+  const consoleLogSpy = vi.spyOn(console, 'log').mockImplementation(() => { })
+  const updates = {
+    results: [
+      { status: 'succeeded' },
+      { status: 'succeeded' },
+      { status: 'succeeded' },
+      { status: 'succeeded' }
+    ]
+  }
+  const index = { getTasks: vi.fn().mockImplementation(() => { return updates }) }
+  const client = { index: vi.fn().mockReturnValue(index) }
   const uid = 'art'
   test('should log into the console the update status', async () => {
-    jest.spyOn(setupFunctions, 'sleep').mockImplementation(() => {})
+    vi.spyOn(setupFunctions, 'sleep').mockImplementation(() => { })
     await setupFunctions.watchUpdates(client, uid)
     expect(consoleLogSpy).toHaveBeenCalledWith(`Start update watch for ${uid}`)
     expect(consoleLogSpy).toHaveBeenCalledWith('-------------')
     expect(consoleLogSpy).toHaveBeenCalledWith(`${uid}:`)
     expect(consoleLogSpy).toHaveBeenCalledWith('4 / 4 have been processed')
   })
-  test('should call sleep function with 500 ms', () => {
-    const sleepFn = jest.spyOn(setupFunctions, 'sleep').mockImplementation(() => {})
+  test('should call sleep function with 500 ms', async () => {
+    const sleepFn = vi.spyOn(setupFunctions, 'sleep').mockImplementation(() => { })
+    await setupFunctions.watchUpdates(client, uid)
     expect(sleepFn).toHaveBeenCalledWith(500)
   })
 })

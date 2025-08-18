@@ -22,13 +22,16 @@ In this repository, you will find the front-end interface to search through the 
 
 ## Requirements
 
- - [npm](https://www.npmjs.com/get-npm)
+ - Node.js 22 and NPM
+
+> [!tip]
+> We recommend using [nvm](https://github.com/nvm-sh/nvm) to manage Node versions and using the version referenced in [.nvmrc](./.nvmrc).
 
 ## Demo
 
 If you want to replicate this demo using your own Meilisearch instance, you will have to follow these steps:
 
-  
+
 ### 1. Download and launch Meilisearch
 
 [Download and launch Meilisearch](https://docs.meilisearch.com/guides/advanced_guides/installation.html) using the basic configuration. For example, by using [cURL](https://curl.haxx.se/) in your terminal.
@@ -48,18 +51,18 @@ This walkthrough runs Meilisearch in a development environment, and therefore it
 
 ### 2. Set your credentials
 
-Set the credentials of the Meilisearch instance as environment variables. 
+Set the credentials of the Meilisearch instance as environment variables.
 ```
 VUE_APP_MEILISEARCH_HOST="yourMeilisearchInstanceAddress"
 VUE_APP_MEILISEARCH_API_KEY="yourMeilisearchAPIKey"
 ```
-Because we did not set any Master key in the previous step, we can leave `VUE_APP_MEILISEARCH_API_KEY` as an empty string and only set the host: 
+Because we did not set any Master key in the previous step, we can leave `VUE_APP_MEILISEARCH_API_KEY` as an empty string and only set the host:
 `VUE_APP_MEILISEARCH_HOST='http://127.0.0.1:7700'`
 
 
 ### 3. Donwload the dataset:
 
-You can download the dataset by running the following commands: 
+You can download the dataset by running the following commands:
 ```bash
 
 $ npm install

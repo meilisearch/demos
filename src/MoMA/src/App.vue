@@ -2,7 +2,7 @@
   <b-container fluid class="px-0">
     <ais-instant-search
       index-name="artWorks"
-      :search-client="searchClient"  
+      :search-client="searchClient"
     >
       <b-row>
         <b-col class="col-md-3 col-lg-2 nav-left">
@@ -10,26 +10,26 @@
              <b-navbar class="px-1 d-flex flex-column">
                <div class="d-flex flex-column d-md-none">
                 <b-navbar-brand class="d-flex flex-column align-items-center navbar-mobile">
-                  <img src="https://raw.githubusercontent.com/meilisearch/integration-guides/master/assets/logos/logo.svg" alt="Meilisearch logo" width="70" height="70" class="mb-3"> 
+                  <img src="https://raw.githubusercontent.com/meilisearch/integration-guides/master/assets/logos/logo.svg" alt="Meilisearch logo" width="70" height="70" class="mb-3">
                   <div class="d-flex flex-column align-items-center">
-                    <p class='header-title'>Meilisearch x MoMA</p> 
+                    <p class='header-title'>Meilisearch x MoMA</p>
                     <p class="disclaimer">Enjoy searching with Meilisearch!</p>
                   </div>
                 </b-navbar-brand>
                 </div>
                 <div v-show="show" class="filters mt-5">
-                  <ais-clear-refinements style="text-align:center;" 
+                  <ais-clear-refinements style="text-align:center;"
                     :class-names="{
-                      'ais-ClearRefinements-button': 'mybtn mybtn--clear', 
-                      'ais-ClearRefinements-button--disabled': 'mybtn--clear--disabled' 
+                      'ais-ClearRefinements-button': 'mybtn mybtn--clear',
+                      'ais-ClearRefinements-button--disabled': 'mybtn--clear--disabled'
                     }"
                   >
-                    <span slot="resetLabel">Clear filters</span>
+                    <template #resetLabel>Clear filters</template>
                   </ais-clear-refinements>
                   <div v-for="(filter, index) of filters" v-bind:key="index" class="search-panel__filters d-flex flex-column align-items-start">
-                    <h4 class="filters mt-4" @click.prevent="filter.isExpanded = !filter.isExpanded"> <font-awesome-icon :icon="whichIcon(filter.name)" size="xs"/> {{filter.name}} <font-awesome-icon :icon="filter.isExpanded? 'chevron-up' : 'chevron-down'" size="xs" /></h4> 
+                    <h4 class="filters mt-4" @click.prevent="filter.isExpanded = !filter.isExpanded"> <font-awesome-icon :icon="whichIcon(filter.name)" size="xs"/> {{filter.name}} <font-awesome-icon :icon="filter.isExpanded? 'chevron-up' : 'chevron-down'" size="xs" /></h4>
                     <div class="d-flex">
-                      <ais-refinement-list v-show="filter.isExpanded" :limit="5" :show-more="filter.name === 'Gender'? false : true" :transform-items="transformRefinementListItem" :attribute="filter.name" 
+                      <ais-refinement-list v-show="filter.isExpanded" :limit="5" :show-more="filter.name === 'Gender'? false : true" :transform-items="transformRefinementListItem" :attribute="filter.name"
                         :class-names="{
                           'ais-RefinementList-showMore': 'btn btn-secondary btn-sm',
                           'ais-RefinementList': 'mx-auto'
@@ -47,8 +47,8 @@
             <b-col>
              <b-navbar class="pl-5 d-none d-md-flex flex-column align-items-start">
                 <b-navbar-brand class="d-flex justify-content-center align-items-center">
-                  <img src="https://raw.githubusercontent.com/meilisearch/integration-guides/master/assets/logos/logo.svg" alt="Meilisearch logo" height="60px"> 
-                  <p class="header-title my-0"> Meilisearch x MoMA</p> 
+                  <img src="https://raw.githubusercontent.com/meilisearch/integration-guides/master/assets/logos/logo.svg" alt="Meilisearch logo" height="60px">
+                  <p class="header-title my-0"> Meilisearch x MoMA</p>
                 </b-navbar-brand>
                 <div class="disclaimer disclaimer-desktop">Enjoy searching with Meilisearch!</div>
               </b-navbar>
@@ -74,18 +74,18 @@
               <b-row>
                 <b-col class="col-12 col-md-10 mx-auto">
                   <ais-search-box class="search-box" placeholder="Search here..." autofocus>
-                  </ais-search-box> 
+                  </ais-search-box>
                 </b-col>
               </b-row>
               <b-row>
-                <ais-current-refinements 
+                <ais-current-refinements
                   :class-names="{
                     'ais-CurrentRefinements': 'MyCustomCurrentRefinements',
                     'ais-CurrentRefinements-item': 'MyCustomCurrentRefinementsItem'
                   }"
-                />  
+                />
               </b-row>
-            </b-col>    
+            </b-col>
           </b-row>
           <b-row class="mt-3">
             <b-col class="px-5">
@@ -96,14 +96,14 @@
                 'ais-InfiniteHits-item': 'myInfiniteHitsItem'}"
               :transform-items="transformHitItems"
               >
-                <template slot="item" slot-scope="{ item }" class="hit">
-                  <h4 class="center-title"> 
-                    <ais-highlight 
+                <template #item="{ item }" class="hit">
+                  <h4 class="center-title">
+                    <ais-highlight
                       attribute="Title"
                       :hit="item" :class-names="{'ais-Highlight':'artwork-title'}"
                     />
                   <br>
-                    <ais-highlight 
+                    <ais-highlight
                       attribute="Date"
                       :hit="item" :class-names="{'ais-Highlight':'artwork-date'}"
                     />
@@ -115,7 +115,7 @@
                     <ais-highlight
                       attribute="Artist"
                       :hit="item"
-                      
+
                     />
                     <br>
                     <ais-highlight
@@ -136,22 +136,22 @@
                       :hit="item"
                     />
                   </p>
-                  <p>Department of 
+                  <p>Department of
                     <ais-highlight
                     attribute="Department"
                     :hit="item"
                   />
                   </p>
                 </template>
-                <b-button
-                  slot="loadMore"
-                  slot-scope="{isLastPage, refineNext }"
-                  :disabled="isLastPage"
-                  @click="refineNext"
-                  class="mx-auto my-5"
-                >
-                  Show more
-                </b-button>
+                <template #loadMore="{ isLastPage, refineNext }">
+                  <b-button
+                    :disabled="isLastPage"
+                    @click="refineNext"
+                    class="mx-auto my-5"
+                  >
+                    Show more
+                  </b-button>
+                </template>
               </ais-infinite-hits>
             </b-col>
           </b-row>
@@ -164,8 +164,6 @@
 <script>
 import 'instantsearch.css/themes/algolia-min.css'
 import { instantMeiliSearch } from '@meilisearch/instant-meilisearch'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 export default {
   data() {
@@ -178,13 +176,13 @@ export default {
       isExpanded: true,
       filters: [
         { name: 'Classification',
-          isExpanded: true        
+          isExpanded: true
         },
         { name: 'Nationality',
-          isExpanded: true 
-        }, 
-        { name: 'Gender', 
-          isExpanded: true        
+          isExpanded: true
+        },
+        { name: 'Gender',
+          isExpanded: true
         }
         ]
     }
@@ -199,7 +197,7 @@ export default {
   transformHitItems(items) {
     return items.map(item => ({
       ...item,
-      _highlightResult: { 
+      _highlightResult: {
         ...item._highlightResult
       }
     }))
@@ -262,7 +260,7 @@ body {
 }
 .search-panel__filters {
   margin-right: 3em;
-  margin: 1em; 
+  margin: 1em;
 }
 
 .ais-Highlight-highlighted {
