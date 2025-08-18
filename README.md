@@ -52,13 +52,12 @@
 
 ## 🔍 InstantSearch demos
 
- > These demos are maintained by the [integrations](https://github.com/meilisearch/integration-guides) team. They always use the latest version of [Instant Meilisearch](https://github.com/meilisearch/meilisearch-js-plugins/tree/main/packages/instant-meilisearch). 
+These demos are example integrations of **InstantSearch** using the Meilisearch connector, [Instant Meilisearch](https://github.com/meilisearch/meilisearch-js-plugins/tree/main/packages/instant-meilisearch). 
 
  Search in Steam video games with Instant Meilisearch. 🎮
 
 - [Meilisearch + InstantSearch.js](https://codesandbox.io/s/ms-is-mese9?fontsize=14&hidenavigation=1&theme=dark)
 - [Meilisearch + Vue InstantSearch](https://codesandbox.io/s/ms-vue-is-1d6bi?fontsize=14&hidenavigation=1&theme=dark&file=/src/App.vue)
 - [Meilisearch + React InstantSearch](https://codesandbox.io/s/ms-react-is-sh9ud?fontsize=14&hidenavigation=1&theme=dark)
-- [Meilisearch + Angular InstantSearch](https://codesandbox.io/s/ms-angularis-7xipe)
-<br>
+
 
