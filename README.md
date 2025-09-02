@@ -45,6 +45,7 @@
 | [ Finding RubyGems ](https://github.com/meilisearch/demos/tree/main/src/finding-rubygems) | [https://rubygems.meilisearch.com](https://rubygems.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Find your favorite Ruby gems |
 | [ Finding Crates ](https://github.com/meilisearch/demos/tree/main/src/finding-crates) | 🔴 Not available | Find your favorite Rust crates |
 | [ Meilisearch finds PyPI packages ](https://github.com/meilisearch/demos/tree/main/src/finding-pypi) | 🔴 Not available | Find your favorite Python packages |
+| [ Meili Voice Demo | [https://voice.meilisearch.com](https://voice.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Try voice search with Meilisearch |
 
 🔴 *Not available*: these demos have no online preview, but you can still consult the code.
 
