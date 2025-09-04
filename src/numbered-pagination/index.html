@@ -1,57 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TNSCGVBH');</script>
-    <!-- End Google Tag Manager -->
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/meilisearch.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/instantsearch.css@7/themes/algolia-min.css"
-  />
-    <title>Meilisearch demo: numbered pagination</title>
-    <script src="https://thrilling-thirtyeight.meilisearch.com/script.js" data-site="QNBPJXIV" defer></script>
-  </head>
-  <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TNSCGVBH"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <div class="ais-InstantSearch">
-      <div class="search-header">
-        <div class=" central-width">
-          <div class="search-header-content">
-            <div id="logo"></div>
+
+<head>
+  <!-- GTag Consent Default -->
+  <script>
+    window.dataLayer = window.dataLayer || []
+    function gtag() { dataLayer.push(arguments) }
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied'
+    });
+  </script>
+  <!-- End GTag Consent Default -->
+
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f)
+    })(window, document, 'script', 'dataLayer', 'GTM-TNSCGVBH');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Start cookieyes banner -->
+  <script id="cookieyes" type="text/javascript"
+    src="https://cdn-cookieyes.com/client_data/0ec5a8e516eccaa724a461f6/script.js"></script>
+  <!-- End cookieyes banner -->
+
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/meilisearch.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7/themes/algolia-min.css" />
+  <title>Meilisearch demo: numbered pagination</title>
+  <script src="https://thrilling-thirtyeight.meilisearch.com/script.js" data-site="QNBPJXIV" defer></script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TNSCGVBH" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class="ais-InstantSearch">
+    <div class="search-header">
+      <div class=" central-width">
+        <div class="search-header-content">
+          <div id="logo"></div>
           <div id="searchbox" class="ais-SearchBox"></div>
-        </div>
-        </div>
-      </div>
-      <div class="main-container">
-        <div class="central-width">
-          <div id="configure" class="heading info align-with-results">
-            <div id="left-info">
-              <h1 class="title title-l">Numbered pagination</h1>
-              <p class="body body-l mt-2">
-                This demo presents <a href="https://docs.meilisearch.com/learn/advanced/pagination.html#numbered-page-selectors">numbered pagination</a> in
-                action.
-              </p>
-            </div>
-            <div id="right-info">
-              <div id="hits-per-page"></div>
-            </div>
-          </div>
-          <div id="stats"></div>
-          <div id="hits"></div>
-          <div id="pagination"></div>
         </div>
       </div>
     </div>
-    <script type="module" src="src/main.js"></script>
-  </body>
+    <div class="main-container">
+      <div class="central-width">
+        <div id="configure" class="heading info align-with-results">
+          <div id="left-info">
+            <h1 class="title title-l">Numbered pagination</h1>
+            <p class="body body-l mt-2">
+              This demo presents <a
+                href="https://docs.meilisearch.com/learn/advanced/pagination.html#numbered-page-selectors">numbered
+                pagination</a> in
+              action.
+            </p>
+          </div>
+          <div id="right-info">
+            <div id="hits-per-page"></div>
+          </div>
+        </div>
+        <div id="stats"></div>
+        <div id="hits"></div>
+        <div id="pagination"></div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="src/main.js"></script>
+</body>
+
 </html>
