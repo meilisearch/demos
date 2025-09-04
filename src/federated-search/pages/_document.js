@@ -4,6 +4,24 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        {/* GTag Consent Default */}
+        <Script
+          id="gtag-consent"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied'
+                  });
+                `,
+          }}
+        />
+        {/* End GTag Consent Default */}
         {/* Google Tag Manager */}
         {/* eslint-disable-next-line @next/next/next-script-for-ga */}
         <script
@@ -16,6 +34,13 @@ export default function Document() {
           }}
         />
         {/* End Google Tag Manager */}
+        {/* CookieYes */}
+        <Script
+          id="cookieyes"
+          src="https://cdn-cookieyes.com/client_data/0ec5a8e516eccaa724a461f6/script.js"
+          strategy="afterInteractive"
+        />
+        {/* End CookieYes */}
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/instantsearch.css@7/themes/algolia-min.css"
