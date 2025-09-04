@@ -43,11 +43,9 @@
 | [ Tenant token demo ](https://github.com/meilisearch/demos/tree/main/src/tenant-token) |  [https://tenant-token.meilisearch.com](https://tenant-token.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Use tenant tokens to restrict access to data based on user names |
 | [ Typo tolerance demo ](https://github.com/meilisearch/demos/tree/main/src/typo-tolerance) |  [https://typo-tolerance.meilisearch.com](https://typo-tolerance.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | See different typo tolerance configurations in action  |
 | [ Finding RubyGems ](https://github.com/meilisearch/demos/tree/main/src/finding-rubygems) | [https://rubygems.meilisearch.com](https://rubygems.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Find your favorite Ruby gems |
-| [ Finding Crates ](https://github.com/meilisearch/demos/tree/main/src/finding-crates) | 🔴 Not available | Find your favorite Rust crates |
-| [ Meilisearch finds PyPI packages ](https://github.com/meilisearch/demos/tree/main/src/finding-pypi) | 🔴 Not available | Find your favorite Python packages |
+| [ Finding Crates ](https://github.com/meilisearch/demos/tree/main/src/finding-crates) | - | Find your favorite Rust crates |
+| [ Meilisearch finds PyPI packages ](https://github.com/meilisearch/demos/tree/main/src/finding-pypi) | - | Find your favorite Python packages |
 | Meili Voice Demo | [https://voice.meilisearch.com](https://voice.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Try voice search with Meilisearch |
-
-🔴 *Not available*: these demos have no online preview, but you can still consult the code.
 
 <br>
 
