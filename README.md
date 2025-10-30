@@ -36,7 +36,7 @@
 
 | Repository | Live Preview   | Description |
 |-----------|------------|-------------|
-| [ Semantic Image Search Demo ](https://github.com/meilisearch/flickr-search-pix) | [https://flickr.meilisearch.com](https://flickr.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Search Flickr images using AI-powered search.  |
+| [ Semantic Image Search Demo ](https://github.com/meilisearch/flickr-search-pix) | [https://flickr.meilisearch.com](https://flickr.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Search 100M Flickr images using AI-powered search.  |
 | [ Songs demo ](https://github.com/meilisearch/musicbrainz-demo) | [https://music.meilisearch.com](https://music.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Search through 40 million songs with Meilisearch |
 | [ Meilisearch x MoMA ](https://github.com/meilisearch/demos/tree/main/src/MoMA) | [https://moma.meilisearch.com](https://moma.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Search through the  [ Museum Of Modern Art Collection ](https://github.com/MuseumofModernArt/collection) with Meilisearch|
 | [ Search in Nobel Prizes with Meilisearch ](https://github.com/meilisearch/demos/tree/main/src/nobel-prizes) |  [https://nobel-prizes.meilisearch.com](https://nobel-prizes.meilisearch.com/?utm_campaign=oss&utm_source=github&utm_medium=demos) | Search through all Nobel Prize winners and their details with Meilisearch |
