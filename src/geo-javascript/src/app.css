@@ -1,36 +1,56 @@
 body {
-  padding: 2rem;
+  font-family: sans-serif;
+  padding: 1em;
 }
 
-.mb-1 {
-  margin-bottom: 1rem;
+.ais-ClearRefinements {
+  margin: 1em 0;
 }
 
-.mb-2 {
-  margin-bottom: 2rem;
+.ais-SearchBox {
+  margin: 1em 0;
 }
 
-.flex {
-  display: flex
+.ais-Pagination {
+  margin-top: 1em;
 }
 
 .left-panel {
-  margin-right: 2rem;
+  float: left;
+  width: 200px;
 }
 
 .right-panel {
-  flex-grow: 1;
+  margin-left: 210px;
 }
 
-.ais-InfiniteHits {
-  max-height: 68vh;
-  overflow-y: scroll;
+.ais-InstantSearch {
+  max-width: 960px;
+  overflow: hidden;
+  margin: 0 auto;
 }
 
 .ais-InfiniteHits-item {
+  margin-bottom: 1em;
   width: calc(50% - 1rem);
 }
 
+.ais-Hits-item {
+  margin-bottom: 1em;
+  width: calc(50% - 1rem);
+}
+
+.ais-Hits-item img {
+  margin-right: 1em;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 0.5em;
+}
+
 .hit-name {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5em;
+}
+
+.hit-info {
+  font-size: 90%;
 }
