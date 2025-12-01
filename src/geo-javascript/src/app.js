@@ -1,69 +1,76 @@
+/* eslint-disable no-undef */
 import { instantMeiliSearch } from '@meilisearch/instant-meilisearch'
-import injectScript from 'scriptjs'
+import { setOptions, importLibrary } from '@googlemaps/js-api-loader'
 
-const GOOGLE_API = process.env.GOOGLE_API
+const GOOGLE_MAP_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
 
-injectScript(
-  `https://maps.googleapis.com/maps/api/js?v=quarterly&key=${GOOGLE_API}`,
-  () => {
-    const search = instantsearch({
-      indexName: 'world_cities',
-      searchClient: instantMeiliSearch(
-        'https://ms-69223ce62f2d-106.lon.meilisearch.io',
-        '2969134b46109f7a8d0330f6d1655d9c65c84752ac130674859feeefdf216f25'
-      )
-    })
+setOptions({
+  apiKey: GOOGLE_MAP_API_KEY,
+  version: 'weekly',
+})
 
-    search.addWidgets([
-      instantsearch.widgets.sortBy({
-        container: '#sort-by',
-        items: [
-          { value: 'world_cities', label: 'Relevant' },
-          {
-            value: 'world_cities:population:desc',
-            label: 'Most Populated'
-          },
-          {
-            value: 'world_cities:population:asc',
-            label: 'Least Populated'
-          }
-        ]
-      }),
-      instantsearch.widgets.searchBox({
-        container: '#searchbox'
-      }),
-      instantsearch.widgets.configure({
-        hitsPerPage: 20
-      }),
-      instantsearch.widgets.geoSearch({
-        container: '#maps',
-        googleReference: window.google,
-        initialZoom: 7,
-        initialPosition: {
-          lat: 50.655250871381355,
-          lng: 4.843585698860502
-        }
-      }),
-      instantsearch.widgets.infiniteHits({
-        container: '#hits',
-        templates: {
-          item: `
-            <div>
-              <div class="hit-name">
-                City: {{#helpers.highlight}}{ "attribute": "name" }{{/helpers.highlight}}
-              </div>
-              <div class="hit-name">
-                Country: {{#helpers.highlight}}{ "attribute": "country" }{{/helpers.highlight}}
-              </div>
-              <div class="hit-name">
-                Population: {{#helpers.highlight}}{ "attribute": "population" }{{/helpers.highlight}}
-              </div>
+importLibrary('maps').then(() => {
+  const search = instantsearch({
+    indexName: 'world_cities_geojson',
+    searchClient: instantMeiliSearch(
+      'https://edge.meilisearch.com',
+      'a63da4928426f12639e19d62886f621130f3fa9ff3c7534c5d179f0f51c4f303',
+      {}
+    ).searchClient,
+  })
+
+  search.addWidgets([
+    instantsearch.widgets.sortBy({
+      container: '#sort-by',
+      items: [
+        { value: 'world_cities_geojson', label: 'Relevant' },
+        {
+          value: 'world_cities_geojson:population:desc',
+          label: 'Most Populated',
+        },
+        {
+          value: 'world_cities_geojson:population:asc',
+          label: 'Least Populated',
+        },
+      ],
+    }),
+    instantsearch.widgets.searchBox({
+      container: '#searchbox',
+    }),
+    instantsearch.widgets.configure({
+      hitsPerPage: 20,
+    }),
+    instantsearch.widgets.geoSearch({
+      container: '#maps',
+      googleReference: window.google,
+      initialZoom: 7,
+      initialPosition: {
+        lat: 50.655250871381355,
+        lng: 4.843585698860502,
+      },
+      enableRefineOnMapMove: false,
+      enableClearMapRefinement: false,
+      enableRefineControl: false,
+    }),
+    instantsearch.widgets.infiniteHits({
+      container: '#hits',
+      templates: {
+        item: `
+          <div>
+            <div class="hit-name">
+              City: {{#helpers.highlight}}{ "attribute": "name" }{{/helpers.highlight}}
             </div>
-          `
-        }
-      })
-    ])
+            <div class="hit-name">
+              Country: {{#helpers.highlight}}{ "attribute": "country" }{{/helpers.highlight}}
+            </div>
+            <div class="hit-name">
+              Population: {{#helpers.highlight}}{ "attribute": "population" }{{/helpers.highlight}}
+            </div>
+          </div>
+        `,
+      },
+    }),
+  ])
 
-    search.start()
-  }
-)
+  search.start()
+})
