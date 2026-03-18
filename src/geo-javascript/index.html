@@ -32,11 +32,8 @@
   <!-- End cookieyes banner -->
 
   <meta charset="utf-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-  />
-  <meta name="theme-color" content="#000000" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="theme-color" content="#0f0e23" />
 
   <link
     rel="stylesheet"
@@ -45,7 +42,7 @@
   <link rel="stylesheet" href="./src/index.css" />
   <link rel="stylesheet" href="./src/app.css" />
 
-  <title>Meilisearch + InstantSearch 🌍</title>
+  <title>Meilisearch Geo City Search</title>
 </head>
 
 <body>
@@ -54,28 +51,50 @@
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-  <div class="ais-InstantSearch">
-    <h1>Meilisearch + InstantSearch.js</h1>
-    <h2>Search in world cities</h2>
-    <p>
-      This is a dataset of 32419 world cities with more than 10000
-      inhabitants.
-    </p>
+  <div class="app">
+    <header class="app-header">
+      <div class="header-inner">
+        <div class="header-brand">
+          <svg class="brand-mark" width="28" height="28" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M49.7417 207.905L86.749 113.22C91.9641 99.8767 104.825 91.0947 119.151 91.0947H141.463L104.455 185.78C99.2402 199.123 86.3789 207.905 72.0529 207.905H49.7417Z" fill="url(#g0)"/>
+            <path d="M104.033 207.905L141.04 113.22C146.255 99.8769 159.117 91.095 173.443 91.095H195.754L158.747 185.78C153.532 199.124 140.67 207.905 126.344 207.905H104.033Z" fill="url(#g1)"/>
+            <path d="M158.327 207.905L195.335 113.22C200.55 99.8769 213.411 91.095 227.737 91.095H250.048L213.041 185.78C207.826 199.124 194.965 207.905 180.639 207.905H158.327Z" fill="url(#g2)"/>
+            <defs>
+              <linearGradient id="g0" x1="250.049" y1="82.1724" x2="49.7417" y2="195.335" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FF5CAA"/><stop offset="1" stop-color="#FF4E62"/>
+              </linearGradient>
+              <linearGradient id="g1" x1="250.049" y1="82.1724" x2="49.7417" y2="195.335" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FF5CAA"/><stop offset="1" stop-color="#FF4E62"/>
+              </linearGradient>
+              <linearGradient id="g2" x1="250.049" y1="82.1724" x2="49.7417" y2="195.335" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FF5CAA"/><stop offset="1" stop-color="#FF4E62"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <span class="brand-name">Meilisearch</span>
+          <span class="brand-sep"></span>
+          <span class="brand-subtitle">Geo City Search</span>
+        </div>
+        <div class="header-count">32,419 world cities</div>
+      </div>
+    </header>
 
-    <div class="left-panel">
+    <div class="app-controls">
+      <div id="searchbox"></div>
       <div id="sort-by"></div>
     </div>
 
-    <div class="right-panel">
-      <div id="searchbox"></div>
-      <div id="maps" style="height: 500px; width: 500px"></div>
-      <br />
-      <div id="hits"></div>
-      <div id="pagination"></div>
+    <div class="app-body">
+      <div class="map-panel">
+        <div id="maps"></div>
+      </div>
+      <div class="hits-panel">
+        <div id="hits"></div>
+      </div>
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.92.0/dist/instantsearch.production.min.js" integrity="sha256-UerI9i8jTgE4HrbE1SeOpm9Tyd297GmAagU0NV8JQqU=" crossorigin="anonymous"></script>
   <script type="module" src="./src/app.js"></script>
 </body>
 
