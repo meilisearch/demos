@@ -5,8 +5,8 @@ import { setOptions, importLibrary } from '@googlemaps/js-api-loader'
 const GOOGLE_MAP_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
 
 setOptions({
-  apiKey: GOOGLE_MAP_API_KEY,
-  version: 'weekly',
+  key: GOOGLE_MAP_API_KEY,
+  v: 'weekly',
 })
 
 importLibrary('maps').then(() => {
