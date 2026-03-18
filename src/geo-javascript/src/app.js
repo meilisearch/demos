@@ -49,7 +49,7 @@ importLibrary('maps').then(() => {
         lng: 4.843585698860502,
       },
       enableRefineOnMapMove: false,
-      enableClearMapRefinement: true,
+      enableClearMapRefinement: false,
       enableRefineControl: false,
     }),
     instantsearch.widgets.infiniteHits({

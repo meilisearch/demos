@@ -182,6 +182,12 @@
   border-radius: 0;
 }
 
+/* GeoSearch controls */
+.ais-GeoSearch-redo,
+.ais-GeoSearch-reset {
+  display: none;
+}
+
 /* "Show more" button */
 .ais-InfiniteHits-loadMore {
   display: block;
