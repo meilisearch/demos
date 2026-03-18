@@ -11,7 +11,7 @@ setOptions({
 
 importLibrary('maps').then(() => {
   const search = instantsearch({
-    indexName: 'world_cities_geojson',
+    indexName: 'world_cities_geojson:population:desc',
     searchClient: instantMeiliSearch(
       'https://ms-adf78ae33284-106.lon.meilisearch.io',
       'a63da4928426f12639e19d62886f621130f3fa9ff3c7534c5d179f0f51c4f303',
@@ -54,18 +54,23 @@ importLibrary('maps').then(() => {
     }),
     instantsearch.widgets.infiniteHits({
       container: '#hits',
+      transformItems: (items) =>
+        items.map((item) => ({
+          ...item,
+          populationFormatted: item.population
+            ? new Intl.NumberFormat().format(item.population)
+            : 'N/A',
+        })),
       templates: {
         item: `
-          <div>
-            <div class="hit-name">
-              City: {{#helpers.highlight}}{ "attribute": "name" }{{/helpers.highlight}}
+          <div class="hit-card">
+            <div class="hit-city-name">
+              {{#helpers.highlight}}{ "attribute": "name" }{{/helpers.highlight}}
             </div>
-            <div class="hit-name">
-              Country: {{#helpers.highlight}}{ "attribute": "country" }{{/helpers.highlight}}
+            <div class="hit-country">
+              {{#helpers.highlight}}{ "attribute": "country" }{{/helpers.highlight}}
             </div>
-            <div class="hit-name">
-              Population: {{#helpers.highlight}}{ "attribute": "population" }{{/helpers.highlight}}
-            </div>
+            <div class="hit-population">{{populationFormatted}} pop.</div>
           </div>
         `,
       },
