@@ -361,8 +361,8 @@ details[open] summary div.summary-settings > svg {
 /* ── Load more ── */
 .ais-InfiniteHits-loadMore {
   display: block;
-  width: 100%;
-  margin-top: 1.25rem;
+  width: fit-content;
+  margin: 1.25rem auto 0;
   padding: 0.65rem 1rem;
   font-family: "Poppins", sans-serif;
   font-size: 0.875rem;
