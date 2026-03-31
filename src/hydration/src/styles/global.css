@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ── Design Tokens ── */
+:root {
+  --bg-base:        #0a0a0f;
+  --bg-surface:     #13131a;
+  --bg-elevated:    #1c1c27;
+  --bg-hover:       #22222f;
+
+  --text-primary:   #e8e4d9;
+  --text-secondary: #9b9488;
+  --text-muted:     #5a5650;
+
+  --accent:         #e8673a;
+  --accent-dim:     rgba(232, 103, 58, 0.15);
+  --accent-glow:    rgba(232, 103, 58, 0.08);
+
+  --border:         rgba(255,255,255,0.07);
+  --border-accent:  rgba(232, 103, 58, 0.35);
+
+  --pill-raw-bg:    rgba(255,255,255,0.09);
+  --pill-raw-text:  #b0aa9f;
+  --pill-hydrated-bg: rgba(232, 103, 58, 0.2);
+  --pill-hydrated-text: #f09070;
+
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  12px;
+  --radius-xl:  16px;
+
+  --shadow-card: 0 2px 12px rgba(0,0,0,0.4);
+  --shadow-selected: 0 0 0 2px var(--accent), 0 4px 24px rgba(232,103,58,0.15);
+
+  --transition-pill: background 220ms ease, color 220ms ease, border-color 220ms ease;
+  --transition-card: box-shadow 150ms ease, transform 150ms ease;
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  min-height: 100dvh;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--bg-elevated); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--bg-hover); }
+
+/* ── Layout shell ── */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}

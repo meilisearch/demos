@@ -1,0 +1,39 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 32px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-surface);
+  font-size: 0.78rem;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.stats {
+  color: var(--text-muted);
+  font-family: 'DM Mono', monospace;
+}
+
+.count {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.time {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.docsLink {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-family: 'DM Mono', monospace;
+  transition: color 150ms ease;
+}
+
+.docsLink:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
