@@ -1,0 +1,66 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  overflow-y: auto;
+  height: 100%;
+  min-height: 0;
+}
+
+.state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 8px;
+  padding: 32px;
+  text-align: center;
+}
+
+.emptyText {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.errorText {
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.errorDetail {
+  color: var(--text-secondary);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  max-width: 320px;
+  word-break: break-all;
+}
+
+.hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.hint code {
+  font-family: 'DM Mono', monospace;
+  color: var(--text-secondary);
+  background: var(--bg-elevated);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}

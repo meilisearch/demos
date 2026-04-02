@@ -1,0 +1,132 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 32px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-surface);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+}
+
+/* ── Row 1: title + subtitle + badge ── */
+.titleRow {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-family: 'DM Mono', monospace;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.subtitle:hover {
+  color: var(--accent);
+}
+
+.indexBadge {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 3px 9px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  margin-left: auto;
+  align-self: center;
+}
+
+/* ── Row 2: explanation then toggle ── */
+.explanationRow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.explanation {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+
+.featureLink {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 150ms ease;
+}
+
+.featureLink:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* ── Segmented toggle ── */
+.segmented {
+  display: flex;
+  align-items: center;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 3px;
+  gap: 2px;
+  cursor: pointer;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+
+.segment {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border-radius: 7px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: background 200ms ease, color 200ms ease, box-shadow 200ms ease;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.segmentIcon {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  transition: opacity 200ms ease;
+}
+
+.segmentActive {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 1px 6px rgba(232, 103, 58, 0.4);
+}
+
+.segmentActive .segmentIcon {
+  opacity: 1;
+}
+
+.segmented:hover .segment:not(.segmentActive) {
+  color: var(--text-secondary);
+}

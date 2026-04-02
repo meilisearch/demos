@@ -1,0 +1,217 @@
+.card {
+  display: flex;
+  gap: 14px;
+  padding: 14px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  cursor: pointer;
+  transition: var(--transition-card);
+}
+
+.card:hover {
+  background: var(--bg-elevated);
+  border-color: rgba(255,255,255,0.12);
+  transform: translateY(-1px);
+}
+
+.card.selected {
+  box-shadow: var(--shadow-selected);
+  border-color: var(--accent);
+  background: var(--bg-elevated);
+}
+
+.poster {
+  flex-shrink: 0;
+  width: 56px;
+  height: 84px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--bg-elevated);
+}
+
+.poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.posterFallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+}
+
+.info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.movieTitle {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movieTitle mark {
+  background: none;
+  color: var(--accent);
+  font-style: italic;
+}
+
+.year {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: 'DM Mono', monospace;
+  flex-shrink: 0;
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.starFilled {
+  color: var(--accent);
+  font-size: 0.75rem;
+}
+
+.starEmpty {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.scoreText {
+  margin-left: 5px;
+  font-size: 0.72rem;
+  font-family: 'DM Mono', monospace;
+  color: var(--text-muted);
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  row-gap: 4px;
+}
+
+.pillLabel {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  margin-right: 2px;
+}
+
+.pill {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: var(--transition-pill);
+  white-space: nowrap;
+}
+
+.pillRaw {
+  background: var(--pill-raw-bg);
+  color: var(--pill-raw-text);
+  border-style: dashed;
+  border-color: rgba(255,255,255,0.15);
+}
+
+.pillHash {
+  opacity: 0.45;
+  margin-right: 1px;
+  font-size: 0.65em;
+}
+
+.pillHydrated {
+  background: var(--pill-hydrated-bg);
+  color: var(--pill-hydrated-text);
+  border-color: var(--border-accent);
+}
+
+/* ── Hydrated actor cards row ── */
+.actorRow {
+  margin-top: 6px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+}
+.actorRow::-webkit-scrollbar { display: none; }
+
+.actorCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  width: 86px;
+}
+
+.actorPhoto {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.actorPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.actorInitials {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--pill-hydrated-text);
+  letter-spacing: 0.03em;
+}
+
+.actorName {
+  font-size: 0.65rem;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-primary);
+  text-align: center;
+  line-height: 1.3;
+  width: 100%;
+  margin: 0;
+}
+
+.actorBirth {
+  font-size: 0.6rem;
+  font-family: 'DM Mono', monospace;
+  color: var(--text-muted);
+  text-align: center;
+  margin: 0;
+  white-space: nowrap;
+}
