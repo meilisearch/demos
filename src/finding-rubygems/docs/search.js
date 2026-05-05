@@ -35,7 +35,7 @@ function handleForm() {
 }
 
 $(document).ready(function () {
-  let url = 'https://edge.meilisearch.com';
+  let url = 'https://ms-adf78ae33284-106.lon.meilisearch.io';
   let indexUID = 'rubygems';
   let publicKey = 'a63da4928426f12639e19d62886f621130f3fa9ff3c7534c5d179f0f51c4f303';
   let request;
