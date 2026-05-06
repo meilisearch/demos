@@ -1,0 +1,88 @@
+.card {
+  position: relative;
+  background: #ffffff;
+  box-shadow: 0px 0px 30px rgba(57, 72, 110, 0.05);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 99px;
+}
+
+.movieBadge {
+  background-color: var(--dodger-blue-100);
+  color: var(--dodger-blue-600);
+}
+
+.actorBadge {
+  background-color: var(--hot-pink-100);
+  color: var(--hot-pink-700);
+}
+
+.mainInfo {
+  overflow: hidden;
+}
+
+.image {
+  border-radius: 5px;
+  margin-right: 1.5em;
+  margin-bottom: 0.5em;
+  float: left;
+  width: 80px;
+  height: auto;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--valhalla-500);
+  padding-right: 4rem;
+}
+
+.title mark {
+  background: var(--dodger-blue-100);
+  color: var(--dodger-blue-600);
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+.genres {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+.overview {
+  margin-top: 0.75rem;
+  clear: both;
+}
+
+.overview mark {
+  background: var(--dodger-blue-100);
+  color: var(--dodger-blue-600);
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+.label {
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.03rem;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
