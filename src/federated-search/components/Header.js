@@ -5,7 +5,7 @@ import MeilisearchLogoMark from '../public/meilisearch-logomark.svg'
 import SearchBar from './SearchBar'
 import styles from '../styles/Header.module.css'
 
-const Header = () => {
+const Header = ({ searchValue, onSearchChange }) => {
   return (
     <div className={styles.header}>
       <div className={`${styles.headerContent} centralWidth`}>
@@ -26,7 +26,7 @@ const Header = () => {
             alt="Meilisearch logomark"
           />
         </a>
-        <SearchBar />
+        <SearchBar value={searchValue} onChange={onSearchChange} />
       </div>
     </div>
   )

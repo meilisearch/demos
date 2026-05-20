@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { useInstantSearch } from 'react-instantsearch-hooks-web'
 import FederatedHit from './FederatedHit'
 import NoResults from './NoResults'
 import styles from '../../styles/FederatedResults.module.css'
 
-const FederatedResults = () => {
-  const { indexUiState } = useInstantSearch()
-  const query = indexUiState.query || ''
+const FederatedResults = ({ query }) => {
   const [hits, setHits] = useState([])
   const [ready, setReady] = useState(false)
 
