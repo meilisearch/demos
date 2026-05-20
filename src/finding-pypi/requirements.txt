@@ -25,5 +25,5 @@ requests==2.23.0
 rsa==4.1
 six==1.14.0
 soupsieve==2.0
-urllib3==1.25.8
+urllib3==1.26.19
 yarl==1.4.2
